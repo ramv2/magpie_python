@@ -32,8 +32,9 @@ def parse_composition_file(composition_file_str, file_type='csv',
             tmp_str = "{} opened successfully. \nStarted reading " \
                       "data..\n".format(composition_file_str)
             print tmp_str
-        entry = {}
+
         for line in composition_file.readlines():
+            entry = {}
             words = line.strip().split(split_str)
             if (len(words) % 2 != 0):
                 print "Invalid line of values in file."
@@ -41,18 +42,20 @@ def parse_composition_file(composition_file_str, file_type='csv',
                 sys.exit(1)
 
             for i in xrange(0, len(words), 2):
-                if (words[i].upper() in entry):
-                    entry[words[i].upper()] += float(words[i+1])
+                if (words[i] in entry):
+                    entry[words[i]] += float(words[i+1])
                 else:
-                    entry[words[i].upper()] = float(words[i+1])
+                    entry[words[i]] = float(words[i+1])
 
             total = sum(entry.values())
             for item in entry:
                 entry[item] /= total
             entries.append(entry)
+        composition_file.close()
 
     return entries
 
 if __name__ == "__main__":
-    dict = parse_composition_file("sample_composition_file.txt")
-    print dict
+    entries = parse_composition_file("sample_composition_file.txt")
+    for entry in entries:
+        print entry

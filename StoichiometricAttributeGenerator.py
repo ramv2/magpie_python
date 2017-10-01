@@ -4,10 +4,9 @@ import types
 # TODO: Implement more rigorous tests
 class StoichiometricAttributeGenerator:
     """
-    Class that generates descriptors based on the stoichiometry of a given
-    material. Includes features that are only based on fractions of elements,
-    but not what those elements actually are.
-    Citation: Ward, L., et. al.. npj Computational Materials. 2 (2016), 16028.
+    Class to set up and generate descriptors based on the stoichiometry of a
+    given material. Includes features that are only based on fractions of
+    elements, but not what those elements actually are.
     """
     def __init__(self):
         """
@@ -43,12 +42,15 @@ class StoichiometricAttributeGenerator:
         for norm in norms:
             self.add_p_norm(norm)
 
-    def get_features(self, entries):
+    def generate_features(self, entries, verbose=False):
         """
-        Computes the norms based on elemental fractions
+        Function to generate the stiochiometric features. Computes the norms
+        based on elemental fractions.
         :param entries: A list of dictionaries containing <Element name,
         fraction> as <key,value> pairs.
-        :return features: pandas data frame containing the names and values
+        :param verbose: Flag that is mainly used for debugging. Prints out a
+        lot of information to the screen.
+        :return features: Pandas data frame containing the names and values
         of the descriptors.
         """
         feat_values = []
@@ -89,10 +91,14 @@ class StoichiometricAttributeGenerator:
 
         # features as a pandas data frame.
         features = pd.DataFrame(feat_values, columns=feat_headers)
+        if (verbose):
+            print features.head()
         return features
 
 if __name__ == "__main__":
     x = StoichiometricAttributeGenerator()
     x.add_p_norms([2,3,5,7,10])
-    dict = [{'FE': 0.4, 'O': 0.6}]
-    x.get_features(dict)
+    entries = [{'Fe': 0.4, 'O': 0.6}, {'H': 0.6666666666666666,
+                                       'O': 0.3333333333333333}, {'Na': 0.5,
+                                                                  'Cl': 0.5}]
+    x.generate_features(entries, True)
