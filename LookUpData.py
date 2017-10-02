@@ -34,6 +34,20 @@ class LookUpData:
                    "Bh": 106, "Hs": 107, "Mt": 108, "Ds": 109,
                    "Rg": 110, "Cn": 111}
 
+    element_names = ["H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne",
+                     "Na", "Mg", "Al", "Si", "P", "S", "Cl", "Ar", "K", "Ca",
+                     "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu",
+                     "Zn", "Ga", "Ge", "As", "Se", "Br", "Kr", "Rb", "Sr",
+                     "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag",
+                     "Cd", "In", "Sn", "Sb", "Te", "I", "Xe", "Cs", "Ba",
+                     "La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb",
+                     "Dy", "Ho", "Er", "Tm", "Yb", "Lu", "Hf", "Ta", "W",
+                     "Re", "Os", "Ir", "Pt", "Au", "Hg", "Tl", "Pb", "Bi",
+                     "Po", "At", "Rn", "Fr", "Ra", "Ac", "Th", "Pa", "U",
+                     "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md",
+                     "No", "Lr", "Rf", "Db", "Sg", "Bh", "Hs", "Mt", "Ds",
+                     "Rg", "Cn"]
+
     def load_property(self, property, lookup_dir=lookup_location):
         """
         Function to load a specific property from the directory containing
