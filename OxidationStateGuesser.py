@@ -64,11 +64,12 @@ class OxidationStateGuesser:
             sys.exit(1)
 
         # Make sure element fractions add up to 1.0.
-        if sum(entry.values()) != 1.0:
-            print "Entry should be a dictionary containing element names and " \
-                  "fractions as keys and values respectively. Also, " \
-                  "fractions should add up to 1.0."
-            sys.exit(1)
+        # if sum(entry.values()) != 1.0:
+        #     print "Entry should be a dictionary containing element names and " \
+        #           "fractions as keys and values respectively. Also, " \
+        #           "fractions should add up to 1.0."
+        #     print sum(entry.values())
+        #     sys.exit(1)
 
         # Initialize list of possible states.
         possible_states = []
