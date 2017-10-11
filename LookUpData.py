@@ -1,3 +1,6 @@
+import types
+from collections import OrderedDict
+
 import numpy as np
 import sys
 
@@ -48,6 +51,40 @@ class LookUpData:
                      "No", "Lr", "Rf", "Db", "Sg", "Bh", "Hs", "Mt", "Ds",
                      "Rg", "Cn"]
 
+    sorting_order = [91, 1, 26, 62, 85, 102, 109, 111, 112, 2, 24, 53, 64,
+                     74, 90, 104, 110, 3, 20, 27, 55, 60, 66, 68, 61, 72, 73,
+                     78, 75, 67, 71, 83, 89, 103, 107, 108, 21, 25, 36, 54,
+                     63, 88, 76, 92, 97, 93, 79, 69, 70, 80, 86, 87, 106,
+                     105, 19, 22, 28, 30, 31, 32, 4, 33, 5, 34, 35, 37, 38,
+                     39, 40, 6, 41, 43, 58, 100, 77, 94, 95, 98, 101, 81, 65,
+                     99, 84, 82, 96, 7, 18, 23, 29, 44, 59, 57, 56, 42, 45,
+                     46, 47, 48, 49, 50, 51, 52, 8, 9, 10, 11, 12, 13, 14,
+                     15, 16, 17]
+
+    element_order = {"H": 91, "He": 1, "Li": 26, "Be": 62, "B": 85, "C": 102,
+                     "N": 109, "O": 111, "F": 112, "Ne": 2, "Na": 24,
+                     "Mg": 53, "Al": 64, "Si": 74, "P": 90, "S": 104,
+                     "Cl": 110, "Ar": 3, "K": 20, "Ca": 27, "Sc": 55,
+                     "Ti": 60, "V": 66, "Cr": 68, "Mn": 61, "Fe": 72,
+                     "Co": 73, "Ni": 78, "Cu": 75, "Zn": 67, "Ga": 71,
+                     "Ge": 83, "As": 89, "Se": 103, "Br": 107, "Kr": 108,
+                     "Rb": 21, "Sr": 25, "Y": 36, "Zr": 54, "Nb": 63,
+                     "Mo": 88, "Tc": 76, "Ru": 92, "Rh": 97, "Pd": 93,
+                     "Ag": 79, "Cd": 69, "In": 70, "Sn": 80, "Sb": 86,
+                     "Te": 87, "I": 106, "Xe": 105, "Cs": 19, "Ba": 22,
+                     "La": 28, "Ce": 30, "Pr": 31, "Nd": 32, "Pm": 4,
+                     "Sm": 33, "Eu": 5, "Gd": 34, "Tb": 35, "Dy": 37,
+                     "Ho": 38, "Er": 39, "Tm": 40, "Yb": 6, "Lu": 41,
+                     "Hf": 43, "Ta": 58, "W": 100, "Re": 77, "Os": 94,
+                     "Ir": 95, "Pt": 98, "Au": 101, "Hg": 81, "Tl": 65,
+                     "Pb": 99, "Bi": 84, "Po": 82, "At": 96, "Rn": 7,
+                     "Fr": 18, "Ra": 23, "Ac": 29, "Th": 44, "Pa": 59,
+                     "U": 57, "Np": 56, "Pu": 42, "Am": 45, "Cm": 46,
+                     "Bk": 47, "Cf": 48, "Es": 49, "Fm": 50, "Md": 51,
+                     "No": 52, "Lr": 8, "Rf": 9, "Db": 10, "Sg": 11,
+                     "Bh": 12, "Hs": 13, "Mt": 14, "Ds": 15, "Rg": 16,
+                     "Cn": 17}
+
     def load_property(self, property, lookup_dir=lookup_location):
         """
         Function to load a specific property from the directory containing
@@ -57,6 +94,7 @@ class LookUpData:
         :return: values: A numpy array containing the property values for all
         the elements.
         """
+
         # IonizationEnergies and OxidationStates are 2-D arrays. So treat
         # them differently.
         if property == "IonizationEnergies" or property == "OxidationStates":
@@ -212,8 +250,89 @@ class LookUpData:
         """
         lookup_location = location
 
+    def get_sorted_and_normalized(self, entries):
+        """
+        Function to sort the elements within an entry based on its
+        electronegativity and normalize its fractions.
+        :param entries: A single dictionary or a list of dictionaries
+        containing element names and fractions as keys and values respectively.
+        :return: A single OrderedDictionary or a list of OrderedDictionaries
+        based on input, containing the normalized and sorted data.
+        """
+
+        # If single dictionary
+        if type(entries) is not types.ListType and type(entries) is \
+                types.DictType:
+            tmp_sorted = OrderedDict()
+
+            # Sort elements based on the electronegativity order.
+            tmp_list = sorted(entries.keys(), key=self.element_order.get)
+
+            for elem in tmp_list:
+                # Add element to entry if its fraction is greater than 0.
+                if entries[elem] > 0.0:
+                    tmp_sorted[elem] = entries[elem]
+
+            # Normalize fractions.
+            sum_ = sum(tmp_sorted.values())
+            for elem in tmp_sorted:
+                tmp_sorted[elem] /= float(sum_)
+            return tmp_sorted
+
+        sorted_entries = []
+        for entry in entries:
+            tmp_sorted = OrderedDict()
+
+            # Sort elements based on the electronegativity order.
+            tmp_list = sorted(entry.keys(), key=self.element_order.get)
+
+            for elem in tmp_list:
+                # Add element to entry if its fraction is greater than 0.
+                if entry[elem] > 0.0:
+                    tmp_sorted[elem] = entry[elem]
+
+            # Normalize fractions.
+            sum_ = sum(tmp_sorted.values())
+            for elem in tmp_sorted:
+                tmp_sorted[elem] /= float(sum_)
+            sorted_entries.append(tmp_sorted)
+        return sorted_entries
+
+    def comparator(self, x, y):
+        """
+        Function to compare two entries (dictionaries) with element names and
+        fractions as keys and values respectively.
+        :param x: First entry.
+        :param y: Second entry.
+        :return: -1 if x < y , 1 if x > y or 0 if x = y.
+        """
+        if type(x) == types.DictType and type(y) == types.DictType:
+            if len(x) != len(y):
+                # If A has more elements, it is greater.
+                return 1 if len(x) > len(y) else -1
+
+            # Check which has greater element fractions.
+            for i in xrange(len(x)):
+                elem1 = x.keys()[i]
+                elem2 = y.keys()[i]
+                if elem1 != elem2:
+                    return 1 if self.element_ids[elem1] > self.element_ids[
+                        elem2] else -1
+                elif x[elem1] != y[elem2]:
+                    return 1 if x[elem1] > y[elem2] else -1
+            # We have concluded they are equal.
+        return 0
+
 if __name__ == "__main__":
     x = LookUpData()
+    # entry = [{"Sc": 0.25, "Ti": 0.25, "P": 0.125, "Si": 0.125, "C": 0.125,
+    #          "N": 0.125}]
+    entry = [{"C":1, "Si":1, "N":1, "Sc":2, "P":1, "Ti": 2}]
+
+    # for i in entry:
+    #     print i
+    for i in x.get_sorted_and_normalized(entry):
+        print i
     # a = x.load_property("Electronegativity")
     # print a
     # b = x.load_special_property("IonizationEnergies")

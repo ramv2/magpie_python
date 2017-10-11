@@ -14,7 +14,7 @@ class CompositionDistanceFilter:
         :param lp: Instance of the LookUpData class required by this class.
         """
 
-        # Target compostion.
+        # Target composition.
         self.target_composition = {}
 
         # Threshold distance.
@@ -53,12 +53,14 @@ class CompositionDistanceFilter:
         :return: dist: Distance between two entries.
         """
 
-        # Get the list of elements to consider.
+        # Get the list of common elements with fractions greater than zero to
+        # consider.
         elements = []
         for e in entry_1:
-            elements.append(e)
+            if entry_1[e] > 0.0:
+                elements.append(e)
         for e in entry_2:
-            if e not in elements:
+            if e not in elements and entry_2[e] > 0.0:
                 elements.append(e)
 
         # Compute differences
@@ -112,8 +114,6 @@ if __name__ == "__main__":
     y = LookUpData()
     x = CompositionDistanceFilter(y)
     e_1 = {"Sc":0.25, "Ti":0.25, "P":0.125, "Si":0.125, "C":0.125, "N":0.125}
-    e_2 = {'C': 0.16666666666666666, 'N': 0.16666666666666666,
-           'P': 0.16666666666666666, 'Si': 0.16666666666666666,
-           'Ti': 0.16666666666666666, 'Sc': 0.16666666666666666}
+    e_2 = {'C': 0.25, 'P':0.0, 'Sc': 0.75}
 
-    print x.compute_distance(e_1, e_2, 1)
+    print x.compute_distance(e_1, e_2, 2)
