@@ -3,6 +3,7 @@ from heapq import heappush, heappop
 import numpy as np
 import pandas as pd
 from CompositionDistanceFilter import CompositionDistanceFilter
+from CompositionEntry import CompositionEntry
 from EqualSumCombinations import EqualSumCombinations
 from LookUpData import LookUpData
 
@@ -58,29 +59,23 @@ class APEAttributeGenerator:
     affect the determination of efficiently packed clusters.
 
     """
-    def __init__(self, lp):
-        """
-        Initialize field variables here.
-        :param lp: Instance of the LookUpData class required by this class.
-        """
-        self.lp = lp
 
-        # Threshold at which to define a cluster as efficiently packed.
-        # Packing efficiency is defined by |APE - 1|. Default value for this
-        # parameter is 0.01.
-        self.packing_threshold = 0.01
+    # Threshold at which to define a cluster as efficiently packed.
+    # Packing efficiency is defined by |APE - 1|. Default value for this
+    # parameter is 0.01.
+    packing_threshold = 0.01
 
-        # Number of nearest clusters to assess.
-        self.n_nearest_to_eval = [1, 3, 5]
+    # Number of nearest clusters to assess.
+    n_nearest_to_eval = [1, 3, 5]
 
-        # Name of elemental property to use as atomic radius. By default,
-        # uses the radii from doi: 10.1179/095066010X12646898728200.
-        self.radius_property = "MiracleRadius"
+    # Maximum number of types over which to search for clusters. If an
+    # alloy has more than this number of elements, the code will only
+    # search for clusters with the most prevalent elements.
+    max_n_types = 6
 
-        # Maximum number of types over which to search for clusters. If an
-        # alloy has more than this number of elements, the code will only
-        # search for clusters with the most prevalent elements.
-        self.max_n_types = 6
+    # Name of elemental property to use as atomic radius. By default,
+    # uses the radii from doi: 10.1179/095066010X12646898728200.
+    radius_property = "MiracleRadius"
 
     def set_packing_threshold(self, threshold):
         """
@@ -114,6 +109,7 @@ class APEAttributeGenerator:
         """
         self.radius_property = prop
 
+    @classmethod
     def compute_APE(self, n_neighbors=None, center_radius=None,
                     neigh_eff_radius=None,
                     radii=None, center_type=None, shell_types=None):
@@ -212,6 +208,7 @@ class APEAttributeGenerator:
         actual_ratio = c_r / n_e_r
         return ideal_ratio / actual_ratio
 
+    @classmethod
     def get_cluster_range(self, radii, packing_threshold):
         """
         Function compute the maximum and minimum possible cluster sizes,
@@ -258,7 +255,7 @@ class APEAttributeGenerator:
 
         biggest_cluster = cluster[smallest_radius]
 
-        return smallest_cluster, biggest_cluster
+        return int(smallest_cluster), int(biggest_cluster)
 
     def get_closest_compositions(self, target_composition,
                                  other_compositions, n_closest, p_norm):
@@ -289,6 +286,7 @@ class APEAttributeGenerator:
             comps.insert(0, tup[1])
         return dist, comps
 
+    @classmethod
     def find_efficiently_packed_clusters(self, radii, packing_threshold):
         """
         Function to find all clusters with better APE than a certain
@@ -323,9 +321,9 @@ class APEAttributeGenerator:
         min_cluster_size, max_cluster_size = self.get_cluster_range(radii,
                                             packing_threshold)
 
-        esc = EqualSumCombinations(int(max_cluster_size) - 1, l_r)
-        for cluster_size in xrange(int(min_cluster_size),
-                                   int(max_cluster_size)):
+        esc = EqualSumCombinations(max_cluster_size - 1, l_r)
+        for cluster_size in xrange(min_cluster_size,
+                                   max_cluster_size):
             if not esc.dp[cluster_size][l_r]:
                 shells = esc.get_combinations(cluster_size, l_r)
 
@@ -335,8 +333,7 @@ class APEAttributeGenerator:
 
             # Loop over possible ranges of cluster sizes (determined from
             # radii).
-            for cluster_size in xrange(int(min_cluster_size),
-                                           int(max_cluster_size)):
+            for cluster_size in xrange(min_cluster_size, max_cluster_size):
 
                 # Loop through all combinations of atom types in the first
                 # shell.
@@ -352,6 +349,7 @@ class APEAttributeGenerator:
 
         return output
 
+    @classmethod
     def compute_cluster_compositions(self, e_ids, clusters):
         """
         Function to compute the compositions of a list of atomic clusters.
@@ -366,7 +364,6 @@ class APEAttributeGenerator:
         :return:
         """
         output = []
-        l_e = len(e_ids)
         l_c = len(clusters)
 
         # Loop through clusters with each type of atom at the center.
@@ -375,15 +372,12 @@ class APEAttributeGenerator:
                 fractions = list(shell)
                 fractions[ct] += 1.0
 
-                entry = {}
-                for i in xrange(l_e):
-                    e_name = self.lp.element_names[e_ids[i]]
-                    entry[e_name] = fractions[i]
-                entry_sn = self.lp.get_sorted_and_normalized(entry)
-                output.append(entry_sn)
+                entry = CompositionEntry(element_ids=e_ids, fractions=fractions)
+                output.append(entry)
 
         return output
 
+    @classmethod
     def determine_optimal_APE(self, central_atom_type, shell_composition,
                               radii):
         """
@@ -403,8 +397,9 @@ class APEAttributeGenerator:
 
         # Get radius of center, mean radius of outside.
         center_r = radii[central_atom_type]
-        tmp_r = [radii[self.lp.element_ids[elem]] for elem in shell_composition]
-        shell_r = np.average(tmp_r, weights=shell_composition.values())
+        tmp_r = [radii[elem] for elem in shell_composition.get_element_ids()]
+        shell_r = np.average(tmp_r,
+                             weights=shell_composition.get_element_fractions())
 
         # Loop through all atom sizes.
         for z in xrange(3, 24):
@@ -418,33 +413,32 @@ class APEAttributeGenerator:
 
         return output
 
-    def generate_features(self, entries, verbose=False):
+    def generate_features(self, entries, lookup_path, verbose=False):
         """
         Function to generate features as mentioned in the class description.
 
-        :param entries: A list of dictionaries containing <Element name,
-        fraction> as <key,value> pairs.
+        :param entries: A list of CompositionEntry's.
         :param verbose: Flag that is mainly used for debugging. Prints out a
         lot of information to the screen.
         :return features: Pandas data frame containing the names and values
         of the descriptors.
         """
-        
+
         # Initialize lists of feature values and headers for pandas data frame.
         feat_values = []
         feat_headers = []
 
         # Raise exception if input argument is not of type list of dictionaries.
         if (type(entries) is not types.ListType):
-            raise ValueError("Argument should be of type list of dictionaries.")
-        elif (entries and not type(entries[0] is not types.DictType)):
-            raise ValueError("Argument should be of type list of dictionaries.")
-
-        # Sort and normalize the entries.
-        s_entries = self.lp.get_sorted_and_normalized(entries)
+            raise ValueError("Argument should be of type list of "
+                             "CompositionEntry's")
+        elif (entries and not isinstance(entries[0], CompositionEntry)):
+            raise ValueError("Argument should be of type list of "
+                             "CompositionEntry's")
 
         # Get the atomic radii.
-        radii_lookup = self.lp.load_property(self.radius_property)
+        radii_lookup = LookUpData.load_property(self.radius_property,
+                                                lookup_dir=lookup_path)
 
         # Insert header names here.
         for n in self.n_nearest_to_eval:
@@ -459,41 +453,43 @@ class APEAttributeGenerator:
 
         # Get the entries, sort so that alloys for the same system are
         # grouped together.
-        sorted_entries = sorted(s_entries, cmp=self.lp.comparator)
+        entries.sort()
 
         # Compute features for each entry.
         last_elements = []
         clusters = []
-        for entry in sorted_entries:
+        for entry in entries:
             # print entry
             tmp_list = []
-            cur_elements = entry.keys()
+            cur_elements = list(entry.get_element_ids())
+            cur_fractions = list(entry.get_element_fractions())
 
             # If list of elements is greater than max_n_types, pick only the
             # most prevalent.
             if len(cur_elements) > self.max_n_types:
-                cur_elements = sorted(cur_elements, key=entry.get)[
-                               :self.max_n_types]
+                cur_elements = [x for _,x in sorted(zip(cur_fractions,
+                                        cur_elements), reverse=True)]
+                cur_elements = cur_elements[:self.max_n_types]
+                # cur_elements = sorted(cur_elements, key=entry.get)[
+                #                :self.max_n_types]
 
             # Sort elements by atomic number.
-            cur_elements = sorted(cur_elements, key=self.lp.element_ids.get)
-            curr_elem_ids = [self.lp.element_ids[e] for e in cur_elements]
+            cur_elements.sort()
 
             # Get radii of those elements.
-            radii = [radii_lookup[e_id] for e_id in curr_elem_ids]
+            radii = [radii_lookup[e_id] for e_id in cur_elements]
 
             # If current element list doesn't equal last_elements, recompute
             # list of nearest clusters.
-            if curr_elem_ids != last_elements:
+            if cur_elements != last_elements:
                 tmp = self.find_efficiently_packed_clusters(radii,
                                                         self.packing_threshold)
-                clusters = self.compute_cluster_compositions(curr_elem_ids, tmp)
-                last_elements = curr_elem_ids
+                clusters = self.compute_cluster_compositions(cur_elements, tmp)
+                last_elements = cur_elements
 
             # Find the closest clusters and distance to our cluster.
             distances, closest_clusters = self.get_closest_compositions(entry,
-                                                                 clusters,
-                                                             largest_n, 2)
+                                            clusters, largest_n, 2)
             l_d = len(distances)
             if l_d == 0:
                 for n in self.n_nearest_to_eval:
@@ -506,14 +502,16 @@ class APEAttributeGenerator:
             # assuming that the composition of the first nearest-neighbor
             # shell is equal to the composition of the alloy.
 
-            cluster_APEs = [self.determine_optimal_APE(self.lp.element_ids[
-                            elem], entry, radii_lookup) for elem in entry]
+            entry_elements = list(entry.get_element_ids())
+            entry_fractions = list(entry.get_element_fractions())
+            cluster_APEs = [self.determine_optimal_APE(id, entry,
+                                    radii_lookup) for id in entry_elements]
 
             # Compute the composition-weighted average and average deviation
             # from 1.
-            avg = np.average(cluster_APEs, weights=entry.values())
+            avg = np.average(cluster_APEs, weights=entry_fractions)
             avg_dev = np.average([abs(1.0 - c) for c in cluster_APEs],
-                                 weights=entry.values())
+                                 weights=entry_fractions)
             tmp_list.append(avg)
             tmp_list.append(avg_dev)
 

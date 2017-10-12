@@ -1,5 +1,9 @@
 from itertools import izip
 import re
+from scipy.linalg import lu
+import numpy as np
+from scipy.optimize import linprog
+
 from LookUpData import LookUpData
 
 class CompositionEntry:
@@ -59,7 +63,7 @@ class CompositionEntry:
                                   self.element_ids]
             self.fractions = comp_map.values()
             self.sort_and_normalize()
-        elif fractions and element_names and element_ids:
+        elif fractions and (element_names or element_ids):
             self.set_composition(fractions, element_ids=element_ids,
                                  element_names=element_names)
 
@@ -367,7 +371,7 @@ class CompositionEntry:
 
         # Sort elements based on the electronegativity order.
         tmp_tuple = zip(self.element_ids, self.fractions)
-        tmp_tuple.sort(key=lambda (x,y): self.lp_sorting_order.index(x))
+        tmp_tuple.sort(key=lambda (x,y): self.lp_sorting_order[x])
 
         # Normalize the fractions.
         self.number_in_cell = sum(self.fractions)
@@ -386,7 +390,7 @@ class CompositionEntry:
     def combine_compositions(self, total_comp, add_comp, multiplier):
         """
         Function to add one composition entry to another.
-        :param total_comp: Compostion entry to be added to.
+        :param total_comp: Composition entry to be added to.
         :param add_comp: Composition entry to add.
         :param multiplier: Multiplier for the added part.
         :return: Combined compositions.
@@ -435,6 +439,41 @@ class CompositionEntry:
 
             return output
 
+    @classmethod
+    def import_composition_list(self, file_path):
+        composition_list = []
+        with open(file_path, 'r') as f:
+            for line in f.readlines():
+                words = line.strip()
+                entry = CompositionEntry(composition=words)
+                composition_list.append(entry)
+
+        return composition_list
+
+    @classmethod
+    def import_values_list(self, file_path):
+        property_list = []
+        with open(file_path, 'r') as f:
+            for line in f.readlines():
+                property_list.append(float(line.strip()))
+
+        return property_list
+
 if __name__ == "__main__":
-    c = CompositionEntry(composition="Fe2O3")
-    print c
+    # c = CompositionEntry(composition="Cu64.3Zr35.7")
+    # print c
+    a_eq = [[1.0, 0.0, 0.33, 0.67], [0.0, 1.0, 0.67, 0.33], [1, 1, 1, 1]]
+    pl, u = lu(a_eq, permute_l=True)
+    mask = np.all(abs(u) < 1e-14, axis=1)
+    #
+    # for i in range(len(u)):
+    #     for j in range(len(u[i])):
+    #         if u[i][j] < 1e-14:
+    #             u[i][j] = 0
+    #
+    # print u[~np.all(u == 0, axis=1)]
+
+    # b_eq = [0.5, 0.5, 1.0]
+    # c = [0, 0, -1.0, -1.0]
+    # x = linprog(c=c, A_eq=a_eq, b_eq=b_eq)
+    # print x

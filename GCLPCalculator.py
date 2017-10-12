@@ -1,21 +1,27 @@
 import types
+from scipy.linalg import lu
+
 from scipy.optimize import linprog
 import numpy as np
 from itertools import izip
-
+from CompositionEntry import CompositionEntry
+from LookUpData import LookUpData
 
 class GCLPCalculator:
-    def __init__(self, lp):
-        self.lp = lp
+    lp_element_names = LookUpData.element_names
+
+    def __init__(self):
         self.phases = {}
         # Add for each element.
-        for elem in self.lp.element_names:
-            self.phases[elem] = 0.0
+        for elem in self.lp_element_names:
+            entry = CompositionEntry(element_names=[elem], fractions=[1.0])
+            self.phases[entry] = 0.0
 
     def set_mu(self, elem, mu):
-        if elem not in self.lp.element_names:
-            raise ValueError("Not an element: "+elem)
-        self.phases[elem] = mu
+        entry = CompositionEntry(composition=elem)
+        if len(entry.get_element_ids()) != 1:
+            raise ValueError("Not an element "+elem)
+        self.phases[entry] = mu
 
     def add_phases(self, entries, energies):
         for entry,energy in izip(entries, energies):
@@ -24,44 +30,74 @@ class GCLPCalculator:
 
     def add_phase(self, entry, energy):
         if entry not in self.phases:
-            self.phases[entry] = energy
+            # Add if there is no current entry at this composition.
+            self.phases[entry] = float(energy)
         elif self.phases[entry] > energy:
-            self.phases[entry] = energy
+            # If there is a phase, update only if new energy is lower than
+            # current.
+            self.phases[entry] = float(energy)
 
     def get_num_phases(self):
         return len(self.phases)
 
     def run_GCLP(self, composition):
+        if not isinstance(composition, CompositionEntry):
+            raise TypeError("Composition should be of type CompositionEntry!")
 
-        # List of dictionaries.
+        cur_elements = composition.get_element_ids()
+        cur_fractions = composition.get_element_fractions()
+
+        # List of composition entries.
         components = []
 
-        # List.
+        # List of energies.
         energies = []
 
         # Get the current possible phases (i.e., those that contain
         # exclusively the elements in the current compound.
         for entry in self.phases:
+            this_elements = entry.get_element_ids()
             # Check whether this entry is in the target phase diagram.
-            if set(entry.keys()) <= set(composition.keys()):
+            if set(this_elements) <= set(cur_elements):
                 components.append(entry)
                 energies.append(self.phases[entry])
 
         # Set up constraints.
         # Type #1: Mass conservation.
-        l_c = len(components)
-        a_eq = np.ones((len(composition)+1, l_c))
-        b_eq = np.ones(len(composition)+1)
-        for i,elem in enumerate(composition):
-            b_eq[i] = composition[elem]
-            for j in xrange(l_c):
-                a_eq[i][j] = components[j][elem]
+        l_components = len(components)
+        l_composition = len(cur_elements)
+        a_eq = np.ones((l_composition + 1, l_components))
+        b_eq = np.ones(l_composition + 1)
+        for i in range(l_composition):
+            b_eq[i] = cur_fractions[i]
+            for j in range(l_components):
+                a_eq[i][j] = components[j].get_element_fraction(
+                    id=cur_elements[i])
 
         # Type #2: Normalization.
         # Taken care of when we initialized a_eq and b_eq to ones.
+
+        # Perform LU decomposition to check if there are any linearly
+        # dependent rows in the matrix a_eq. For some reason, linprog can't
+        # handle linearly dependent matrices.
+        _, u = lu(a_eq, permute_l=True)
+
+        mask = np.all(abs(u) < 1e-14, axis=1)
+        indices = [i for i in range(len(mask)) if mask[i]]
+        if indices:
+            a_eq = np.delete(a_eq, indices, axis=0)
+            b_eq = np.delete(b_eq, indices)
+
         c = np.array(energies)
 
+        # Call LP solver and store result.
         res = linprog(c=c, A_eq=a_eq, b_eq=b_eq)
-        equilibrium =[[components[i], res.x[i]] for i in range(l_c) if res.x[
-            i] > 1E-6]
-        return res.fun, equilibrium
+        equilibrium = {}
+        equilibrium_fractions = res.x
+        for i in range(l_components):
+            if equilibrium_fractions[i] > 1e-6:
+                equilibrium[components[i]] = equilibrium_fractions[i]
+
+        ground_state_energy = res.fun
+
+        return ground_state_energy, equilibrium

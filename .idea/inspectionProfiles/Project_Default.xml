@@ -5,6 +5,8 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="tuple.x" />
+          <option value="tuple.fun" />
+          <option value="tuple.get_element_fraction" />
         </list>
       </option>
     </inspection_tool>

@@ -1,5 +1,7 @@
 import types
 import numpy as np
+
+from CompositionEntry import CompositionEntry
 from LookUpData import LookUpData
 
 class CompositionDistanceFilter:
@@ -8,25 +10,21 @@ class CompositionDistanceFilter:
     Filters any composition where the maximum change in any element is less
     than a certain value.
     """
-    def __init__(self, lp):
+    def __init__(self):
         """
         Initialize field variables here.
-        :param lp: Instance of the LookUpData class required by this class.
         """
 
         # Target composition.
-        self.target_composition = {}
+        self.target_composition = None
 
         # Threshold distance.
         self.threshold = 0.0
 
-        self.lp = lp
-
     def set_target_composition(self, entry):
         """
         Function to define the target composition.
-        :param entry: Desired target composition with element names and
-        fractions as keys and values respectively.
+        :param entry: Desired target composition.
         :return:
         """
         self.target_composition = entry
@@ -53,22 +51,18 @@ class CompositionDistanceFilter:
         :return: dist: Distance between two entries.
         """
 
-        # Get the list of common elements with fractions greater than zero to
+        # Get the set of common elements with fractions greater than zero to
         # consider.
-        elements = []
-        for e in entry_1:
-            if entry_1[e] > 0.0:
-                elements.append(e)
-        for e in entry_2:
-            if e not in elements and entry_2[e] > 0.0:
-                elements.append(e)
+        elements = set()
+        for e1, e2 in zip(entry_1.get_element_ids(), entry_2.get_element_ids()):
+            elements.add(e1)
+            elements.add(e2)
 
         # Compute differences
         dist = 0.0
         for e in elements:
-            f1 = entry_1[e] if e in entry_1 else 0
-            f2 = entry_2[e] if e in entry_2 else 0
-            diff = f1 - f2
+            diff = entry_1.get_element_fraction(id=e) - \
+                   entry_2.get_element_fraction(id=e)
             if p == 0:
                 if diff != 0:
                     dist += 1
@@ -87,24 +81,29 @@ class CompositionDistanceFilter:
         """
         Function to compute labels of composition entries indicating whether
         or not they are within the threshold of the target composition.
-        :param entries: A list of dictionaries containing <Element name,
-        fraction> as <key,value> pairs.
+        :param entries: A list of CompositionEntry's.
         :return: label: A numpy array containing True if the entry is within
         bounds of the target composition and False otherwise.
         """
 
-        # Raise exception if input argument is not of type list of dictionaries.
+        # Raise exception if input argument is not of type list of
+        # CompositionEntry's.
         if (type(entries) is not types.ListType):
-            raise ValueError("Argument should be of type list of dictionaries.")
-        elif (entries and type(entries[0]) is not types.DictType):
-            raise ValueError("Argument should be of type list of dictionaries.")
+            raise ValueError("Argument should be of type list of "
+                             "CompositionEntry's.")
+        elif (entries and not isinstance(entries[0], CompositionEntry)):
+            raise ValueError("Argument should be of type list of "
+                             "CompositionEntry's.")
+
+        target_elements = self.target_composition.get_element_ids()
+        target_fractions = self.target_composition.get_element_fractions()
 
         label = np.array([False]*len(entries))
         for i,entry in enumerate(entries):
             within_bounds = True
-            for e in self.target_composition:
-                v1 = entry[e] if e in entry else 0
-                if abs(v1 - self.target_composition[e]) > self.threshold:
+            for e in range(len(target_elements)):
+                v1 = entry.get_element_fraction(id=target_elements[e])
+                if abs(v1 - target_fractions[e]) > self.threshold:
                     within_bounds = False
                     break
             label[i] = within_bounds

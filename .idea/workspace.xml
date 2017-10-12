@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="928b52f4-35f8-48d1-abb5-b72ef2e61ac2" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dummy2.txt" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/APEAttributeGenerator.py" afterPath="$PROJECT_DIR$/APEAttributeGenerator.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CompositionDistanceFilter.py" afterPath="$PROJECT_DIR$/CompositionDistanceFilter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EqualSumCombinations.py" afterPath="$PROJECT_DIR$/EqualSumCombinations.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CompositionEntry.py" afterPath="$PROJECT_DIR$/CompositionEntry.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GCLPCalculator.py" afterPath="$PROJECT_DIR$/GCLPCalculator.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LookUpData.py" afterPath="$PROJECT_DIR$/LookUpData.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/GCLPCalculatorTest.py" afterPath="$PROJECT_DIR$/test/GCLPCalculatorTest.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,42 +23,20 @@
       <file leaf-file-name="APEAttributeGenerator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/APEAttributeGenerator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7225">
-              <caret line="431" column="8" lean-forward="false" selection-start-line="431" selection-start-column="8" selection-end-line="431" selection-end-column="8" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GCLPAttributeGenerator.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GCLPAttributeGenerator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GCLPCalculator.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GCLPCalculator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="24" column="30" lean-forward="false" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GCLPCalculatorTest.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/GCLPCalculatorTest.py">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
-              <caret line="20" column="36" lean-forward="false" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
+              <caret line="77" column="37" lean-forward="false" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="APEAttributeGeneratorTest.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/APEAttributeGeneratorTest.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="427">
+              <caret line="165" column="34" lean-forward="false" selection-start-line="165" selection-start-column="34" selection-end-line="165" selection-end-column="34" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -64,11 +44,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CompositionEntry.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GCLPCalculator.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GCLPCalculator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="445">
+              <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GCLPCalculatorTest.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/GCLPCalculatorTest.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="223">
+              <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CompositionEntry.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CompositionEntry.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7208">
-              <caret line="424" column="44" lean-forward="false" selection-start-line="424" selection-start-column="44" selection-end-line="424" selection-end-column="44" />
+            <state relative-caret-position="376">
+              <caret line="466" column="4" lean-forward="false" selection-start-line="466" selection-start-column="4" selection-end-line="466" selection-end-column="41" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -79,8 +83,8 @@
       <file leaf-file-name="LookUpData.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LookUpData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4566">
-              <caret line="279" column="29" lean-forward="false" selection-start-line="265" selection-start-column="12" selection-end-line="279" selection-end-column="29" />
+            <state relative-caret-position="-1326">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -99,9 +103,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>values()</find>
-      <find>newNames</find>
-      <find>add</find>
       <find>LookUp</find>
       <find>))</find>
       <find>&lt;/math&gt;</find>
@@ -129,6 +130,9 @@
       <find>guest</find>
       <find>LookUpData.</find>
       <find>LookUpData</find>
+      <find>entry</find>
+      <find>self.lp</find>
+      <find>self.aag</find>
     </findStrings>
     <replaceStrings>
       <replace>element_ids</replace>
@@ -151,6 +155,7 @@
       <replace>l_d</replace>
       <replace>paren</replace>
       <replace>self.lp_</replace>
+      <replace>APEAttributeGenerator</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -175,13 +180,16 @@
         <option value="$PROJECT_DIR$/IonicCompoundFinder.py" />
         <option value="$PROJECT_DIR$/ElementalPropertyAttributeGenerator.py" />
         <option value="$PROJECT_DIR$/EqualSumCombinations.py" />
-        <option value="$PROJECT_DIR$/CompositionDistanceFilter.py" />
-        <option value="$PROJECT_DIR$/APEAttributeGenerator.py" />
         <option value="$PROJECT_DIR$/GCLPAttributeGenerator.py" />
+        <option value="$PROJECT_DIR$/small_set_comp.txt" />
+        <option value="$PROJECT_DIR$/small_set_delta_e.txt" />
         <option value="$PROJECT_DIR$/LookUpData.py" />
-        <option value="$PROJECT_DIR$/GCLPCalculator.py" />
+        <option value="$PROJECT_DIR$/CompositionDistanceFilter.py" />
         <option value="$PROJECT_DIR$/test/GCLPCalculatorTest.py" />
         <option value="$PROJECT_DIR$/CompositionEntry.py" />
+        <option value="$PROJECT_DIR$/APEAttributeGenerator.py" />
+        <option value="$PROJECT_DIR$/test/APEAttributeGeneratorTest.py" />
+        <option value="$PROJECT_DIR$/GCLPCalculator.py" />
       </list>
     </option>
   </component>
@@ -228,6 +236,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -235,17 +244,21 @@
               <item name="magpie_python" type="b2602c69:ProjectViewProjectNode" />
               <item name="magpie_python" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="magpie_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="magpie_python" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/CompositionEntry.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test/APEAttributeGeneratorTest.py" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -259,7 +272,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.comp_entry">
+  <component name="RunManager" selected="Python tests.GCLPCalculatorTest">
     <configuration name="APE" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -276,6 +289,36 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="APEAttributeGeneratorTest" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="/usr/bin/python2.7" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="magpie_python" />
+      <option name="_new_pattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test/APEAttributeGeneratorTest.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+    </configuration>
+    <configuration name="GCLPCalculatorTest" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="/usr/bin/python2.7" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="magpie_python" />
+      <option name="_new_pattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test/GCLPCalculatorTest.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
     <configuration name="cd_filter" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -583,7 +626,7 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <list size="19">
+    <list size="21">
       <item index="0" class="java.lang.String" itemvalue="Python.parse" />
       <item index="1" class="java.lang.String" itemvalue="Python.stoich" />
       <item index="2" class="java.lang.String" itemvalue="Python.element" />
@@ -603,6 +646,8 @@
       <item index="16" class="java.lang.String" itemvalue="Python.ic_finder" />
       <item index="17" class="java.lang.String" itemvalue="Python.cd_filter" />
       <item index="18" class="java.lang.String" itemvalue="Python.ionic_proximity" />
+      <item index="19" class="java.lang.String" itemvalue="Python tests.APEAttributeGeneratorTest" />
+      <item index="20" class="java.lang.String" itemvalue="Python tests.GCLPCalculatorTest" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
@@ -618,26 +663,58 @@
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="GCLPCalculatorTest - 2017.10.12 at 06h 10m 44s.xml">
+      <configuration name="GCLPCalculatorTest" configurationId="tests" />
+    </history-entry>
+    <history-entry file="GCLPCalculatorTest - 2017.10.12 at 06h 11m 33s.xml">
+      <configuration name="GCLPCalculatorTest" configurationId="tests" />
+    </history-entry>
+    <history-entry file="GCLPCalculatorTest - 2017.10.12 at 06h 11m 37s.xml">
+      <configuration name="GCLPCalculatorTest" configurationId="tests" />
+    </history-entry>
+    <history-entry file="GCLPCalculatorTest - 2017.10.12 at 06h 12m 12s.xml">
+      <configuration name="GCLPCalculatorTest" configurationId="tests" />
+    </history-entry>
+    <history-entry file="GCLPCalculatorTest - 2017.10.12 at 06h 12m 38s.xml">
+      <configuration name="GCLPCalculatorTest" configurationId="tests" />
+    </history-entry>
+    <history-entry file="GCLPCalculatorTest - 2017.10.12 at 06h 12m 53s.xml">
+      <configuration name="GCLPCalculatorTest" configurationId="tests" />
+    </history-entry>
+    <history-entry file="GCLPCalculatorTest - 2017.10.12 at 06h 13m 34s.xml">
+      <configuration name="GCLPCalculatorTest" configurationId="tests" />
+    </history-entry>
+    <history-entry file="GCLPCalculatorTest - 2017.10.12 at 06h 14m 34s.xml">
+      <configuration name="GCLPCalculatorTest" configurationId="tests" />
+    </history-entry>
+    <history-entry file="GCLPCalculatorTest - 2017.10.12 at 06h 15m 34s.xml">
+      <configuration name="GCLPCalculatorTest" configurationId="tests" />
+    </history-entry>
+    <history-entry file="GCLPCalculatorTest - 2017.10.12 at 06h 15m 35s.xml">
+      <configuration name="GCLPCalculatorTest" configurationId="tests" />
+    </history-entry>
+  </component>
   <component name="ToolWindowManager">
     <frame x="2286" y="136" width="1920" height="1052" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25641027" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39871383" sideWeight="0.503125" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31939977" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3190319" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39854318" sideWeight="0.496875" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39713973" sideWeight="0.496875" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -649,8 +726,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/CompositionDistanceFilter.py</url>
-          <line>118</line>
+          <line>117</line>
           <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test/GCLPCalculatorTest.py</url>
+          <line>57</line>
+          <option name="timeStamp" value="114" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -660,46 +742,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="106" />
+      <option name="time" value="131" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ChargeDependentAttributeGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2618">
-          <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="163" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ElementPairPropertyAttributeGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
-          <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ElementalPropertyAttributeGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IonicityAttributeGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OxidationStateGuesser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1700">
-          <caret line="103" column="52" lean-forward="false" selection-start-line="103" selection-start-column="52" selection-end-line="103" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LookUpData.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -979,6 +1026,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/small_set_comp.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="629" column="28" lean-forward="false" selection-start-line="629" selection-start-column="28" selection-end-line="629" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/small_set_delta_e.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="629" column="14" lean-forward="false" selection-start-line="629" selection-start-column="14" selection-end-line="629" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GCLPAttributeGenerator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -987,40 +1050,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GCLPCalculator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="24" column="30" lean-forward="false" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CompositionDistanceFilter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="16" column="24" lean-forward="false" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/GCLPCalculatorTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="20" column="36" lean-forward="false" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/APEAttributeGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7225">
-          <caret line="431" column="8" lean-forward="false" selection-start-line="431" selection-start-column="8" selection-end-line="431" selection-end-column="8" />
+        <state relative-caret-position="342">
+          <caret line="110" column="14" lean-forward="true" selection-start-line="110" selection-start-column="14" selection-end-line="110" selection-end-column="14" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
@@ -1029,20 +1062,76 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/LookUpData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4566">
-          <caret line="279" column="29" lean-forward="false" selection-start-line="265" selection-start-column="12" selection-end-line="279" selection-end-column="29" />
+        <state relative-caret-position="-1326">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/lib/python2.7/unittest/case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="329" column="0" lean-forward="false" selection-start-line="329" selection-start-column="0" selection-end-line="329" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CompositionEntry.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7208">
-          <caret line="424" column="44" lean-forward="false" selection-start-line="424" selection-start-column="44" selection-end-line="424" selection-end-column="44" />
+        <state relative-caret-position="376">
+          <caret line="466" column="4" lean-forward="false" selection-start-line="466" selection-start-column="4" selection-end-line="466" selection-end-column="41" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/APEAttributeGenerator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="77" column="37" lean-forward="false" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/APEAttributeGeneratorTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="165" column="34" lean-forward="false" selection-start-line="165" selection-start-column="34" selection-end-line="165" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/numpy/core/fromnumeric.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="2025" column="0" lean-forward="false" selection-start-line="2025" selection-start-column="0" selection-end-line="2025" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GCLPCalculator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/GCLPCalculatorTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>

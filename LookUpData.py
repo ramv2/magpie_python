@@ -85,6 +85,7 @@ class LookUpData:
                      "Bh": 12, "Hs": 13, "Mt": 14, "Ds": 15, "Rg": 16,
                      "Cn": 17}
 
+    @classmethod
     def load_property(self, property, lookup_dir=lookup_location):
         """
         Function to load a specific property from the directory containing
@@ -250,78 +251,78 @@ class LookUpData:
         """
         lookup_location = location
 
-    def get_sorted_and_normalized(self, entries):
-        """
-        Function to sort the elements within an entry based on its
-        electronegativity and normalize its fractions.
-        :param entries: A single dictionary or a list of dictionaries
-        containing element names and fractions as keys and values respectively.
-        :return: A single OrderedDictionary or a list of OrderedDictionaries
-        based on input, containing the normalized and sorted data.
-        """
+    # def get_sorted_and_normalized(self, entries):
+    #     """
+    #     Function to sort the elements within an entry based on its
+    #     electronegativity and normalize its fractions.
+    #     :param entries: A single dictionary or a list of dictionaries
+    #     containing element names and fractions as keys and values respectively.
+    #     :return: A single OrderedDictionary or a list of OrderedDictionaries
+    #     based on input, containing the normalized and sorted data.
+    #     """
+    #
+    #     # If single dictionary
+    #     if type(entries) is not types.ListType and type(entries) is \
+    #             types.DictType:
+    #         tmp_sorted = OrderedDict()
+    #
+    #         # Sort elements based on the electronegativity order.
+    #         tmp_list = sorted(entries.keys(), key=self.element_order.get)
+    #
+    #         for elem in tmp_list:
+    #             # Add element to entry if its fraction is greater than 0.
+    #             if entries[elem] > 0.0:
+    #                 tmp_sorted[elem] = entries[elem]
+    #
+    #         # Normalize fractions.
+    #         sum_ = sum(tmp_sorted.values())
+    #         for elem in tmp_sorted:
+    #             tmp_sorted[elem] /= float(sum_)
+    #         return tmp_sorted
+    #
+    #     sorted_entries = []
+    #     for entry in entries:
+    #         tmp_sorted = OrderedDict()
+    #
+    #         # Sort elements based on the electronegativity order.
+    #         tmp_list = sorted(entry.keys(), key=self.element_order.get)
+    #
+    #         for elem in tmp_list:
+    #             # Add element to entry if its fraction is greater than 0.
+    #             if entry[elem] > 0.0:
+    #                 tmp_sorted[elem] = entry[elem]
+    #
+    #         # Normalize fractions.
+    #         sum_ = sum(tmp_sorted.values())
+    #         for elem in tmp_sorted:
+    #             tmp_sorted[elem] /= float(sum_)
+    #         sorted_entries.append(tmp_sorted)
+    #     return sorted_entries
 
-        # If single dictionary
-        if type(entries) is not types.ListType and type(entries) is \
-                types.DictType:
-            tmp_sorted = OrderedDict()
-
-            # Sort elements based on the electronegativity order.
-            tmp_list = sorted(entries.keys(), key=self.element_order.get)
-
-            for elem in tmp_list:
-                # Add element to entry if its fraction is greater than 0.
-                if entries[elem] > 0.0:
-                    tmp_sorted[elem] = entries[elem]
-
-            # Normalize fractions.
-            sum_ = sum(tmp_sorted.values())
-            for elem in tmp_sorted:
-                tmp_sorted[elem] /= float(sum_)
-            return tmp_sorted
-
-        sorted_entries = []
-        for entry in entries:
-            tmp_sorted = OrderedDict()
-
-            # Sort elements based on the electronegativity order.
-            tmp_list = sorted(entry.keys(), key=self.element_order.get)
-
-            for elem in tmp_list:
-                # Add element to entry if its fraction is greater than 0.
-                if entry[elem] > 0.0:
-                    tmp_sorted[elem] = entry[elem]
-
-            # Normalize fractions.
-            sum_ = sum(tmp_sorted.values())
-            for elem in tmp_sorted:
-                tmp_sorted[elem] /= float(sum_)
-            sorted_entries.append(tmp_sorted)
-        return sorted_entries
-
-    def comparator(self, x, y):
-        """
-        Function to compare two entries (dictionaries) with element names and
-        fractions as keys and values respectively.
-        :param x: First entry.
-        :param y: Second entry.
-        :return: -1 if x < y , 1 if x > y or 0 if x = y.
-        """
-        if type(x) == types.DictType and type(y) == types.DictType:
-            if len(x) != len(y):
-                # If A has more elements, it is greater.
-                return 1 if len(x) > len(y) else -1
-
-            # Check which has greater element fractions.
-            for i in xrange(len(x)):
-                elem1 = x.keys()[i]
-                elem2 = y.keys()[i]
-                if elem1 != elem2:
-                    return 1 if self.element_ids[elem1] > self.element_ids[
-                        elem2] else -1
-                elif x[elem1] != y[elem2]:
-                    return 1 if x[elem1] > y[elem2] else -1
-            # We have concluded they are equal.
-        return 0
+    # def comparator(self, x, y):
+    #     """
+    #     Function to compare two entries (dictionaries) with element names and
+    #     fractions as keys and values respectively.
+    #     :param x: First entry.
+    #     :param y: Second entry.
+    #     :return: -1 if x < y , 1 if x > y or 0 if x = y.
+    #     """
+    #     if type(x) == types.DictType and type(y) == types.DictType:
+    #         if len(x) != len(y):
+    #             # If A has more elements, it is greater.
+    #             return 1 if len(x) > len(y) else -1
+    #
+    #         # Check which has greater element fractions.
+    #         for i in xrange(len(x)):
+    #             elem1 = x.keys()[i]
+    #             elem2 = y.keys()[i]
+    #             if elem1 != elem2:
+    #                 return 1 if self.element_ids[elem1] > self.element_ids[
+    #                     elem2] else -1
+    #             elif x[elem1] != y[elem2]:
+    #                 return 1 if x[elem1] > y[elem2] else -1
+    #         # We have concluded they are equal.
+    #     return 0
 
 if __name__ == "__main__":
     x = LookUpData()
