@@ -1,5 +1,6 @@
 import types
 from CompositionDistanceFilter import CompositionDistanceFilter
+from CompositionEntry import CompositionEntry
 from IonicCompoundFinder import IonicCompoundFinder
 import pandas as pd
 from LookUpData import LookUpData
@@ -20,15 +21,9 @@ class IonicCompoundProximityAttributeGenerator:
     formula unit. Consequently, we recommend using 14 or larger for this
     parameter.
     """
-    def __init__(self, lp):
-        """
-        Initialize field variables here.
-        :param lp: Instance of the LookUpData class required by this class.
-        """
-        self.lp = lp
 
-        # Maximum number of atoms per formula unit.
-        self.max_formula_unit = 14
+    # Maximum number of atoms per formula unit.
+    max_formula_unit = 14
 
     def set_max_formula_unit(self, size):
         """
@@ -38,11 +33,11 @@ class IonicCompoundProximityAttributeGenerator:
         """
         self.max_formula_unit = size
 
-    def generate_features(self, entries, verbose=False):
+    def generate_features(self, entries, lookup_path, verbose=False):
         """
         Function to generate features as mentioned in the class description.
-        :param entries: A list of dictionaries containing <Element name,
-        fraction> as <key,value> pairs.
+        :param entries: A list of CompositionEntry's.
+        :param lookup_path: Path to the file containing the property values.
         :param verbose: Flag that is mainly used for debugging. Prints out a
         lot of information to the screen.
         :return features: Pandas data frame containing the names and values
@@ -53,45 +48,48 @@ class IonicCompoundProximityAttributeGenerator:
         feat_values = []
         feat_headers = []
 
-        # Raise exception if input argument is not of type list of dictionaries.
+        # Raise exception if input argument is not of type list of
+        # CompositionEntry's.
         if (type(entries) is not types.ListType):
-            raise ValueError("Argument should be of type list of dictionaries.")
-        elif (entries and type(entries[0]) is not types.DictType):
-            raise ValueError("Argument should be of type list of dictionaries.")
+            raise ValueError("Argument should be of type list of "
+                             "CompositionEntry's")
+        elif (entries and not isinstance(entries[0], CompositionEntry)):
+            raise ValueError("Argument should be of type list of "
+                             "CompositionEntry's")
 
         # Insert header names here.
         feat_headers.append("IonicCompoundDistance_MaxSize"+str(
             self.max_formula_unit))
 
         # Get ionic compound finder.
-        finder = IonicCompoundFinder(self.lp)
+        finder = IonicCompoundFinder()
         finder.set_max_formula_unit_size(self.max_formula_unit)
 
-        cdf = CompositionDistanceFilter(self.lp)
+        cdf = CompositionDistanceFilter()
         for entry in entries:
-
+            elems = entry.get_element_ids()
             # Set the maximum distance to be equal to the number of elements.
             #  The maximum possible L_1 distance for an N-element system is N.
-            finder.set_maximum_distance(len(entry))
+            finder.set_maximum_distance(len(elems))
 
             # If the material has only 1 element, set feature to 1.0.
-            if len(entry) == 1:
+            if len(elems) == 1:
                 feat_values.append(1.0)
             else:
                 # Get the list of all ionic compounds in the system.
                 finder.set_nominal_composition(entry)
-                ionic_compounds = finder.find_all_compounds()
+                ionic_compounds = finder.find_all_compounds(
+                    lookup_path=lookup_path)
 
                 # Find the distance to the closest one. If no other
                 # compounds, set distance to be the maximum possible.
                 if not ionic_compounds:
-                    feat_values.append(len(entry))
+                    feat_values.append(len(elems))
                 else:
                     # print ionic_compounds[0]
                     # print cdf.compute_distance(entry, ionic_compounds[0], 1)
                     feat_values.append(cdf.compute_distance(entry,
-                                                            ionic_compounds[
-                                                                0], 1))
+                                        ionic_compounds[0], 1))
 
         features = pd.DataFrame(feat_values, columns=feat_headers)
         if verbose:

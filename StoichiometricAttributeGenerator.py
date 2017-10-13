@@ -2,17 +2,19 @@ import pandas as pd
 import types
 
 # TODO: Implement more rigorous tests
+from CompositionEntry import CompositionEntry
+
+
 class StoichiometricAttributeGenerator:
     """
     Class to set up and generate descriptors based on the stoichiometry of a
     given material. Includes features that are only based on fractions of
     elements, but not what those elements actually are.
     """
-    def __init__(self):
-        """
-        List of p norms to compute.
-        """
-        self.p_norms = []
+
+    # List of p norms to compute.
+
+    p_norms = []
 
     def clear_p_norms(self):
         """
@@ -44,23 +46,27 @@ class StoichiometricAttributeGenerator:
 
     def generate_features(self, entries, verbose=False):
         """
-        Function to generate the stiochiometric features. Computes the norms
+        Function to generate the stoichiometric features. Computes the norms
         based on elemental fractions.
-        :param entries: A list of dictionaries containing <Element name,
-        fraction> as <key,value> pairs.
+        :param entries: A list of CompositionEntry's.
         :param verbose: Flag that is mainly used for debugging. Prints out a
         lot of information to the screen.
         :return features: Pandas data frame containing the names and values
         of the descriptors.
         """
+
+        # Initialize lists of feature values and headers for pandas data frame.
         feat_values = []
         feat_headers = []
 
-        # Raise exception if input argument is not of type list of dictionaries.
+        # Raise exception if input argument is not of type list of
+        # CompositionEntry's.
         if (type(entries) is not types.ListType):
-            raise ValueError("Argument should be of type list of dictionaries.")
-        elif (entries and type(entries[0]) is not types.DictType):
-            raise ValueError("Argument should be of type list of dictionaries.")
+            raise ValueError("Argument should be of type list of "
+                             "CompositionEntry's")
+        elif (entries and not isinstance(entries[0], CompositionEntry)):
+            raise ValueError("Argument should be of type list of "
+                             "CompositionEntry's")
 
         # Issue warning if no p norms are added.
         if (not self.p_norms):
@@ -73,9 +79,10 @@ class StoichiometricAttributeGenerator:
 
         # Compute features.
         for entry in entries:
+            fracs = entry.get_element_fractions()
             tmp_list = []
             n_comp = 0
-            for f in entry.values():
+            for f in fracs:
                 if (f > 0):
                     n_comp += 1
             # Number of components.
@@ -84,7 +91,7 @@ class StoichiometricAttributeGenerator:
             # Lp norms.
             for p in self.p_norms:
                 tmp = 0.0
-                for f in entry.values():
+                for f in fracs:
                     tmp += f**p
                 tmp_list.append(tmp**(1.0/p))
             feat_values.append(tmp_list)

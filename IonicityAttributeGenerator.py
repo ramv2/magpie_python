@@ -2,6 +2,7 @@ import types
 import math
 import pandas as pd
 
+from CompositionEntry import CompositionEntry
 from LookUpData import LookUpData
 from OxidationStateGuesser import OxidationStateGuesser
 
@@ -21,29 +22,30 @@ class IonicityAttributeGenerator:
     Mean ionic character: Sum x_i*x_j* I(i,j) where x_i is the fraction of
     element i and chi_x is the electronegativity of element x.
     """
-    def __init__(self, lp):
-        self.lp = lp
 
-    def generate_features(self, entries, verbose=False):
+    def generate_features(self, entries, lookup_path, verbose=False):
         """
         Function to generate the three "ionicity" based features as described
         in the description of the class.
-        :param entries: A list of dictionaries containing <Element name,
-        fraction> as <key,value> pairs.
+        :param entries: A list of CompositionEntry's.
+        :param lookup_path: Path to the file containing the property values.
         :param verbose: Flag that is mainly used for debugging. Prints out a
         lot of information to the screen.
         :return features: Pandas data frame containing the names and values
         of the descriptors.
         """
-        # Raise exception if input argument is not of type list of dictionaries.
-        if (type(entries) is not types.ListType):
-            raise ValueError("Argument should be of type list of dictionaries.")
-        elif (entries and type(entries[0]) is not types.DictType):
-            raise ValueError("Argument should be of type list of dictionaries.")
-
         # Initialize lists of feature values and headers for pandas data frame.
         feat_values = []
         feat_headers = []
+
+        # Raise exception if input argument is not of type list of
+        # CompositionEntry's.
+        if (type(entries) is not types.ListType):
+            raise ValueError("Argument should be of type list of "
+                             "CompositionEntry's")
+        elif (entries and not isinstance(entries[0], CompositionEntry)):
+            raise ValueError("Argument should be of type list of "
+                             "CompositionEntry's")
 
         # Insert header names here.
         feat_headers.append("CanFormIonic")
@@ -53,30 +55,29 @@ class IonicityAttributeGenerator:
         # Instantiate and initialize oxidation state guesser with
         # electronegativity and oxidation state values.
         ox_guesser = OxidationStateGuesser()
-        en = self.lp.load_property("Electronegativity")
+        en = LookUpData.load_property("Electronegativity",
+                                      lookup_dir=lookup_path)
         ox_guesser.set_electronegativity(en)
-        ox_guesser.set_oxidationstates(self.lp.load_special_property(
-            "OxidationStates"))
+        ox_guesser.set_oxidationstates(LookUpData.load_special_property(
+            "OxidationStates", lookup_dir=lookup_path))
 
         for entry in entries:
             tmp_list = []
             # Can it form an ionic compound?
-            tmp_list.append(0 if ox_guesser.get_possible_states(entry).size
+            tmp_list.append(0 if len(ox_guesser.get_possible_states(entry))
                                  == 0 else 1)
             tmp_en = []
 
             # Compute mean ionic character.
             mean_ionic = 0.0
-            for elem1 in entry:
-                e1_id = self.lp.element_ids[elem1]
-                e1_fraction = entry[elem1]
-                tmp_en.append(en[e1_id])
-                for elem2 in entry:
-                    e2_id = self.lp.element_ids[elem2]
-                    e2_fraction = entry[elem2]
-                    m = 1 - math.exp(-0.25*(en[e1_id] - en[e2_id])**2)
+            elems = entry.get_element_ids()
+            fracs = entry.get_element_fractions()
+            for i,elem1 in enumerate(elems):
+                tmp_en.append(en[elem1])
+                for j,elem2 in enumerate(elems):
+                    m = 1 - math.exp(-0.25*(en[elem1] - en[elem2])**2)
 
-                    mean_ionic += e1_fraction*e2_fraction*m
+                    mean_ionic += fracs[i] * fracs[j] * m
 
             # Compute max ionic character.
             max_ionic = 1 - math.exp(-0.25 * (max(tmp_en) - min(tmp_en)) ** 2)

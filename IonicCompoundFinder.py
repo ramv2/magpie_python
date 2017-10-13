@@ -13,22 +13,15 @@ class IonicCompoundFinder:
     Distance is computed as the L_1 distance of the composition vector.
     Example: Fe3Al and FeAl are 0.5 apart.
     """
-    def __init__(self, lp):
-        """
-        Initialize field variables here.
-        :param lp: Instance of the LookUpData class required by this class.
-        """
 
-        # Nominal composition.
-        self.nominal_composition = {}
+    # Nominal composition.
+    nominal_composition = None
 
-        # Maximum acceptable distance from nominal composition.
-        self.maximum_distance = 0.1
+    # Maximum acceptable distance from nominal composition.
+    maximum_distance = 0.1
 
-        # Maximum number of atoms in formula unit.
-        self.max_formula_unit_size = 5
-
-        self.lp = lp
+    # Maximum number of atoms in formula unit.
+    max_formula_unit_size = 5
 
     def set_nominal_composition(self, entry):
         """
@@ -37,7 +30,7 @@ class IonicCompoundFinder:
         fractions as keys and values respectively.
         :return:
         """
-        if len(entry) < 2:
+        if len(entry.get_element_ids()) < 2:
             raise ValueError("Must be at least a binary compound.")
         self.nominal_composition = entry
 
@@ -61,22 +54,23 @@ class IonicCompoundFinder:
         """
         self.max_formula_unit_size = size
 
-    def find_all_compounds(self):
+    def find_all_compounds(self, lookup_path):
         """
         Function to find all the compounds in the vicinity of the target
         composition.
-        :return: accepted: A list of dictionaries each containing the element
-        names and fractions as key and values respectively.
+        :param lookup_path: Path to the file containing the property values.
+        :return: accepted: A list of Composition Entry's.
         """
 
         # Get elements in the nominal compound.
-        elements = self.nominal_composition.keys()
+        elems = self.nominal_composition.get_element_ids()
+        fracs = self.nominal_composition.get_element_fractions()
 
         # Get list of all possible compositions.
-        gen = PhaseDiagramCompositionEntryGenerator(self.lp)
-        gen.set_elements_by_name(elements)
+        gen = PhaseDiagramCompositionEntryGenerator()
+        gen.set_elements_by_index(elems)
         gen.set_even_spacing(False)
-        gen.set_order(1, len(elements))
+        gen.set_order(1, len(elems))
         gen.set_size(self.max_formula_unit_size)
         all_possibilities = gen.generate_entries()
 
@@ -85,32 +79,30 @@ class IonicCompoundFinder:
         for entry in all_possibilities:
             # See if it is close enough in composition.
             dist = 0.0
-            for e in xrange(len(self.nominal_composition)):
-                elem = self.nominal_composition.keys()[e]
-                if elem in entry:
-                    dist += abs(self.nominal_composition[elem] - entry[elem])
-                else:
-                    dist += self.nominal_composition[elem]
+            for e in range(len(elems)):
+                dist += abs(fracs[e] - entry.get_element_fraction(id=elems[e]))
 
             if dist > self.maximum_distance:
                 continue
 
             # See if it is ionically neutral.
             ox_g = OxidationStateGuesser()
-            en = self.lp.load_property("Electronegativity")
-            os = self.lp.load_special_property("OxidationStates")
+            en = LookUpData.load_property("Electronegativity",
+                                          lookup_dir=lookup_path)
+            os = LookUpData.load_special_property("OxidationStates",
+                                                  lookup_dir=lookup_path)
             ox_g.set_electronegativity(en)
             ox_g.set_oxidationstates(os)
             can_form_ionic = len(ox_g.get_possible_states(entry)) > 0
 
             if can_form_ionic:
-                hits.append([entry, dist])
+                hits.append((dist, entry))
 
         # Sort such that closest is first.
-        hits.sort(key=itemgetter(1))
+        hits.sort()
 
         # Get only compositions.
-        accepted = [i[0] for i in hits]
+        accepted = [i[1] for i in hits]
         return accepted
 
 if __name__ == "__main__":

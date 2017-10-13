@@ -8,9 +8,6 @@ class LookUpData:
     """
     Class to look up properties of elements stored in files.
     """
-    # Location of lookup tables.
-    lookup_location = "lookup-data/"
-    pair_location = "lookup-data/pair/"
 
     # Element indices of the periodic table.
     element_ids = {"H": 0, "He": 1, "Li": 2, "Be": 3, "B": 4, "C": 5,
@@ -86,7 +83,7 @@ class LookUpData:
                      "Cn": 17}
 
     @classmethod
-    def load_property(self, property, lookup_dir=lookup_location):
+    def load_property(self, property, lookup_dir="lookup-data/"):
         """
         Function to load a specific property from the directory containing
         all the lookup tables.
@@ -99,9 +96,8 @@ class LookUpData:
         # IonizationEnergies and OxidationStates are 2-D arrays. So treat
         # them differently.
         if property == "IonizationEnergies" or property == "OxidationStates":
-            print "Use special functions readIonizationEnergies or " \
-                  "readOxidationStates to read these properties"
-            sys.exit(1)
+            raise ValueError("Use special functions readIonizationEnergies or"
+                             " readOxidationStates to read these properties")
 
         # Initialize the numpy array.
         values = np.zeros(len(self.element_ids), dtype=np.float)
@@ -112,9 +108,9 @@ class LookUpData:
         try:
             prop_file = open(file, 'r')
         except IOError:
-            print "File {} doesn't exist!!! Please make sure you " \
-                  "specify the correct file name".format(file)
-            sys.exit(1)
+            raise IOError("File {} doesn't exist!!! Please make sure you " \
+                  "specify the correct file name".format(file))
+
         else:
             for i in xrange(values.size):
                 line = prop_file.readline().strip()
@@ -123,7 +119,8 @@ class LookUpData:
             prop_file.close()
         return values
 
-    def load_pair_property(self, property, data_dir=pair_location):
+    @classmethod
+    def load_pair_property(self, property, data_dir="lookup-data/pair/"):
         """
         Function to load property of a binary system.
         :param property: Property whose values need to be loaded.
@@ -143,9 +140,8 @@ class LookUpData:
         try:
             prop_file = open(file, 'r')
         except IOError:
-            print "File {} doesn't exist!!! Please make sure you " \
-                  "specify the correct file name".format(file)
-            sys.exit(1)
+            raise IOError("File {} doesn't exist!!! Please make sure you " \
+                  "specify the correct file name".format(file))
         else:
             for line in prop_file.readlines():
                 words = line.strip().split()
@@ -164,7 +160,8 @@ class LookUpData:
             prop_file.close()
         return values
 
-    def load_pair_properties(self, properties, data_dir=pair_location):
+    @classmethod
+    def load_pair_properties(self, properties, data_dir="lookup-data/pair/"):
         """
         Function to load multiple pair property values from the directory
         containing all the lookup tables.
@@ -182,7 +179,8 @@ class LookUpData:
             values[prop] = self.load_pair_property(prop, data_dir)
         return values
 
-    def load_properties(self, properties, lookup_dir=lookup_location):
+    @classmethod
+    def load_properties(self, properties, lookup_dir="lookup-data/"):
         """
         Function to load multiple property values from the directory
         containing all the lookup tables.
@@ -199,7 +197,8 @@ class LookUpData:
             values[prop] = self.load_property(prop, lookup_dir)
         return values
 
-    def load_special_property(self, property, lookup_dir=lookup_location):
+    @classmethod
+    def load_special_property(self, property, lookup_dir="lookup-data/"):
         """
         Function to load the special property files related to
         IonizationEnergies and OxidationStates.
@@ -212,9 +211,9 @@ class LookUpData:
         # Make sure property is either IonizationEnergies or OxidationStates.
         if not (property == "IonizationEnergies" or property == \
                 "OxidationStates"):
-            print "Use load_property function. This function is used " \
-                  "exclusively for IonizationEnergies and OxidationStates"
-            sys.exit(1)
+            raise ValueError("Use load_property function. This function is "
+                              "used exclusively for IonizationEnergies and "
+                             "OxidationStates")
 
         # Property file name.
         file = lookup_dir +property+".table"
@@ -241,15 +240,6 @@ class LookUpData:
         for i in xrange(len(tmp_values)):
             values[i] = np.asarray(tmp_values[i], dtype=float)
         return values
-
-    def set_lookup_location(self, location):
-        """
-        Set a different lookup location.
-        :param location: Path to new directory containing all the property
-        value files.
-        :return:
-        """
-        lookup_location = location
 
     # def get_sorted_and_normalized(self, entries):
     #     """
@@ -332,8 +322,8 @@ if __name__ == "__main__":
 
     # for i in entry:
     #     print i
-    for i in x.get_sorted_and_normalized(entry):
-        print i
+    # for i in x.get_sorted_and_normalized(entry):
+    #     print i
     # a = x.load_property("Electronegativity")
     # print a
     # b = x.load_special_property("IonizationEnergies")

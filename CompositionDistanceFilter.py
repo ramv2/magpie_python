@@ -54,8 +54,10 @@ class CompositionDistanceFilter:
         # Get the set of common elements with fractions greater than zero to
         # consider.
         elements = set()
-        for e1, e2 in zip(entry_1.get_element_ids(), entry_2.get_element_ids()):
+        for e1 in entry_1.get_element_ids():
             elements.add(e1)
+
+        for e2 in entry_2.get_element_ids():
             elements.add(e2)
 
         # Compute differences
@@ -72,7 +74,7 @@ class CompositionDistanceFilter:
                 dist += abs(diff)**p
 
         # Compute distance
-        if p == 0 or p == 1:
+        if p == 0 or p == -1:
             return dist
 
         return dist**(1.0 / p)

@@ -98,6 +98,7 @@ class GCLPCalculator:
             if equilibrium_fractions[i] > 1e-6:
                 equilibrium[components[i]] = equilibrium_fractions[i]
 
-        ground_state_energy = res.fun
+        # Add zero to avoid returning -0.0 values.
+        ground_state_energy = res.fun + 0
 
         return ground_state_energy, equilibrium

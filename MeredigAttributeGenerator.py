@@ -1,6 +1,7 @@
 import types
 import pandas as pd
 import numpy as np
+from CompositionEntry import CompositionEntry
 from LookUpData import LookUpData
 
 class MeredigAttributeGenerator:
@@ -13,28 +14,30 @@ class MeredigAttributeGenerator:
     To match the attributes from the Meredig et al. paper, use all three
     attribute generators.
     """
-    def __init__(self, lp):
-        self.lp = lp
 
-    def generate_features(self, entries, verbose=False):
+    def generate_features(self, entries, lookup_path, verbose=False):
         """
         Function to generate attributes as described by Meredig et al.
-        :param entries: A list of dictionaries containing <Element name,
-        fraction> as <key,value> pairs.
+        :param entries: A list of CompositionEntry's.
+        :param lookup_path: Path to the file containing the property values.
         :param verbose: Flag that is mainly used for debugging. Prints out a
         lot of information to the screen.
         :return features: Pandas data frame containing the names and values
         of the descriptors.
         """
+
         # Initialize lists of feature values and headers for pandas data frame.
         feat_values = []
         feat_headers = []
 
-        # Raise exception if input argument is not of type list of dictionaries.
+        # Raise exception if input argument is not of type list of
+        # CompositionEntry's.
         if (type(entries) is not types.ListType):
-            raise ValueError("Argument should be of type list of dictionaries.")
-        elif (entries and type(entries[0]) is not types.DictType):
-            raise ValueError("Argument should be of type list of dictionaries.")
+            raise ValueError("Argument should be of type list of "
+                             "CompositionEntry's")
+        elif (entries and not isinstance(entries[0], CompositionEntry)):
+            raise ValueError("Argument should be of type list of "
+                             "CompositionEntry's")
 
         # Insert feature headers here.
         feat_headers.append("mean_AtomicWeight")
@@ -52,20 +55,21 @@ class MeredigAttributeGenerator:
         feat_headers.append("mean_NfValence")
 
         # Load all property tables.
-        mass = self.lp.load_property("AtomicWeight")
-        column = self.lp.load_property("Column")
-        row = self.lp.load_property("Row")
-        number = self.lp.load_property("Number")
-        radius = self.lp.load_property("CovalentRadius")
-        en = self.lp.load_property("Electronegativity")
-        s = self.lp.load_property("NsValence")
-        p = self.lp.load_property("NpValence")
-        d = self.lp.load_property("NdValence")
-        f = self.lp.load_property("NfValence")
+        mass = LookUpData.load_property("AtomicWeight", lookup_dir=lookup_path)
+        column = LookUpData.load_property("Column", lookup_dir=lookup_path)
+        row = LookUpData.load_property("Row", lookup_dir=lookup_path)
+        number = LookUpData.load_property("Number", lookup_dir=lookup_path)
+        radius = LookUpData.load_property("CovalentRadius", lookup_dir=lookup_path)
+        en = LookUpData.load_property("Electronegativity", lookup_dir=lookup_path)
+        s = LookUpData.load_property("NsValence", lookup_dir=lookup_path)
+        p = LookUpData.load_property("NpValence", lookup_dir=lookup_path)
+        d = LookUpData.load_property("NdValence", lookup_dir=lookup_path)
+        f = LookUpData.load_property("NfValence", lookup_dir=lookup_path)
 
         for entry in entries:
             tmp_list = []
-            elem_fractions = entry.values()
+            elem_fractions = entry.get_element_fractions()
+            elem_ids = entry.get_element_ids()
             tmp_mass = []
             tmp_column = []
             tmp_row = []
@@ -76,8 +80,7 @@ class MeredigAttributeGenerator:
             tmp_p = []
             tmp_d = []
             tmp_f = []
-            for elem in entry:
-                elem_id = self.lp.element_ids[elem]
+            for elem_id in elem_ids:
                 tmp_mass.append(mass[elem_id])
                 tmp_column.append(column[elem_id])
                 tmp_row.append(row[elem_id])

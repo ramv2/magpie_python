@@ -1,3 +1,4 @@
+from CompositionEntry import CompositionEntry
 from EqualSumCombinations import EqualSumCombinations
 import numpy as np
 from itertools import combinations as comb
@@ -17,28 +18,21 @@ class PhaseDiagramCompositionEntryGenerator:
     selected (e.g. ABC, A2C, B2C, etc.). This method is most appropriate for
     phase diagrams that represent ordered crystalline compounds.
     """
-    def __init__(self, lp):
-        """
-        Initialize field variables here.
-        :param lp: Instance of the LookUpData class required fo getting the
-        element names.
-        """
-        self.lp = lp
 
-        # List of elements to use (id is Z-1).
-        self.e_names = []
+    # List of elements to use (id is Z-1).
+    e_ids = None
 
-        # Minimum number of constituents.
-        self.min_order = 1
+    # Minimum number of constituents.
+    min_order = 1
 
-        # Maximum number of constituents.
-        self.max_order = 1
+    # Maximum number of constituents.
+    max_order = 1
 
-        # Whether to use even spacing or small integers.
-        self.even_spacing = True
+    # Whether to use even spacing or small integers.
+    even_spacing = True
 
-        # Either number of stops in each direction or max denominator.
-        self.size = 3
+    # Either number of stops in each direction or max denominator.
+    size = 3
 
     def set_elements_by_index(self, indices):
         """
@@ -47,9 +41,10 @@ class PhaseDiagramCompositionEntryGenerator:
         :param indices: List of elements by index (Z-1).
         :return:
         """
+        self.e_ids = []
         for i in indices:
-            if i < len(self.lp.element_names):
-                self.e_names.append(self.lp.element_names[indices])
+            if i < len(LookUpData.element_names):
+                self.e_ids.append(i)
             else:
                 raise ValueError("Index out of range: "+str(i))
 
@@ -60,7 +55,13 @@ class PhaseDiagramCompositionEntryGenerator:
         :param names: List of element names.
         :return:
         """
-        self.e_names = names
+
+        self.e_ids = []
+        for name in names:
+            if name in LookUpData.element_names:
+                self.e_ids.append(LookUpData.element_names.index(name))
+            else:
+                raise ValueError("Element: "+name+" invalid!")
 
     def set_order(self, min_, max_):
         """
@@ -113,7 +114,7 @@ class PhaseDiagramCompositionEntryGenerator:
         output = {}
 
         # Add in diagrams of greater order.
-        for order in xrange(self.min_order, self.max_order+1):
+        for order in range(self.min_order, self.max_order+1):
             if order == 1:
                 tmp_list = []
                 tmp_list.append(np.array([1.0]))
@@ -122,12 +123,12 @@ class PhaseDiagramCompositionEntryGenerator:
 
             tmp_list = []
             es = EqualSumCombinations(self.size-1, order)
-            for compI in es.get_combinations():
+            for compI in es.get_combinations(self.size - 1, order):
                 if 0 in compI:
                     # Don't add compositions from a lower-order diagram.
                     continue
                 comp = np.zeros(order)
-                for i in xrange(order):
+                for i in range(order):
                     comp[i] = compI[i]/ float(self.size - 1.0)
                 tmp_list.append(comp)
             output[order] = tmp_list
@@ -152,7 +153,7 @@ class PhaseDiagramCompositionEntryGenerator:
         output = {}
 
         # Add in diagrams of greater order.
-        for order in xrange(self.min_order, self.max_order+1):
+        for order in range(self.min_order, self.max_order+1):
             if order == 1:
                 tmp_list = []
                 tmp_list.append(np.array([1.0]))
@@ -161,15 +162,15 @@ class PhaseDiagramCompositionEntryGenerator:
 
             tmp_list = []
             reduced_examples = []
-            for d in xrange(order, self.size+1):
+            for d in range(order, self.size+1):
                 es = EqualSumCombinations(d, order)
-                for compI in es.get_combinations():
+                for compI in es.get_combinations(d, order):
                     if 0 in compI:
                         # Don't add compositions from a lower-order diagram.
                         continue
                     comp = np.zeros(order)
                     red_comp = np.zeros(order)
-                    for i in xrange(order):
+                    for i in range(order):
                         comp[i] = float(compI[i])
                         red_comp[i] = comp[i] / d
 
@@ -191,8 +192,7 @@ class PhaseDiagramCompositionEntryGenerator:
         Function to generate the list of entries corresponding to the list of
         compositions, element names specified by the user and the mapping of
         number of elements to compositions.
-        :return: entries: A list of dictionaries containing <Element name,
-        fraction> as <key,value> pairs.
+        :return: entries: A list of CompositionEntry's.
         """
         entries = []
 
@@ -203,14 +203,12 @@ class PhaseDiagramCompositionEntryGenerator:
         for order,list_of_fractions in compositions.iteritems():
 
             # Generate all possible combinations of elements of a given order.
-            compounds = [list(i) for i in comb(self.e_names, order)]
+            compounds = [list(i) for i in comb(self.e_ids, order)]
             # print order, len(compounds)*len(list_of_fractions)
-            for fractions in list_of_fractions:
-                sum_ = sum(fractions)
+            for frac in list_of_fractions:
                 for compound in compounds:
-                    entry = {}
-                    for i in xrange(len(compound)):
-                        entry[compound[i]] = float(fractions[i])/sum_
+                    entry = CompositionEntry(element_ids=compound,
+                                             fractions=list(frac))
                     entries.append(entry)
         return entries
 

@@ -382,10 +382,14 @@ class CompositionEntry:
 
         for e_id, f in tmp_tuple:
             if f > 0.0:
-                self.element_ids.append(e_id)
-                self.element_names.append(self.lp_element_names[e_id])
-                f_ = f / self.number_in_cell
-                self.fractions.append(f_)
+                f_ = float(f) / self.number_in_cell
+                if e_id not in self.element_ids:
+                    self.element_ids.append(e_id)
+                    self.element_names.append(self.lp_element_names[e_id])
+                    self.fractions.append(f_)
+                else:
+                    idx = self.element_ids.index(e_id)
+                    self.fractions[idx] += f_
 
     def combine_compositions(self, total_comp, add_comp, multiplier):
         """

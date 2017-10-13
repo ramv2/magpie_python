@@ -1,6 +1,8 @@
 import numpy as np
 import sys
 import itertools
+
+from CompositionEntry import CompositionEntry
 from LookUpData import LookUpData
 
 class OxidationStateGuesser:
@@ -8,13 +10,8 @@ class OxidationStateGuesser:
     Class to predict the likely oxidation states of a material, given its
     input composition.
     """
-    def __init__(self):
-        """
-        Initialize variables here.
-        """
-        self.electronegativity = np.zeros(0)
-        self.oxidationstates = np.zeros(0, dtype=object)
-
+    electronegativity = np.zeros(0)
+    oxidationstates = np.zeros(0, dtype=object)
 
     def set_electronegativity(self, values):
         """
@@ -45,47 +42,44 @@ class OxidationStateGuesser:
         where chi_i is the electronegativity and c_i is the oxidation. This
         biases the selection towards the more electronegative elements being
         more negatively charged.
-        :param entry: Dictionary containing the element names and fractions
-        as keys and values respectively.
+        :param entry: A CompositionEntry object.
         :return: output: A numpy array containing the list of possible
         oxidation states arranged in the order mentioned above.
         """
 
         # Make sure entry is not empty.
         if not entry:
-            print "Input argument cannot be empty. Please pass a valid " \
-                  "argument."
-            sys.exit(1)
+            raise ValueError("Input argument cannot be empty. Please pass a "
+                             "valid argument.")
+
+
+        # Make sure entry is of type CompositionEntry.
+        if not isinstance(entry, CompositionEntry):
+            raise ValueError("Entry must be of type CompositionEntry.")
 
         # Make sure electronegativity and oxidation states are not empty.
         if not self.electronegativity.size or not self.oxidationstates.size:
-            print "Electronegativity or OxidationStates values are not " \
-                  "initialized. Set them and try again."
-            sys.exit(1)
-
-        # Make sure element fractions add up to 1.0.
-        # if sum(entry.values()) != 1.0:
-        #     print "Entry should be a dictionary containing element names and " \
-        #           "fractions as keys and values respectively. Also, " \
-        #           "fractions should add up to 1.0."
-        #     print sum(entry.values())
-        #     sys.exit(1)
+            raise ValueError("Electronegativity or OxidationStates values are "
+                             "not initialized. Set them and try again.")
 
         # Initialize list of possible states.
         possible_states = []
 
-        # Get element ids.
-        elem_ids = []
-        for elem in entry:
-            elem_ids.append(LookUpData.element_ids[elem])
+        # Get element ids and fractions.
+        elem_ids = entry.get_element_ids()
+        elem_fracs = entry.get_element_fractions()
+        if len(elem_ids) == 1:
+            return np.asarray([])
 
         # List of all states.
         states = []
         for id in elem_ids:
             states.append(self.oxidationstates[id])
 
+        # Generate all combinations of those charge states, only store the
+        # ones that are charge balanced.
         for state in itertools.product(*states):
-            charge = np.dot(np.asarray(state), np.asarray(entry.values()))
+            charge = np.dot(state, elem_fracs)
             # If charge is balanced, add state to the list of possible states.
             if abs(charge) < 1E-6:
                 possible_states.append(list(state))
@@ -95,25 +89,21 @@ class OxidationStateGuesser:
 
         # Compute the summation mentioned in the function description.
         rankVal = np.zeros(len(possible_states))
-        for s in xrange(len(possible_states)):
+        for s in range(len(possible_states)):
             state = possible_states[s]
             tmp_val = 0.0
-            for i in xrange(len(state)):
-                for j in xrange(i+1,len(state)):
+            for i in range(len(state)):
+                for j in range(i+1,len(state)):
                     tmp_val += (self.electronegativity[elem_ids[i]] -
                                 self.electronegativity[elem_ids[j]]) * (
                         state[i] - state[j])
             rankVal[s] = tmp_val
 
-        # Order them based on electronegatvity rank.
-        ranks = np.argsort(rankVal)
-        output = []
-        for i in xrange(len(possible_states)):
-            output.append(possible_states[ranks[i]])
-
+        # Order them based on electronegativity rank.
+        output = [ps for i, ps in sorted(zip(rankVal, possible_states))]
         return np.asarray(output)
 
 if __name__ == "__main__":
     entry = {"Sc":0.25,"Ti":0.25,"P":0.125,"Si":0.125,"C":0.125,"N":0.125}
-    x = OxidationStateGuesser()
-    y = x.get_possible_states(entry)
+    # x = OxidationStateGuesser()
+    # y = x.get_possible_states(entry)

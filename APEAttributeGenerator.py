@@ -416,8 +416,8 @@ class APEAttributeGenerator:
     def generate_features(self, entries, lookup_path, verbose=False):
         """
         Function to generate features as mentioned in the class description.
-
         :param entries: A list of CompositionEntry's.
+        :param lookup_path: Path to the file containing the property values.
         :param verbose: Flag that is mainly used for debugging. Prints out a
         lot of information to the screen.
         :return features: Pandas data frame containing the names and values
@@ -428,7 +428,8 @@ class APEAttributeGenerator:
         feat_values = []
         feat_headers = []
 
-        # Raise exception if input argument is not of type list of dictionaries.
+        # Raise exception if input argument is not of type list of
+        # CompositionEntry's.
         if (type(entries) is not types.ListType):
             raise ValueError("Argument should be of type list of "
                              "CompositionEntry's")

@@ -4,20 +4,25 @@ import types
 import numpy as np
 
 # TODO: Implement more rigorous tests
+from CompositionEntry import CompositionEntry
+from LookUpData import LookUpData
+
+
 class ElementalPropertyAttributeGenerator:
     """
     Class to set up and generate descriptors based on elemental property
     statistics. Computes the mean, maximum, minimum, range, mode and mean
     absolute deviation of all elemental properties provided.
     """
-    def __init__(self, lp, use_default_properties=True):
+    elemental_properties = []
+
+    def __init__(self, use_default_properties=True):
         """
         Class constructor.
         :param lp: Instance of the LookUpData class to be used by this class.
         :param use_default_properties: Flag to use default set of properties
         as defined below.
         """
-        self.elemental_properties = []
 
         # Use default properties to reproduce Ward et al. descriptor values.
         if (use_default_properties):
@@ -32,28 +37,27 @@ class ElementalPropertyAttributeGenerator:
                                          "NUnfilled", "GSvolume_pa",
                                          "GSbandgap", "GSmagmom",
                                          "SpaceGroupNumber"]
-        self.lp = lp
 
         # Initialize dictionary that will contain all the property values.
         self.lookup_data = {}
 
-    def load_lookup_data(self, lp):
+    def load_lookup_data(self, lookup_path):
         """
         Function to load the property values into self.lookup_data for the
         computation of features.
-        :param lp: An instance of LookUpData required to load different
-        property values into the dictionary.
+        :param lookup_path: Path to the file containing the property values.
         :return:
         """
-        self.lookup_data = lp.load_properties(self.elemental_properties)
+        self.lookup_data = LookUpData.load_properties(
+            self.elemental_properties, lookup_dir=lookup_path)
 
-    def generate_features(self, entries, verbose=False):
+    def generate_features(self, entries, lookup_path, verbose=False):
         """
         Function to generate the elemental property based features. Computes
         6 statistics (mean, maximum, minimum, range, mode and mean absolute
         deviation) of all the elemental properties provided.
-        :param entries: A list of dictionaries containing <Element name,
-        fraction> as <key,value> pairs.
+        :param entries: A list of CompositionEntry's.
+        :param lookup_path: Path to the file containing the property values.
         :param verbose: Flag that is mainly used for debugging. Prints out a
         lot of information to the screen.
         :return features: Pandas data frame containing the names and values
@@ -62,24 +66,26 @@ class ElementalPropertyAttributeGenerator:
 
         # Make sure that there is at least one elemental property provided.
         if not self.elemental_properties:
-            print "No elemental property is set. Add at least one property " \
-                  "to compute meaningful descriptors."
-            sys.exit(1)
+            raise ValueError("No elemental property is set. Add at least one "
+                             "property to compute meaningful descriptors.")
 
         # If the dictionary containing the property values is empty,
         # load values into it.
         if not self.lookup_data:
-            self.load_lookup_data(self.lp)
+            self.load_lookup_data(lookup_path)
 
         # Initialize lists of feature values and headers for pandas data frame.
         feat_values = []
         feat_headers = []
 
-        # Raise exception if input argument is not of type list of dictionaries.
+        # Raise exception if input argument is not of type list of
+        # CompositionEntry's.
         if (type(entries) is not types.ListType):
-            raise ValueError("Argument should be of type list of dictionaries.")
-        elif (entries and type(entries[0]) is not types.DictType):
-            raise ValueError("Argument should be of type list of dictionaries.")
+            raise ValueError("Argument should be of type list of "
+                             "CompositionEntry's")
+        elif (entries and not isinstance(entries[0], CompositionEntry)):
+            raise ValueError("Argument should be of type list of "
+                             "CompositionEntry's")
 
         # Insert header names here.
         n_statistics = 6
@@ -94,21 +100,21 @@ class ElementalPropertyAttributeGenerator:
         missing_data = {}
         # Generate features for each entry.
         for entry in entries:
-            elem_fractions = entry.values()
+            elem_ids = entry.get_element_ids()
+            elem_fractions = entry.get_element_fractions()
             max_f = max(elem_fractions)
             tmp_list = []
             # Look up values for each property.
             for prop in self.elemental_properties:
                 tmp_prop = []
-                for elem in entry:
-                    elem_id = self.lp.element_ids[elem]
+                for elem_id in elem_ids:
                     tmp_prop_value = self.lookup_data[prop][elem_id]
                     # If data is missing, make a note of it so that we can
                     # inform the user later.
                     if np.isnan(tmp_prop_value):
                         if not prop in missing_data:
                             missing_data[prop] = []
-                        missing_data[prop].append(elem)
+                        missing_data[prop].append(elem_id)
                     tmp_prop.append(tmp_prop_value)
 
                 # If there is no missing data, compute statistics.
@@ -132,7 +138,7 @@ class ElementalPropertyAttributeGenerator:
                     tmp_list.append(most_)
                 else:
                     # Handle nan descriptors here from missing data.
-                    for i in xrange(n_statistics):
+                    for i in range(n_statistics):
                         tmp_list.append(np.nan)
             feat_values.append(tmp_list)
 
@@ -143,7 +149,7 @@ class ElementalPropertyAttributeGenerator:
             for key in missing_data:
                 sys.stderr.write("\t"+key+":")
                 for elem in missing_data[key]:
-                    sys.stderr.write(" "+elem)
+                    sys.stderr.write(" "+LookUpData.element_names[elem])
                 sys.stderr.write("\n")
 
         features = pd.DataFrame(feat_values, columns=feat_headers)

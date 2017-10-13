@@ -7,6 +7,8 @@
           <option value="tuple.x" />
           <option value="tuple.fun" />
           <option value="tuple.get_element_fraction" />
+          <option value="type.columns" />
+          <option value="type.values" />
         </list>
       </option>
     </inspection_tool>

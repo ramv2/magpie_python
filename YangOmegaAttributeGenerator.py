@@ -2,6 +2,8 @@ import types
 import numpy as np
 import math
 import pandas as pd
+
+from CompositionEntry import CompositionEntry
 from LookUpData import LookUpData
 
 class YangOmegaAttributeGenerator:
@@ -38,68 +40,69 @@ class YangOmegaAttributeGenerator:
     rather than those compiled by Kittel, as in the original work.
     """
 
-    def __init__(self, lp):
-        self.lp = lp
-
-    def generate_features(self, entries, verbose=False):
+    def generate_features(self, entries, lookup_path, verbose=False):
         """
         Function to generate the features as mentioned in the class description.
-        :param entries: A list of dictionaries containing <Element name,
-        fraction> as <key,value> pairs.
+        :param entries: A list of CompositionEntry's.
+        :param lookup_path: Path to the file containing the property values.
         :param verbose: Flag that is mainly used for debugging. Prints out a
         lot of information to the screen.
         :return features: Pandas data frame containing the names and values
         of the descriptors.
         """
+
         # Initialize lists of feature values and headers for pandas data frame.
         feat_values = []
         feat_headers = []
 
-        # Raise exception if input argument is not of type list of dictionaries.
+        # Raise exception if input argument is not of type list of
+        # CompositionEntry's.
         if (type(entries) is not types.ListType):
-            raise ValueError("Argument should be of type list of dictionaries.")
-        elif (entries and type(entries[0]) is not types.DictType):
-            raise ValueError("Argument should be of type list of dictionaries.")
+            raise ValueError("Argument should be of type list of "
+                             "CompositionEntry's")
+        elif (entries and not isinstance(entries[0], CompositionEntry)):
+            raise ValueError("Argument should be of type list of "
+                             "CompositionEntry's")
 
         # Insert header names here.
         feat_headers.append("Yang_Omega")
         feat_headers.append("Yang_delta")
 
         # Load property values here.
-        radii = self.lp.load_property("MiracleRadius")
-        meltingT = self.lp.load_property("MeltingT")
-        miedema = self.lp.load_pair_property("MiedemaLiquidDeltaHf")
+        radii = LookUpData.load_property("MiracleRadius", lookup_dir=lookup_path)
+        meltingT = LookUpData.load_property("MeltingT", lookup_dir=lookup_path)
+        miedema = LookUpData.load_pair_property("MiedemaLiquidDeltaHf",
+                                                data_dir=lookup_path+"pair/")
 
         for entry in entries:
             tmp_list = []
             tmp_radii = []
             tmp_meltingT = []
             tmp_miedema = []
-            e_ids = []
-            element_fractions = entry.values()
-            for elem in entry:
-                elem_id = self.lp.element_ids[elem]
-                e_ids.append(elem_id)
+
+            elem_fracs = entry.get_element_fractions()
+            elem_ids = entry.get_element_ids()
+            for elem_id in elem_ids:
                 tmp_radii.append(radii[elem_id])
                 tmp_meltingT.append(meltingT[elem_id])
 
             # Compute the average melting point.
-            averageTm = np.average(tmp_meltingT, weights=element_fractions)
+            averageTm = np.average(tmp_meltingT, weights=elem_fracs)
 
             # Compute the ideal entropy.
             entropy = 0.0
-            for f in element_fractions:
+            for f in elem_fracs:
                 entropy += f*math.log(f) if f > 0 else 0.0
             entropy *= 8.314/1000
 
             # Compute the enthalpy
             enthalpy = 0.0
-            for i in xrange(len(e_ids)):
-                for j in xrange(i+1,len(e_ids)):
-                    enthalpy += miedema[max(e_ids[i], e_ids[j])][min(e_ids[i],
-                                                                    e_ids[
-                                                                        j])] \
-                                * element_fractions[i] * element_fractions[j]
+
+            for i in range(len(elem_ids)):
+                for j in range(i + 1, len(elem_ids)):
+                    enthalpy += miedema[max(elem_ids[i], elem_ids[j])][min(
+                        elem_ids[i], elem_ids[j])] * elem_fracs[i] * \
+                                elem_fracs[j]
             enthalpy *= 4
 
             # Compute omega
@@ -107,10 +110,10 @@ class YangOmegaAttributeGenerator:
 
             # Compute delta
             delta_squared = 0.0
-            average_r = np.average(tmp_radii, weights=element_fractions)
-            for i in xrange(len(e_ids)):
-                delta_squared += element_fractions[i] * (1 - tmp_radii[
-                    i] / average_r)**2
+            average_r = np.average(tmp_radii, weights=elem_fracs)
+            for i in range(len(elem_ids)):
+                delta_squared += elem_fracs[i] * (1 - tmp_radii[i] /
+                                                  average_r)**2
 
             tmp_list.append(math.sqrt(delta_squared))
 

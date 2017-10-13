@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import sys
 
+from CompositionEntry import CompositionEntry
 from LookUpData import LookUpData
 
 
@@ -15,21 +16,19 @@ class ElementPairPropertyAttributeGenerator:
     pairs. If an entry has only one element, the value of NaN is used for all
     attributes.
     """
-    def __init__(self, lp):
-        self.lp = lp
-        self.elemental_pair_properties = []
-        self.pair_lookup_data = {}
 
-    def load_pair_lookup_data(self):
+    elemental_pair_properties = []
+    pair_lookup_data = {}
+
+    def load_pair_lookup_data(self, lookup_path):
         """
         Function to load the property values into self.lookup_data for the
         computation of features.
-        :param lp: An instance of LookUpData required to load different
-        property values into the dictionary.
+        param lookup_path: Path to the file containing the property values.
         :return:
         """
-        self.pair_lookup_data = self.lp.load_pair_properties(
-            self.elemental_pair_properties)
+        self.pair_lookup_data = LookUpData.load_pair_properties(
+            self.elemental_pair_properties, data_dir=lookup_path)
 
     def add_elemental_pair_property(self, property):
         """
@@ -71,12 +70,12 @@ class ElementPairPropertyAttributeGenerator:
         for prop in properties:
             self.remove_elemental_pair_property(prop)
 
-    def generate_features(self, entries, verbose=False):
+    def generate_features(self, entries, lookup_path, verbose=False):
         """
         Function to generate features of a binary material based on its
         constituent element properties.
-        :param entries: A list of dictionaries containing <Element name,
-        fraction> as <key,value> pairs.
+        :param entries: A list of CompositionEntry's.
+        param lookup_path: Path to the file containing the property values.
         :param verbose: Flag that is mainly used for debugging. Prints out a
         lot of information to the screen.
         :return features: Pandas data frame containing the names and values
@@ -85,24 +84,26 @@ class ElementPairPropertyAttributeGenerator:
 
         # Make sure that there is at least one elemental pair property provided.
         if not self.elemental_pair_properties:
-            print "No elemental property is set. Add at least one property " \
-                  "to compute meaningful descriptors."
-            sys.exit(1)
+            raise ValueError("No elemental property is set. Add at least one "
+                             "property to compute meaningful descriptors.")
 
         # If the dictionary containing the property values is empty,
         # load values into it.
         if not self.pair_lookup_data:
-            self.load_pair_lookup_data()
+            self.load_pair_lookup_data(lookup_path=lookup_path)
 
         # Initialize lists of feature values and headers for pandas data frame.
         feat_values = []
         feat_headers = []
 
-        # Raise exception if input argument is not of type list of dictionaries.
+        # Raise exception if input argument is not of type list of
+        # Composition Entry's.
         if (type(entries) is not types.ListType):
-            raise ValueError("Argument should be of type list of dictionaries.")
-        elif (entries and type(entries[0]) is not types.DictType):
-            raise ValueError("Argument should be of type list of dictionaries.")
+            raise ValueError("Argument should be of type list of "
+                             "CompositionEntry's")
+        elif (entries and not isinstance(entries[0], CompositionEntry)):
+            raise ValueError("Argument should be of type list of "
+                             "CompositionEntry's")
 
         # Insert header names here.
         n_statistics = 5
@@ -115,33 +116,31 @@ class ElementPairPropertyAttributeGenerator:
 
         for entry in entries:
             tmp_list = []
-            elem_fractions = entry.values()
-            elements = entry.keys()
-            elem_ids = []
-            for e in elements:
-                elem_ids.append(self.lp.element_ids[e])
+            elem_ids = entry.get_element_ids()
+            elem_fractions = entry.get_element_fractions()
+
             if len(elem_fractions) == 1:
-                for i in xrange(n_statistics):
+                for i in range(n_statistics):
                     tmp_list.append(np.nan)
                 feat_values.append(tmp_list)
                 continue
 
             pair_weights = []
-            for i in xrange(len(elem_fractions)):
-                for j in xrange(i):
+            for i in range(len(elem_fractions)):
+                for j in range(i):
                     pair_weights.append(elem_fractions[i]*elem_fractions[j])
 
             total_sum = sum(pair_weights)
-            for i in xrange(len(pair_weights)):
+            for i in range(len(pair_weights)):
                 pair_weights[i] /= total_sum
 
             # Look up values for each pair property.
             for prop in self.elemental_pair_properties:
                 tmp_prop = []
 
-                for i in xrange(len(elem_fractions)):
+                for i in range(len(elem_fractions)):
                     e_i = elem_ids[i]
-                    for j in xrange(i):
+                    for j in range(i):
                         e_j = elem_ids[j]
                         idx_1 = max(e_i, e_j)
                         idx_2 = min(e_i, e_j)
