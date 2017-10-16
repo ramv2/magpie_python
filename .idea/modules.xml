@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/magpie_python.iml" filepath="$PROJECT_DIR$/.idea/magpie_python.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../scripts/.idea/scripts.iml" filepath="$PROJECT_DIR$/../scripts/.idea/scripts.iml" />
     </modules>
   </component>
 </project>

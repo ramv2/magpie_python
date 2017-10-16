@@ -1,10 +1,11 @@
-from itertools import izip
 import re
-from scipy.linalg import lu
-import numpy as np
-from scipy.optimize import linprog
+from itertools import izip
 
-from LookUpData import LookUpData
+import numpy as np
+from scipy.linalg import lu
+
+from utils.LookUpData import LookUpData
+
 
 class CompositionEntry:
     """
