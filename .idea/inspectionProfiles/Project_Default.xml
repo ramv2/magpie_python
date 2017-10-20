@@ -9,6 +9,7 @@
           <option value="tuple.get_element_fraction" />
           <option value="type.columns" />
           <option value="type.values" />
+          <option value="numpy.core.multiarray.ndarray.A1" />
         </list>
       </option>
     </inspection_tool>

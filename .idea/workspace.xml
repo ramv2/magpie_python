@@ -2,51 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="928b52f4-35f8-48d1-abb5-b72ef2e61ac2" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/APEAttributeGeneratorTest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/ChargeDependentAttributeGeneratorTest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/CompositionDistanceFilterTest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/CompositionEntryTest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/ElementFractionAttributeGeneratorTest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/ElementPairPropertyAttributeGeneratorTest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/ElementalPropertyAttributeGeneratorTest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/EqualSumCombinationsTest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/GCLPAttributeGeneratorTest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/GCLPCalculatorTest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/IonicCompoundFinderTest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/IonicCompoundProximityAttributeGeneratorTest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/IonicityAttributeGeneratorTest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/MeredigAttributeGeneratorTest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/OxidationStateGuesserTest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/PhaseDiagramCompositionEntryGeneratorTest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/StoichiometricAttributeGeneratorTest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/ValenceShellAttributeGeneratorTest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/YangOmegaAttributeGeneratorTest.py" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/APEAttributeGenerator.py" afterPath="$PROJECT_DIR$/composition/APEAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ChargeDependentAttributeGenerator.py" afterPath="$PROJECT_DIR$/composition/ChargeDependentAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/CompositionDistanceFilter.py" afterPath="$PROJECT_DIR$/utils/CompositionDistanceFilter.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ElementFractionAttributeGenerator.py" afterPath="$PROJECT_DIR$/composition/ElementFractionAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ElementPairPropertyAttributeGenerator.py" afterPath="$PROJECT_DIR$/composition/ElementPairPropertyAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ElementalPropertyAttributeGenerator.py" afterPath="$PROJECT_DIR$/composition/ElementalPropertyAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/EqualSumCombinations.py" afterPath="$PROJECT_DIR$/utils/EqualSumCombinations.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/GCLPAttributeGenerator.py" afterPath="$PROJECT_DIR$/composition/GCLPAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/GCLPCalculator.py" afterPath="$PROJECT_DIR$/utils/GCLPCalculator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/IonicCompoundFinder.py" afterPath="$PROJECT_DIR$/utils/IonicCompoundFinder.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/IonicCompoundProximityAttributeGenerator.py" afterPath="$PROJECT_DIR$/composition/IonicCompoundProximityAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/IonicityAttributeGenerator.py" afterPath="$PROJECT_DIR$/composition/IonicityAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/LookUpData.py" afterPath="$PROJECT_DIR$/utils/LookUpData.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/MeredigAttributeGenerator.py" afterPath="$PROJECT_DIR$/composition/MeredigAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/OxidationStateGuesser.py" afterPath="$PROJECT_DIR$/utils/OxidationStateGuesser.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/PhaseDiagramCompositionEntryGenerator.py" afterPath="$PROJECT_DIR$/utils/PhaseDiagramCompositionEntryGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/StoichiometricAttributeGenerator.py" afterPath="$PROJECT_DIR$/composition/StoichiometricAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ValenceShellAttributeGenerator.py" afterPath="$PROJECT_DIR$/composition/ValenceShellAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Ward_et_al_features.py" afterPath="$PROJECT_DIR$/use_cases/Ward_et_al_features.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/YangOmegaAttributeGenerator.py" afterPath="$PROJECT_DIR$/composition/YangOmegaAttributeGenerator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/magpie_python.iml" afterPath="$PROJECT_DIR$/.idea/magpie_python.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/rsubrama.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/rsubrama.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CompositionEntry.py" afterPath="$PROJECT_DIR$/CompositionEntry.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/testAPEAttributeGenerator.py" afterPath="$PROJECT_DIR$/test/testAPEAttributeGenerator.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../scripts/graph_object.py" afterPath="$PROJECT_DIR$/../scripts/graph_object.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../scripts/process_options" afterPath="$PROJECT_DIR$/../scripts/process_options" />
     </list>
@@ -62,7 +21,7 @@
       <file leaf-file-name="APEAttributeGenerator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/composition/APEAttributeGenerator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
+            <state relative-caret-position="17">
               <caret line="326" column="20" lean-forward="false" selection-start-line="326" selection-start-column="20" selection-end-line="326" selection-end-column="20" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
@@ -71,13 +30,45 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="graph_object.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../scripts/graph_object.py">
+      <file leaf-file-name="Atom.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Vassal/Atom.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="37" lean-forward="false" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
+            <state relative-caret-position="272">
+              <caret line="100" column="36" lean-forward="true" selection-start-line="100" selection-start-column="36" selection-end-line="100" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Cell.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Vassal/Cell.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="934">
+              <caret line="159" column="8" lean-forward="false" selection-start-line="159" selection-start-column="8" selection-end-line="159" selection-end-column="8" />
               <folding>
-                <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AtomImage.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Vassal/AtomImage.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="121" column="25" lean-forward="true" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testCell.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/testCell.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -94,12 +85,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>))</find>
-      <find>&lt;/math&gt;</find>
-      <find>a</find>
-      <find>tmp_list</find>
-      <find>(.\{+})</find>
-      <find>else if</find>
       <find>N</find>
       <find>get_closest_compositions</find>
       <find>get_cluster_range</find>
@@ -124,6 +109,12 @@
       <find>self.aag</find>
       <find>self.lp</find>
       <find>xrange</find>
+      <find>;</find>
+      <find>anglesRadians</find>
+      <find>basis</find>
+      <find>disp</find>
+      <find>output</find>
+      <find>add_ty</find>
     </findStrings>
     <replaceStrings>
       <replace>element_ids</replace>
@@ -149,18 +140,18 @@
       <replace>APEAttributeGenerator</replace>
       <replace>LookUpData</replace>
       <replace>range</replace>
+      <replace>angles_radians</replace>
+      <replace>self.simulation_cell</replace>
+      <replace>new_disp</replace>
+      <replace>output_degrees</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../scripts" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/test/ElementFractionAttributeGeneratorTest.py" />
-        <option value="$PROJECT_DIR$/ChargeDependentAttributeGenerator.py" />
-        <option value="$PROJECT_DIR$/ElementalPropertyAttributeGenerator.py" />
-        <option value="$PROJECT_DIR$/ElementFractionAttributeGenerator.py" />
         <option value="$PROJECT_DIR$/GCLPAttributeGenerator.py" />
         <option value="$PROJECT_DIR$/ElementPairPropertyAttributeGenerator.py" />
         <option value="$PROJECT_DIR$/test/ElementPairPropertyAttributeGeneratorTest.py" />
@@ -187,7 +178,6 @@
         <option value="$PROJECT_DIR$/composition/APEAttributeGenerator.py" />
         <option value="$PROJECT_DIR$/composition/IonicityAttributeGenerator.py" />
         <option value="$PROJECT_DIR$/composition/ChargeDependentAttributeGenerator.py" />
-        <option value="$PROJECT_DIR$/test/testAPEAttributeGenerator.py" />
         <option value="$PROJECT_DIR$/test/testChargeDependentAttributeGenerator.py" />
         <option value="$PROJECT_DIR$/test/testCompositionDistanceFilter.py" />
         <option value="$PROJECT_DIR$/test/testCompositionEntry.py" />
@@ -208,6 +198,11 @@
         <option value="$PROJECT_DIR$/test/testYangOmegaAttributeGenerator.py" />
         <option value="$PROJECT_DIR$/../scripts/graph_object.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/Vassal/Atom.py" />
+        <option value="$PROJECT_DIR$/Vassal/AtomImage.py" />
+        <option value="$PROJECT_DIR$/test/testAPEAttributeGenerator.py" />
+        <option value="$PROJECT_DIR$/test/testCell.py" />
+        <option value="$PROJECT_DIR$/Vassal/Cell.py" />
       </list>
     </option>
   </component>
@@ -263,6 +258,16 @@
               <item name="magpie_python" type="b2602c69:ProjectViewProjectNode" />
               <item name="magpie_python" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="magpie_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="magpie_python" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="magpie_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="magpie_python" type="462c0819:PsiDirectoryNode" />
+              <item name="Vassal" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -271,7 +276,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../scripts/graph_object.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test/testCell.py" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -292,7 +297,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.graph_object">
+  <component name="RunManager" selected="Python tests.testCell">
     <configuration name="APE" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -915,6 +920,21 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
+    <configuration name="testCell" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="/usr/bin/python2.7" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="magpie_python" />
+      <option name="_new_pattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test/testCell.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+    </configuration>
     <configuration name="valence" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -949,7 +969,7 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <list size="41">
+    <list size="42">
       <item index="0" class="java.lang.String" itemvalue="Python.graph_object" />
       <item index="1" class="java.lang.String" itemvalue="Python.GCLP" />
       <item index="2" class="java.lang.String" itemvalue="Python.parse" />
@@ -971,26 +991,27 @@
       <item index="18" class="java.lang.String" itemvalue="Python.ic_finder" />
       <item index="19" class="java.lang.String" itemvalue="Python.cd_filter" />
       <item index="20" class="java.lang.String" itemvalue="Python.ionic_proximity" />
-      <item index="21" class="java.lang.String" itemvalue="Python tests.GCLPAttributeGeneratorTest" />
-      <item index="22" class="java.lang.String" itemvalue="Python tests.OxidationStateGuesserTest" />
-      <item index="23" class="java.lang.String" itemvalue="Python tests.ChargeDependentAttributeGeneratorTest" />
-      <item index="24" class="java.lang.String" itemvalue="Python tests.CompositionDistanceFilterTest" />
-      <item index="25" class="java.lang.String" itemvalue="Python tests.CompositionEntryTest" />
-      <item index="26" class="java.lang.String" itemvalue="Python tests.ElementalPropertyAttributeGeneratorTest" />
-      <item index="27" class="java.lang.String" itemvalue="Python tests.ElementFractionAttributeGeneratorTest" />
-      <item index="28" class="java.lang.String" itemvalue="Python tests.ElementPairPropertyAttributeGeneratorTest" />
-      <item index="29" class="java.lang.String" itemvalue="Python tests.EqualSumCombinationsTest" />
-      <item index="30" class="java.lang.String" itemvalue="Python tests.PhaseDiagramCompositionEntryGeneratorTest" />
-      <item index="31" class="java.lang.String" itemvalue="Python tests.IonicCompoundFinderTest" />
-      <item index="32" class="java.lang.String" itemvalue="Python tests.IonicCompoundProximityAttributeGeneratorTest" />
-      <item index="33" class="java.lang.String" itemvalue="Python tests.IonicityAttributeGeneratorTest" />
-      <item index="34" class="java.lang.String" itemvalue="Python tests.ValenceShellAttributeGeneratorTest" />
-      <item index="35" class="java.lang.String" itemvalue="Python tests.MeredigAttributeGeneratorTest" />
-      <item index="36" class="java.lang.String" itemvalue="Python tests.StoichiometricAttributeGeneratorTest" />
-      <item index="37" class="java.lang.String" itemvalue="Python tests.YangOmegaAttributeGeneratorTest" />
-      <item index="38" class="java.lang.String" itemvalue="Python tests.APEAttributeGeneratorTest" />
-      <item index="39" class="java.lang.String" itemvalue="Python tests.GCLPCalculatorTest" />
-      <item index="40" class="java.lang.String" itemvalue="Python tests.Unittests in test" />
+      <item index="21" class="java.lang.String" itemvalue="Python tests.testCell" />
+      <item index="22" class="java.lang.String" itemvalue="Python tests.GCLPAttributeGeneratorTest" />
+      <item index="23" class="java.lang.String" itemvalue="Python tests.OxidationStateGuesserTest" />
+      <item index="24" class="java.lang.String" itemvalue="Python tests.ChargeDependentAttributeGeneratorTest" />
+      <item index="25" class="java.lang.String" itemvalue="Python tests.CompositionDistanceFilterTest" />
+      <item index="26" class="java.lang.String" itemvalue="Python tests.CompositionEntryTest" />
+      <item index="27" class="java.lang.String" itemvalue="Python tests.ElementalPropertyAttributeGeneratorTest" />
+      <item index="28" class="java.lang.String" itemvalue="Python tests.ElementFractionAttributeGeneratorTest" />
+      <item index="29" class="java.lang.String" itemvalue="Python tests.ElementPairPropertyAttributeGeneratorTest" />
+      <item index="30" class="java.lang.String" itemvalue="Python tests.EqualSumCombinationsTest" />
+      <item index="31" class="java.lang.String" itemvalue="Python tests.PhaseDiagramCompositionEntryGeneratorTest" />
+      <item index="32" class="java.lang.String" itemvalue="Python tests.IonicCompoundFinderTest" />
+      <item index="33" class="java.lang.String" itemvalue="Python tests.IonicCompoundProximityAttributeGeneratorTest" />
+      <item index="34" class="java.lang.String" itemvalue="Python tests.IonicityAttributeGeneratorTest" />
+      <item index="35" class="java.lang.String" itemvalue="Python tests.ValenceShellAttributeGeneratorTest" />
+      <item index="36" class="java.lang.String" itemvalue="Python tests.MeredigAttributeGeneratorTest" />
+      <item index="37" class="java.lang.String" itemvalue="Python tests.StoichiometricAttributeGeneratorTest" />
+      <item index="38" class="java.lang.String" itemvalue="Python tests.YangOmegaAttributeGeneratorTest" />
+      <item index="39" class="java.lang.String" itemvalue="Python tests.APEAttributeGeneratorTest" />
+      <item index="40" class="java.lang.String" itemvalue="Python tests.GCLPCalculatorTest" />
+      <item index="41" class="java.lang.String" itemvalue="Python tests.Unittests in test" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -1012,24 +1033,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="IonicityAttributeGeneratorTest - 2017.10.13 at 00h 41m 37s.xml">
-      <configuration name="IonicityAttributeGeneratorTest" configurationId="tests" />
-    </history-entry>
-    <history-entry file="IonicityAttributeGeneratorTest - 2017.10.13 at 00h 42m 00s.xml">
-      <configuration name="IonicityAttributeGeneratorTest" configurationId="tests" />
-    </history-entry>
-    <history-entry file="MeredigAttributeGeneratorTest - 2017.10.13 at 01h 09m 26s.xml">
-      <configuration name="MeredigAttributeGeneratorTest" configurationId="tests" />
-    </history-entry>
-    <history-entry file="MeredigAttributeGeneratorTest - 2017.10.13 at 01h 14m 14s.xml">
-      <configuration name="MeredigAttributeGeneratorTest" configurationId="tests" />
-    </history-entry>
-    <history-entry file="StoichiometricAttributeGeneratorTest - 2017.10.13 at 01h 23m 43s.xml">
-      <configuration name="StoichiometricAttributeGeneratorTest" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test - 2017.10.16 at 11h 09m 12s.xml">
-      <configuration name="Unittests in test" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_in_test - 2017.10.16 at 11h 57m 12s.xml">
       <configuration name="Unittests in test" configurationId="tests" />
     </history-entry>
@@ -1042,28 +1045,46 @@
     <history-entry file="YangOmegaAttributeGeneratorTest - 2017.10.13 at 01h 38m 53s.xml">
       <configuration name="YangOmegaAttributeGeneratorTest" configurationId="tests" />
     </history-entry>
+    <history-entry file="testCell - 2017.10.20 at 08h 05m 25s.xml">
+      <configuration name="testCell" configurationId="tests" />
+    </history-entry>
+    <history-entry file="testCell - 2017.10.20 at 08h 08m 48s.xml">
+      <configuration name="testCell" configurationId="tests" />
+    </history-entry>
+    <history-entry file="testCell - 2017.10.20 at 08h 09m 54s.xml">
+      <configuration name="testCell" configurationId="tests" />
+    </history-entry>
+    <history-entry file="testCell - 2017.10.20 at 08h 10m 04s.xml">
+      <configuration name="testCell" configurationId="tests" />
+    </history-entry>
+    <history-entry file="testCell - 2017.10.20 at 08h 16m 20s.xml">
+      <configuration name="testCell" configurationId="tests" />
+    </history-entry>
+    <history-entry file="testCell - 2017.10.20 at 08h 16m 22s.xml">
+      <configuration name="testCell" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="0" width="1920" height="1080" extended-state="6" />
+    <frame x="2286" y="136" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26602563" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26923078" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39871383" sideWeight="0.503125" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32870865" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3094984" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39713973" sideWeight="0.496875" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39701173" sideWeight="0.496875" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1078,6 +1099,11 @@
           <line>119</line>
           <option name="timeStamp" value="48" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test/testCell.py</url>
+          <line>20</line>
+          <option name="timeStamp" value="160" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint suspend="NONE" type="python-exception">
@@ -1086,108 +1112,31 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="159" />
+      <option name="time" value="161" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/utils/EqualSumCombinations.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="87" column="19" lean-forward="true" selection-start-line="87" selection-start-column="19" selection-end-line="87" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/EqualSumCombinationsTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="6" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/PhaseDiagramCompositionEntryGeneratorTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/PhaseDiagramCompositionEntryGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="187" column="0" lean-forward="false" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#45#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils/IonicCompoundFinder.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="97" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/ElementPairPropertyAttributeGeneratorTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="73" lean-forward="false" selection-start-line="22" selection-start-column="73" selection-end-line="22" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/IonicCompoundFinderTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="55" column="62" lean-forward="false" selection-start-line="55" selection-start-column="62" selection-end-line="55" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/CompositionEntryTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4114">
-          <caret line="247" column="68" lean-forward="true" selection-start-line="247" selection-start-column="68" selection-end-line="247" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/ElementalPropertyAttributeGeneratorTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="12" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ElementPairPropertyAttributeGeneratorTest.py" />
+    <entry file="file://$PROJECT_DIR$/test/IonicCompoundFinderTest.py" />
+    <entry file="file://$PROJECT_DIR$/test/CompositionEntryTest.py" />
+    <entry file="file://$PROJECT_DIR$/test/ElementalPropertyAttributeGeneratorTest.py" />
     <entry file="file://$PROJECT_DIR$/utils/OxidationStateGuesser.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="33" column="8" lean-forward="false" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/IonicCompoundProximityAttributeGeneratorTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="23" column="74" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="23" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/ElementFractionAttributeGeneratorTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="3" column="33" lean-forward="false" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test/IonicCompoundProximityAttributeGeneratorTest.py" />
+    <entry file="file://$PROJECT_DIR$/test/ElementFractionAttributeGeneratorTest.py" />
     <entry file="file://$PROJECT_DIR$/parse_composition_file.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -1195,19 +1144,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/ValenceShellAttributeGeneratorTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="40" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ValenceShellAttributeGeneratorTest.py" />
     <entry file="file://$PROJECT_DIR$/composition/ValenceShellAttributeGenerator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-374">
           <caret line="7" column="36" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1219,61 +1160,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/MeredigAttributeGeneratorTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="35" column="76" lean-forward="false" selection-start-line="35" selection-start-column="76" selection-end-line="35" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test/MeredigAttributeGeneratorTest.py" />
     <entry file="file://$PROJECT_DIR$/composition/MeredigAttributeGenerator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1275">
           <caret line="6" column="31" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/StoichiometricAttributeGeneratorTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="42" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test/StoichiometricAttributeGeneratorTest.py" />
     <entry file="file://$PROJECT_DIR$/composition/StoichiometricAttributeGenerator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#19#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/IonicityAttributeGeneratorTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="19" column="51" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="19" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/YangOmegaAttributeGeneratorTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test/IonicityAttributeGeneratorTest.py" />
+    <entry file="file://$PROJECT_DIR$/test/YangOmegaAttributeGeneratorTest.py" />
     <entry file="file://$PROJECT_DIR$/composition/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1281,7 +1189,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="819">
           <caret line="204" column="57" lean-forward="false" selection-start-line="204" selection-start-column="57" selection-end-line="204" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1289,9 +1196,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="70" column="30" lean-forward="true" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#12#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1299,7 +1203,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="10" column="33" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1307,9 +1210,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="986">
           <caret line="58" column="55" lean-forward="false" selection-start-line="58" selection-start-column="55" selection-end-line="58" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1317,19 +1217,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="57" column="14" lean-forward="false" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#11#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/testAPEAttributeGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1337,9 +1224,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1347,9 +1231,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1357,9 +1238,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1367,9 +1245,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="24" lean-forward="true" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1377,9 +1252,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1387,9 +1259,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1397,9 +1266,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1407,9 +1273,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1417,9 +1280,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1427,9 +1287,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="26" lean-forward="true" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1437,9 +1294,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="44" lean-forward="true" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1447,9 +1301,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="43" lean-forward="false" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1457,9 +1308,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="11" column="32" lean-forward="true" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1467,9 +1315,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1477,9 +1322,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="41" lean-forward="true" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1487,9 +1329,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="36" lean-forward="true" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1497,9 +1336,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="34" lean-forward="true" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1507,19 +1343,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/composition/APEAttributeGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="326" column="20" lean-forward="false" selection-start-line="326" selection-start-column="20" selection-end-line="326" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1527,15 +1350,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="57" lean-forward="false" selection-start-line="3" selection-start-column="57" selection-end-line="3" selection-end-column="57" />
-          <folding />
+        <state relative-caret-position="34">
+          <caret line="2" column="45" lean-forward="false" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -1544,7 +1365,63 @@
         <state relative-caret-position="102">
           <caret line="6" column="37" lean-forward="false" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composition/APEAttributeGenerator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="326" column="20" lean-forward="false" selection-start-line="326" selection-start-column="20" selection-end-line="326" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vassal/Atom.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="100" column="36" lean-forward="true" selection-start-line="100" selection-start-column="36" selection-end-line="100" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vassal/AtomImage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="121" column="25" lean-forward="true" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/testAPEAttributeGenerator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="39" lean-forward="false" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#15#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/testCell.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vassal/Cell.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="934">
+          <caret line="159" column="8" lean-forward="false" selection-start-line="159" selection-start-column="8" selection-end-line="159" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,9 +1,7 @@
 import unittest
-
 from CompositionEntry import CompositionEntry
 from composition.APEAttributeGenerator import APEAttributeGenerator
 from utils.LookUpData import LookUpData
-
 
 class testAPEAttributeGenerator(unittest.TestCase):
 
