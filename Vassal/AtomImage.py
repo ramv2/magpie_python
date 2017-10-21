@@ -5,21 +5,21 @@ class AtomImage:
     periodic image.
     """
 
-    # Pre-computed Cartesian coordinates of this image.
-    position = None
-
-    # Atom which this image is associated with.
-    atom = None
-
-    # Supercell in which this image is located.
-    supercell = None
-
     def __init__(self, atom, image):
         """
         Constructor to create a new instance of the object.
         :param atom: Link to atom which is associated with this image.
         :param image: Supercell position (i.e., which image it is in)
         """
+
+        # Pre-computed Cartesian coordinates of this image.
+        self.position = None
+
+        # Atom which this image is associated with.
+        self.atom = None
+
+        # Supercell in which this image is located.
+        self.supercell = None
 
         self.supercell = image.copy()
         self.atom = atom

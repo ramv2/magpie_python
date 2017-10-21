@@ -4,30 +4,29 @@ class Atom:
     Class that represents a single atom.
     """
 
-    # Position in fractional coordinates.
-    position = None
-
-    # Position in Cartesian coordinates.
-    position_cartesian = None
-
-    # Type of atom.
-    type = None
-
-    # Cell associated with this atom.
-    cell = None
-
-    # ID number of this atom.
-    id = None
-
-    # Radius of atom.
-    radius = 1.0
-
     def __init__(self, position, type):
         """
         Constructor to create a new instance of the object.
         :param position: Position in fractional coordinates.
         :param type: Atom type.
         """
+        # Position in fractional coordinates.
+        self.position = None
+
+        # Position in Cartesian coordinates.
+        self.position_cartesian = None
+
+        # Type of atom.
+        self.type = None
+
+        # Cell associated with this atom.
+        self.cell = None
+
+        # ID number of this atom.
+        self.id = None
+
+        # Radius of atom.
+        self.radius = 1.0
 
         self.position = position
         self.type = type
@@ -38,10 +37,10 @@ class Atom:
         Function to override the copy() method.
         :return: A new instance with the appropriate properties set.
         """
-        pos = self.position.copy()
+        pos = list(self.position)
         t = self.type
         x = Atom(pos, t)
-        x.position_cartesian = self.position_cartesian.copy()
+        x.position_cartesian = list(self.position_cartesian)
         return x
 
     def __eq__(self, other):
@@ -97,7 +96,7 @@ class Atom:
 
         self.type = type
         if self.cell is not None:
-            for i in range(self.type+1):
+            while self.cell.n_types() <= self.type:
                 self.cell.add_type(None)
 
     def set_cell(self, cell):

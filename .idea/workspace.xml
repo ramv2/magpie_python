@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="928b52f4-35f8-48d1-abb5-b72ef2e61ac2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/rsubrama.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/rsubrama.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/testAPEAttributeGenerator.py" afterPath="$PROJECT_DIR$/test/testAPEAttributeGenerator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Vassal/Atom.py" afterPath="$PROJECT_DIR$/Vassal/Atom.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Vassal/AtomImage.py" afterPath="$PROJECT_DIR$/Vassal/AtomImage.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Vassal/Cell.py" afterPath="$PROJECT_DIR$/Vassal/Cell.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/testCell.py" afterPath="$PROJECT_DIR$/test/testCell.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../scripts/graph_object.py" afterPath="$PROJECT_DIR$/../scripts/graph_object.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../scripts/process_options" afterPath="$PROJECT_DIR$/../scripts/process_options" />
     </list>
@@ -21,8 +22,8 @@
       <file leaf-file-name="APEAttributeGenerator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/composition/APEAttributeGenerator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="326" column="20" lean-forward="false" selection-start-line="326" selection-start-column="20" selection-end-line="326" selection-end-column="20" />
+            <state relative-caret-position="237">
+              <caret line="528" column="26" lean-forward="true" selection-start-line="528" selection-start-column="0" selection-end-line="528" selection-end-column="26" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -33,8 +34,18 @@
       <file leaf-file-name="Atom.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Vassal/Atom.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="100" column="36" lean-forward="true" selection-start-line="100" selection-start-column="36" selection-end-line="100" selection-end-column="36" />
+            <state relative-caret-position="339">
+              <caret line="99" column="39" lean-forward="false" selection-start-line="99" selection-start-column="39" selection-end-line="99" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AtomImage.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Vassal/AtomImage.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -43,8 +54,8 @@
       <file leaf-file-name="Cell.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Vassal/Cell.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="934">
-              <caret line="159" column="8" lean-forward="false" selection-start-line="159" selection-start-column="8" selection-end-line="159" selection-end-column="8" />
+            <state relative-caret-position="237">
+              <caret line="437" column="32" lean-forward="false" selection-start-line="437" selection-start-column="32" selection-end-line="437" selection-end-column="32" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -52,21 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AtomImage.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Vassal/AtomImage.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="121" column="25" lean-forward="true" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="testCell.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/testCell.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="390">
+              <caret line="256" column="0" lean-forward="false" selection-start-line="256" selection-start-column="0" selection-end-line="256" selection-end-column="0" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -85,9 +86,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>N</find>
-      <find>get_closest_compositions</find>
-      <find>get_cluster_range</find>
       <find>find_efficiently_packed_clusters</find>
       <find>self.start</find>
       <find>EqualSumCombinations</find>
@@ -115,6 +113,9 @@
       <find>disp</find>
       <find>output</find>
       <find>add_ty</find>
+      <find>merge</find>
+      <find>add_</find>
+      <find>set</find>
     </findStrings>
     <replaceStrings>
       <replace>element_ids</replace>
@@ -198,11 +199,11 @@
         <option value="$PROJECT_DIR$/test/testYangOmegaAttributeGenerator.py" />
         <option value="$PROJECT_DIR$/../scripts/graph_object.py" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/Vassal/Atom.py" />
-        <option value="$PROJECT_DIR$/Vassal/AtomImage.py" />
         <option value="$PROJECT_DIR$/test/testAPEAttributeGenerator.py" />
+        <option value="$PROJECT_DIR$/Vassal/AtomImage.py" />
         <option value="$PROJECT_DIR$/test/testCell.py" />
         <option value="$PROJECT_DIR$/Vassal/Cell.py" />
+        <option value="$PROJECT_DIR$/Vassal/Atom.py" />
       </list>
     </option>
   </component>
@@ -261,11 +262,6 @@
             <path>
               <item name="magpie_python" type="b2602c69:ProjectViewProjectNode" />
               <item name="magpie_python" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="magpie_python" type="b2602c69:ProjectViewProjectNode" />
-              <item name="magpie_python" type="462c0819:PsiDirectoryNode" />
               <item name="Vassal" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -276,7 +272,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test/testCell.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Vassal/Cell.py" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -648,6 +644,23 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
+    <configuration name="cell" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/bin/python2.7" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Vassal" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="magpie_python" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Vassal/Cell.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
     <configuration name="charge" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -969,49 +982,50 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <list size="42">
-      <item index="0" class="java.lang.String" itemvalue="Python.graph_object" />
-      <item index="1" class="java.lang.String" itemvalue="Python.GCLP" />
-      <item index="2" class="java.lang.String" itemvalue="Python.parse" />
-      <item index="3" class="java.lang.String" itemvalue="Python.stoich" />
-      <item index="4" class="java.lang.String" itemvalue="Python.element" />
-      <item index="5" class="java.lang.String" itemvalue="Python.oxguess" />
-      <item index="6" class="java.lang.String" itemvalue="Python.ionic" />
-      <item index="7" class="java.lang.String" itemvalue="Python.valence" />
-      <item index="8" class="java.lang.String" itemvalue="Python.charge" />
-      <item index="9" class="java.lang.String" itemvalue="Python.fraction" />
-      <item index="10" class="java.lang.String" itemvalue="Python.element_pair" />
-      <item index="11" class="java.lang.String" itemvalue="Python.meredig" />
-      <item index="12" class="java.lang.String" itemvalue="Python.yang" />
-      <item index="13" class="java.lang.String" itemvalue="Python.equal_sum" />
-      <item index="14" class="java.lang.String" itemvalue="Python.lookup" />
-      <item index="15" class="java.lang.String" itemvalue="Python.APE" />
-      <item index="16" class="java.lang.String" itemvalue="Python.comp_entry" />
-      <item index="17" class="java.lang.String" itemvalue="Python.ph_dia" />
-      <item index="18" class="java.lang.String" itemvalue="Python.ic_finder" />
-      <item index="19" class="java.lang.String" itemvalue="Python.cd_filter" />
-      <item index="20" class="java.lang.String" itemvalue="Python.ionic_proximity" />
-      <item index="21" class="java.lang.String" itemvalue="Python tests.testCell" />
-      <item index="22" class="java.lang.String" itemvalue="Python tests.GCLPAttributeGeneratorTest" />
-      <item index="23" class="java.lang.String" itemvalue="Python tests.OxidationStateGuesserTest" />
-      <item index="24" class="java.lang.String" itemvalue="Python tests.ChargeDependentAttributeGeneratorTest" />
-      <item index="25" class="java.lang.String" itemvalue="Python tests.CompositionDistanceFilterTest" />
-      <item index="26" class="java.lang.String" itemvalue="Python tests.CompositionEntryTest" />
-      <item index="27" class="java.lang.String" itemvalue="Python tests.ElementalPropertyAttributeGeneratorTest" />
-      <item index="28" class="java.lang.String" itemvalue="Python tests.ElementFractionAttributeGeneratorTest" />
-      <item index="29" class="java.lang.String" itemvalue="Python tests.ElementPairPropertyAttributeGeneratorTest" />
-      <item index="30" class="java.lang.String" itemvalue="Python tests.EqualSumCombinationsTest" />
-      <item index="31" class="java.lang.String" itemvalue="Python tests.PhaseDiagramCompositionEntryGeneratorTest" />
-      <item index="32" class="java.lang.String" itemvalue="Python tests.IonicCompoundFinderTest" />
-      <item index="33" class="java.lang.String" itemvalue="Python tests.IonicCompoundProximityAttributeGeneratorTest" />
-      <item index="34" class="java.lang.String" itemvalue="Python tests.IonicityAttributeGeneratorTest" />
-      <item index="35" class="java.lang.String" itemvalue="Python tests.ValenceShellAttributeGeneratorTest" />
-      <item index="36" class="java.lang.String" itemvalue="Python tests.MeredigAttributeGeneratorTest" />
-      <item index="37" class="java.lang.String" itemvalue="Python tests.StoichiometricAttributeGeneratorTest" />
-      <item index="38" class="java.lang.String" itemvalue="Python tests.YangOmegaAttributeGeneratorTest" />
-      <item index="39" class="java.lang.String" itemvalue="Python tests.APEAttributeGeneratorTest" />
-      <item index="40" class="java.lang.String" itemvalue="Python tests.GCLPCalculatorTest" />
-      <item index="41" class="java.lang.String" itemvalue="Python tests.Unittests in test" />
+    <list size="43">
+      <item index="0" class="java.lang.String" itemvalue="Python.cell" />
+      <item index="1" class="java.lang.String" itemvalue="Python.graph_object" />
+      <item index="2" class="java.lang.String" itemvalue="Python.GCLP" />
+      <item index="3" class="java.lang.String" itemvalue="Python.parse" />
+      <item index="4" class="java.lang.String" itemvalue="Python.stoich" />
+      <item index="5" class="java.lang.String" itemvalue="Python.element" />
+      <item index="6" class="java.lang.String" itemvalue="Python.oxguess" />
+      <item index="7" class="java.lang.String" itemvalue="Python.ionic" />
+      <item index="8" class="java.lang.String" itemvalue="Python.valence" />
+      <item index="9" class="java.lang.String" itemvalue="Python.charge" />
+      <item index="10" class="java.lang.String" itemvalue="Python.fraction" />
+      <item index="11" class="java.lang.String" itemvalue="Python.element_pair" />
+      <item index="12" class="java.lang.String" itemvalue="Python.meredig" />
+      <item index="13" class="java.lang.String" itemvalue="Python.yang" />
+      <item index="14" class="java.lang.String" itemvalue="Python.equal_sum" />
+      <item index="15" class="java.lang.String" itemvalue="Python.lookup" />
+      <item index="16" class="java.lang.String" itemvalue="Python.APE" />
+      <item index="17" class="java.lang.String" itemvalue="Python.comp_entry" />
+      <item index="18" class="java.lang.String" itemvalue="Python.ph_dia" />
+      <item index="19" class="java.lang.String" itemvalue="Python.ic_finder" />
+      <item index="20" class="java.lang.String" itemvalue="Python.cd_filter" />
+      <item index="21" class="java.lang.String" itemvalue="Python.ionic_proximity" />
+      <item index="22" class="java.lang.String" itemvalue="Python tests.testCell" />
+      <item index="23" class="java.lang.String" itemvalue="Python tests.GCLPAttributeGeneratorTest" />
+      <item index="24" class="java.lang.String" itemvalue="Python tests.OxidationStateGuesserTest" />
+      <item index="25" class="java.lang.String" itemvalue="Python tests.ChargeDependentAttributeGeneratorTest" />
+      <item index="26" class="java.lang.String" itemvalue="Python tests.CompositionDistanceFilterTest" />
+      <item index="27" class="java.lang.String" itemvalue="Python tests.CompositionEntryTest" />
+      <item index="28" class="java.lang.String" itemvalue="Python tests.ElementalPropertyAttributeGeneratorTest" />
+      <item index="29" class="java.lang.String" itemvalue="Python tests.ElementFractionAttributeGeneratorTest" />
+      <item index="30" class="java.lang.String" itemvalue="Python tests.ElementPairPropertyAttributeGeneratorTest" />
+      <item index="31" class="java.lang.String" itemvalue="Python tests.EqualSumCombinationsTest" />
+      <item index="32" class="java.lang.String" itemvalue="Python tests.PhaseDiagramCompositionEntryGeneratorTest" />
+      <item index="33" class="java.lang.String" itemvalue="Python tests.IonicCompoundFinderTest" />
+      <item index="34" class="java.lang.String" itemvalue="Python tests.IonicCompoundProximityAttributeGeneratorTest" />
+      <item index="35" class="java.lang.String" itemvalue="Python tests.IonicityAttributeGeneratorTest" />
+      <item index="36" class="java.lang.String" itemvalue="Python tests.ValenceShellAttributeGeneratorTest" />
+      <item index="37" class="java.lang.String" itemvalue="Python tests.MeredigAttributeGeneratorTest" />
+      <item index="38" class="java.lang.String" itemvalue="Python tests.StoichiometricAttributeGeneratorTest" />
+      <item index="39" class="java.lang.String" itemvalue="Python tests.YangOmegaAttributeGeneratorTest" />
+      <item index="40" class="java.lang.String" itemvalue="Python tests.APEAttributeGeneratorTest" />
+      <item index="41" class="java.lang.String" itemvalue="Python tests.GCLPCalculatorTest" />
+      <item index="42" class="java.lang.String" itemvalue="Python tests.Unittests in test" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -1033,42 +1047,41 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_test - 2017.10.16 at 11h 57m 12s.xml">
-      <configuration name="Unittests in test" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test - 2017.10.16 at 12h 02m 36s.xml">
-      <configuration name="Unittests in test" configurationId="tests" />
-    </history-entry>
-    <history-entry file="ValenceShellAttributeGeneratorTest - 2017.10.13 at 00h 56m 51s.xml">
-      <configuration name="ValenceShellAttributeGeneratorTest" configurationId="tests" />
-    </history-entry>
-    <history-entry file="YangOmegaAttributeGeneratorTest - 2017.10.13 at 01h 38m 53s.xml">
-      <configuration name="YangOmegaAttributeGeneratorTest" configurationId="tests" />
-    </history-entry>
-    <history-entry file="testCell - 2017.10.20 at 08h 05m 25s.xml">
+    <history-entry file="testCell - 2017.10.21 at 03h 45m 27s.xml">
       <configuration name="testCell" configurationId="tests" />
     </history-entry>
-    <history-entry file="testCell - 2017.10.20 at 08h 08m 48s.xml">
+    <history-entry file="testCell - 2017.10.21 at 03h 48m 41s.xml">
       <configuration name="testCell" configurationId="tests" />
     </history-entry>
-    <history-entry file="testCell - 2017.10.20 at 08h 09m 54s.xml">
+    <history-entry file="testCell - 2017.10.21 at 03h 49m 15s.xml">
       <configuration name="testCell" configurationId="tests" />
     </history-entry>
-    <history-entry file="testCell - 2017.10.20 at 08h 10m 04s.xml">
+    <history-entry file="testCell - 2017.10.21 at 03h 50m 40s.xml">
       <configuration name="testCell" configurationId="tests" />
     </history-entry>
-    <history-entry file="testCell - 2017.10.20 at 08h 16m 20s.xml">
+    <history-entry file="testCell - 2017.10.21 at 03h 57m 46s.xml">
       <configuration name="testCell" configurationId="tests" />
     </history-entry>
-    <history-entry file="testCell - 2017.10.20 at 08h 16m 22s.xml">
+    <history-entry file="testCell - 2017.10.21 at 03h 57m 47s.xml">
+      <configuration name="testCell" configurationId="tests" />
+    </history-entry>
+    <history-entry file="testCell - 2017.10.21 at 03h 59m 00s.xml">
+      <configuration name="testCell" configurationId="tests" />
+    </history-entry>
+    <history-entry file="testCell - 2017.10.21 at 04h 00m 17s.xml">
+      <configuration name="testCell" configurationId="tests" />
+    </history-entry>
+    <history-entry file="testCell - 2017.10.21 at 04h 05m 13s.xml">
+      <configuration name="testCell" configurationId="tests" />
+    </history-entry>
+    <history-entry file="testCell - 2017.10.21 at 04h 05m 14s.xml">
       <configuration name="testCell" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="2286" y="136" width="1920" height="1080" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26923078" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26923078" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39871383" sideWeight="0.503125" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32870865" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1101,8 +1114,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test/testCell.py</url>
-          <line>20</line>
-          <option name="timeStamp" value="160" />
+          <line>256</line>
+          <option name="timeStamp" value="200" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test/testCell.py</url>
+          <line>226</line>
+          <option name="timeStamp" value="201" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test/testCell.py</url>
+          <line>222</line>
+          <option name="timeStamp" value="202" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Vassal/Cell.py</url>
+          <line>589</line>
+          <option name="timeStamp" value="203" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -1112,29 +1140,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="161" />
+      <option name="time" value="204" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/utils/IonicCompoundFinder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="97" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/ElementPairPropertyAttributeGeneratorTest.py" />
-    <entry file="file://$PROJECT_DIR$/test/IonicCompoundFinderTest.py" />
-    <entry file="file://$PROJECT_DIR$/test/CompositionEntryTest.py" />
-    <entry file="file://$PROJECT_DIR$/test/ElementalPropertyAttributeGeneratorTest.py" />
-    <entry file="file://$PROJECT_DIR$/utils/OxidationStateGuesser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="33" column="8" lean-forward="false" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/IonicCompoundProximityAttributeGeneratorTest.py" />
     <entry file="file://$PROJECT_DIR$/test/ElementFractionAttributeGeneratorTest.py" />
     <entry file="file://$PROJECT_DIR$/parse_composition_file.py">
@@ -1149,14 +1159,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-374">
           <caret line="7" column="36" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/unittest/case.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="328" column="0" lean-forward="false" selection-start-line="328" selection-start-column="0" selection-end-line="328" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1231,13 +1233,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/testCompositionEntry.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -1370,32 +1365,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/composition/APEAttributeGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="326" column="20" lean-forward="false" selection-start-line="326" selection-start-column="20" selection-end-line="326" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Vassal/Atom.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="100" column="36" lean-forward="true" selection-start-line="100" selection-start-column="36" selection-end-line="100" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Vassal/AtomImage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="121" column="25" lean-forward="true" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/testAPEAttributeGenerator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -1406,20 +1375,112 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/numpy/testing/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="945" column="0" lean-forward="false" selection-start-line="945" selection-start-column="0" selection-end-line="945" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/testCompositionEntry.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1683">
+          <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#15#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composition/APEAttributeGenerator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="528" column="26" lean-forward="true" selection-start-line="528" selection-start-column="0" selection-end-line="528" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/_jb_unittest_runner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/unittest/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/teamcity/unittestpy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="280" column="0" lean-forward="false" selection-start-line="280" selection-start-column="0" selection-end-line="280" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/unittest/runner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="195" column="0" lean-forward="false" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/unittest/suite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/unittest/case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="392" column="0" lean-forward="false" selection-start-line="392" selection-start-column="0" selection-end-line="392" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vassal/AtomImage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/testCell.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="390">
+          <caret line="256" column="0" lean-forward="false" selection-start-line="256" selection-start-column="0" selection-end-line="256" selection-end-column="0" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Vassal/Atom.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="99" column="39" lean-forward="false" selection-start-line="99" selection-start-column="39" selection-end-line="99" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Vassal/Cell.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="934">
-          <caret line="159" column="8" lean-forward="false" selection-start-line="159" selection-start-column="8" selection-end-line="159" selection-end-column="8" />
+        <state relative-caret-position="237">
+          <caret line="437" column="32" lean-forward="false" selection-start-line="437" selection-start-column="32" selection-end-line="437" selection-end-column="32" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

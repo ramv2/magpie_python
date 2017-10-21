@@ -9,35 +9,36 @@ class Cell:
     unit cell or the simulation cell from a molecular dynamics calculation.
     """
 
-    # Vectors representing the sides of cell. Stored in the format:
-    # a_x b_x c_x
-    # a_y b_y c_y
-    # a_z b_z c_z
-    simulation_cell = None
-
-    # Inverse of the simulation cell. Set during the set_basis function.
-    inverse_cell = None
-
-    # List of all atoms.
-    atoms = None
-
-    # Whether the walls of the cell are periodic.
-    face_is_periodic = None
-
-    # Names of each atom type.
-    type_name = None
-
-    # Lattice vectors.
-    lattice_vectors = None
-
-    # Reciprocal lattice vectors.
-    recip_lattice_vectors = None
-
     def __init__(self):
         """
         Creates an empty structure a = b = c = 1, alpha = beta = gamma = 90,
         and periodic boundary conditions in all directions.
         """
+
+        # Vectors representing the sides of cell. Stored in the format:
+        # a_x b_x c_x
+        # a_y b_y c_y
+        # a_z b_z c_z
+        self.simulation_cell = None
+
+        # Inverse of the simulation cell. Set during the set_basis function.
+        self.inverse_cell = None
+
+        # List of all atoms.
+        self.atoms = []
+
+        # Whether the walls of the cell are periodic.
+        self.face_is_periodic = None
+
+        # Names of each atom type.
+        self.type_name = []
+
+        # Lattice vectors.
+        self.lattice_vectors = None
+
+        # Reciprocal lattice vectors.
+        self.recip_lattice_vectors = None
+
         basis = np.identity(3, dtype=float)
         self.simulation_cell = np.matrix(np.identity(3, dtype=float))
         self.set_basis(basis=basis)
@@ -198,7 +199,8 @@ class Cell:
         self.atoms.append(a)
         a.set_id(len(self.atoms) - 1)
         a.set_cell(self)
-        self.type_name = [None] * a.get_type()
+        while len(self.type_name) <= a.get_type():
+            self.type_name.append(None)
 
     def direction_is_periodic(self, index):
         """
@@ -366,6 +368,9 @@ class Cell:
         :param name: Desired name.
         :return:
         """
+
+        if index < 0 or index > len(self.type_name):
+            raise IndexError("Index out of bounds: "+index)
         self.type_name[index] = name
 
     def replace_type_names(self, changes):
@@ -462,7 +467,7 @@ class Cell:
         :return: Cartesian coordinates.
         """
 
-        return np.matmul(x, self.simulation_cell)
+        return np.matmul(x, np.transpose(self.simulation_cell))
 
     def convert_cartesian_to_fractional(self, x):
         """
@@ -537,7 +542,7 @@ class Cell:
             subtract_pos = self.convert_cartesian_to_fractional(point1)
         elif center is not None and neighbor is not None:
             flag = True
-            image = np.ones(3, dtype=int)
+            image = np.zeros(3, dtype=int)
             center_atom = self.get_atom(center)
             neighbor_atom = self.get_atom(neighbor)
             # Compute the displacement vector between these atoms.
@@ -557,6 +562,17 @@ class Cell:
                     2] * lat_vec[d, 2]
             proj_D /= lat_vec[d, 0]**2 + lat_vec[d, 1]**2 + lat_vec[d, 2]**2
             n_steps = int(round(proj_D))
+            # Java's Math.round and python's math.round are slightly different.
+            # For instance, the result of rounding -23.5 is -23 in java and
+            # -24 in python. From python docs of the round function:
+            # https://docs.python.org/2/library/functions.html#round
+            # if two multiples are equally close, rounding is done away from 0
+            # (so, for example, round(0.5) is 1.0 and round(-0.5) is -1.0).
+            # In order to emulate the correct behavior, check if it the
+            # argument is negative and ends with ".5". If so, add 1 to the
+            # result of the int(round(x)) operation.
+            if proj_D < 0 and str(proj_D).rstrip("0").endswith(".5"):
+                n_steps += 1
             new_disp = list(disp)
             for i in range(3):
                 new_disp[i] -= n_steps * lat_vec[d, i]
@@ -569,3 +585,6 @@ class Cell:
 
         return math.sqrt(cur_dist) if not flag else AtomImage(neighbor_atom,
                                                               image)
+
+if __name__ == "__main__":
+    x = Cell()
