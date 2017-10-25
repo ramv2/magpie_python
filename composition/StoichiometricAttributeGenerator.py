@@ -13,8 +13,10 @@ class StoichiometricAttributeGenerator:
     """
 
     # List of p norms to compute.
-
-    p_norms = []
+    def __init__(self, use_default_norms=True):
+        self.p_norms = []
+        if use_default_norms:
+            self.add_p_norms([2, 3, 5, 7, 10])
 
     def clear_p_norms(self):
         """

@@ -1,4 +1,5 @@
 import numpy as np
+
 class AtomImage:
     """
     Class to uniquely identify an atom image. Key is atom ID, value is the
@@ -16,13 +17,14 @@ class AtomImage:
         self.position = None
 
         # Atom which this image is associated with.
-        self.atom = None
+        self.atom = atom
 
         # Supercell in which this image is located.
-        self.supercell = None
+        if not isinstance(image, np.ndarray):
+            self.supercell = np.array(image).copy()
+        else:
+            self.supercell = image.copy()
 
-        self.supercell = image.copy()
-        self.atom = atom
         self.compute_position()
 
     def __cmp__(self, other):
@@ -63,8 +65,7 @@ class AtomImage:
 
         h = 7
         h = 43 * h + hash(self.atom)
-        for e in self.supercell:
-            h = 31 * h + (0 if e is None else hash(e))
+        h = 43 * h + hash(self.supercell)
         return h
 
     def compute_position(self):

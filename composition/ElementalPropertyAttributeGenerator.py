@@ -1,13 +1,9 @@
 import sys
 import types
-
 import numpy as np
 import pandas as pd
-
-# TODO: Implement more rigorous tests
 from CompositionEntry import CompositionEntry
 from utils.LookUpData import LookUpData
-
 
 class ElementalPropertyAttributeGenerator:
     """

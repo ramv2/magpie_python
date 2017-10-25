@@ -465,11 +465,13 @@ class CompositionEntry:
         return property_list
 
 if __name__ == "__main__":
+    c = CompositionEntry(composition="Ga Ga V Ta C N")
+    print c
     # c = CompositionEntry(composition="Cu64.3Zr35.7")
     # print c
-    a_eq = [[1.0, 0.0, 0.33, 0.67], [0.0, 1.0, 0.67, 0.33], [1, 1, 1, 1]]
-    pl, u = lu(a_eq, permute_l=True)
-    mask = np.all(abs(u) < 1e-14, axis=1)
+    # a_eq = [[1.0, 0.0, 0.33, 0.67], [0.0, 1.0, 0.67, 0.33], [1, 1, 1, 1]]
+    # pl, u = lu(a_eq, permute_l=True)
+    # mask = np.all(abs(u) < 1e-14, axis=1)
     #
     # for i in range(len(u)):
     #     for j in range(len(u[i])):

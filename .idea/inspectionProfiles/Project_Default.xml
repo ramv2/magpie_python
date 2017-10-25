@@ -10,6 +10,9 @@
           <option value="type.columns" />
           <option value="type.values" />
           <option value="numpy.core.multiarray.ndarray.A1" />
+          <option value="type.head" />
+          <option value="set.get_atom_id" />
+          <option value="set.get_supercell" />
         </list>
       </option>
     </inspection_tool>
