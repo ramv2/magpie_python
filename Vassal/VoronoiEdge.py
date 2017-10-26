@@ -2,13 +2,11 @@ import numpy as np
 from numpy.linalg import norm
 from sympy import Line
 
+from Vassal.VoronoiVertex import VoronoiVertex
+
 
 class VoronoiEdge:
-    def __init__(self, intersecting_face=None, start_vertex=None,
-                 end_vertex=None, edge_face=None):
-
-        if edge_face is None:
-            raise ValueError("Edge face should be provided.")
+    def __init__(self, edge_face=None, intersecting_face=None):
 
         self.edge_face = edge_face
         self.intersecting_face = intersecting_face
@@ -18,35 +16,19 @@ class VoronoiEdge:
         self.next_edge = None
         self.end = float("inf")
         self.previous_edge = None
-        self.start_vertex = start_vertex
-        self.end_vertex = end_vertex
 
-        if intersecting_face is not None:
-            # Compute the line.
-            self.line = edge_face.get_plane().intersection(
-                intersecting_face.get_plane())
-            if not self.line:
-                raise RuntimeError("Planes are parallel.")
+        # Compute the line.
+        self.line = edge_face.get_plane().intersection(
+            intersecting_face.get_plane())[0]
+        if not self.line:
+            raise RuntimeError("Planes are parallel.")
 
-            # Ensure vector is CCW w.r.t edge face.
-            cut_direction = -intersecting_face.get_normal()
-            self.direction = np.array(self.line.direction.unit.evalf())
-            if not self.is_ccw(vec1=edge_face.get_normal(),
-                               vec2=self.direction, vec3=cut_direction):
-                self.line = Line(self.line.p1, -self.line.p2)
-        else:
-            if start_vertex is None or end_vertex is None:
-                raise ValueError("Start vertex and end vertex should be "
-                                 "provided.")
-
-            # Determine the intersecting face.
-            face_candidates = set(start_vertex.get_faces())
-            face_candidates.intersection(end_vertex.get_faces())
-            face_candidates.remove(edge_face)
-            if len(face_candidates) != 1:
-                raise RuntimeError("Found wrong number of shared faces: "
-                                   ""+str(len(face_candidates)))
-            self.intersecting_face = face_candidates[0]
+        # Ensure vector is CCW w.r.t edge face.
+        cut_direction = -intersecting_face.get_normal()
+        self.direction = np.array(self.line.direction.unit.evalf())
+        if not self.is_ccw(vec1=edge_face.get_normal(),
+                           vec2=self.direction, vec3=cut_direction):
+            self.line = Line(self.line.p1, -self.line.p2)
 
     def is_ccw(self, vec1=None, vec2=None, vec3=None, edge2=None):
         v1 = vec1
@@ -61,19 +43,22 @@ class VoronoiEdge:
             2] - v2[2] * v3[0]) + v1[2] * (v2[0] * v3[1] - v2[1] * v3[0])
         return ccw > 0
 
-    def get_abscissa(self, point, edge):
-        p1 = np.array(edge.line.p1)
-        p2 = np.array(edge.line.p2)
+    @classmethod
+    def get_abscissa(self, point, line):
+        p1 = np.array(line.p1.evalf(), dtype=float)
+        p2 = np.array(line.p2.evalf(), dtype=float)
         zero = p1 - np.dot(p1, p2 - p1) * (p2 - p1)/norm(p2 - p1)
-        return np.dot(point - zero, edge.line.direction)
+        direction = np.array(line.direction.evalf(), dtype=float)
+        return np.dot(point - zero, direction)
 
-
+    @classmethod
     def compute_intersection(self, edge1, edge2, just_join=False):
         # Determine the point at which the edges intersect.
-        point = np.array(edge1.line.intersection(edge2.line))
-        if not point:
+        point = np.array(edge1.line.intersection(edge2.line)[0].evalf(),
+                         dtype=float)
+        if point is None or point.size == 0:
             if just_join:
-                raise ValueError("Edges do not intersect.")
+                raise Exception("Edges do not intersect.")
             else:
                 return False
 
@@ -82,8 +67,8 @@ class VoronoiEdge:
 
         # Using the direction, check whether intersection is within bounds of
         #  each edge.
-        edge1_terminus = self.get_abscissa(point, edge1)
-        edge2_terminus = self.get_abscissa(point, edge2)
+        edge1_terminus = self.get_abscissa(point, edge1.get_line())
+        edge2_terminus = self.get_abscissa(point, edge2.get_line())
 
         if not just_join:
             within_bounds = None
@@ -151,8 +136,68 @@ class VoronoiEdge:
                         ""+self.intersecting_face.__str__()+")"
         return output
 
-    def get_end_vertex(self):
-        return self.end_vertex
+    def find_next_edge(self, candidates):
+        # Locate the ccw edges.
+        ccw_edges = []
+        for edge in candidates:
+            if self.is_ccw(edge2=edge):
+                ccw_edges.append(edge)
+
+        # Check if any were found.
+        if len(ccw_edges) == 0:
+            return None
+        elif len(ccw_edges) == 1:
+            return ccw_edges[0]
+
+        # Find the closest edge(s).
+        closest_edges = []
+        min_dist = float("inf")
+        min_point = np.array([np.inf]*3)
+        for edge in ccw_edges:
+            other_line = edge.get_line()
+            # If this line contains the minimum point, add it to list.
+            if not np.isinf(min_point).any() and other_line.contains(min_point):
+                closest_edges.append(edge)
+                continue
+
+            intersection = self.line.intersection(other_line)
+            if not intersection:
+                # Line is anti parallel.
+                continue
+            intersection = np.array(intersection[0].evalf(), dtype=float)
+
+            # See if it is the closest.
+            x = self.get_abscissa(intersection, self.line)
+            if x < min_dist:
+                closest_edges = []
+                min_dist = x
+                min_point = intersection
+                closest_edges.append(edge)
+
+        # If only one edge, return answer.
+        if len(closest_edges) == 1:
+            return closest_edges[0]
+
+        # Otherwise, find the edge with the largest angle.
+        max_angle = 0
+        choice = None
+        for edge in closest_edges:
+            angle = self.line.angle_between(edge.get_line()).evalf()
+            if angle > max_angle:
+                choice = edge
+                max_angle = angle
+
+        return choice
 
     def get_start_vertex(self):
-        return self.start_vertex
+        return VoronoiVertex(edge1=self, edge2=self.previous_edge)
+
+    def get_end_vertex(self):
+        return VoronoiVertex(edge1=self, edge2=self.next_edge)
+
+    def generate_pair(self):
+        try:
+            return VoronoiEdge(self.get_intersecting_face(),
+                               self.get_edge_face())
+        except Exception:
+            raise RuntimeError("Shouldn't be possible.")

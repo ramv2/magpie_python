@@ -1,11 +1,8 @@
 import re
 from itertools import izip
-
 import numpy as np
 from scipy.linalg import lu
-
 from utils.LookUpData import LookUpData
-
 
 class CompositionEntry:
     """

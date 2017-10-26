@@ -2,34 +2,34 @@ from numpy.linalg import norm
 import numpy as np
 
 class VoronoiVertex:
-    def __init__(self, position, inside_atom=None, faces=None):
-        if not isinstance(position, np.ndarray):
+    def __init__(self, inside_atom=None, position=None, edge1=None, edge2=None):
+        if position is not None and not isinstance(position, np.ndarray):
             raise ValueError("Position should be a numpy array!.")
 
-        if inside_atom is None and faces is None:
-            raise ValueError("Needs either inside_atom or list of faces.")
-
-        self.position = position
         in_atom = inside_atom
-        if in_atom is None:
-            in_atom = faces[0].get_inside_atom()
+        pos = position
 
+        self.previous_edge = edge1
+        self.next_edge = edge2
+
+        if in_atom is None and pos is None:
+            in_atom = edge1.get_edge_face().get_inside_atom()
+            l1 = edge1.get_line()
+            l2 = edge2.get_line()
+            p = l1.intersection(l2)[0].evalf()
+            pos = np.array(p, dtype=float)
+
+        self.position = pos
         self.distance = norm(self.position-np.array(
             in_atom.get_position_cartesian()))
 
-        self.faces = set(faces)
-
-    def distance_from(self, vertex):
-        return norm(self.position - vertex.position)
-
-    def get_distance_from_center(self):
-        return self.distance
-
-    def get_position(self):
-        return self.position
-
-    def __hash__(self):
-        return self.faces.__hash__()
+        if inside_atom is None and position is None:
+            if edge1.is_ccw(edge2=edge2):
+                self.previous_edge = edge1
+                self.next_edge = edge2
+            else:
+                self.previous_edge = edge2
+                self.next_edge = edge1
 
     @classmethod
     def get_centroid(self, points):
@@ -40,27 +40,38 @@ class VoronoiVertex:
         center /= len(points)
         return center
 
+    def distance_from(self, vertex):
+        return norm(self.position - vertex.position)
+
+    def get_distance_from_center(self):
+        return self.distance
+
+    def get_position(self):
+        return self.position
+
+    def __str__(self):
+        return str(self.position)
+
+    def __hash__(self):
+        return 3 + hash(self.position)
+
     def __eq__(self, other):
         if isinstance(other, VoronoiVertex):
-            return other.faces.__eq__(self.faces)
+            return other.previous_edge.__eq__(self.previous_edge) and \
+                   other.next_edge.__eq__(self.next_edge)
         return False
 
-    def get_faces(self):
-        return self.faces
-
     def __cmp__(self, other):
-        # If face sizes are different.
-        if len(other.faces) != len(self.faces):
-            return len(self.faces) - len(other.faces)
+        if self.previous_edge.__eq__(other.previous_edge):
+            return self.next_edge.__cmp__(other.next_edge)
+        else:
+            return self.previous_edge.__cmp__(other.previous_edge)
 
-        # Make sorted list of the faces.
-        my_faces = list(sorted(self.faces))
-        your_faces = list(sorted(other.faces))
+    def get_next_edge(self):
+        return self.next_edge
 
-        # Compare each entry.
-        for i in range(len(my_faces)):
-            comp = my_faces[i].__cmp__(your_faces[i])
-            if comp != 0:
-                return comp
+    def get_previous_edge(self):
+        return self.previous_edge
 
-        return 0
+    def is_on_edge(self, e):
+        return self.previous_edge.__eq__(e) or self.next_edge.__eq(e)

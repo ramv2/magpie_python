@@ -2,6 +2,8 @@ from collections import OrderedDict
 from numpy.linalg import norm
 from Vassal.AtomImage import AtomImage
 import numpy as np
+from Vassal.VoronoiEdge import VoronoiEdge
+from Vassal.VoronoiFace import VoronoiFace
 
 class VoronoiCell:
     def __init__(self, atom, radical, faces=None):
@@ -20,7 +22,7 @@ class VoronoiCell:
         return len(self.faces)
 
     def get_vertices(self):
-        return set([face.get_vertices() for face in self.faces])
+        return list(set([face.get_vertices() for face in self.faces]))
 
     def get_neighbor_types(self):
         output = OrderedDict()
@@ -267,3 +269,192 @@ class VoronoiCell:
                 return False
 
         return True
+
+    def compute_cell(self, image_finder, cutoff):
+        cur_cutoff = cutoff
+        n_attempts = 0
+        while n_attempts < 4:
+            n_attempts += 1
+            image_finder.set_cutoff_distance(cur_cutoff)
+            # Find all nearby images.
+            images = [image[0] for image in
+                      image_finder.get_all_neighbors_of_atom(
+                          self.atom.get_id())]
+
+            # Compute cell.
+            try:
+                self.compute_cell_helper(images)
+            except Exception:
+                cur_cutoff *= 1.5
+                continue
+
+            return
+
+        raise Exception("Cell failed to compute.")
+
+    def compute_cell_helper(self, images):
+        # Clear cached volume.
+        self.volume = np.nan
+
+        # Get all possible faces.
+        possible_faces = self.compute_faces(images)
+
+        # Get the faces corresponding to the direct polyhedron.
+        direct_faces = self.compute_direct_neighbors(possible_faces)
+
+        # Construct direct polyhedron.
+        for df in direct_faces:
+            try:
+                df.assemble_face_from_faces(direct_faces)
+            except Exception:
+                raise Exception("Direct polyhedron failed to construct.")
+
+        self.faces = list(direct_faces)
+
+        # Get the faces that might actually be direct faces.
+        possible_indirect_faces = self.compute_possible_indirect_neighbors(
+            possible_faces)
+
+        # Use these faces to compute indirect neighbors.
+        for face in possible_indirect_faces:
+            self.compute_intersection(face)
+
+    def compute_faces(self, images):
+        # Generate faces.
+        output = []
+        for image in images:
+            # Check if the image is this atom.
+            if image.get_atom_id() == self.atom.get_id() and \
+                    image.get_supercell() == [0, 0, 0]:
+                # If so, skip.
+                continue
+
+            # Make the appropriate face.
+            try:
+                output.append(VoronoiFace(self.atom, image, self.radical))
+            except Exception:
+                raise RuntimeError("Failure to create face.")
+
+        return output
+
+    def compute_direct_neighbors(self, faces):
+        # Sort distance from face to the center.
+        faces.sort(cmp=self.compare_faces)
+
+        # The closest face is on the direct polyhedron.
+        direct_faces = []
+        direct_faces.append(faces.pop(0))
+
+        # Now loop through all faces to find those whose centers are not
+        # outside any other face that is on the direct polyhedron.
+        for face in faces:
+            is_inside = True
+            for df in direct_faces:
+                if df.position_relative_to_face(face.get_face_center()) >= 0:
+                    is_inside = False
+
+            if is_inside:
+                direct_faces.append(face)
+                faces.remove(face)
+
+        return direct_faces
+
+    def compare_faces(self, a, b):
+        d1 = a.get_face_distance()
+        d2 = b.get_face_distance()
+        if d1 < d2:
+            return -1
+        elif d1 > d2:
+            return 1
+        else:
+            return 0
+
+    def compute_possible_indirect_neighbors(self, possible_faces):
+        # Get list of faces that might be indirect neighbors.
+        max_vertex_distance = max([v.get_distance_from_center() for face in
+                                   self.faces for v in face.get_vertices()])
+
+        possible_indirect_faces = []
+        for face in self.faces:
+            if face.get_face_distance() < max_vertex_distance:
+                possible_indirect_faces.append(face)
+            else:
+                # possible faces is sorted by get_direct_faces.
+                break
+
+        return possible_indirect_faces
+
+    def compute_intersection(self, new_face):
+        # Clear cached result.
+        self.volume = np.nan
+
+        # Determine whether any faces intersect this new new_face.
+        no_intersection = True
+        for new_face in self.faces:
+            for v in new_face.get_vertices():
+                if new_face.position_relative_to_face(v.get_position()) > 0:
+                    no_intersection = False
+                    break
+
+        if no_intersection:
+            return False
+
+        # If it does, store the old face information.
+        previous_state = OrderedDict({face: face.get_edges()} for face in
+                                     self.faces)
+
+        # Attempt to perform intersections.
+        try:
+            new_edges = []
+            for c_face in self.faces:
+                new_edge = c_face.compute_intersection(new_face)
+                if c_face.n_edges() < 3:
+                    self.faces.remove(c_face)
+                else:
+                    if new_edge is not None:
+                        new_edges.append(new_edge)
+
+            # Check if we have enough edges.
+            if len(new_edges) < 3:
+                raise Exception("Not enough edges were formed.")
+
+            # Assemble new face and add it to list of faces.
+            new_face.assemble_face_from_edges(new_edges)
+            self.faces.append(new_face)
+
+            # Check if geometry is valid.
+            if not self.geometry_is_valid():
+                raise Exception("Geometry is invalid.")
+
+        except Exception:
+            # Restore previous state.
+            self.faces = []
+            for face in previous_state:
+                face.reset_edges(previous_state[face])
+                self.faces.append(face)
+            return False
+
+    def remove_face(self, to_remove):
+        if to_remove not in self.faces:
+            raise RuntimeError("No such face exists.")
+
+        self.faces.remove(to_remove)
+        self.volume = np.nan
+
+        # Find all faces that are currently in contact with this face.
+        contacting_faces = to_remove.get_neihboring_faces()
+        for face_to_build in contacting_faces:
+            cur_edges = face_to_build.get_edges()
+
+            # Compute edges corresponding to the "contacting faces".
+            for face in contacting_faces:
+                if face.__eq__(face_to_build):
+                    continue
+                new_edge = VoronoiEdge(face_to_build, face)
+                cur_edges.append(new_edge)
+
+            # Remove the edge corresponding to the face being removed.
+            for e in cur_edges:
+                if e.get_intersecting_face.__eq__(to_remove):
+                    cur_edges.remove(e)
+            face_to_build.assemble_face_from_edges(cur_edges)
