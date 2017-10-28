@@ -40,8 +40,9 @@ class VoronoiFace:
 
     def __hash__(self):
         h = 7
-        h = 19 + h * hash(self.inside_atom)
-        h = 19 + h * hash(self.outside_atom)
+        h = 19 + h * id(self.inside_atom)
+        h = 19 + h * id(self.outside_atom)
+        return h
 
     def __cmp__(self, other):
         if self.inside_atom.get_id() == other.inside_atom.get_id():
@@ -68,8 +69,9 @@ class VoronoiFace:
 
     def get_normal(self):
         if self.face_normal is None:
-            n = Point3D(self.get_plane().normal_vector)
-            self.face_normal = np.array(n.evalf(), dtype=float)
+            p = Point3D(self.get_plane().normal_vector)
+            n = np.array(p.evalf(), dtype=float)
+            self.face_normal = n / norm(n)
         return self.face_normal
 
     def n_edges(self):

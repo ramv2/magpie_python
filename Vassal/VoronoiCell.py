@@ -10,7 +10,7 @@ class VoronoiCell:
         self.atom = atom
         self.faces = faces
         self.radical = radical
-        self.volume = float("inf")
+        self.volume = np.nan
 
     def get_atom(self):
         return self.atom
@@ -70,7 +70,9 @@ class VoronoiCell:
 
             # Remove all images corresponding to the shell inside this one.
             for shell in previous_shells:
-                new_shell.pop(shell)
+                for image in shell:
+                    if image in new_shell:
+                        new_shell.pop(image)
 
             # Append new shell to output.
             previous_shells.append(new_shell)
@@ -168,7 +170,7 @@ class VoronoiCell:
             # Update paths.
             paths = new_paths
 
-        # Now that all the paths are gathered, output only thr last step and
+        # Now that all the paths are gathered, output only the last step and
         # weights of all paths that lead to that step.
         output = OrderedDict()
         for path in paths:
@@ -231,7 +233,7 @@ class VoronoiCell:
         return output
 
     def get_volume(self):
-        if self.volume == float("inf"):
+        if np.isnan(self.volume):
             self.volume = 0
             atom_center = self.atom.get_position_cartesian()
             for face in self.faces:
@@ -265,9 +267,9 @@ class VoronoiCell:
             if not face.is_closed():
                 return False
 
-            if not set(self.faces) <= set(face.get_neighboring_faces()):
-                return False
-
+            for f in face.get_neighboring_faces():
+                if f not in self.faces:
+                    return False
         return True
 
     def compute_cell(self, image_finder, cutoff):
@@ -324,8 +326,8 @@ class VoronoiCell:
         output = []
         for image in images:
             # Check if the image is this atom.
-            if image.get_atom_id() == self.atom.get_id() and \
-                    image.get_supercell() == [0, 0, 0]:
+            if image.get_atom_id() == self.atom.get_id() and np.array_equal(
+                    image.get_supercell(), [0, 0, 0]):
                 # If so, skip.
                 continue
 
@@ -347,6 +349,8 @@ class VoronoiCell:
 
         # Now loop through all faces to find those whose centers are not
         # outside any other face that is on the direct polyhedron.
+
+        to_remove = []
         for face in faces:
             is_inside = True
             for df in direct_faces:
@@ -355,8 +359,9 @@ class VoronoiCell:
 
             if is_inside:
                 direct_faces.append(face)
-                faces.remove(face)
-
+                to_remove.append(face)
+        for face in to_remove:
+            faces.remove(face)
         return direct_faces
 
     def compare_faces(self, a, b):
@@ -375,7 +380,7 @@ class VoronoiCell:
                                    self.faces for v in face.get_vertices()])
 
         possible_indirect_faces = []
-        for face in self.faces:
+        for face in possible_faces:
             if face.get_face_distance() < max_vertex_distance:
                 possible_indirect_faces.append(face)
             else:
@@ -390,9 +395,10 @@ class VoronoiCell:
 
         # Determine whether any faces intersect this new new_face.
         no_intersection = True
-        for new_face in self.faces:
-            for v in new_face.get_vertices():
-                if new_face.position_relative_to_face(v.get_position()) > 0:
+        for cur_face in self.faces:
+            for v in cur_face.get_vertices():
+                d = new_face.position_relative_to_face(v.get_position())
+                if d > 0:
                     no_intersection = False
                     break
 
@@ -400,20 +406,22 @@ class VoronoiCell:
             return False
 
         # If it does, store the old face information.
-        previous_state = OrderedDict({face: face.get_edges()} for face in
-                                     self.faces)
+        previous_state = OrderedDict({face: face.get_edges() for face in
+                                     self.faces})
 
         # Attempt to perform intersections.
         try:
             new_edges = []
+            to_remove = []
             for c_face in self.faces:
                 new_edge = c_face.compute_intersection(new_face)
                 if c_face.n_edges() < 3:
-                    self.faces.remove(c_face)
+                    to_remove.append(c_face)
                 else:
                     if new_edge is not None:
                         new_edges.append(new_edge)
-
+            for f in to_remove:
+                self.faces.remove(f)
             # Check if we have enough edges.
             if len(new_edges) < 3:
                 raise Exception("Not enough edges were formed.")
@@ -425,7 +433,7 @@ class VoronoiCell:
             # Check if geometry is valid.
             if not self.geometry_is_valid():
                 raise Exception("Geometry is invalid.")
-
+            return True
         except Exception:
             # Restore previous state.
             self.faces = []
@@ -442,7 +450,7 @@ class VoronoiCell:
         self.volume = np.nan
 
         # Find all faces that are currently in contact with this face.
-        contacting_faces = to_remove.get_neihboring_faces()
+        contacting_faces = to_remove.get_neighboring_faces()
         for face_to_build in contacting_faces:
             cur_edges = face_to_build.get_edges()
 
@@ -455,6 +463,6 @@ class VoronoiCell:
 
             # Remove the edge corresponding to the face being removed.
             for e in cur_edges:
-                if e.get_intersecting_face.__eq__(to_remove):
+                if e.get_intersecting_face().__eq__(to_remove):
                     cur_edges.remove(e)
             face_to_build.assemble_face_from_edges(cur_edges)

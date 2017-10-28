@@ -21,11 +21,11 @@ class VoronoiEdge:
         self.line = edge_face.get_plane().intersection(
             intersecting_face.get_plane())[0]
         if not self.line:
-            raise RuntimeError("Planes are parallel.")
+            raise Exception("Planes are parallel.")
 
         # Ensure vector is CCW w.r.t edge face.
         cut_direction = -intersecting_face.get_normal()
-        self.direction = np.array(self.line.direction.unit.evalf())
+        self.direction = np.array(self.line.direction.unit.evalf(), dtype=float)
         if not self.is_ccw(vec1=edge_face.get_normal(),
                            vec2=self.direction, vec3=cut_direction):
             self.line = Line(self.line.p1, -self.line.p2)
@@ -48,7 +48,7 @@ class VoronoiEdge:
         p1 = np.array(line.p1.evalf(), dtype=float)
         p2 = np.array(line.p2.evalf(), dtype=float)
         zero = p1 - np.dot(p1, p2 - p1) * (p2 - p1)/norm(p2 - p1)
-        direction = np.array(line.direction.evalf(), dtype=float)
+        direction = np.array(line.direction.unit.evalf(), dtype=float)
         return np.dot(point - zero, direction)
 
     @classmethod
@@ -104,8 +104,8 @@ class VoronoiEdge:
 
     def __hash__(self):
         h = 5
-        h = 43 * h + hash(self.edge_face)
-        h = 43 * h + hash(self.intersecting_face)
+        h = 43 * h + id(self.edge_face)
+        h = 43 * h + id(self.intersecting_face)
         return h
 
     def __cmp__(self, other):
@@ -200,4 +200,4 @@ class VoronoiEdge:
             return VoronoiEdge(self.get_intersecting_face(),
                                self.get_edge_face())
         except Exception:
-            raise RuntimeError("Shouldn't be possible.")
+            raise Exception("Shouldn't be possible.")
