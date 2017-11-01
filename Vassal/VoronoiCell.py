@@ -66,7 +66,9 @@ class VoronoiCell:
                     old_image = neighbor.get_supercell() + this_image
 
                     # Create a new image, and append it to output.
-                    new_shell[AtomImage(neighbor.get_atom(), old_image)] = None
+                    new_image = AtomImage(neighbor.get_atom(), old_image)
+                    if new_image not in new_shell:
+                        new_shell[new_image] = None
 
             # Remove all images corresponding to the shell inside this one.
             for shell in previous_shells:
@@ -354,8 +356,10 @@ class VoronoiCell:
         for face in faces:
             is_inside = True
             for df in direct_faces:
-                if df.position_relative_to_face(face.get_face_center()) >= 0:
+                d = df.position_relative_to_face(face.get_face_center())
+                if d >= 0:
                     is_inside = False
+                    break
 
             if is_inside:
                 direct_faces.append(face)

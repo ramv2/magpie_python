@@ -65,7 +65,8 @@ class AtomImage:
 
         h = 7
         h = 43 * h + id(self.atom)
-        h = 43 * h + id(self.supercell)
+        for i in self.supercell:
+            h = 31 * h + hash(i)
         return h
 
     def compute_position(self):

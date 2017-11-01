@@ -1,8 +1,11 @@
-from sympy import Plane, Point3D
-from numpy.linalg import norm
 import numpy as np
+import math
+from decimal import Decimal
+from numpy.linalg import norm
 from Vassal.VoronoiEdge import VoronoiEdge
 from Vassal.VoronoiVertex import VoronoiVertex
+from geometry.Plane import Plane
+
 
 class VoronoiFace:
     def __init__(self, inside_atom, outside_atom, radical):
@@ -15,6 +18,7 @@ class VoronoiFace:
         self.face_distance = None
         self.face_center = None
         self.face_area = np.nan
+        self.tol = 1e-8
 
         inside_pos = self.inside_atom.get_position_cartesian()
         outside_pos = self.outside_atom.get_position()
@@ -63,15 +67,13 @@ class VoronoiFace:
         if self.face_plane is None:
             inside_pos = self.inside_atom.get_position_cartesian()
             outside_pos = self.outside_atom.get_position()
-            self.face_plane = Plane(self.face_center,
-                                    normal_vector=outside_pos-inside_pos)
+            self.face_plane = Plane(p=self.face_center, normal=
+                                    outside_pos-inside_pos, tolerance=1e-8)
         return self.face_plane
 
     def get_normal(self):
         if self.face_normal is None:
-            p = Point3D(self.get_plane().normal_vector)
-            n = np.array(p.evalf(), dtype=float)
-            self.face_normal = n / norm(n)
+            self.face_normal = self.get_plane().get_normal()
         return self.face_normal
 
     def n_edges(self):
@@ -130,15 +132,9 @@ class VoronoiFace:
 
     def position_relative_to_face(self, point):
         plane = self.get_plane()
-        if plane.is_coplanar(Point3D(point)):
+        if plane.contains(point):
             return 0
-
-        p = np.array(plane.p1.evalf(), dtype=float)
-        n = self.get_normal()
-        w = n / norm(n)
-        origin_offset = -np.dot(p, w)
-
-        offset = np.dot(point, w) + origin_offset
+        offset = plane.get_offset(point=point)
         if offset > 0:
             return 1
         else:
@@ -151,7 +147,7 @@ class VoronoiFace:
     def assemble_face_from_faces(self, faces):
         # Generate a local copy of this list.
         other_faces = list(faces)
-        if self in faces:
+        if self in other_faces:
             other_faces.remove(self)
 
         # Find all edges.
@@ -173,29 +169,46 @@ class VoronoiFace:
         if len(available_edges) < 3:
             raise Exception("Not enough edges.")
 
-        available_edges.sort(cmp=self.comp_edges)
+        # for i,e in enumerate(available_edges):
+        #     l = e.get_line()
+        #     print i
+        #     print l.zero
+        #     print l.direction
+        #     print l.distance(p=self.face_center)
+            # print i,e.intersecting_face.outside_atom
+        # print "Face center: "+str(self.face_center)
+        cur_edge = available_edges[0]
+        for i, edge in enumerate(available_edges):
+            flag = cur_edge.is_ccw(edge2=edge)
+            print i, edge.intersecting_face.outside_atom, flag
+
+        available_edges.sort(cmp=self.edge_comp)
 
         return self.assemble_face_from_edges(available_edges)
 
-    def comp_edges(self, a, b):
-        p1_a = np.array(a.get_line().p1.evalf(), dtype=float)
-        p2_a = np.array(a.get_line().p2.evalf(), dtype=float)
-        direction =  (p2_a - p1_a) / norm(p2_a - p1_a)
-        zero_a = p1_a - np.dot(p1_a, p2_a - p1_a) * direction
-        d_a = self.face_center - zero_a
-        d_a += -np.dot(d_a, direction) * direction
-        dist_a = norm(d_a)
-        p1_b = np.array(b.get_line().p1.evalf(), dtype=float)
-        p2_b = np.array(b.get_line().p2.evalf(), dtype=float)
-        direction = (p2_b - p1_b) / norm(p2_b - p1_b)
-        zero_b = p1_b - np.dot(p1_b, p2_b - p1_b) * direction
-        d_b = self.face_center - zero_b
-        d_b += -np.dot(d_b, direction) * direction
-        dist_b = norm(d_b)
+    def edge_comp(self, a, b):
+        d1 = a.get_line().distance(p=self.face_center)
+        d2 = b.get_line().distance(p=self.face_center)
 
-        if dist_a < dist_b:
+        # l1 = a.get_line()
+        # print "A values: " + a.intersecting_face.outside_atom.__str__()
+        # print l1.zero
+        # print l1.direction
+        # print l1.tolerance
+        # print d1
+
+        # l2 = b.get_line()
+        # print "B values: " + b.intersecting_face.outside_atom.__str__()
+        # print l2.zero
+        # print l2.direction
+        # print l2.tolerance
+        # print d2
+        #
+        # print
+        # print
+        if d1 < d2:
             return -1
-        elif dist_a > dist_b:
+        elif d1 > d2:
             return 1
         else:
             return 0
@@ -451,10 +464,8 @@ class VoronoiFace:
         start_edge = self.vertices[first_vertex].get_next_edge()
         end_edge = self.vertices[last_vertex].get_previous_edge()
 
-        p1 = np.array(start_edge.get_line().intersection(new_edge.get_line(
-                ))[0].evalf(), dtype=float)
-        p2 = np.array(end_edge.get_line().intersection(new_edge.get_line(
-        ))[0].evalf(), dtype=float)
+        p1 = start_edge.get_line().intersection(new_edge.get_line())
+        p2 = end_edge.get_line().intersection(new_edge.get_line())
         return norm(p1 - p2)
 
     def is_contacted_by(self, other_face):

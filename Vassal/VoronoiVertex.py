@@ -14,10 +14,7 @@ class VoronoiVertex:
 
         if in_atom is None and pos is None:
             in_atom = edge1.get_edge_face().get_inside_atom()
-            l1 = edge1.get_line()
-            l2 = edge2.get_line()
-            p = l1.intersection(l2)[0].evalf()
-            pos = np.array(p, dtype=float)
+            pos = edge1.get_line().intersection(edge2.get_line())
 
         self.position = pos
         self.distance = norm(self.position-np.array(

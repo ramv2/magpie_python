@@ -27,8 +27,8 @@ class testVoronoiEdge(unittest.TestCase):
         edge = VoronoiEdge(face1, face2)
 
         # Check out properties.
-        dir = np.array(edge.get_line().direction.evalf(), dtype=float)
-        np_tst.assert_array_almost_equal([-1, 0, 0], dir)
+        np_tst.assert_array_almost_equal([-1, 0, 0], edge.get_line(
+        ).get_direction())
 
     def test_is_next(self):
         # Initialize faces.
@@ -147,10 +147,8 @@ class testVoronoiEdge(unittest.TestCase):
         edge3 = VoronoiEdge(face1, face4)
 
         # Verify that edge2 and edge3 intersect edge1 in the same place.
-        p1 = np.array(edge1.get_line().intersection(edge2.get_line())[
-                          0].evalf(), dtype=float)
-        p2 = np.array(edge1.get_line().intersection(edge3.get_line())[
-                          0].evalf(), dtype=float)
+        p1 = edge1.get_line().intersection(edge2.get_line())
+        p2 = edge1.get_line().intersection(edge3.get_line())
         np_tst.assert_array_almost_equal(p1, p2)
 
         # Verify that when tasked with distinguishing between the two, it
@@ -187,7 +185,6 @@ class testVoronoiEdge(unittest.TestCase):
         # Tests.
         self.assertEquals(edge.get_edge_face(), pair.get_intersecting_face())
         self.assertEquals(edge.get_intersecting_face(), pair.get_edge_face())
-        dir1 = np.array(edge.get_line().direction.unit.evalf(), dtype=float)
-        dir2 = -1 * np.array(pair.get_line().direction.unit.evalf(),
-                             dtype=float)
+        dir1 = edge.get_line().get_direction()
+        dir2 = -1 * pair.get_line().get_direction()
         np_tst.assert_array_almost_equal(dir1, dir2)

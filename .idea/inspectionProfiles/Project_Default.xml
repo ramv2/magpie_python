@@ -13,6 +13,9 @@
           <option value="type.head" />
           <option value="set.get_atom_id" />
           <option value="set.get_supercell" />
+          <option value="type.to_csv" />
+          <option value="type.var" />
+          <option value="type.loc" />
         </list>
       </option>
     </inspection_tool>

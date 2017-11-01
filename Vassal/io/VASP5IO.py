@@ -7,6 +7,7 @@ from Vassal.Cell import Cell
 
 
 class VASP5IO:
+    @classmethod
     def parse_file(self, file_name=None, list_of_lines=None):
         # Open file.
         lines = None
