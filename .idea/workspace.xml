@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="928b52f4-35f8-48d1-abb5-b72ef2e61ac2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Vassal/PairDistanceAnalysis.py" afterPath="$PROJECT_DIR$/Vassal/PairDistanceAnalysis.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Vassal/VoronoiEdge.py" afterPath="$PROJECT_DIR$/Vassal/VoronoiEdge.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geometry/Plane.py" afterPath="$PROJECT_DIR$/geometry/Plane.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/testPairDistanceAnalysis.py" afterPath="$PROJECT_DIR$/test/testPairDistanceAnalysis.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/use_cases/M2AX/formation_energy_prediction.py" afterPath="$PROJECT_DIR$/use_cases/M2AX/formation_energy_prediction.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/use_cases/M2AX/new_features.csv" afterPath="$PROJECT_DIR$/use_cases/M2AX/new_features.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../scripts/graph_object.py" afterPath="$PROJECT_DIR$/../scripts/graph_object.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../scripts/process_options" afterPath="$PROJECT_DIR$/../scripts/process_options" />
     </list>
@@ -54,24 +48,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PairDistanceAnalysis.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PairDistanceAnalysis.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Vassal/PairDistanceAnalysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="-1224">
               <caret line="26" column="48" lean-forward="false" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="48" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Plane.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geometry/Plane.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="75" column="30" lean-forward="true" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -88,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VoronoiEdge.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="VoronoiEdge.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Vassal/VoronoiEdge.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+            <state relative-caret-position="221">
+              <caret line="19" column="51" lean-forward="false" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -1774,14 +1758,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geometry/Plane.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="75" column="30" lean-forward="true" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/testPairDistanceAnalysis.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1810,20 +1786,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Vassal/VoronoiEdge.py">
+    <entry file="file://$PROJECT_DIR$/geometry/Plane.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+        <state relative-caret-position="1156">
+          <caret line="75" column="30" lean-forward="true" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vassal/PairDistanceAnalysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1224">
+          <caret line="26" column="48" lean-forward="false" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="48" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Vassal/PairDistanceAnalysis.py">
+    <entry file="file://$PROJECT_DIR$/Vassal/VoronoiEdge.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="26" column="48" lean-forward="false" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="48" />
+        <state relative-caret-position="221">
+          <caret line="19" column="51" lean-forward="false" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
