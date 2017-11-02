@@ -37,15 +37,36 @@ class VoronoiEdge:
             v0 = self.edge_face.get_normal()
             v1 = self.direction
             v2 = edge2.direction
+        #
+        # diff = v1 - v2
+        # diff_sq = diff[0] * diff[0] + diff[1] * diff[1] + diff[2] * diff[2]
+        # if diff_sq < 1e-26:
+        #     v1_cap = v1 / norm(v1)
+        #     v0_cap = v0 - np.dot(v0, v1) * v1_cap
+        #     ccw1 = np.dot(v0_cap, v1)
+            # one = np.ones(3, dtype=float)
+            # ccw1 = det(np.array([v0, v1, one]))
+        # else:
+        #     ccw1 = det(np.array([v0, v1, v2]))
 
+        # term1 = v1[0] * v0[2] * v2[1] + v1[1] * v0[0] * v2[2] + v1[2] * v0[1] \
+        #                                                        * v2[0]
+        # term2 = v1[0] * v0[1] * v2[2] + v1[1] * v0[2] * v2[0] + v1[2] * v0[0] \
+        #                                                        * v2[1]
+        # ccw1 = term1 - term2
+        # ccw1 = v2[0] * v0[1] * v1[2] - v2[0] * v1[1] * v0[2] + v2[1] * v0[2] \
+        #         * v1[0] - v2[1] * v0[0] * v1[2] + v2[2] * v0[0] * v1[1] - v2[
+        #     2] * v1[0] * v0[1]
         ccw1 = v0[0] * (v1[1] * v2[2] - v1[2] * v2[1]) - v0[1] * (v1[0] * v2[
             2] - v1[2] * v2[0]) + v0[2] * (v1[0] * v2[1] - v1[1] * v2[0])
-        term1 = v1[1] * v2[2] - v1[2] * v2[1]
-        term2 = v1[0] * v2[2] - v1[2] * v2[0]
-        term3 = v1[0] * v2[1] - v1[1] * v2[0]
+        term1 = v0[0] * v1[1] * v2[2] - v0[0] * v1[2] * v2[1]
+        term2 = v0[1] * v1[2] * v2[0] - v0[1] * v1[0] * v2[2]
+        term3 = v0[2] * v1[0] * v2[1] - v0[2] * v1[1] * v2[0]
 
+        ccw2 = term1 + term2 + term3
         # a = np.array([v0, v1, v2])
         # ccw2 = det(a)
+
         return ccw1 > 0
 
     @classmethod

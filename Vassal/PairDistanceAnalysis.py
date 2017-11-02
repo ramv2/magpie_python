@@ -1,9 +1,9 @@
 import numpy as np
 from numpy.linalg import norm
-from sympy import Plane
 from Vassal.AtomImage import AtomImage
 from Vassal.util.VectorCombinationComputer import VectorCombinationComputer
 import math
+from geometry.Plane import Plane
 
 class PairDistanceAnalysis:
     def __init__(self):
@@ -21,12 +21,10 @@ class PairDistanceAnalysis:
 
     def precompute(self):
         lat_vectors = self.structure.get_lattice_vectors()
-        p0 = Plane(lat_vectors[0] * 0.5, normal_vector=lat_vectors[0])
-        p1 = Plane(lat_vectors[1] * 0.5, normal_vector=lat_vectors[1])
-        p2 = Plane(lat_vectors[2] * 0.5, normal_vector=lat_vectors[2])
-        max_image_dist = norm(np.array(p0.intersection(p1)[0].intersection(
-            p2)[0].evalf(), dtype=float))
-
+        p0 = Plane(lat_vectors[0], 1e-6, p= 0.5 * lat_vectors[0])
+        p1 = Plane(lat_vectors[1], 1e-6, p= 0.5 * lat_vectors[1])
+        p2 = Plane(lat_vectors[2], 1e-6, p= 0.5 * lat_vectors[2])
+        max_image_dist = norm(Plane.intersection_3_planes(p0, p1, p2))
         computer = VectorCombinationComputer(lat_vectors, max_image_dist +
                                              self.cutoff_distance)
         self.supercells = computer.get_supercell_coordinates()

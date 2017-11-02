@@ -1,7 +1,5 @@
 import unittest
-
 from numpy.linalg import norm
-
 from Vassal.Atom import Atom
 from Vassal.Cell import Cell
 from Vassal.PairDistanceAnalysis import PairDistanceAnalysis

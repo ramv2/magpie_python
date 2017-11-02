@@ -72,6 +72,7 @@ class Plane:
                                                             self.tolerance))
             return Line(p1=p, p2=p + dir, tolerance=self.tolerance)
 
+    @classmethod
     def intersection_3_planes(self, p1, p2, p3):
         a1 = p1.w[0]
         b1 = p1.w[1]
