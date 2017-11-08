@@ -16,6 +16,7 @@
           <option value="type.to_csv" />
           <option value="type.var" />
           <option value="type.loc" />
+          <option value="numpy.longdouble" />
         </list>
       </option>
     </inspection_tool>
