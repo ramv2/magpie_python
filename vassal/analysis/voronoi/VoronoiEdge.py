@@ -1,6 +1,8 @@
+import gmpy2
 import numpy as np
 from numpy.linalg import norm
 from vassal.analysis.voronoi.VoronoiVertex import VoronoiVertex
+from vassal.data.Cell import Cell
 
 class VoronoiEdge:
     """
@@ -68,6 +70,7 @@ class VoronoiEdge:
             v0 = self.edge_face.get_normal()
             v1 = self.direction
             v2 = edge2.direction
+            # print edge2.intersecting_face.outside_atom.__str__()
 
         # fig = plt.figure()
         # ax = fig.add_subplot(111, projection='3d')
@@ -75,7 +78,13 @@ class VoronoiEdge:
         #
         # diff = v1 - v2
         # diff_sq = diff[0] * diff[0] + diff[1] * diff[1] + diff[2] * diff[2]
-        # if diff_sq < 1e-26:
+        # if diff_sq < 1e-80:
+        #     return False
+        #
+        # add = v1 + v2
+        # add_sq = add[0] * add[0] + add[1] * add[1] + add[2] * add[2]
+        # if add_sq < 1e-50:
+        #     return False
         #     v1_cap = v1 / norm(v1)
         #     v0_cap = v0 - np.dot(v0, v1) * v1_cap
         #     ccw1 = np.dot(v0_cap, v1)
@@ -108,6 +117,8 @@ class VoronoiEdge:
         term3 = v0[2] * v1[0] * v2[1] - v0[2] * v1[1] * v2[0]
 
         ccw1 = term1 + term2 + term3
+        # print term1, term2, term3, ccw1
+        # print
         # a = np.array([v0, v1, v2])
         # ccw2 = det(a)
 
@@ -244,7 +255,11 @@ class VoronoiEdge:
         Function to get the length of this edge.
         :return: Length.
         """
-        return norm((self.beginning - self.end) * self.direction)
+        try:
+            return norm((self.beginning - self.end) * self.direction)
+        except AttributeError or TypeError:
+            return Cell.get_mpfr_norm((self.beginning - self.end) *
+                                      self.direction)
 
     def __str__(self):
         """
@@ -261,7 +276,7 @@ class VoronoiEdge:
         contains this edge. This is computed by first computing all edges
         that are oriented CCW to this edge. Next, the edge that is closest to
         the origin is found. If multiple edges intersect at the same point,
-        the one with the greatest between the direction of this edge is
+        the one with the greatest angle between the direction of this edge is
         selected.
         :param candidates: All candidate edges.
         :return: The next edge. None if no suitable candidate is found.
@@ -288,7 +303,7 @@ class VoronoiEdge:
         for edge in ccw_edges:
             other_line = edge.get_line()
             # If this line contains the minimum point, add it to list.
-            if not np.isinf(min_point).any() and other_line.contains(min_point):
+            if other_line.contains(min_point):
                 closest_edges.append(edge)
                 continue
 
@@ -361,7 +376,10 @@ class VoronoiEdge:
         :param v2: Second vector.
         :return: Angular separation between v1 and v2.
         """
-        norm_product = norm(v1) * norm(v2)
+        try:
+            norm_product = norm(v1) * norm(v2)
+        except AttributeError or TypeError:
+            norm_product = Cell.get_mpfr_norm(v1) * Cell.get_mpfr_norm(v2)
         if norm_product == 0:
             raise Exception("Norms are zero!")
         dp = np.dot(v1, v2)
@@ -369,10 +387,25 @@ class VoronoiEdge:
         if dp < -threshold or dp > threshold:
             # The vectors are almost aligned, compute using the sine.
             v3 = np.cross(v1, v2)
-            x = np.math.asin(norm(v3) / norm_product)
+            x = gmpy2.asin(norm(v3) / norm_product)
             if dp >= 0:
                 return x
             return np.math.pi - x
         else:
             # The vectors are sufficiently separated to use the cosine.
-            return np.math.acos(dp / norm_product)
+            return gmpy2.acos(dp / norm_product)
+
+    def print_properties(self):
+        print "Edge face:", self.edge_face.outside_atom.__str__(), \
+            "Intersecting face:", self.intersecting_face.outside_atom.__str__()
+        print "Line zero:", self.line.zero
+        print "Line direction:", self.line.direction
+        print "Line tolerance:", self.line.tolerance
+        print "Edge direction:", self.direction
+        print "Beginning:", self.beginning
+        print "End:", self.end
+        # print "Previous edge:", \
+        #     self.previous_edge.intersecting_face.outside_atom.__str__()
+        # print "Next edge:", \
+        #     self.next_edge.intersecting_face.outside_atom.__str__()
+        print

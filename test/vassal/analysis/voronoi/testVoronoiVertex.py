@@ -1,13 +1,10 @@
 import unittest
-
-from vassal.Atom import Atom
-from vassal.Cell import Cell
-from vassal.VoronoiEdge import VoronoiEdge
-from vassal.VoronoiVertex import VoronoiVertex
-
+from vassal.analysis.voronoi.VoronoiEdge import VoronoiEdge
 from vassal.analysis.voronoi.VoronoiFace import VoronoiFace
+from vassal.analysis.voronoi.VoronoiVertex import VoronoiVertex
+from vassal.data.Atom import Atom
 from vassal.data.AtomImage import AtomImage
-
+from vassal.data.Cell import Cell
 
 class testVoronoiVertex(unittest.TestCase):
     def test_creation(self):

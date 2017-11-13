@@ -1,5 +1,9 @@
+import gmpy2
+from gmpy2 import mpfr
 import numpy as np
 from numpy.linalg import norm
+
+from vassal.data.Cell import Cell
 from vassal.geometry.Line import Line
 
 class Plane:
@@ -9,7 +13,8 @@ class Plane:
     Class to represent planes in a three dimensional space.
     """
 
-    def __init__(self, normal, tolerance, p=None, plane=None):
+    def __init__(self, normal=None, tolerance=None, p=None, plane=None,
+                 p1=None, p2=None, p3=None):
         """
         Function to build a plane normal to a given direction and containing
         the origin. If p is specified, the plane contains the point. If plane
@@ -20,16 +25,17 @@ class Plane:
         :param plane: Plane to copy.
         """
 
-        if plane is None:
-            n = norm(normal)
+        if plane is None and p1 is None and p2 is None and p3 is None:
+            normal_mpfr = np.array(map(mpfr, normal))
+            n = Cell.get_mpfr_norm(normal_mpfr)
             if n < 1e-10:
                 raise Exception("Norm is zero!")
 
             # Third vector of the plane frame (plane normal).
-            self.w = normal / n
+            self.w = normal_mpfr / n
 
             # Tolerance below which points are considered identical.
-            self.tolerance = tolerance
+            self.tolerance = mpfr(tolerance)
 
             #  Offset of the origin with respect to the plane.
             self.origin_offset = -np.dot(p, self.w) if p is not None else 0
@@ -42,7 +48,7 @@ class Plane:
 
             # Second vector of the plane frame (in plane).
             self.v = np.cross(self.w, self.u)
-        else:
+        elif p1 is None and p2 is None and p3 is None:
             #  Offset of the origin with respect to the plane.
             self.origin_offset = plane.origin_offset
 
@@ -60,6 +66,12 @@ class Plane:
 
             # Tolerance below which points are considered identical.
             self.tolerance = plane.tolerance
+        else:
+            v1 = np.array(map(mpfr, p1))
+            v2 = np.array(map(mpfr, p2))
+            v3 = np.array(map(mpfr, p3))
+            normal_mpfr = np.cross(v2 - v1, v3 - v1)
+            self.__init__(normal=normal_mpfr, tolerance=tolerance, p=v1)
 
     def orthogonal(self, w):
         """
@@ -79,19 +91,19 @@ class Plane:
         :return: Normalized orthogonal vector.
         """
 
-        threshold = 0.6 * norm(w)
+        threshold = 0.6 * Cell.get_mpfr_norm(w)
         if threshold == 0:
             raise Exception("Norm is zero!")
         x = w[0]
         y = w[1]
         z = w[2]
         if abs(x) <= threshold:
-            inverse = 1 / np.sqrt(y ** 2 + z ** 2)
+            inverse = 1 / gmpy2.sqrt(y ** 2 + z ** 2)
             return np.array([0, inverse * z, -inverse * y])
         elif abs(y) <= threshold:
-            inverse = 1 / np.sqrt(x ** 2 + z ** 2)
+            inverse = 1 / gmpy2.sqrt(x ** 2 + z ** 2)
             return np.array([-inverse * z, 0, inverse * x])
-        inverse = 1 / np.sqrt(x ** 2 + y ** 2)
+        inverse = 1 / gmpy2.sqrt(x ** 2 + y ** 2)
         return np.array([inverse * y, -inverse * x, 0])
 
     def get_normal(self):
@@ -145,7 +157,7 @@ class Plane:
             return p + k * dir
         else:
             dir = np.cross(self.w, other.w)
-            if norm(dir) < self.tolerance:
+            if Cell.get_mpfr_norm(dir) < self.tolerance:
                 return None
             p = self.intersection_3_planes(self, other, Plane(dir,
                                                             self.tolerance))

@@ -1,8 +1,10 @@
-import numpy as np
 from numpy.linalg import norm
+import numpy as np
 from vassal.analysis.voronoi.VoronoiEdge import VoronoiEdge
 from vassal.analysis.voronoi.VoronoiVertex import VoronoiVertex
+from vassal.data.Cell import Cell
 from vassal.geometry.Plane import Plane
+import gmpy2
 
 class VoronoiFace:
     """
@@ -49,7 +51,10 @@ class VoronoiFace:
         inside_pos = self.inside_atom.get_position_cartesian()
         outside_pos = self.outside_atom.get_position()
         diff = inside_pos - outside_pos
-        atom_dist = norm(diff)
+        try:
+            atom_dist = norm(diff)
+        except AttributeError or TypeError:
+            atom_dist = Cell.get_mpfr_norm(diff)
         if radical:
             self.face_distance = self.get_plane_distance(
                 self.inside_atom.get_radius(), self.outside_atom.get_atom(
@@ -157,7 +162,7 @@ class VoronoiFace:
         :return: Surface area.
         """
         # If needed compute area.
-        if np.isnan(self.face_area):
+        if not gmpy2.is_finite(self.face_area):
             # Get centroid of face.
             centroid = self.get_centroid()
             # Loop over all edges.
@@ -168,7 +173,10 @@ class VoronoiFace:
                 next_vertex = self.vertices[(i + 1) % l]
                 a = this_vertex.get_position() - centroid
                 b = next_vertex.get_position() - centroid
-                area += norm(np.cross(a, b))
+                try:
+                    area += norm(np.cross(a, b))
+                except AttributeError or TypeError:
+                    area += Cell.get_mpfr_norm(np.cross(a, b))
 
             self.face_area = area / 2
 
@@ -194,8 +202,13 @@ class VoronoiFace:
         with this face.
         :return: Distance in Cartesian units.
         """
-        return norm(self.inside_atom.get_position_cartesian() -
+        try:
+            return norm(self.inside_atom.get_position_cartesian() -
                     self.outside_atom.get_position())
+        except AttributeError or TypeError:
+            return Cell.get_mpfr_norm(
+                self.inside_atom.get_position_cartesian() -
+                self.outside_atom.get_position())
 
     def get_vertices(self):
         """
@@ -282,36 +295,44 @@ class VoronoiFace:
         # Find all edges.
         available_edges = []
         for other_face in other_faces:
-            edge = None
             try:
-                edge = VoronoiEdge(self, other_face)
+                edge = VoronoiEdge(edge_face=self,
+                                   intersecting_face=other_face)
             except Exception:
                 continue
 
             # Store the data.
-            if edge is None:
-                continue
-            else:
-                available_edges.append(edge)
+            # edge.print_properties()
+            available_edges.append(edge)
 
         # Error check.
         if len(available_edges) < 3:
             raise Exception("Not enough edges.")
 
+        # print "Before sorting"
         # for i,e in enumerate(available_edges):
-        #     l = e.get_line()
-        #     print i
+        #     print i, e.intersecting_face.outside_atom, e.get_line(
+        #     ).distance_sq(self.face_center)
+            # l = e.get_line()
+            # print l.distance(p=self.face_center)
         #     print l.zero
         #     print l.direction
-        #     print l.distance(p=self.face_center)
-            # print i,e.intersecting_face.outside_atom
+
+        # print
         # print "Face center: "+str(self.face_center)
-        cur_edge = available_edges[0]
-        for i, edge in enumerate(available_edges):
-            flag = cur_edge.is_ccw(edge2=edge)
-            # print i, edge.intersecting_face.outside_atom, flag
+        # cur_edge = available_edges[0]
+        # for i, edge in enumerate(available_edges):
+        #     print i, edge.intersecting_face.outside_atom
+            # flag = cur_edge.is_ccw(edge2=edge)
+        # print
 
         available_edges.sort(cmp=self.edge_comp)
+        # print "After sorting"
+        #
+        # for i, edge in enumerate(available_edges):
+        #     print i, edge.intersecting_face.outside_atom
+        #
+        # print
 
         return self.assemble_face_from_edges(available_edges)
 
@@ -322,29 +343,40 @@ class VoronoiFace:
         :param b: Edge 2.
         :return: -1 if a < b, +1 if a > b, else 0.
         """
+        # a_out = a.intersecting_face.outside_atom.__str__()
+        # b_out = b.intersecting_face.outside_atom.__str__()
         d1 = a.get_line().distance(p=self.face_center)
         d2 = b.get_line().distance(p=self.face_center)
-
-        # l1 = a.get_line()
-        # print "A values: " + a.intersecting_face.outside_atom.__str__()
-        # print l1.zero
-        # print l1.direction
-        # print l1.tolerance
-        # print d1
-
-        # l2 = b.get_line()
-        # print "B values: " + b.intersecting_face.outside_atom.__str__()
-        # print l2.zero
-        # print l2.direction
-        # print l2.tolerance
-        # print d2
+        # d1 = a.get_line().distance_sq(self.face_center)
+        # d2 = b.get_line().distance_sq(self.face_center)
+        # if (a_out == "2" and b_out == "2(-1c)") or (b_out == "2" and a_out ==
+        #     "2(-1c)"):
+        #     l1 = a.get_line()
+        #     print "A values: " + a_out
+        #     print map(BigFloat.exact, l1.zero)
+        #     print map(BigFloat.exact, l1.direction)
+        #     print BigFloat.exact(l1.tolerance)
+        #     print BigFloat.exact(d1)
+        #
+        #     l2 = b.get_line()
+        #     print "B values: " + b_out
+        #     print map(BigFloat.exact, l2.zero)
+        #     print map(BigFloat.exact, l2.direction)
+        #     print BigFloat.exact(l2.tolerance)
+        #     print BigFloat.exact(d2)
         #
         # print
         # print
+        # if (d1 - d2) ** 2 < 1e-30:
+        #     return 0
+        # elif d1 < d2:
+        #     return -1
+        # else:
+        #     return 1
         if d1 < d2:
             return -1
         elif d1 > d2:
-            return 1
+            return +1
         else:
             return 0
 
@@ -369,15 +401,17 @@ class VoronoiFace:
         # found.
         while True:
             next_edge = cur_edge.find_next_edge(available_edges)
+            # print cur_edge.intersecting_face.outside_atom.__str__(), \
+            #     next_edge.intersecting_face.outside_atom.__str__()
             if next_edge == face_edges[0]:
                 break
             elif next_edge is None:
                 raise Exception("Face is not closed.")
             elif len(face_edges) > len(available_edges):
-                # This happens if the first vertex is not a valid edge.
+                # This happens if the first edge is not a valid edge.
                 # find the first edge and continues from a different starting
                 # point. To address this, easy way is to remove the problem
-                # vertex and try again.
+                # edge and try again.
                 new_avail = list(available_edges)
                 new_avail.remove(new_avail[0])
                 if len(new_avail) < 3:
@@ -413,7 +447,7 @@ class VoronoiFace:
             except Exception:
                 raise Exception("Vertex computation error.")
 
-        # Remove area.
+        # Compute area.
         self.get_area()
 
     def is_closed(self):
@@ -476,11 +510,9 @@ class VoronoiFace:
             try:
                 for e in self.edges:
                     if new_face.position_relative_to_face(e.get_start_vertex(
-
                     ).get_position()) == 0 and \
-                                    new_face.position_relative_to_face(
-                                        e.get_end_vertex().get_position()) ==\
-                                    0:
+                    new_face.position_relative_to_face(
+                    e.get_end_vertex().get_position()) == 0:
                         edge_to_replace = e
                         break
             except Exception:
@@ -640,7 +672,10 @@ class VoronoiFace:
 
         p1 = start_edge.get_line().intersection(new_edge.get_line())
         p2 = end_edge.get_line().intersection(new_edge.get_line())
-        return norm(p1 - p2)
+        try:
+            return norm(p1 - p2)
+        except AttributeError or TypeError:
+            return Cell.get_mpfr_norm(p1 - p2)
 
     def is_contacted_by(self, other_face):
         """

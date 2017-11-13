@@ -21,7 +21,7 @@ class AtomImage:
 
         # Supercell in which this image is located.
         if not isinstance(image, np.ndarray):
-            self.supercell = np.array(image, dtype=float).copy()
+            self.supercell = np.array(image, dtype=int).copy()
         else:
             self.supercell = image.copy()
 

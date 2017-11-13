@@ -1,5 +1,10 @@
+from gmpy2 import mpfr
+
 from numpy.linalg import norm
 import numpy as np
+
+from vassal.data.Cell import Cell
+
 
 class VoronoiVertex:
     """
@@ -35,8 +40,12 @@ class VoronoiVertex:
         self.position = pos
 
         # Distance from cell center.
-        self.distance = norm(self.position-np.array(
-            in_atom.get_position_cartesian()))
+        try:
+            self.distance = norm(self.position -
+                                 in_atom.get_position_cartesian())
+        except AttributeError or TypeError:
+            self.distance = Cell.get_mpfr_norm(self.position -
+                                 in_atom.get_position_cartesian())
 
         if inside_atom is None and position is None:
             # Store next and previous edges.
@@ -54,7 +63,7 @@ class VoronoiVertex:
         :param points: Points to be considered.
         :return: Centroid.
         """
-        center = np.zeros(3, dtype=float)
+        center = np.array(map(mpfr, np.zeros(3)))
         for p in points:
             center += p.get_position()
 
@@ -67,7 +76,10 @@ class VoronoiVertex:
         :param vertex: Other vertex.
         :return: Distance between them.
         """
-        return norm(self.position - vertex.position)
+        try:
+            return norm(self.position - vertex.position)
+        except AttributeError or TypeError:
+            return Cell.get_mpfr_norm(self.position - vertex.position)
 
     def get_distance_from_center(self):
         """

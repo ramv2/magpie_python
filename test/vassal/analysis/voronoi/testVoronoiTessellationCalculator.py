@@ -1,11 +1,9 @@
 import unittest
-
-from vassal.Atom import Atom
-
 from vassal.analysis.voronoi.VoronoiTessellationCalculator import \
     VoronoiTessellationCalculator
+from vassal.data.Atom import Atom
 from vassal.data.Cell import Cell
-
+import numpy.testing as np_tst
 
 class testVoronoiTessellationCalculator(unittest.TestCase):
     # def test_simple_cubic(self):

@@ -1,11 +1,8 @@
 import unittest
-
 from numpy.linalg import norm
-from vassal.Atom import Atom
-
 from vassal.analysis.PairDistanceAnalysis import PairDistanceAnalysis
+from vassal.data.Atom import Atom
 from vassal.data.Cell import Cell
-
 
 class testPairDistanceAnalysis(unittest.TestCase):
     def setUp(self):
@@ -41,7 +38,8 @@ class testPairDistanceAnalysis(unittest.TestCase):
         center_pos = self.structure.get_atom(0).get_position_cartesian()
         for image in output:
             v = image[0].get_position() - center_pos
-            self.assertAlmostEquals(image[1], norm(v), delta=1e-6)
+            self.assertAlmostEquals(image[1], Cell.get_mpfr_norm(v),
+                                    delta=1e-6)
 
     def test_PRDF(self):
         # With orthorhombic basis.
