@@ -1,4 +1,7 @@
 import unittest
+
+import gmpy2
+
 from vassal.analysis.voronoi.VoronoiTessellationCalculator import \
     VoronoiTessellationCalculator
 from vassal.data.Atom import Atom
@@ -114,6 +117,7 @@ class testVoronoiTessellationCalculator(unittest.TestCase):
 
     def test_FCC_primitive(self):
         # Create the simulation cell.
+        gmpy2.get_context().precision = 100
         structure = Cell()
         structure.set_basis(lengths=[0.70710678118655, 0.70710678118655,
                                      1.0], angles=[45, 90, 60])

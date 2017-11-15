@@ -2,26 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="928b52f4-35f8-48d1-abb5-b72ef2e61ac2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/rsubrama.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/rsubrama.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/use_cases/M2AX/m2ax.log" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/analysis/testPairDistanceAnalysis.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/testPairDistanceAnalysis.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiCell.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiCell.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiEdge.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiEdge.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiFace.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiFace.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiVertex.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiVertex.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/data/testCell.py" afterPath="$PROJECT_DIR$/test/vassal/data/testCell.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/use_cases/M2AX/formation_energy_prediction.py" afterPath="$PROJECT_DIR$/use_cases/M2AX/formation_energy_prediction.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/analysis/PairDistanceAnalysis.py" afterPath="$PROJECT_DIR$/vassal/analysis/PairDistanceAnalysis.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py" afterPath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py" afterPath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py" afterPath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiVertex.py" afterPath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiVertex.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/data/Atom.py" afterPath="$PROJECT_DIR$/vassal/data/Atom.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/data/AtomImage.py" afterPath="$PROJECT_DIR$/vassal/data/AtomImage.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/data/Cell.py" afterPath="$PROJECT_DIR$/vassal/data/Cell.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/geometry/Line.py" afterPath="$PROJECT_DIR$/vassal/geometry/Line.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/geometry/Plane.py" afterPath="$PROJECT_DIR$/vassal/geometry/Plane.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/util/VectorCombinationComputer.py" afterPath="$PROJECT_DIR$/vassal/util/VectorCombinationComputer.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../scripts/graph_object.py" afterPath="$PROJECT_DIR$/../scripts/graph_object.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../scripts/process_options" afterPath="$PROJECT_DIR$/../scripts/process_options" />
     </list>
@@ -34,11 +22,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="VoronoiFace.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="VoronoiFace.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="423" column="0" lean-forward="false" selection-start-line="423" selection-start-column="0" selection-end-line="423" selection-end-column="0" />
+            <state relative-caret-position="419">
+              <caret line="433" column="0" lean-forward="false" selection-start-line="433" selection-start-column="0" selection-end-line="433" selection-end-column="0" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -46,14 +34,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VoronoiEdge.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="VoronoiEdge.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="324" column="0" lean-forward="false" selection-start-line="324" selection-start-column="0" selection-end-line="324" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="249">
+              <caret line="287" column="50" lean-forward="true" selection-start-line="287" selection-start-column="50" selection-end-line="288" selection-end-column="50" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -61,11 +47,9 @@
       <file leaf-file-name="testVoronoiTessellationCalculator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="327">
+              <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -83,21 +67,21 @@
       <file leaf-file-name="VoronoiCell.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
+            <state relative-caret-position="385">
               <caret line="498" column="0" lean-forward="false" selection-start-line="498" selection-start-column="0" selection-end-line="498" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Atom.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vassal/data/Atom.py">
+      <file leaf-file-name="PairDistanceAnalysis.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vassal/analysis/PairDistanceAnalysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="169" column="0" lean-forward="false" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="368">
+              <caret line="31" column="29" lean-forward="false" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -113,9 +97,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>np.matrix</find>
-      <find>determinant</find>
-      <find>convert</find>
       <find>dtype</find>
       <find>math</find>
       <find>float</find>
@@ -143,11 +124,11 @@
       <find>compute_faces</find>
       <find>diff</find>
       <find>compute_face</find>
+      <find>file_name</find>
+      <find>.__name__</find>
+      <find>.__class__.__name__</find>
     </findStrings>
     <replaceStrings>
-      <replace>self.lp_</replace>
-      <replace>APEAttributeGenerator</replace>
-      <replace>LookUpData</replace>
       <replace>range</replace>
       <replace>angles_radians</replace>
       <replace>self.simulation_cell</replace>
@@ -175,6 +156,9 @@
       <replace>gmpy2</replace>
       <replace>gmpy2.sqrt</replace>
       <replace>add</replace>
+      <replace>log_file_name</replace>
+      <replace>.__class__.__name__</replace>
+      <replace>.__str__()</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -183,8 +167,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/utility/__init__.py" />
-        <option value="$PROJECT_DIR$/attributes/generators/composition/APEAttributeGenerator.py" />
         <option value="$PROJECT_DIR$/attributes/generators/composition/ChargeDependentAttributeGenerator.py" />
         <option value="$PROJECT_DIR$/attributes/generators/composition/ElementalPropertyAttributeGenerator.py" />
         <option value="$PROJECT_DIR$/attributes/generators/composition/ElementFractionAttributeGenerator.py" />
@@ -212,14 +194,12 @@
         <option value="$PROJECT_DIR$/test/vassal/__init__.py" />
         <option value="$PROJECT_DIR$/test/vassal/analysis/__init__.py" />
         <option value="$PROJECT_DIR$/use_cases/M2AX/energy_regression.py" />
-        <option value="$PROJECT_DIR$/use_cases/M2AX/formation_energy_prediction.py" />
         <option value="$PROJECT_DIR$/vassal/io/VASP5IO.py" />
         <option value="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiTessellationCalculator.py" />
         <option value="$PROJECT_DIR$/vassal/__init__.py" />
         <option value="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiEdge.py" />
         <option value="$PROJECT_DIR$/vassal/data/AtomImage.py" />
         <option value="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiFace.py" />
-        <option value="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py" />
         <option value="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiVertex.py" />
         <option value="$PROJECT_DIR$/vassal/data/Atom.py" />
         <option value="$PROJECT_DIR$/vassal/data/Cell.py" />
@@ -230,10 +210,14 @@
         <option value="$PROJECT_DIR$/vassal/geometry/Line.py" />
         <option value="$PROJECT_DIR$/vassal/geometry/Plane.py" />
         <option value="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiCell.py" />
+        <option value="$PROJECT_DIR$/use_cases/M2AX/log/m2axNov-14_16:44.log" />
+        <option value="$PROJECT_DIR$/use_cases/M2AX/log/m2axNov-14_16:54.log" />
+        <option value="$PROJECT_DIR$/use_cases/M2AX/formation_energy_prediction.py" />
         <option value="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py" />
-        <option value="$PROJECT_DIR$/vassal/analysis/PairDistanceAnalysis.py" />
-        <option value="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py" />
         <option value="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py" />
+        <option value="$PROJECT_DIR$/vassal/analysis/PairDistanceAnalysis.py" />
+        <option value="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py" />
+        <option value="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py" />
       </list>
     </option>
   </component>
@@ -281,7 +265,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -337,10 +320,11 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/test/data/materials/util" />
   </component>
   <component name="RecentsManager">
@@ -607,7 +591,7 @@
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/use_cases/M2AX" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="false" />
       <module name="magpie_python" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/use_cases/M2AX/formation_energy_prediction.py" />
       <option name="PARAMETERS" value="" />
@@ -1299,15 +1283,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="testVoronoiTessellationCalculator - 2017.11.11 at 01h 13m 55s.xml">
-      <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
-    </history-entry>
-    <history-entry file="testVoronoiTessellationCalculator - 2017.11.11 at 01h 17m 24s.xml">
-      <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
-    </history-entry>
-    <history-entry file="testVoronoiTessellationCalculator - 2017.11.11 at 01h 21m 30s.xml">
-      <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
-    </history-entry>
     <history-entry file="testVoronoiTessellationCalculator - 2017.11.11 at 01h 44m 53s.xml">
       <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
     </history-entry>
@@ -1329,6 +1304,15 @@
     <history-entry file="testVoronoiTessellationCalculator - 2017.11.11 at 02h 04m 24s.xml">
       <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
     </history-entry>
+    <history-entry file="testVoronoiTessellationCalculator - 2017.11.15 at 12h 20m 37s.xml">
+      <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
+    </history-entry>
+    <history-entry file="testVoronoiTessellationCalculator - 2017.11.15 at 12h 22m 14s.xml">
+      <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
+    </history-entry>
+    <history-entry file="testVoronoiTessellationCalculator - 2017.11.15 at 14h 59m 57s.xml">
+      <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1341,8 +1325,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="2286" y="136" width="1920" height="1052" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2991453" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3028846" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.50213677" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3278328" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1352,7 +1337,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3960396" sideWeight="0.496875" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3960396" sideWeight="0.496875" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1364,6 +1349,7 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.log" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -1399,7 +1385,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py</url>
-          <line>122</line>
+          <line>126</line>
           <option name="timeStamp" value="552" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1408,24 +1394,49 @@
           <option name="timeStamp" value="556" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py</url>
-          <line>290</line>
-          <option name="timeStamp" value="557" />
+          <url>file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py</url>
+          <line>470</line>
+          <option name="timeStamp" value="563" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py</url>
+          <line>498</line>
+          <option name="timeStamp" value="564" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py</url>
           <line>308</line>
-          <option name="timeStamp" value="559" />
+          <option name="timeStamp" value="567" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py</url>
+          <line>390</line>
+          <option name="timeStamp" value="568" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py</url>
+          <line>433</line>
+          <option name="timeStamp" value="571" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py</url>
+          <line>327</line>
+          <option name="timeStamp" value="576" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py</url>
+          <line>339</line>
+          <option name="timeStamp" value="577" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py</url>
+          <line>296</line>
+          <option name="timeStamp" value="578" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py</url>
           <line>402</line>
-          <option name="timeStamp" value="560" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py</url>
-          <line>293</line>
-          <option name="timeStamp" value="561" />
+          <option name="timeStamp" value="579" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -1438,53 +1449,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="562" />
+      <option name="time" value="580" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data/utilities/generators/PhaseDiagramCompositionEntryGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="53" lean-forward="false" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/attributes/generators/composition/testAPEAttributeGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="53" lean-forward="false" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/attributes/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="24" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/attributes/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="24" lean-forward="false" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/attributes/generators/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1583,19 +1552,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/use_cases/M2AX/energy_regression.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3383">
-          <caret line="221" column="80" lean-forward="false" selection-start-line="221" selection-start-column="80" selection-end-line="221" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/parse_composition_file.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1603,7 +1563,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7939">
           <caret line="535" column="64" lean-forward="false" selection-start-line="535" selection-start-column="64" selection-end-line="535" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1621,9 +1580,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6902">
           <caret line="2" column="53" lean-forward="false" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#9#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1631,7 +1587,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1639,9 +1594,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#15#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1649,7 +1601,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1657,17 +1608,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="173">
           <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/use_cases/M2AX/formation_energy_prediction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="123" column="55" lean-forward="false" selection-start-line="123" selection-start-column="55" selection-end-line="123" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1675,9 +1615,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#15#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1693,7 +1630,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="71" column="8" lean-forward="false" selection-start-line="71" selection-start-column="8" selection-end-line="71" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1701,7 +1637,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="30" lean-forward="false" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1717,7 +1652,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1733,9 +1667,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="597" column="76" lean-forward="true" selection-start-line="597" selection-start-column="19" selection-end-line="597" selection-end-column="76" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1743,7 +1674,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="29" lean-forward="false" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1751,9 +1681,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="751">
           <caret line="153" column="69" lean-forward="true" selection-start-line="153" selection-start-column="69" selection-end-line="153" selection-end-column="69" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1761,9 +1688,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1771,9 +1695,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="394">
           <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#15#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1781,9 +1702,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="343">
           <caret line="73" column="56" lean-forward="false" selection-start-line="73" selection-start-column="56" selection-end-line="73" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1791,37 +1709,98 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
           <caret line="254" column="17" lean-forward="false" selection-start-line="254" selection-start-column="12" selection-end-line="254" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vassal/data/Atom.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2856">
+          <caret line="169" column="0" lean-forward="false" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/use_cases/M2AX/energy_regression.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="180" column="15" lean-forward="false" selection-start-line="177" selection-start-column="4" selection-end-line="180" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/use_cases/M2AX/m2axNov-14_16:30.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/use_cases/M2AX/m2ax.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/use_cases/M2AX/log/m2axNov-14_16:32.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/use_cases/M2AX/log/m2axNov-14_16:44.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/use_cases/M2AX/log/m2axNov-14_16:54.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9649">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/use_cases/M2AX/models/best_model_GradientBoostingRegressor">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/use_cases/M2AX/formation_energy_prediction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1728">
+          <caret line="188" column="25" lean-forward="false" selection-start-line="188" selection-start-column="25" selection-end-line="188" selection-end-column="25" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vassal/analysis/PairDistanceAnalysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="32" column="47" lean-forward="false" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="47" />
+        <state relative-caret-position="368">
+          <caret line="31" column="29" lean-forward="false" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vassal/data/Atom.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="169" column="0" lean-forward="false" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="327">
+          <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1835,31 +1814,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
+        <state relative-caret-position="385">
           <caret line="498" column="0" lean-forward="false" selection-start-line="498" selection-start-column="0" selection-end-line="498" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="433" column="0" lean-forward="false" selection-start-line="433" selection-start-column="0" selection-end-line="433" selection-end-column="0" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="324" column="0" lean-forward="false" selection-start-line="324" selection-start-column="0" selection-end-line="324" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="423" column="0" lean-forward="false" selection-start-line="423" selection-start-column="0" selection-end-line="423" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="249">
+          <caret line="287" column="50" lean-forward="true" selection-start-line="287" selection-start-column="50" selection-end-line="288" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>

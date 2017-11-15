@@ -367,18 +367,18 @@ class VoronoiFace:
         #
         # print
         # print
-        # if (d1 - d2) ** 2 < 1e-30:
-        #     return 0
-        # elif d1 < d2:
-        #     return -1
-        # else:
-        #     return 1
-        if d1 < d2:
-            return -1
-        elif d1 > d2:
-            return +1
-        else:
+        if (d1 - d2) ** 2 < 1e-30:
             return 0
+        elif d1 < d2:
+            return -1
+        else:
+            return 1
+        # if d1 < d2:
+        #     return -1
+        # elif d1 > d2:
+        #     return +1
+        # else:
+        #     return 0
 
     def assemble_face_from_edges(self, available_edges):
         """

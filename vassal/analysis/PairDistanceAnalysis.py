@@ -30,7 +30,6 @@ class PairDistanceAnalysis:
 
         # Link to structure being evaluated.
         self.structure = None
-        gmpy2.get_context().subnormalize = True
 
     def precompute(self):
         """
