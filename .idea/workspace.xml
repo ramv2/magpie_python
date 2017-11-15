@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="928b52f4-35f8-48d1-abb5-b72ef2e61ac2" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/use_cases/M2AX/m2ax.log" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/use_cases/M2AX/formation_energy_prediction.py" afterPath="$PROJECT_DIR$/use_cases/M2AX/formation_energy_prediction.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/analysis/PairDistanceAnalysis.py" afterPath="$PROJECT_DIR$/vassal/analysis/PairDistanceAnalysis.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py" afterPath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py" afterPath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py" afterPath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../scripts/graph_object.py" afterPath="$PROJECT_DIR$/../scripts/graph_object.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../scripts/process_options" afterPath="$PROJECT_DIR$/../scripts/process_options" />
     </list>
@@ -34,21 +28,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VoronoiEdge.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="VoronoiEdge.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="249">
-              <caret line="287" column="50" lean-forward="true" selection-start-line="287" selection-start-column="50" selection-end-line="288" selection-end-column="50" />
+              <caret line="287" column="50" lean-forward="false" selection-start-line="287" selection-start-column="50" selection-end-line="288" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testVoronoiTessellationCalculator.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="testVoronoiTessellationCalculator.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+            <state relative-caret-position="452">
+              <caret line="142" column="69" lean-forward="false" selection-start-line="142" selection-start-column="69" selection-end-line="142" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -216,8 +210,8 @@
         <option value="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py" />
         <option value="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py" />
         <option value="$PROJECT_DIR$/vassal/analysis/PairDistanceAnalysis.py" />
-        <option value="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py" />
         <option value="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py" />
+        <option value="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py" />
       </list>
     </option>
   </component>
@@ -1283,12 +1277,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="testVoronoiTessellationCalculator - 2017.11.11 at 01h 44m 53s.xml">
-      <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
-    </history-entry>
-    <history-entry file="testVoronoiTessellationCalculator - 2017.11.11 at 01h 44m 59s.xml">
-      <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
-    </history-entry>
     <history-entry file="testVoronoiTessellationCalculator - 2017.11.11 at 01h 47m 46s.xml">
       <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
     </history-entry>
@@ -1313,6 +1301,12 @@
     <history-entry file="testVoronoiTessellationCalculator - 2017.11.15 at 14h 59m 57s.xml">
       <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
     </history-entry>
+    <history-entry file="testVoronoiTessellationCalculator - 2017.11.15 at 15h 02m 01s.xml">
+      <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
+    </history-entry>
+    <history-entry file="testVoronoiTessellationCalculator - 2017.11.15 at 15h 29m 13s.xml">
+      <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1333,11 +1327,11 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3278328" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.330033" sideWeight="0.49786323" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3091309" sideWeight="0.49305555" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3091309" sideWeight="0.49305555" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3960396" sideWeight="0.496875" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3960396" sideWeight="0.496875" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1382,11 +1376,6 @@
           <url>file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py</url>
           <line>43</line>
           <option name="timeStamp" value="547" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py</url>
-          <line>126</line>
-          <option name="timeStamp" value="552" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiTessellationCalculator.py</url>
@@ -1796,14 +1785,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiTessellationCalculator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -1833,7 +1814,15 @@
     <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
-          <caret line="287" column="50" lean-forward="true" selection-start-line="287" selection-start-column="50" selection-end-line="288" selection-end-column="50" />
+          <caret line="287" column="50" lean-forward="false" selection-start-line="287" selection-start-column="50" selection-end-line="288" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="142" column="69" lean-forward="false" selection-start-line="142" selection-start-column="69" selection-end-line="142" selection-end-column="69" />
           <folding />
         </state>
       </provider>
