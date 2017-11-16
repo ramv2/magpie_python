@@ -2,23 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="928b52f4-35f8-48d1-abb5-b72ef2e61ac2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/__init__.py" afterPath="$PROJECT_DIR$/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/__init__.py" afterPath="$PROJECT_DIR$/test/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/analysis/testPairDistanceAnalysis.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/testPairDistanceAnalysis.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiCell.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiCell.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiEdge.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiEdge.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiFace.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiFace.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiVertex.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiVertex.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/data/testCell.py" afterPath="$PROJECT_DIR$/test/vassal/data/testCell.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/io/testVASP5IO.py" afterPath="$PROJECT_DIR$/test/vassal/io/testVASP5IO.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/analysis/PairDistanceAnalysis.py" afterPath="$PROJECT_DIR$/vassal/analysis/PairDistanceAnalysis.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py" afterPath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py" afterPath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py" afterPath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/geometry/Line.py" afterPath="$PROJECT_DIR$/vassal/geometry/Line.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/geometry/Plane.py" afterPath="$PROJECT_DIR$/vassal/geometry/Plane.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../scripts/graph_object.py" afterPath="$PROJECT_DIR$/../scripts/graph_object.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../scripts/process_options" afterPath="$PROJECT_DIR$/../scripts/process_options" />
     </list>
@@ -37,7 +20,14 @@
             <state relative-caret-position="164">
               <caret line="277" column="0" lean-forward="false" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="0" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
+                <marker date="1510808755827" expanded="true" signature="22108:22525" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="22117:22368" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1510808755827" expanded="true" signature="22400:22504" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="22575:22989" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="22584:22833" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1510808755827" expanded="true" signature="22865:22969" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="23024:23229" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="23033:23195" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
               </folding>
             </state>
           </provider>
@@ -47,9 +37,9 @@
         <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
-              <caret line="299" column="41" lean-forward="true" selection-start-line="299" selection-start-column="41" selection-end-line="299" selection-end-column="41" />
+              <caret line="299" column="41" lean-forward="false" selection-start-line="299" selection-start-column="41" selection-end-line="299" selection-end-column="41" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
+                <marker date="1510808755827" expanded="true" signature="0:7" ph="import ..." />
               </folding>
             </state>
           </provider>
@@ -61,7 +51,13 @@
             <state relative-caret-position="384">
               <caret line="164" column="11" lean-forward="false" selection-start-line="164" selection-start-column="11" selection-end-line="164" selection-end-column="11" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
+                <marker date="1510808755827" expanded="true" signature="0:7" ph="import ..." />
+                <marker date="1510808755827" expanded="true" signature="4603:5583" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="4636:5217" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="4645:4869" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1510808755827" expanded="true" signature="4983:5046" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="5249:5583" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="5258:5487" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
               </folding>
             </state>
           </provider>
@@ -71,7 +67,7 @@
         <entry file="file://$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="649">
-              <caret line="140" column="24" lean-forward="true" selection-start-line="140" selection-start-column="24" selection-end-line="140" selection-end-column="24" />
+              <caret line="140" column="24" lean-forward="false" selection-start-line="140" selection-start-column="24" selection-end-line="140" selection-end-column="24" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -92,9 +88,32 @@
       <file leaf-file-name="VoronoiCell.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
+            <state relative-caret-position="232">
               <caret line="494" column="0" lean-forward="false" selection-start-line="494" selection-start-column="0" selection-end-line="494" selection-end-column="0" />
-              <folding />
+              <folding>
+                <marker date="1510808755827" expanded="true" signature="22494:22617" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="22685:23798" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="22694:23248" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1510808755827" expanded="true" signature="23347:23462" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="23538:23758" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="23672:23758" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="23845:25909" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="23854:24054" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1510808755827" expanded="true" signature="24250:24465" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="24296:24465" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="24395:24465" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="24613:24695" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="24755:25657" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="24847:25116" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="25020:25116" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="25683:25909" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="25789:25884" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="25948:27034" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="25957:26081" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1510808755827" expanded="true" signature="26423:27034" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="26585:26764" ph="..." />
+                <marker date="1510808755827" expanded="true" signature="26868:26972" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1630,9 +1649,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1598">
           <caret line="94" column="54" lean-forward="false" selection-start-line="94" selection-start-column="54" selection-end-line="94" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#35#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1654,9 +1670,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="603" column="33" lean-forward="false" selection-start-line="603" selection-start-column="33" selection-end-line="603" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1696,7 +1710,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="38" lean-forward="false" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1704,7 +1717,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="56" lean-forward="false" selection-start-line="0" selection-start-column="56" selection-end-line="0" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1712,7 +1724,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1720,7 +1731,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="46" lean-forward="false" selection-start-line="0" selection-start-column="46" selection-end-line="0" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1728,9 +1738,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1738,9 +1745,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1756,9 +1760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1776,7 +1777,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2658">
           <caret line="2" column="11" lean-forward="false" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1784,7 +1784,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="156" column="42" lean-forward="true" selection-start-line="156" selection-start-column="42" selection-end-line="156" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1792,9 +1791,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="751">
           <caret line="267" column="49" lean-forward="true" selection-start-line="267" selection-start-column="49" selection-end-line="267" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1802,9 +1798,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="48" column="36" lean-forward="true" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1821,25 +1814,55 @@
         <state relative-caret-position="164">
           <caret line="277" column="0" lean-forward="false" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="0" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <marker date="1510808755827" expanded="true" signature="22108:22525" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="22117:22368" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1510808755827" expanded="true" signature="22400:22504" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="22575:22989" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="22584:22833" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1510808755827" expanded="true" signature="22865:22969" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="23024:23229" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="23033:23195" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
+        <state relative-caret-position="232">
           <caret line="494" column="0" lean-forward="false" selection-start-line="494" selection-start-column="0" selection-end-line="494" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1510808755827" expanded="true" signature="22494:22617" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="22685:23798" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="22694:23248" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1510808755827" expanded="true" signature="23347:23462" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="23538:23758" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="23672:23758" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="23845:25909" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="23854:24054" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1510808755827" expanded="true" signature="24250:24465" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="24296:24465" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="24395:24465" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="24613:24695" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="24755:25657" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="24847:25116" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="25020:25116" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="25683:25909" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="25789:25884" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="25948:27034" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="25957:26081" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1510808755827" expanded="true" signature="26423:27034" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="26585:26764" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="26868:26972" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="299" column="41" lean-forward="true" selection-start-line="299" selection-start-column="41" selection-end-line="299" selection-end-column="41" />
+          <caret line="299" column="41" lean-forward="false" selection-start-line="299" selection-start-column="41" selection-end-line="299" selection-end-column="41" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <marker date="1510808755827" expanded="true" signature="0:7" ph="import ..." />
           </folding>
         </state>
       </provider>
@@ -1849,7 +1872,13 @@
         <state relative-caret-position="384">
           <caret line="164" column="11" lean-forward="false" selection-start-line="164" selection-start-column="11" selection-end-line="164" selection-end-column="11" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <marker date="1510808755827" expanded="true" signature="0:7" ph="import ..." />
+            <marker date="1510808755827" expanded="true" signature="4603:5583" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="4636:5217" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="4645:4869" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1510808755827" expanded="true" signature="4983:5046" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="5249:5583" ph="..." />
+            <marker date="1510808755827" expanded="true" signature="5258:5487" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
           </folding>
         </state>
       </provider>
@@ -1857,7 +1886,7 @@
     <entry file="file://$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="649">
-          <caret line="140" column="24" lean-forward="true" selection-start-line="140" selection-start-column="24" selection-end-line="140" selection-end-column="24" />
+          <caret line="140" column="24" lean-forward="false" selection-start-line="140" selection-start-column="24" selection-end-line="140" selection-end-column="24" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
