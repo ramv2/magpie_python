@@ -1,11 +1,11 @@
 import unittest
 
-from vassal.Atom import Atom
+import time
 
 from vassal.analysis.voronoi.VoronoiTessellationCalculator import \
     VoronoiTessellationCalculator
+from vassal.data.Atom import Atom
 from vassal.data.Cell import Cell
-
 
 class testVoronoiTessellationCalculator(unittest.TestCase):
     # def test_simple_cubic(self):
@@ -116,22 +116,27 @@ class testVoronoiTessellationCalculator(unittest.TestCase):
 
     def test_FCC_primitive(self):
         # Create the simulation cell.
-        structure = Cell()
-        structure.set_basis(lengths=[0.70710678118655, 0.70710678118655,
-                                     1.0], angles=[45, 90, 60])
-        structure.add_atom(Atom([0, 0, 0], 0))
+        a = time.time()
+        for i in range(100):
+            structure = Cell()
+            structure.set_basis(lengths=[0.70710678118655, 0.70710678118655,
+                                         1.0], angles=[45, 90, 60])
+            structure.add_atom(Atom([0, 0, 0], 0))
 
-        # Run tessellation.
-        result = VoronoiTessellationCalculator.compute(structure, radical=False)
+            # Run tessellation.
+            result = VoronoiTessellationCalculator.compute(structure, radical=False)
 
-        # Test results.
-        self.assertEquals(structure.n_atoms(), len(result))
-        self.assertTrue(result[0].geometry_is_valid())
-        self.assertEquals(12, len(result[0].get_faces()))
-        poly_index = result[0].get_polyhedron_shape()
-        self.assertEquals(12, poly_index[4])
-        poly_index = result[0].get_coordination_shell_shape(result)
-        self.assertEquals(12, poly_index[4])
+            # Test results.
+            self.assertEquals(structure.n_atoms(), len(result))
+            self.assertTrue(result[0].geometry_is_valid())
+            self.assertEquals(12, len(result[0].get_faces()))
+            poly_index = result[0].get_polyhedron_shape()
+            self.assertEquals(12, poly_index[4])
+            poly_index = result[0].get_coordination_shell_shape(result)
+            self.assertEquals(12, poly_index[4])
+
+        b = time.time()
+        print "Time for 100 iterations: {} seconds".format(b - a)
 
     # def test_Ta(self):
     #     structure = VASP5IO.parse_file(file_name="test-files/393-Ta1.vasp")

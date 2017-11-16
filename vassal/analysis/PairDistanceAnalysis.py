@@ -43,9 +43,9 @@ class PairDistanceAnalysis:
         # of the unit cell. Computed using the Voronoi tessellation. This
         # point is the vertex corresponding to the faces of (origin, {a & b &
         #  c}).
-        p0 = Plane(lat_vectors[0], 1e-6, p= 0.5 * lat_vectors[0])
-        p1 = Plane(lat_vectors[1], 1e-6, p= 0.5 * lat_vectors[1])
-        p2 = Plane(lat_vectors[2], 1e-6, p= 0.5 * lat_vectors[2])
+        p0 = Plane(normal=lat_vectors[0], tolerance=1e-6, p= 0.5 * lat_vectors[0])
+        p1 = Plane(normal=lat_vectors[1], tolerance=1e-6, p= 0.5 * lat_vectors[1])
+        p2 = Plane(normal=lat_vectors[2], tolerance=1e-6, p= 0.5 * lat_vectors[2])
         x = Plane.intersection_3_planes(p0, p1, p2)
         max_image_dist = norm(x)
 

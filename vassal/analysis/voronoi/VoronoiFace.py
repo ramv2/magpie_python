@@ -306,9 +306,9 @@ class VoronoiFace:
         #     print l.distance(p=self.face_center)
             # print i,e.intersecting_face.outside_atom
         # print "Face center: "+str(self.face_center)
-        cur_edge = available_edges[0]
-        for i, edge in enumerate(available_edges):
-            flag = cur_edge.is_ccw(edge2=edge)
+        # cur_edge = available_edges[0]
+        # for i, edge in enumerate(available_edges):
+        #     flag = cur_edge.is_ccw(edge2=edge)
             # print i, edge.intersecting_face.outside_atom, flag
 
         available_edges.sort(cmp=self.edge_comp)
@@ -324,6 +324,12 @@ class VoronoiFace:
         """
         d1 = a.get_line().distance(p=self.face_center)
         d2 = b.get_line().distance(p=self.face_center)
+        if (d1 - d2) ** 2 < 1e-30:
+            return 0
+        elif d1 < d2:
+            return -1
+        else:
+            return +1
 
         # l1 = a.get_line()
         # print "A values: " + a.intersecting_face.outside_atom.__str__()
@@ -341,12 +347,12 @@ class VoronoiFace:
         #
         # print
         # print
-        if d1 < d2:
-            return -1
-        elif d1 > d2:
-            return 1
-        else:
-            return 0
+        # if d1 < d2:
+        #     return -1
+        # elif d1 > d2:
+        #     return 1
+        # else:
+        #     return 0
 
     def assemble_face_from_edges(self, available_edges):
         """

@@ -1,13 +1,10 @@
 import unittest
-
 import numpy.testing as np_tst
-from vassal.Atom import Atom
-from vassal.Cell import Cell
-from vassal.VoronoiEdge import VoronoiEdge
-
+from vassal.analysis.voronoi.VoronoiEdge import VoronoiEdge
 from vassal.analysis.voronoi.VoronoiFace import VoronoiFace
+from vassal.data.Atom import Atom
 from vassal.data.AtomImage import AtomImage
-
+from vassal.data.Cell import Cell
 
 class testVoronoiEdge(unittest.TestCase):
     def setUp(self):

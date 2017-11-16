@@ -9,7 +9,8 @@ class Plane:
     Class to represent planes in a three dimensional space.
     """
 
-    def __init__(self, normal, tolerance, p=None, plane=None):
+    def __init__(self, normal=None, tolerance=None, p=None, plane=None,
+                 p1=None, p2=None, p3=None):
         """
         Function to build a plane normal to a given direction and containing
         the origin. If p is specified, the plane contains the point. If plane
@@ -20,7 +21,7 @@ class Plane:
         :param plane: Plane to copy.
         """
 
-        if plane is None:
+        if plane is None and normal is not None and tolerance is not None:
             n = norm(normal)
             if n < 1e-10:
                 raise Exception("Norm is zero!")
@@ -42,7 +43,7 @@ class Plane:
 
             # Second vector of the plane frame (in plane).
             self.v = np.cross(self.w, self.u)
-        else:
+        elif plane is not None:
             #  Offset of the origin with respect to the plane.
             self.origin_offset = plane.origin_offset
 
@@ -60,6 +61,10 @@ class Plane:
 
             # Tolerance below which points are considered identical.
             self.tolerance = plane.tolerance
+        elif p1 is not None and p2 is not None and p3 is not None and \
+                tolerance is not None:
+            n_vec = np.cross(p2 - p1, p3 - p1)
+            self.__init__(p=p1, normal=n_vec, tolerance=tolerance)
 
     def orthogonal(self, w):
         """
@@ -147,8 +152,8 @@ class Plane:
             dir = np.cross(self.w, other.w)
             if norm(dir) < self.tolerance:
                 return None
-            p = self.intersection_3_planes(self, other, Plane(dir,
-                                                            self.tolerance))
+            p = self.intersection_3_planes(self, other, Plane(normal=dir,
+                tolerance=self.tolerance))
             return Line(p1=p, p2=p + dir, tolerance=self.tolerance)
 
     @classmethod

@@ -76,6 +76,7 @@ class VoronoiEdge:
         # diff = v1 - v2
         # diff_sq = diff[0] * diff[0] + diff[1] * diff[1] + diff[2] * diff[2]
         # if diff_sq < 1e-26:
+        #
         #     v1_cap = v1 / norm(v1)
         #     v0_cap = v0 - np.dot(v0, v1) * v1_cap
         #     ccw1 = np.dot(v0_cap, v1)
@@ -108,6 +109,7 @@ class VoronoiEdge:
         term3 = v0[2] * v1[0] * v2[1] - v0[2] * v1[1] * v2[0]
 
         ccw1 = term1 + term2 + term3
+        # print ccw1
         # a = np.array([v0, v1, v2])
         # ccw2 = det(a)
 
@@ -270,10 +272,13 @@ class VoronoiEdge:
         # Locate the ccw edges.
         ccw_edges = []
         for edge in candidates:
-            flag = self.is_ccw(edge2=edge)
-            # print edge.intersecting_face.outside_atom, flag
-            if flag:
-                ccw_edges.append(edge)
+            # print self.intersecting_face.outside_atom.__str__(), \
+            #     edge.intersecting_face.outside_atom.__str__()
+            if not self.__eq__(edge):
+                flag = self.is_ccw(edge2=edge)
+                # print edge.intersecting_face.outside_atom, flag
+                if flag:
+                    ccw_edges.append(edge)
 
         # Check if any were found.
         if len(ccw_edges) == 0:

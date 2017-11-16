@@ -113,7 +113,7 @@ class Line:
         :param p: Point to check.
         :return: True if p belongs to the line, else False.
         """
-        return self.distance(p) < self.tolerance
+        return self.distance(p=p) < self.tolerance
 
     def distance(self, p=None, l=None):
         """
@@ -164,4 +164,4 @@ class Line:
         else None.
         """
         closest = self.closest_point(l)
-        return closest if self.contains(closest) else None
+        return closest if l.contains(closest) else None

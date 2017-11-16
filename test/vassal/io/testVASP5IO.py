@@ -1,11 +1,8 @@
 import unittest
-
 import numpy.testing as np_tst
-from vassal.Atom import Atom
-
+from vassal.data.Atom import Atom
 from vassal.data.Cell import Cell
 from vassal.io.VASP5IO import VASP5IO
-
 
 class testVASP5IO(unittest.TestCase):
     def test_conversion(self):

@@ -2,83 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="928b52f4-35f8-48d1-abb5-b72ef2e61ac2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiFace.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vassal/__init__.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Vassal/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Vassal/io/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Vassal/util/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/composition/APEAttributeGenerator.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/composition/ChargeDependentAttributeGenerator.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/composition/ElementFractionAttributeGenerator.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/composition/ElementPairPropertyAttributeGenerator.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/composition/ElementalPropertyAttributeGenerator.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/composition/GCLPAttributeGenerator.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/composition/IonicCompoundProximityAttributeGenerator.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/composition/IonicityAttributeGenerator.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/composition/MeredigAttributeGenerator.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/composition/StoichiometricAttributeGenerator.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/composition/ValenceShellAttributeGenerator.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/composition/YangOmegaAttributeGenerator.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/geometry/Line.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/geometry/Plane.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/testVoronoiFace.py" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/CompositionEntry.py" afterPath="$PROJECT_DIR$/data/materials/CompositionEntry.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Vassal/Atom.py" afterPath="$PROJECT_DIR$/vassal/data/Atom.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Vassal/AtomImage.py" afterPath="$PROJECT_DIR$/vassal/data/AtomImage.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Vassal/Cell.py" afterPath="$PROJECT_DIR$/vassal/data/Cell.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Vassal/PairDistanceAnalysis.py" afterPath="$PROJECT_DIR$/vassal/analysis/PairDistanceAnalysis.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Vassal/VoronoiCell.py" afterPath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Vassal/VoronoiEdge.py" afterPath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Vassal/VoronoiFace.py" afterPath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Vassal/VoronoiTessellationCalculator.py" afterPath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiTessellationCalculator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Vassal/VoronoiVertex.py" afterPath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiVertex.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Vassal/io/VASP5IO.py" afterPath="$PROJECT_DIR$/vassal/io/VASP5IO.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Vassal/util/VectorCombinationComputer.py" afterPath="$PROJECT_DIR$/vassal/util/VectorCombinationComputer.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/composition/__init__.py" afterPath="$PROJECT_DIR$/vassal/util/__init__.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/geometry/__init__.py" afterPath="$PROJECT_DIR$/vassal/io/__init__.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testAPEAttributeGenerator.py" afterPath="$PROJECT_DIR$/test/attributes/generators/composition/testAPEAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testCell.py" afterPath="$PROJECT_DIR$/test/vassal/data/testCell.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testChargeDependentAttributeGenerator.py" afterPath="$PROJECT_DIR$/test/attributes/generators/composition/testChargeDependentAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testCompositionDistanceFilter.py" afterPath="$PROJECT_DIR$/test/data/utilities/filters/testCompositionDistanceFilter.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testCompositionEntry.py" afterPath="$PROJECT_DIR$/test/data/materials/testCompositionEntry.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testElementFractionAttributeGenerator.py" afterPath="$PROJECT_DIR$/test/attributes/generators/composition/testElementFractionAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testElementPairPropertyAttributeGenerator.py" afterPath="$PROJECT_DIR$/test/attributes/generators/composition/testElementPairPropertyAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testElementalPropertyAttributeGenerator.py" afterPath="$PROJECT_DIR$/test/attributes/generators/composition/testElementalPropertyAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testEqualSumCombinations.py" afterPath="$PROJECT_DIR$/test/utility/testEqualSumCombinations.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testGCLPAttributeGenerator.py" afterPath="$PROJECT_DIR$/test/attributes/generators/composition/testGCLPAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testGCLPCalculator.py" afterPath="$PROJECT_DIR$/test/data/materials/util/testGCLPCalculator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testIonicCompoundFinder.py" afterPath="$PROJECT_DIR$/test/utility/tools/testIonicCompoundFinder.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testIonicCompoundProximityAttributeGenerator.py" afterPath="$PROJECT_DIR$/test/attributes/generators/composition/testIonicCompoundProximityAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testIonicityAttributeGenerator.py" afterPath="$PROJECT_DIR$/test/attributes/generators/composition/testIonicityAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testMeredigAttributeGenerator.py" afterPath="$PROJECT_DIR$/test/attributes/generators/composition/testMeredigAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testOxidationStateGuesser.py" afterPath="$PROJECT_DIR$/test/utility/tools/testOxidationStateGuesser.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testPairDistanceAnalysis.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/testPairDistanceAnalysis.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testPhaseDiagramCompositionEntryGenerator.py" afterPath="$PROJECT_DIR$/test/data/utilities/generators/testPhaseDiagramCompositionEntryGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testStoichiometricAttributeGenerator.py" afterPath="$PROJECT_DIR$/test/attributes/generators/composition/testStoichiometricAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testVASP5IO.py" afterPath="$PROJECT_DIR$/test/vassal/io/testVASP5IO.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testValenceShellAttributeGenerator.py" afterPath="$PROJECT_DIR$/test/attributes/generators/composition/testValenceShellAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testVectorCombinationComputer.py" afterPath="$PROJECT_DIR$/test/vassal/util/testVectorCombinationComputer.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testVoronoiCell.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiCell.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testVoronoiEdge.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiEdge.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testVoronoiTessellationCalculator.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testVoronoiVertex.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiVertex.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/testYangOmegaAttributeGenerator.py" afterPath="$PROJECT_DIR$/test/attributes/generators/composition/testYangOmegaAttributeGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/utils/CompositionDistanceFilter.py" afterPath="$PROJECT_DIR$/data/utilities/filters/CompositionDistanceFilter.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/utils/EqualSumCombinations.py" afterPath="$PROJECT_DIR$/utility/EqualSumCombinations.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/utils/GCLPCalculator.py" afterPath="$PROJECT_DIR$/data/materials/util/GCLPCalculator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/utils/IonicCompoundFinder.py" afterPath="$PROJECT_DIR$/utility/tools/IonicCompoundFinder.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/utils/LookUpData.py" afterPath="$PROJECT_DIR$/data/materials/util/LookUpData.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/utils/OxidationStateGuesser.py" afterPath="$PROJECT_DIR$/utility/tools/OxidationStateGuesser.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/utils/PhaseDiagramCompositionEntryGenerator.py" afterPath="$PROJECT_DIR$/data/utilities/generators/PhaseDiagramCompositionEntryGenerator.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/utils/__init__.py" afterPath="$PROJECT_DIR$/utility/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/rsubrama.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/rsubrama.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/__init__.py" afterPath="$PROJECT_DIR$/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/__init__.py" afterPath="$PROJECT_DIR$/test/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/use_cases/M2AX/energy_regression.py" afterPath="$PROJECT_DIR$/use_cases/M2AX/energy_regression.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/use_cases/M2AX/formation_energy_prediction.py" afterPath="$PROJECT_DIR$/use_cases/M2AX/formation_energy_prediction.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/use_cases/M2AX/testJavaVsPythonMagpie.py" afterPath="$PROJECT_DIR$/use_cases/M2AX/testJavaVsPythonMagpie.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/use_cases/__init__.py" afterPath="$PROJECT_DIR$/use_cases/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/analysis/testPairDistanceAnalysis.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/testPairDistanceAnalysis.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiCell.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiCell.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiEdge.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiEdge.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiFace.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiFace.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiVertex.py" afterPath="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiVertex.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/data/testCell.py" afterPath="$PROJECT_DIR$/test/vassal/data/testCell.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/vassal/io/testVASP5IO.py" afterPath="$PROJECT_DIR$/test/vassal/io/testVASP5IO.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/analysis/PairDistanceAnalysis.py" afterPath="$PROJECT_DIR$/vassal/analysis/PairDistanceAnalysis.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py" afterPath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py" afterPath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py" afterPath="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/geometry/Line.py" afterPath="$PROJECT_DIR$/vassal/geometry/Line.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vassal/geometry/Plane.py" afterPath="$PROJECT_DIR$/vassal/geometry/Plane.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../scripts/graph_object.py" afterPath="$PROJECT_DIR$/../scripts/graph_object.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../scripts/process_options" afterPath="$PROJECT_DIR$/../scripts/process_options" />
     </list>
@@ -91,14 +31,60 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="formation_energy_prediction.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/use_cases/M2AX/formation_energy_prediction.py">
+      <file leaf-file-name="VoronoiFace.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="123" column="55" lean-forward="false" selection-start-line="123" selection-start-column="55" selection-end-line="123" selection-end-column="55" />
+            <state relative-caret-position="164">
+              <caret line="277" column="0" lean-forward="false" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="0" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VoronoiEdge.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="299" column="41" lean-forward="true" selection-start-line="299" selection-start-column="41" selection-end-line="299" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Line.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vassal/geometry/Line.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="384">
+              <caret line="164" column="11" lean-forward="false" selection-start-line="164" selection-start-column="11" selection-end-line="164" selection-end-column="11" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testVoronoiTessellationCalculator.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="649">
+              <caret line="140" column="24" lean-forward="true" selection-start-line="140" selection-start-column="24" selection-end-line="140" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VoronoiTessellationCalculator.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiTessellationCalculator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="401">
+              <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -106,30 +92,8 @@
       <file leaf-file-name="VoronoiCell.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="751">
-              <caret line="704" column="61" lean-forward="true" selection-start-line="704" selection-start-column="61" selection-end-line="704" selection-end-column="61" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/vassal/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="energy_regression.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/use_cases/M2AX/energy_regression.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3383">
-              <caret line="221" column="80" lean-forward="false" selection-start-line="221" selection-start-column="80" selection-end-line="221" selection-end-column="80" />
+            <state relative-caret-position="164">
+              <caret line="494" column="0" lean-forward="false" selection-start-line="494" selection-start-column="0" selection-end-line="494" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -157,7 +121,6 @@
       <find>lat_vectors</find>
       <find>X</find>
       <find>1</find>
-      <find>evalf</find>
       <find>java</find>
       <find>intersection</find>
       <find>print</find>
@@ -176,9 +139,9 @@
       <find>float</find>
       <find>train_test_grid</find>
       <find>*</find>
+      <find>evalf</find>
     </findStrings>
     <replaceStrings>
-      <replace>=</replace>
       <replace>start</replace>
       <replace>np.sum</replace>
       <replace>l_r</replace>
@@ -208,6 +171,7 @@
       <replace>dtype=np.float128</replace>
       <replace>dtype=np.longdouble</replace>
       <replace>np.math</replace>
+      <replace>.__str__()</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -216,15 +180,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/vassal/analysis/__init__.py" />
-        <option value="$PROJECT_DIR$/test/testVoronoiFace.py" />
-        <option value="$PROJECT_DIR$/__init__.py" />
-        <option value="$PROJECT_DIR$/attributes/__init__.py" />
-        <option value="$PROJECT_DIR$/attributes/generators/__init__.py" />
-        <option value="$PROJECT_DIR$/data/__init__.py" />
-        <option value="$PROJECT_DIR$/data/materials/__init__.py" />
-        <option value="$PROJECT_DIR$/data/utilities/__init__.py" />
-        <option value="$PROJECT_DIR$/use_cases/__init__.py" />
         <option value="$PROJECT_DIR$/utility/__init__.py" />
         <option value="$PROJECT_DIR$/attributes/generators/composition/APEAttributeGenerator.py" />
         <option value="$PROJECT_DIR$/attributes/generators/composition/ChargeDependentAttributeGenerator.py" />
@@ -244,7 +199,6 @@
         <option value="$PROJECT_DIR$/data/utilities/filters/CompositionDistanceFilter.py" />
         <option value="$PROJECT_DIR$/data/utilities/generators/PhaseDiagramCompositionEntryGenerator.py" />
         <option value="$PROJECT_DIR$/test/testAPEAttributeGenerator.py" />
-        <option value="$PROJECT_DIR$/test/__init__.py" />
         <option value="$PROJECT_DIR$/test/attributes/__init__.py" />
         <option value="$PROJECT_DIR$/test/attributes/generators/__init__.py" />
         <option value="$PROJECT_DIR$/test/data/__init__.py" />
@@ -257,16 +211,26 @@
         <option value="$PROJECT_DIR$/use_cases/M2AX/formation_energy_prediction.py" />
         <option value="$PROJECT_DIR$/vassal/util/VectorCombinationComputer.py" />
         <option value="$PROJECT_DIR$/vassal/io/VASP5IO.py" />
-        <option value="$PROJECT_DIR$/vassal/geometry/Line.py" />
-        <option value="$PROJECT_DIR$/vassal/geometry/Plane.py" />
         <option value="$PROJECT_DIR$/vassal/data/Cell.py" />
-        <option value="$PROJECT_DIR$/vassal/analysis/PairDistanceAnalysis.py" />
         <option value="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiVertex.py" />
         <option value="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiTessellationCalculator.py" />
-        <option value="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py" />
-        <option value="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py" />
-        <option value="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py" />
         <option value="$PROJECT_DIR$/vassal/__init__.py" />
+        <option value="$PROJECT_DIR$/test/vassal/data/testCell.py" />
+        <option value="$PROJECT_DIR$/test/__init__.py" />
+        <option value="$PROJECT_DIR$/__init__.py" />
+        <option value="$PROJECT_DIR$/test/vassal/io/testVASP5IO.py" />
+        <option value="$PROJECT_DIR$/test/vassal/analysis/testPairDistanceAnalysis.py" />
+        <option value="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiVertex.py" />
+        <option value="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiEdge.py" />
+        <option value="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py" />
+        <option value="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py" />
+        <option value="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiFace.py" />
+        <option value="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiCell.py" />
+        <option value="$PROJECT_DIR$/vassal/analysis/PairDistanceAnalysis.py" />
+        <option value="$PROJECT_DIR$/vassal/geometry/Plane.py" />
+        <option value="$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py" />
+        <option value="$PROJECT_DIR$/vassal/geometry/Line.py" />
+        <option value="$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py" />
       </list>
     </option>
   </component>
@@ -314,7 +278,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -322,15 +285,83 @@
               <item name="magpie_python" type="b2602c69:ProjectViewProjectNode" />
               <item name="magpie_python" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="magpie_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="magpie_python" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="magpie_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="magpie_python" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="vassal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="magpie_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="magpie_python" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="vassal" type="462c0819:PsiDirectoryNode" />
+              <item name="analysis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="magpie_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="magpie_python" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="vassal" type="462c0819:PsiDirectoryNode" />
+              <item name="analysis" type="462c0819:PsiDirectoryNode" />
+              <item name="voronoi" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="magpie_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="magpie_python" type="462c0819:PsiDirectoryNode" />
+              <item name="use_cases" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="magpie_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="magpie_python" type="462c0819:PsiDirectoryNode" />
+              <item name="use_cases" type="462c0819:PsiDirectoryNode" />
+              <item name="M2AX" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="magpie_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="magpie_python" type="462c0819:PsiDirectoryNode" />
+              <item name="vassal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="magpie_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="magpie_python" type="462c0819:PsiDirectoryNode" />
+              <item name="vassal" type="462c0819:PsiDirectoryNode" />
+              <item name="analysis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="magpie_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="magpie_python" type="462c0819:PsiDirectoryNode" />
+              <item name="vassal" type="462c0819:PsiDirectoryNode" />
+              <item name="analysis" type="462c0819:PsiDirectoryNode" />
+              <item name="voronoi" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="magpie_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="magpie_python" type="462c0819:PsiDirectoryNode" />
+              <item name="vassal" type="462c0819:PsiDirectoryNode" />
+              <item name="geometry" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="magpie_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="magpie_python" type="462c0819:PsiDirectoryNode" />
+              <item name="vassal" type="462c0819:PsiDirectoryNode" />
+              <item name="io" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test/data/materials/util" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -356,7 +387,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.M2AX">
+  <component name="RunManager" selected="Python tests.testVoronoiTessellationCalculator">
     <configuration name="APE" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -1080,7 +1111,7 @@
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="false" />
       <module name="magpie_python" />
       <option name="_new_pattern" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
@@ -1288,35 +1319,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="testVoronoiEdge - 2017.11.06 at 15h 15m 35s.xml">
-      <configuration name="testVoronoiEdge" configurationId="tests" />
+    <history-entry file="testVoronoiTessellationCalculator - 2017.11.15 at 22h 13m 12s.xml">
+      <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
     </history-entry>
-    <history-entry file="testVoronoiFace - 2017.11.06 at 15h 15m 44s.xml">
-      <configuration name="testVoronoiFace" configurationId="tests" />
+    <history-entry file="testVoronoiTessellationCalculator - 2017.11.15 at 22h 14m 24s.xml">
+      <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
     </history-entry>
-    <history-entry file="testVoronoiFace - 2017.11.06 at 15h 40m 46s.xml">
-      <configuration name="testVoronoiFace" configurationId="tests" />
+    <history-entry file="testVoronoiTessellationCalculator - 2017.11.15 at 22h 19m 05s.xml">
+      <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
     </history-entry>
-    <history-entry file="testVoronoiFace - 2017.11.06 at 15h 43m 05s.xml">
-      <configuration name="testVoronoiFace" configurationId="tests" />
+    <history-entry file="testVoronoiTessellationCalculator - 2017.11.15 at 22h 24m 47s.xml">
+      <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
     </history-entry>
-    <history-entry file="testVoronoiFace - 2017.11.06 at 15h 55m 47s.xml">
-      <configuration name="testVoronoiFace" configurationId="tests" />
+    <history-entry file="testVoronoiTessellationCalculator - 2017.11.15 at 22h 27m 17s.xml">
+      <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
     </history-entry>
-    <history-entry file="testVoronoiFace - 2017.11.06 at 15h 56m 29s.xml">
-      <configuration name="testVoronoiFace" configurationId="tests" />
+    <history-entry file="testVoronoiTessellationCalculator - 2017.11.15 at 22h 30m 50s.xml">
+      <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
     </history-entry>
-    <history-entry file="testVoronoiFace - 2017.11.06 at 16h 16m 22s.xml">
-      <configuration name="testVoronoiFace" configurationId="tests" />
+    <history-entry file="testVoronoiTessellationCalculator - 2017.11.15 at 22h 31m 35s.xml">
+      <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
     </history-entry>
-    <history-entry file="testVoronoiFace - 2017.11.06 at 19h 53m 29s.xml">
-      <configuration name="testVoronoiFace" configurationId="tests" />
+    <history-entry file="testVoronoiTessellationCalculator - 2017.11.15 at 22h 33m 50s.xml">
+      <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
     </history-entry>
-    <history-entry file="testVoronoiFace - 2017.11.06 at 19h 53m 32s.xml">
-      <configuration name="testVoronoiFace" configurationId="tests" />
+    <history-entry file="testVoronoiTessellationCalculator - 2017.11.15 at 22h 44m 47s.xml">
+      <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
     </history-entry>
-    <history-entry file="testVoronoiVertex - 2017.11.06 at 15h 15m 30s.xml">
-      <configuration name="testVoronoiVertex" configurationId="tests" />
+    <history-entry file="testVoronoiTessellationCalculator - 2017.11.15 at 23h 29m 00s.xml">
+      <configuration name="testVoronoiTessellationCalculator" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -1329,27 +1360,39 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="2286" y="136" width="1920" height="1052" extended-state="6" />
+    <frame x="1920" y="28" width="1920" height="1052" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2991453" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.50213677" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3028846" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3091309" sideWeight="0.5069444" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3278328" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.330033" sideWeight="0.49786323" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3091309" sideWeight="0.49305555" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3091309" sideWeight="0.49305555" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3960396" sideWeight="0.496875" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.50213677" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.330033" sideWeight="0.49786323" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3091309" sideWeight="0.49305555" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2991453" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3278328" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3960396" sideWeight="0.496875" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -1382,55 +1425,19 @@
           <option name="timeStamp" value="348" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py</url>
-          <line>494</line>
-          <option name="timeStamp" value="349" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py</url>
-          <line>121</line>
-          <option name="timeStamp" value="360" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiFace.py</url>
-          <line>129</line>
-          <option name="timeStamp" value="362" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/use_cases/M2AX/testJavaVsPythonMagpie.py</url>
           <line>87</line>
           <option name="timeStamp" value="376" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test/vassal/data/testCell.py</url>
-          <line>101</line>
+          <line>99</line>
           <option name="timeStamp" value="383" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiFace.py</url>
-          <line>107</line>
-          <option name="timeStamp" value="398" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py</url>
-          <line>297</line>
-          <option name="timeStamp" value="403" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py</url>
           <line>71</line>
           <option name="timeStamp" value="404" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py</url>
-          <line>278</line>
-          <option name="timeStamp" value="405" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <condition expression="i == 297 or i == 418" language="Python" />
-          <url>file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py</url>
-          <line>310</line>
-          <option name="timeStamp" value="406" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -1443,67 +1450,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="407" />
+      <option name="time" value="426" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/attributes/generators/composition/ElementPairPropertyAttributeGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="53" lean-forward="false" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/attributes/generators/composition/GCLPAttributeGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="61" lean-forward="false" selection-start-line="5" selection-start-column="61" selection-end-line="5" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/attributes/generators/composition/IonicCompoundProximityAttributeGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="65" lean-forward="false" selection-start-line="6" selection-start-column="65" selection-end-line="6" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/attributes/generators/composition/IonicityAttributeGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="69" lean-forward="false" selection-start-line="5" selection-start-column="69" selection-end-line="5" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/attributes/generators/composition/MeredigAttributeGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="53" lean-forward="false" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/attributes/generators/composition/StoichiometricAttributeGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="60" lean-forward="false" selection-start-line="2" selection-start-column="60" selection-end-line="2" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/attributes/generators/composition/ValenceShellAttributeGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="53" lean-forward="false" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/attributes/generators/composition/YangOmegaAttributeGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="53" lean-forward="false" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/materials/util/GCLPCalculator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1515,7 +1466,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1540,20 +1490,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="53" lean-forward="false" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="74" />
         </state>
       </provider>
     </entry>
@@ -1641,13 +1577,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/vassal/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="56" lean-forward="false" selection-start-line="0" selection-start-column="56" selection-end-line="0" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vassal/analysis/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1669,21 +1598,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiFace.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/use_cases/M2AX/energy_regression.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3383">
           <caret line="221" column="80" lean-forward="false" selection-start-line="221" selection-start-column="80" selection-end-line="221" selection-end-column="80" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1691,7 +1609,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1699,7 +1616,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7939">
           <caret line="535" column="64" lean-forward="false" selection-start-line="535" selection-start-column="64" selection-end-line="535" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1707,9 +1623,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1836">
           <caret line="108" column="37" lean-forward="true" selection-start-line="108" selection-start-column="37" selection-end-line="108" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#18#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1723,21 +1636,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vassal/geometry/Line.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vassal/data/Atom.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1745,7 +1647,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="16" lean-forward="true" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1759,23 +1660,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vassal/analysis/PairDistanceAnalysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1547">
-          <caret line="91" column="15" lean-forward="true" selection-start-line="91" selection-start-column="15" selection-end-line="91" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/materials/CompositionEntry.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6902">
           <caret line="2" column="53" lean-forward="false" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1783,47 +1671,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2397">
           <caret line="141" column="69" lean-forward="true" selection-start-line="141" selection-start-column="69" selection-end-line="141" selection-end-column="69" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiTessellationCalculator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="27" column="8" lean-forward="false" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#69#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11475">
-          <caret line="675" column="33" lean-forward="true" selection-start-line="675" selection-start-column="33" selection-end-line="675" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vassal/geometry/Plane.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="67" column="69" lean-forward="true" selection-start-line="66" selection-start-column="8" selection-end-line="67" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="376" column="71" lean-forward="false" selection-start-line="376" selection-start-column="71" selection-end-line="376" selection-end-column="71" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1831,19 +1678,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="123" column="55" lean-forward="false" selection-start-line="123" selection-start-column="55" selection-end-line="123" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/vassal/data/testCell.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="60" column="30" lean-forward="true" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py">
+    <entry file="file://$PROJECT_DIR$/test/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="751">
-          <caret line="704" column="61" lean-forward="true" selection-start-line="704" selection-start-column="61" selection-end-line="704" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="38" lean-forward="false" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/vassal/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="56" lean-forward="false" selection-start-line="0" selection-start-column="56" selection-end-line="0" selection-end-column="56" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1852,6 +1713,154 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="46" lean-forward="false" selection-start-line="0" selection-start-column="46" selection-end-line="0" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/vassal/io/testVASP5IO.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/vassal/util/testVectorCombinationComputer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/vassal/analysis/testPairDistanceAnalysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="29" lean-forward="true" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiVertex.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiEdge.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-816">
+          <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiFace.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2658">
+          <caret line="2" column="11" lean-forward="false" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vassal/geometry/Plane.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="156" column="42" lean-forward="true" selection-start-line="156" selection-start-column="42" selection-end-line="156" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiCell.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="751">
+          <caret line="267" column="49" lean-forward="true" selection-start-line="267" selection-start-column="49" selection-end-line="267" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vassal/analysis/PairDistanceAnalysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="48" column="36" lean-forward="true" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiTessellationCalculator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiFace.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="277" column="0" lean-forward="false" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiCell.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="494" column="0" lean-forward="false" selection-start-line="494" selection-start-column="0" selection-end-line="494" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vassal/analysis/voronoi/VoronoiEdge.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="299" column="41" lean-forward="true" selection-start-line="299" selection-start-column="41" selection-end-line="299" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vassal/geometry/Line.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="164" column="11" lean-forward="false" selection-start-line="164" selection-start-column="11" selection-end-line="164" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/vassal/analysis/voronoi/testVoronoiTessellationCalculator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="649">
+          <caret line="140" column="24" lean-forward="true" selection-start-line="140" selection-start-column="24" selection-end-line="140" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -1,13 +1,11 @@
 import math
 import unittest
-
 import numpy as np
 import numpy.testing as np_tst
-from vassal.Atom import Atom
 from numpy.linalg import norm
 
+from vassal.data.Atom import Atom
 from vassal.data.Cell import Cell
-
 
 class testCell(unittest.TestCase):
     cell = None
