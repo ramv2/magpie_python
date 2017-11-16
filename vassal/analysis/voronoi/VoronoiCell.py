@@ -1,9 +1,10 @@
 from collections import OrderedDict
-import numpy as np
 from numpy.linalg import norm
+import numpy as np
 from vassal.analysis.voronoi.VoronoiEdge import VoronoiEdge
 from vassal.analysis.voronoi.VoronoiFace import VoronoiFace
 from vassal.data.AtomImage import AtomImage
+from vassal.data.Cell import Cell
 
 class VoronoiCell:
     """
@@ -399,7 +400,10 @@ class VoronoiCell:
                 area = face.get_area()
                 from_center = face.get_centroid() - atom_center
                 n = face.get_normal()
-                n /= norm(n)
+                try:
+                    n /= norm(n)
+                except AttributeError or TypeError:
+                    n /= Cell.get_mpfr_norm(n)
                 h = np.dot(from_center, n)
                 self.volume += area * h / 3.0 # Face normal is away from
                 # center.

@@ -1,3 +1,4 @@
+from gmpy2 import mpfr
 import numpy as np
 
 class Atom:
@@ -29,7 +30,7 @@ class Atom:
         # Radius of atom.
         self.radius = 1.0
 
-        self.position = np.array(position, dtype=float)
+        self.position = np.array(map(mpfr, position), dtype=object)
         self.type = type
 
 

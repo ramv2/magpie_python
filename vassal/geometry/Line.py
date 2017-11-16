@@ -1,6 +1,9 @@
+import gmpy2
+from gmpy2 import mpfr
 import numpy as np
 from numpy.linalg import norm
 import sys
+from vassal.data.Cell import Cell
 
 class Line:
     """
@@ -27,17 +30,20 @@ class Line:
         """
 
         if l is None:
-            delta = p2 - p1
-            norm1 = norm(p2 - p1)
-            norm2 = norm1 ** 2
-            if norm2 == 0.0:
+            p1_mpfr = np.array(map(mpfr, p1), dtype=object)
+            p2_mpfr = np.array(map(mpfr, p2), dtype=object)
+
+            delta = p2_mpfr - p1_mpfr
+            norm2 = delta[0] ** 2 + delta[1] ** 2 + delta[2] ** 2
+            norm1 = gmpy2.sqrt(norm2)
+            if gmpy2.is_zero(norm2):
                 raise Exception("Norm is zero!")
 
             # Line direction.
             self.direction = delta / norm1
 
             # Line point closest to the origin.
-            self.zero = p1 - np.dot(p1, delta) / norm2
+            self.zero = p1_mpfr - np.dot(p1_mpfr, delta) / norm2
 
             # Tolerance below which points are considered identical.
             self.tolerance = 1e-10 if tolerance is None else tolerance
@@ -127,15 +133,33 @@ class Line:
         if l is None:
             d = p - self.zero
             n = d - np.dot(d, self.direction) * self.direction
-            return norm(n)
+            try:
+                return norm(n)
+            except AttributeError or TypeError:
+                return Cell.get_mpfr_norm(n)
         else:
             normal = np.cross(self.direction, l.direction)
-            n = norm(normal)
+            try:
+                n = norm(normal)
+            except AttributeError or TypeError:
+                n = Cell.get_mpfr_norm(normal)
             if n < sys.float_info.min:
                 # Lines are parallel.
                 return self.distance(p=l.zero)
             offset = np.dot(l.zero - self.zero, normal) / n
             return np.abs(offset)
+
+    def distance_sq(self, p):
+        """
+        Function to compute the distance squared between the instance and a
+        point.
+        :param p: Point to compute distance between.
+        :return: Distance.
+        """
+        d = p - self.zero
+        n = d - np.dot(d, self.direction) * self.direction
+        return n[0] ** 2 + n[1] ** 2 + n[2] ** 2
+
 
     def closest_point(self, l):
         """

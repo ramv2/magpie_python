@@ -196,7 +196,8 @@ class testVoronoiCell(unittest.TestCase):
         self.assertAlmostEquals(1.0, cell.get_volume(), delta=1e-6)
 
         # Find position of atom that will take corner off.
-        p = Plane((0.4, 0.5, 0.5), (0.5, 0.4, 0.5), (0.5, 0.5, 0.4))
+        p = Plane(p1=(0.4, 0.5, 0.5), p2=(0.5, 0.4, 0.5), p3=(0.5, 0.5, 0.4),
+                  tolerance=1e-6)
         atm_pos = p.project([0, 0, 0])
         atm_pos *= 2
         structure.add_atom(Atom(atm_pos, 0))
@@ -208,7 +209,8 @@ class testVoronoiCell(unittest.TestCase):
         self.assertEquals(7, cell.n_faces())
 
         # Compute a cell that will cut off just slightly more area.
-        p = Plane((0.4, 0.5, 0.5), (0.5, 0.4, 0.5), (0.5, 0.5, 0.3))
+        p = Plane(p1=(0.4, 0.5, 0.5), p2=(0.5, 0.4, 0.5), p3=(0.5, 0.5, 0.3),
+                  tolerance=1e-6)
         atm_pos = p.project([0, 0, 0])
         atm_pos *= 2
         structure.add_atom(Atom(atm_pos, 0))
@@ -237,7 +239,8 @@ class testVoronoiCell(unittest.TestCase):
         self.assertAlmostEquals(1.0, cell.get_volume(), delta=1e-6)
 
         # Find position of atom that will take corner off.
-        p = Plane((0.4, 0.5, 0.5), (0.5, 0.4, 0.5), (0.5, 0.5, 0.4))
+        p = Plane(p1=(0.4, 0.5, 0.5), p2=(0.5, 0.4, 0.5), p3=(0.5, 0.5, 0.4),
+                  tolerance=1e-6)
         atm_pos = p.project([0, 0, 0])
         atm_pos *= 2
         structure.add_atom(Atom(atm_pos, 0))
@@ -249,7 +252,8 @@ class testVoronoiCell(unittest.TestCase):
         self.assertEquals(7, cell.n_faces())
 
         # Compute a cell that will cut off just slightly more area.
-        p = Plane((0.4, 0.5, 0.5), (0.5, 0.35, 0.5), (0.5, 0.5, 0.35))
+        p = Plane(p1=(0.4, 0.5, 0.5), p2=(0.5, 0.35, 0.5), p3=(0.5, 0.5, 0.35),
+                  tolerance=1e-6)
         atm_pos = p.project([0, 0, 0])
         atm_pos *= 2
         structure.add_atom(Atom(atm_pos, 0))

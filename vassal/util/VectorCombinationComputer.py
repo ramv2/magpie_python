@@ -1,3 +1,6 @@
+from gmpy2 import mpfr
+
+import gmpy2
 import numpy as np
 from numpy.linalg import norm
 from scipy.linalg import lu_factor, lu_solve
@@ -25,7 +28,7 @@ class VectorCombinationComputer:
         self.input_vectors = list(in_vectors)
 
         # Square of cutoff distance.
-        self.cutoff_distance_sq = cutoff_distance ** 2
+        self.cutoff_distance_sq = mpfr(cutoff_distance ** 2)
 
         # Whether to include the zero vector in the list.
         self.include_zero = include_zero
@@ -39,7 +42,9 @@ class VectorCombinationComputer:
         self.get_all_vectors()
 
     def compute_vector(self, x):
-        return np.matmul(x, self.input_vectors)
+        i_v = np.array([map(mpfr, iv) for iv in self.input_vectors])
+        return np.array([x.dot(y) for y in i_v.T])
+
 
     def get_all_vectors(self):
         """
@@ -48,25 +53,31 @@ class VectorCombinationComputer:
         """
 
         # Create a matrix of basis vectors.
-        basis = np.transpose(np.array(self.input_vectors))
+        basis = np.array([map(mpfr, x) for x in self.input_vectors],
+                         dtype=object).T
 
         # Create ability to invert it.
-        det_basis = Cell.get_determinant(basis)
+        try:
+            det_basis = np.linalg.det(basis)
+        except TypeError:
+            det_basis = Cell.get_determinant(basis)
+
         if det_basis == 0 or det_basis < 1e-14:
             raise RuntimeError("Vectors are not linearly independent.")
 
-        fac = lu_factor(basis)
+        m1, m2 = lu_factor(basis)
+        m1_mpfr = np.array([map(mpfr, i) for i in m1], dtype=object)
 
         # Compute range of each variable.
-        cutoff_distance = np.sqrt(self.cutoff_distance_sq)
+        cutoff_distance = gmpy2.sqrt(self.cutoff_distance_sq)
         step_range = []
 
         for i in range(3):
             max_disp = 0.0
             for j in range(3):
                 max_disp += np.dot(self.input_vectors[i], self.input_vectors[
-                    j]) / norm(self.input_vectors[i])
-            step_range.append(int(np.ceil(max_disp / cutoff_distance)) + 1)
+                    j]) / Cell.get_mpfr_norm(self.input_vectors[i])
+            step_range.append(int(gmpy2.ceil(max_disp / cutoff_distance)) + 1)
 
         # Ensure that we have sufficient range to get the cutoff distance
         # away from the origin by checking that we have large enough range to
@@ -75,10 +86,10 @@ class VectorCombinationComputer:
         for dir in range(3):
             point = np.cross(self.input_vectors[dir], self.input_vectors[(dir
                                     + 1) % 3])
-            point *= cutoff_distance / norm(point)
-            sln = lu_solve(fac, point)
-            step_range = [max(step_range[i], int(np.ceil(abs(sln[i])))) for i in
-                          range(3)]
+            point = point * cutoff_distance / Cell.get_mpfr_norm(point)
+            sln = map(mpfr, lu_solve((m1_mpfr, m2), point))
+            step_range = [max(step_range[i], int(gmpy2.ceil(abs(sln[i]))))
+                          for i in range(3)]
 
         # Create the initial vector.
         for x in range(-step_range[0], 1 + step_range[0]):

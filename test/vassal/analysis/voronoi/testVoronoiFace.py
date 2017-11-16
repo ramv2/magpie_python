@@ -6,6 +6,7 @@ from vassal.analysis.voronoi.VoronoiFace import VoronoiFace
 from vassal.data.Atom import Atom
 from vassal.data.AtomImage import AtomImage
 from vassal.data.Cell import Cell
+import math
 
 class testVoronoiFace(unittest.TestCase):
     def setUp(self):
@@ -104,6 +105,66 @@ class testVoronoiFace(unittest.TestCase):
 
         # Checkout properties.
         self.assertEquals(4, face_to_assemble.n_edges())
+
+    def test_FCC_direct_assemble(self):
+        # Make FCC crystal.
+        self.cell.add_atom(Atom([0.5, 0.5, 0.0], 0))
+        self.cell.add_atom(Atom([0.5, 0.0, 0.5], 0))
+        self.cell.add_atom(Atom([0.0, 0.5, 0.5], 0))
+
+        # Create face to be assembled.
+        image = AtomImage(self.cell.get_atom(1), [0, 0, 0])
+        face_to_assemble = VoronoiFace(self.cell.get_atom(0), image,
+                                       radical=True)
+
+        # Initialize faces that are direct neighbors of atom 0.
+        neighbor_faces = []
+        neighbor_faces.append(VoronoiFace(self.cell.get_atom(0), AtomImage(
+            self.cell.get_atom(1), [0, 0, 0]), radical=True))
+        neighbor_faces.append(VoronoiFace(self.cell.get_atom(0), AtomImage(
+            self.cell.get_atom(1), [0, -1, 0]), radical=True))
+        neighbor_faces.append(VoronoiFace(self.cell.get_atom(0), AtomImage(
+            self.cell.get_atom(1), [-1, 0, 0]), radical=True))
+        neighbor_faces.append(VoronoiFace(self.cell.get_atom(0), AtomImage(
+            self.cell.get_atom(1), [-1, -1, 0]), radical=True))
+        neighbor_faces.append(VoronoiFace(self.cell.get_atom(0), AtomImage(
+            self.cell.get_atom(2), [-1, 0, 0]), radical=True))
+        neighbor_faces.append(VoronoiFace(self.cell.get_atom(0), AtomImage(
+            self.cell.get_atom(2), [-1, 0, -1]), radical=True))
+        neighbor_faces.append(VoronoiFace(self.cell.get_atom(0), AtomImage(
+            self.cell.get_atom(2), [0, 0, 0]), radical=True))
+        neighbor_faces.append(VoronoiFace(self.cell.get_atom(0), AtomImage(
+            self.cell.get_atom(2), [0, 0, -1]), radical=True))
+        neighbor_faces.append(VoronoiFace(self.cell.get_atom(0), AtomImage(
+            self.cell.get_atom(3), [0, 0, 0]), radical=True))
+        neighbor_faces.append(VoronoiFace(self.cell.get_atom(0), AtomImage(
+            self.cell.get_atom(3), [0, 0, -1]), radical=True))
+        neighbor_faces.append(VoronoiFace(self.cell.get_atom(0), AtomImage(
+            self.cell.get_atom(3), [0, -1, 0]), radical=True))
+        neighbor_faces.append(VoronoiFace(self.cell.get_atom(0), AtomImage(
+            self.cell.get_atom(3), [0, -1, -1]), radical=True))
+
+        # Attempt to assemble face.
+        self.assertTrue(face_to_assemble.assemble_face_from_faces(
+            neighbor_faces))
+
+        # Checkout properties.
+        self.assertEquals(4, face_to_assemble.n_edges())
+
+        # Checkout properties.
+        self.assertEquals(4, face_to_assemble.n_edges())
+
+        # Now, see if all of the faces assemble.
+        volume = 0.0
+        for i, face in enumerate(neighbor_faces):
+            self.assertTrue(face.assemble_face_from_faces(neighbor_faces))
+            self.assertEquals(4, face.n_edges())
+            # print i, face.get_outside_atom(), face.get_area(), \
+            #     face.get_face_distance()
+            area = face.get_area()
+            volume += face.get_area() * face.get_face_distance() / 3.0
+
+        self.assertAlmostEquals(0.25, volume, delta=1e-6)
 
     def test_FCC_full_assemble(self):
         # Make FCC crystal.

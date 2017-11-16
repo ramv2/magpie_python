@@ -1,11 +1,10 @@
 import unittest
-
 import time
-
 from vassal.analysis.voronoi.VoronoiTessellationCalculator import \
     VoronoiTessellationCalculator
 from vassal.data.Atom import Atom
 from vassal.data.Cell import Cell
+import numpy.testing as np_tst
 
 class testVoronoiTessellationCalculator(unittest.TestCase):
     # def test_simple_cubic(self):
@@ -136,7 +135,7 @@ class testVoronoiTessellationCalculator(unittest.TestCase):
             self.assertEquals(12, poly_index[4])
 
         b = time.time()
-        print "Time for 100 iterations: {} seconds".format(b - a)
+        print "Total time for 100 iterations: {} seconds".format(b-a)
 
     # def test_Ta(self):
     #     structure = VASP5IO.parse_file(file_name="test-files/393-Ta1.vasp")
