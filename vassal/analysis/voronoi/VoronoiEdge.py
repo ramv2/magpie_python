@@ -1,5 +1,5 @@
-import gmpy2
 import numpy as np
+import sys
 from numpy.linalg import norm
 from vassal.analysis.voronoi.VoronoiVertex import VoronoiVertex
 from vassal.data.Cell import Cell
@@ -121,7 +121,8 @@ class VoronoiEdge:
         # print ccw1
         # a = np.array([v0, v1, v2])
         # ccw2 = det(a)
-
+        if abs(ccw1) <= np.finfo(float).eps:
+            return False
         return ccw1 > 0
 
     @classmethod
@@ -255,11 +256,7 @@ class VoronoiEdge:
         Function to get the length of this edge.
         :return: Length.
         """
-        try:
-            return norm((self.beginning - self.end) * self.direction)
-        except AttributeError or TypeError:
-            return Cell.get_mpfr_norm((self.beginning - self.end) *
-                                      self.direction)
+        return norm((self.beginning - self.end) * self.direction)
 
     def __str__(self):
         """
@@ -379,10 +376,8 @@ class VoronoiEdge:
         :param v2: Second vector.
         :return: Angular separation between v1 and v2.
         """
-        try:
-            norm_product = norm(v1) * norm(v2)
-        except AttributeError or TypeError:
-            norm_product = Cell.get_mpfr_norm(v1) * Cell.get_mpfr_norm(v2)
+        norm_product = norm(v1) * norm(v2)
+
         if norm_product == 0:
             raise Exception("Norms are zero!")
         dp = np.dot(v1, v2)
@@ -390,13 +385,13 @@ class VoronoiEdge:
         if dp < -threshold or dp > threshold:
             # The vectors are almost aligned, compute using the sine.
             v3 = np.cross(v1, v2)
-            x = gmpy2.asin(norm(v3) / norm_product)
+            x = np.math.asin(norm(v3) / norm_product)
             if dp >= 0:
                 return x
             return np.math.pi - x
         else:
             # The vectors are sufficiently separated to use the cosine.
-            return gmpy2.acos(dp / norm_product)
+            return np.math.acos(dp / norm_product)
 
     def print_properties(self):
         print "Edge face:", self.edge_face.outside_atom.__str__(), \

@@ -1,5 +1,4 @@
 import unittest
-import numpy as np
 from vassal.analysis.voronoi.VoronoiCell import VoronoiCell
 from vassal.analysis.voronoi.VoronoiFace import VoronoiFace
 from vassal.data.Atom import Atom

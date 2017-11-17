@@ -1,9 +1,6 @@
-import gmpy2
-from gmpy2 import mpfr
 import numpy as np
 from numpy.linalg import norm
 import sys
-from vassal.data.Cell import Cell
 
 class Line:
     """
@@ -30,20 +27,20 @@ class Line:
         """
 
         if l is None:
-            p1_mpfr = np.array(map(mpfr, p1), dtype=object)
-            p2_mpfr = np.array(map(mpfr, p2), dtype=object)
+            p1_arr = np.array(p1, dtype=float)
+            p2_arr = np.array(p2, dtype=float)
 
-            delta = p2_mpfr - p1_mpfr
+            delta = p2_arr - p1_arr
             norm2 = delta[0] ** 2 + delta[1] ** 2 + delta[2] ** 2
-            norm1 = gmpy2.sqrt(norm2)
-            if gmpy2.is_zero(norm2):
+            norm1 = np.math.sqrt(norm2)
+            if norm2 == 0:
                 raise Exception("Norm is zero!")
 
             # Line direction.
             self.direction = delta / norm1
 
             # Line point closest to the origin.
-            self.zero = p1_mpfr - np.dot(p1_mpfr, delta) / norm2
+            self.zero = p1_arr - np.dot(p1_arr, delta) / norm2
 
             # Tolerance below which points are considered identical.
             self.tolerance = 1e-10 if tolerance is None else tolerance
@@ -129,20 +126,17 @@ class Line:
         :param l: Line to compute distance between.
         :return: Distance.
         """
-
         if l is None:
             d = p - self.zero
-            n = d - np.dot(d, self.direction) * self.direction
+            n = np.zeros(3)
             try:
-                return norm(n)
-            except AttributeError or TypeError:
-                return Cell.get_mpfr_norm(n)
+                n = d - np.dot(d, self.direction) * self.direction
+            except RuntimeWarning:
+                print d, self.direction
+            return norm(n)
         else:
             normal = np.cross(self.direction, l.direction)
-            try:
-                n = norm(normal)
-            except AttributeError or TypeError:
-                n = Cell.get_mpfr_norm(normal)
+            n = norm(normal)
             if n < sys.float_info.min:
                 # Lines are parallel.
                 return self.distance(p=l.zero)
@@ -159,7 +153,6 @@ class Line:
         d = p - self.zero
         n = d - np.dot(d, self.direction) * self.direction
         return n[0] ** 2 + n[1] ** 2 + n[2] ** 2
-
 
     def closest_point(self, l):
         """

@@ -4,7 +4,6 @@ from vassal.analysis.voronoi.VoronoiEdge import VoronoiEdge
 from vassal.analysis.voronoi.VoronoiVertex import VoronoiVertex
 from vassal.data.Cell import Cell
 from vassal.geometry.Plane import Plane
-import gmpy2
 
 class VoronoiFace:
     """
@@ -51,10 +50,8 @@ class VoronoiFace:
         inside_pos = self.inside_atom.get_position_cartesian()
         outside_pos = self.outside_atom.get_position()
         diff = inside_pos - outside_pos
-        try:
-            atom_dist = norm(diff)
-        except AttributeError or TypeError:
-            atom_dist = Cell.get_mpfr_norm(diff)
+        atom_dist = norm(diff)
+
         if radical:
             self.face_distance = self.get_plane_distance(
                 self.inside_atom.get_radius(), self.outside_atom.get_atom(
@@ -162,7 +159,7 @@ class VoronoiFace:
         :return: Surface area.
         """
         # If needed compute area.
-        if not gmpy2.is_finite(self.face_area):
+        if not np.isinf(self.face_area):
             # Get centroid of face.
             centroid = self.get_centroid()
             # Loop over all edges.
@@ -173,10 +170,9 @@ class VoronoiFace:
                 next_vertex = self.vertices[(i + 1) % l]
                 a = this_vertex.get_position() - centroid
                 b = next_vertex.get_position() - centroid
-                try:
-                    area += norm(np.cross(a, b))
-                except AttributeError or TypeError:
-                    area += Cell.get_mpfr_norm(np.cross(a, b))
+
+                area += norm(np.cross(a, b))
+
 
             self.face_area = area / 2
 
@@ -202,13 +198,9 @@ class VoronoiFace:
         with this face.
         :return: Distance in Cartesian units.
         """
-        try:
-            return norm(self.inside_atom.get_position_cartesian() -
+
+        return norm(self.inside_atom.get_position_cartesian() -
                     self.outside_atom.get_position())
-        except AttributeError or TypeError:
-            return Cell.get_mpfr_norm(
-                self.inside_atom.get_position_cartesian() -
-                self.outside_atom.get_position())
 
     def get_vertices(self):
         """
@@ -686,10 +678,8 @@ class VoronoiFace:
 
         p1 = start_edge.get_line().intersection(new_edge.get_line())
         p2 = end_edge.get_line().intersection(new_edge.get_line())
-        try:
-            return norm(p1 - p2)
-        except AttributeError or TypeError:
-            return Cell.get_mpfr_norm(p1 - p2)
+        return norm(p1 - p2)
+
 
     def is_contacted_by(self, other_face):
         """

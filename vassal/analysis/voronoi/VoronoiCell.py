@@ -85,14 +85,14 @@ class VoronoiCell:
         their ID and image location.
         :return: List of atom images.
         """
-        return [face.get_outside_atom() for face in self.faces]
+        return np.array([face.get_outside_atom() for face in self.faces])
 
     def get_neighbor_distances(self):
         """
         Function to get distances between central atom and each neighbor.
         :return: List of distances in cartesian units.
         """
-        return [face.get_neighbor_distance() for face in self.faces]
+        return np.array([face.get_neighbor_distance() for face in self.faces])
 
     def get_neighbor_shells(self, cells, index):
         """
@@ -400,10 +400,7 @@ class VoronoiCell:
                 area = face.get_area()
                 from_center = face.get_centroid() - atom_center
                 n = face.get_normal()
-                try:
-                    n /= norm(n)
-                except AttributeError or TypeError:
-                    n /= Cell.get_mpfr_norm(n)
+                n /= norm(n)
                 h = np.dot(from_center, n)
                 self.volume += area * h / 3.0 # Face normal is away from
                 # center.
@@ -465,7 +462,6 @@ class VoronoiCell:
             images = [image[0] for image in
                       image_finder.get_all_neighbors_of_atom(
                           self.atom.get_id())]
-
             # Compute cell.
             try:
                 self.compute_cell_helper(images)

@@ -1,8 +1,9 @@
 import math
 import unittest
+from numpy.linalg import norm
+
 import numpy as np
 import numpy.testing as np_tst
-from numpy.linalg import norm
 from vassal.data.Atom import Atom
 from vassal.data.Cell import Cell
 
@@ -87,7 +88,7 @@ class testCell(unittest.TestCase):
                                     0.70710678118655], angles=[60, 60, 60])
        self.assertAlmostEquals(0.25, self.cell.volume(), delta=1e-6)
        l_vec = self.cell.get_lattice_vectors()
-       self.assertAlmostEquals(0.70710678118655, Cell.get_mpfr_norm(l_vec[0]),
+       self.assertAlmostEquals(0.70710678118655, norm(l_vec[0]),
                                delta=1e-2)
 
     def test_fractional_to_cartesian(self):

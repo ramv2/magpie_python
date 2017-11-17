@@ -1,9 +1,5 @@
-import gmpy2
-from gmpy2 import mpfr
 import numpy as np
 from numpy.linalg import norm
-
-from vassal.data.Cell import Cell
 from vassal.geometry.Line import Line
 
 class Plane:
@@ -31,10 +27,10 @@ class Plane:
                 raise Exception("Norm is zero!")
 
             # Third vector of the plane frame (plane normal).
-            self.w = normal_mpfr / n
+            self.w = normal / n
 
             # Tolerance below which points are considered identical.
-            self.tolerance = mpfr(tolerance)
+            self.tolerance = tolerance
 
             #  Offset of the origin with respect to the plane.
             self.origin_offset = -np.dot(p, self.w) if p is not None else 0
@@ -67,8 +63,11 @@ class Plane:
             self.tolerance = plane.tolerance
         elif p1 is not None and p2 is not None and p3 is not None and \
                 tolerance is not None:
-            n_vec = np.cross(p2 - p1, p3 - p1)
-            self.__init__(p=p1, normal=n_vec, tolerance=tolerance)
+            v1 = np.array(p1, dtype=float)
+            v2 = np.array(p2, dtype=float)
+            v3 = np.array(p3, dtype=float)
+            n_vec = np.cross(v2 - v1, v3 - v1)
+            self.__init__(p=v1, normal=n_vec, tolerance=tolerance)
 
     def orthogonal(self, w):
         """
@@ -88,19 +87,19 @@ class Plane:
         :return: Normalized orthogonal vector.
         """
 
-        threshold = 0.6 * Cell.get_mpfr_norm(w)
+        threshold = 0.6 * norm(w)
         if threshold == 0:
             raise Exception("Norm is zero!")
         x = w[0]
         y = w[1]
         z = w[2]
         if abs(x) <= threshold:
-            inverse = 1 / gmpy2.sqrt(y ** 2 + z ** 2)
+            inverse = 1 / np.math.sqrt(y ** 2 + z ** 2)
             return np.array([0, inverse * z, -inverse * y])
         elif abs(y) <= threshold:
-            inverse = 1 / gmpy2.sqrt(x ** 2 + z ** 2)
+            inverse = 1 / np.math.sqrt(x ** 2 + z ** 2)
             return np.array([-inverse * z, 0, inverse * x])
-        inverse = 1 / gmpy2.sqrt(x ** 2 + y ** 2)
+        inverse = 1 / np.math.sqrt(x ** 2 + y ** 2)
         return np.array([inverse * y, -inverse * x, 0])
 
     def get_normal(self):
@@ -154,7 +153,7 @@ class Plane:
             return p + k * dir
         else:
             dir = np.cross(self.w, other.w)
-            if Cell.get_mpfr_norm(dir) < self.tolerance:
+            if norm(dir) < self.tolerance:
                 return None
             p = self.intersection_3_planes(self, other, Plane(normal=dir,
                 tolerance=self.tolerance))

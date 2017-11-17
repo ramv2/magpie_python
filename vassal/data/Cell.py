@@ -1,5 +1,3 @@
-from gmpy2 import mpfr
-import gmpy2
 import numpy as np
 from numpy.linalg import norm
 from vassal.data.AtomImage import AtomImage
@@ -40,9 +38,8 @@ class Cell:
         # Reciprocal lattice vectors.
         self.recip_lattice_vectors = None
 
-        basis = np.array([map(mpfr, x) for x in np.eye(3)], dtype=object)
-        self.simulation_cell = np.array([map(mpfr, x) for x in np.eye(3)],
-                                        dtype=object)
+        basis = np.eye(3, dtype=float)
+        self.simulation_cell = np.eye(3, dtype=float)
         self.set_basis(basis=basis)
         self.face_is_periodic = np.array([True]*3)
 
@@ -119,14 +116,12 @@ class Cell:
                 raise ValueError("Expected 3 lengths and/or 3 angles.")
 
             # Convert angles to radians.
-            a = np.array(map(mpfr, angles), dtype=object)
+            a = np.array(angles, dtype=float)
             if (a < 0).any() or (a > 180).any():
                 raise ValueError("Angles must be between 0 and 180. Angle #")
-            angles_radians = np.array(map(gmpy2.radians, a), dtype=object)
-            l = np.array(map(mpfr, lengths), dtype=object)
+            angles_radians = np.array(map(np.math.radians, a), dtype=float)
+            l = np.array(lengths, dtype=float)
             c_basis = self.compute_basis(l, angles_radians)
-        else:
-            c_basis = np.array([map(mpfr, x) for x in basis])
 
         if c_basis is None:
             raise ValueError("Either basis must be specified or the lengths "
@@ -140,15 +135,12 @@ class Cell:
         self.simulation_cell = c_basis
 
         # Make sure it has positive volume.
-        if self.volume() <= 0 or gmpy2.is_inf(self.volume()):
+        if self.volume() <= 0 or np.isinf(self.volume()):
             self.simulation_cell = old_cell
             raise ValueError("Provided basis has non-positive volume.")
 
         # Get the inverse.
-        try:
-            self.inverse_cell = np.linalg.inv(self.simulation_cell)
-        except TypeError:
-            self.inverse_cell = self.get_inverse(self.simulation_cell)
+        self.inverse_cell = np.linalg.inv(self.simulation_cell)
 
         # Update cartesian coordinates of each atom.
         if self.atoms:
@@ -156,8 +148,8 @@ class Cell:
                 atom.update_cartesian_coordinates()
 
         # Precompute the lattice vectors.
-        self.lattice_vectors = np.empty((3, 3), dtype=object)
-        self.recip_lattice_vectors = np.empty((3, 3), dtype=object)
+        self.lattice_vectors = np.zeros((3, 3), dtype=float)
+        self.recip_lattice_vectors = np.zeros((3, 3), dtype=float)
 
         for i in range(3):
             self.lattice_vectors[i, :] = self.simulation_cell[:, i]
@@ -177,21 +169,21 @@ class Cell:
         """
 
         # Convert lengths to basis.
-        basis = np.array([map(mpfr, x) for x in np.zeros((3, 3))])
+        basis = np.zeros((3, 3), dtype=float)
         basis[0][0] = lengths[0]
-        basis[0][1] = lengths[1] * gmpy2.cos(angles_radians[2])
-        basis[0][2] = lengths[2] * gmpy2.cos(angles_radians[1])
-        basis[1][1] = lengths[1] * gmpy2.sin(angles_radians[2])
-        basis[1][2] = lengths[2] * (gmpy2.cos(angles_radians[0]) - gmpy2.cos(
-            angles_radians[1]) * gmpy2.cos(angles_radians[2]))/ gmpy2.sin(
-            angles_radians[2])
+        basis[0][1] = lengths[1] * np.math.cos(angles_radians[2])
+        basis[0][2] = lengths[2] * np.math.cos(angles_radians[1])
+        basis[1][1] = lengths[1] * np.math.sin(angles_radians[2])
+        basis[1][2] = lengths[2] * (np.math.cos(angles_radians[0]) -
+                    np.math.cos(angles_radians[1]) * np.math.cos(
+                    angles_radians[2]))/ np.math.sin(angles_radians[2])
 
-        v = gmpy2.sqrt(1 - gmpy2.cos(angles_radians[0]) * gmpy2.cos(
-            angles_radians[0]) - gmpy2.cos(angles_radians[1]) * gmpy2.cos(
-            angles_radians[1]) - gmpy2.cos(angles_radians[2]) * gmpy2.cos(
-            angles_radians[2]) + 2 * gmpy2.cos(angles_radians[0]) *
-            gmpy2.cos(angles_radians[1]) * gmpy2.cos(angles_radians[2]))
-        basis[2][2] = lengths[2] * v / gmpy2.sin(angles_radians[2])
+        v = np.math.sqrt(1 - np.math.cos(angles_radians[0]) * np.math.cos(
+            angles_radians[0]) - np.math.cos(angles_radians[1]) * np.math.cos(
+            angles_radians[1]) - np.math.cos(angles_radians[2]) * np.math.cos(
+            angles_radians[2]) + 2 * np.math.cos(angles_radians[0]) *
+            np.math.cos(angles_radians[1]) * np.math.cos(angles_radians[2]))
+        basis[2][2] = lengths[2] * v / np.math.sin(angles_radians[2])
         return basis
 
     def add_atom(self, a):
@@ -264,12 +256,9 @@ class Cell:
         Function to get the lattice parameters.
         :return: A numpy array containing the lattice parameters.
         """
-        try:
-            output = np.array(map(norm, [x for x in self.simulation_cell.T]),
-                              dtype=float)
-        except AttributeError:
-            output = np.array(map(self.get_mpfr_norm, [x for x in
-                               self.simulation_cell.T]), dtype=object)
+
+        output = np.array(map(norm, [x for x in self.simulation_cell.T]),
+                          dtype=float)
         return output
 
     def get_lattice_angles_radians(self, radians=True):
@@ -282,16 +271,17 @@ class Cell:
         col0 = self.simulation_cell[:, 0]
         col1 = self.simulation_cell[:, 1]
         col2 = self.simulation_cell[:, 2]
-        nc0 = self.get_mpfr_norm(col0)
-        nc1 = self.get_mpfr_norm(col1)
-        nc2 = self.get_mpfr_norm(col2)
+        nc0 = norm(col0)
+        nc1 = norm(col1)
+        nc2 = norm(col2)
         # Compute cosines.
-        output_radians.append(gmpy2.acos(col1.dot(col2) / (nc1 * nc2)))
-        output_radians.append(gmpy2.acos(col2.dot(col0) / (nc2 * nc0)))
-        output_radians.append(gmpy2.acos(col0.dot(col1) / (nc0 * nc1)))
+        output_radians.append(np.math.acos(col1.dot(col2) / (nc1 * nc2)))
+        output_radians.append(np.math.acos(col2.dot(col0) / (nc2 * nc0)))
+        output_radians.append(np.math.acos(col0.dot(col1) / (nc0 * nc1)))
         if radians:
             return np.array(output_radians)
-        output_degrees = np.array(map(gmpy2.degrees, output_radians))
+        output_degrees = np.array(map(np.math.degrees, output_radians),
+                                  dtype=float)
         return output_degrees
 
     def get_aligned_basis(self):
@@ -585,49 +575,45 @@ class Cell:
                 disp = new_disp
                 cur_dist = new_dist
 
-        return gmpy2.sqrt(cur_dist) if not flag else AtomImage(neighbor_atom,
+        return np.math.sqrt(cur_dist) if not flag else AtomImage(neighbor_atom,
                                                               image)
 
-    @classmethod
-    def get_inverse(self, mat):
-        """
-        Function to compute the inverse of a matrix.
-        :param mat: Matrix to be inverted.
-        :return: Inverse of the matrix.
-        """
-        cofactor = np.array([map(mpfr, x) for x in np.eye(3)], dtype=object)
-        d = self.get_determinant(mat)
-        for row in range(3):
-            for col in range(3):
-                minor = mat[np.array(range(row) + range(row + 1, 3))[:,
-                        np.newaxis], np.array(range(col) + range(col + 1, 3))]
-                cofactor[row, col] = self.get_determinant(minor) * ((-1) ** (
-                    row +col))
-
-        inv_mat = np.transpose(cofactor) / d
-        return inv_mat
-
-    @classmethod
-    def get_determinant(self, m):
-        """
-        Function to compute the determinant of a matrix. Currently handles
-        only 2x2 or 3x3 matrices.
-        :param m: Input matrix.
-        :return: Determinant of m.
-        """
-
-        if m.shape == (3, 3):
-            term1 = m[0, 0] * m[1, 1] * m[2, 2] - m[0, 0] * m[1, 2] * m[2, 1]
-            term2 = m[0, 1] * m[1, 2] * m[2, 0] - m[0, 1] * m[1, 0] * m[2, 2]
-            term3 = m[0, 2] * m[1, 0] * m[2, 1] - m[0, 2] * m[2, 0] * m[1, 1]
-            res = term1 + term2 + term3
-        else:
-            res = m[0, 0] * m[1, 1] - m[0, 1] * m[1, 0]
-        return res
-
-    @classmethod
-    def get_mpfr_norm(self, v):
-        return gmpy2.sqrt(v[0] ** 2 + v[1] ** 2 + v[2] ** 2)
+    # @classmethod
+    # def get_inverse(self, mat):
+    #     """
+    #     Function to compute the inverse of a matrix.
+    #     :param mat: Matrix to be inverted.
+    #     :return: Inverse of the matrix.
+    #     """
+    #     cofactor = np.eye(3, dtype=float)
+    #     d = self.get_determinant(mat)
+    #     for row in range(3):
+    #         for col in range(3):
+    #             minor = mat[np.array(range(row) + range(row + 1, 3))[:,
+    #                     np.newaxis], np.array(range(col) + range(col + 1, 3))]
+    #             cofactor[row, col] = self.get_determinant(minor) * ((-1) ** (
+    #                 row +col))
+    #
+    #     inv_mat = np.transpose(cofactor) / d
+    #     return inv_mat
+    #
+    # @classmethod
+    # def get_determinant(self, m):
+    #     """
+    #     Function to compute the determinant of a matrix. Currently handles
+    #     only 2x2 or 3x3 matrices.
+    #     :param m: Input matrix.
+    #     :return: Determinant of m.
+    #     """
+    #
+    #     if m.shape == (3, 3):
+    #         term1 = m[0, 0] * m[1, 1] * m[2, 2] - m[0, 0] * m[1, 2] * m[2, 1]
+    #         term2 = m[0, 1] * m[1, 2] * m[2, 0] - m[0, 1] * m[1, 0] * m[2, 2]
+    #         term3 = m[0, 2] * m[1, 0] * m[2, 1] - m[0, 2] * m[2, 0] * m[1, 1]
+    #         res = term1 + term2 + term3
+    #     else:
+    #         res = m[0, 0] * m[1, 1] - m[0, 1] * m[1, 0]
+    #     return res
 
 if __name__ == "__main__":
     x = Cell()

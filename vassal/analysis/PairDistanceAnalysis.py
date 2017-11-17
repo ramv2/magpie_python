@@ -1,9 +1,6 @@
-import gmpy2
-from gmpy2 import mpfr
 import numpy as np
 from numpy.linalg import norm
 from vassal.data.AtomImage import AtomImage
-from vassal.data.Cell import Cell
 from vassal.geometry.Plane import Plane
 from vassal.util.VectorCombinationComputer import VectorCombinationComputer
 
@@ -50,7 +47,7 @@ class PairDistanceAnalysis:
         p1 = Plane(normal=lat_vectors[1], tolerance=1e-6, p= 0.5 * lat_vectors[1])
         p2 = Plane(normal=lat_vectors[2], tolerance=1e-6, p= 0.5 * lat_vectors[2])
         x = Plane.intersection_3_planes(p0, p1, p2)
-        max_image_dist = Cell.get_mpfr_norm(x)
+        max_image_dist = norm(x)
 
         # In order to create a list of vectors such the set of displacement
         # vectors from any atom in the structure to every image of another
@@ -132,7 +129,7 @@ class PairDistanceAnalysis:
 
             if dist < cutoff_distance_sq and dist > 1e-8:
                 ss = self.supercells[img].copy() + closest_supercell
-                d = gmpy2.sqrt(dist)
+                d = np.math.sqrt(dist)
                 pos = closest_image.get_atom().get_position()
                 output.append((AtomImage(closest_image.get_atom(), ss), d))
 
@@ -178,7 +175,7 @@ class PairDistanceAnalysis:
 
                 # For each image, assign it to bin.
                 for img in images:
-                    bin_ = int(gmpy2.floor(img[1] * n_bin /
+                    bin_ = int(np.math.floor(img[1] * n_bin /
                                              self.cutoff_distance))
                     if bin_ >= n_bin:
                         # Happens if dist equals cutoff.

@@ -1,6 +1,5 @@
 import unittest
 import numpy.testing as np_tst
-import math
 from vassal.analysis.PairDistanceAnalysis import PairDistanceAnalysis
 from vassal.analysis.voronoi.VoronoiFace import VoronoiFace
 from vassal.data.Atom import Atom
