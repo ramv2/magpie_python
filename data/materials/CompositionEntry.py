@@ -2,7 +2,7 @@ import re
 from itertools import izip
 from data.materials.util.LookUpData import LookUpData
 
-class CompositionEntry:
+class CompositionEntry(object):
     """
     Class that defines a composition entry object. Mainly used to store ids,
     names and fractions of elements belonging to a single compound.
@@ -184,7 +184,8 @@ class CompositionEntry:
             self.combine_compositions(host_comp, guest_comp, guest_mult)
             return host_comp
 
-    def set_composition(self, amounts, element_ids=None, element_names=None):
+    def set_composition(self, amounts, element_ids=None, element_names=None,
+                        to_sort=True):
         """
         Function to set the composition of this entry. Checks to make sure
         all elements have positive amounts.
@@ -210,7 +211,13 @@ class CompositionEntry:
             self.element_ids = [self.lp_element_names.index(elem) for elem in
                                 element_names]
         self.fractions = amounts
-        self.sort_and_normalize()
+        self.sort_and_normalize(to_sort)
+
+    def __copy__(self):
+        x = CompositionEntry()
+        x.element_ids = list(self.element_ids)
+        x.fractions = list(self.fractions)
+        return x
 
     def parse_element_amounts(self, composition):
         """
@@ -296,9 +303,9 @@ class CompositionEntry:
 
         e_id = id
         if e_id is None:
-            for i in range(len(self.element_names)):
-                if self.element_names[i].lower() == name.lower():
-                    e_id = self.element_ids[i]
+            for i in range(len(self.lp_element_names)):
+                if self.lp_element_names[i].lower() == name.lower():
+                    e_id = i
 
         for i in range(len(self.element_ids)):
             if self.element_ids[i] == e_id:
@@ -357,7 +364,7 @@ class CompositionEntry:
                    self.fractions == other.fractions
         return False
 
-    def sort_and_normalize(self):
+    def sort_and_normalize(self, to_sort=True):
         """
         Function to sort the element ids based on their electronegativity
         order and normalizes the fractions. Makes sure the entry is in a
@@ -366,8 +373,11 @@ class CompositionEntry:
         """
 
         # Sort elements based on the electronegativity order.
-        tmp_tuple = zip(self.element_ids, self.fractions)
-        tmp_tuple.sort(key=lambda (x,y): self.lp_sorting_order[x])
+        if to_sort:
+            tmp_tuple = zip(self.element_ids, self.fractions)
+            tmp_tuple.sort(key=lambda (x,y): self.lp_sorting_order[x])
+        else:
+            tmp_tuple = zip(self.element_ids, self.fractions)
 
         # Normalize the fractions.
         self.number_in_cell = sum(self.fractions)

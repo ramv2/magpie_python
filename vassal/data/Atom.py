@@ -42,6 +42,7 @@ class Atom:
         t = self.type
         x = Atom(pos, t)
         x.position_cartesian = self.position_cartesian.copy()
+        x.id = self.id
         return x
 
     def __eq__(self, other):

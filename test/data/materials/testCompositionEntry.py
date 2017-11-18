@@ -236,7 +236,7 @@ class testCompositionEntry(unittest.TestCase):
 
     def test_compare(self):
         entries = CompositionEntry.import_composition_list(
-            "../small_set_comp.txt")
+            "../../small_set_comp.txt")
         for e1 in range(len(entries)):
             self.assertEquals(0, entries[e1].__cmp__(entries[e1]))
             for e2 in range(e1 + 1, len(entries)):
