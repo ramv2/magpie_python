@@ -1,9 +1,6 @@
 import itertools
-
 import numpy as np
-
 from data.materials.CompositionEntry import CompositionEntry
-
 
 class OxidationStateGuesser:
     """
@@ -102,8 +99,3 @@ class OxidationStateGuesser:
         # Order them based on electronegativity rank.
         output = [ps for i, ps in sorted(zip(rankVal, possible_states))]
         return np.asarray(output)
-
-if __name__ == "__main__":
-    entry = {"Sc":0.25,"Ti":0.25,"P":0.125,"Si":0.125,"C":0.125,"N":0.125}
-    # x = OxidationStateGuesser()
-    # y = x.get_possible_states(entry)

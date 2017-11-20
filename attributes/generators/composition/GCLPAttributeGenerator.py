@@ -123,10 +123,3 @@ class GCLPAttributeGenerator:
         if verbose:
             print features.head()
         return features
-
-if __name__ == "__main__":
-    entries =[CompositionEntry(composition="Ni,9.0,Mg,2.0,Gd,1.0,")]
-    energies=[-0.283055738333]
-    x = GCLPAttributeGenerator()
-    x.set_phases(entries, energies)
-    x.generate_features(entries, verbose=True)

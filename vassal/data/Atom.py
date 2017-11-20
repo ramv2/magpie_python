@@ -32,7 +32,6 @@ class Atom:
         self.position = np.array(position, dtype=float)
         self.type = type
 
-
     def __copy__(self):
         """
         Function to override the copy() method.

@@ -1,9 +1,7 @@
 from numpy.linalg import norm
 import numpy as np
-
 from vassal.analysis.voronoi.VoronoiTessellationCalculator import \
     VoronoiTessellationCalculator
-
 
 class VoronoiCellBasedAnalysis:
     """
@@ -104,13 +102,6 @@ class VoronoiCellBasedAnalysis:
         # Compute the coordination number.
         output = [1.0 / sum([(f_i.get_area() / cell.get_surface_area()) ** 2
                     for f_i in cell.get_faces()]) for cell in self.cells]
-        # pos = 0
-        # for cell in self.cells:
-        #     # Get surface area.
-        #     sa = cell.get_surface_area()
-        #     denom =sum([(f_i.get_area() / sa) ** 2 for f_i in cell.get_faces(
-        #     )])
-        #     output[pos] = 1.0 / denom
         return output
 
     def face_count_average(self):

@@ -211,14 +211,3 @@ class PhaseDiagramCompositionEntryGenerator:
                                              fractions=list(frac))
                     entries.append(entry)
         return entries
-
-if __name__ == "__main__":
-    y = LookUpData()
-    x = PhaseDiagramCompositionEntryGenerator(y)
-    x.set_elements_by_name(["C", "N", "P", "Si", "Sc", "Ti"])
-    x.set_even_spacing(True)
-    x.set_order(1, 2)
-    x.set_size(5)
-    # x.generate_entries()
-    for i in x.generate_entries():
-        print i

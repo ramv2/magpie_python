@@ -1,8 +1,7 @@
+from data.materials.util.LookUpData import LookUpData
 from data.utilities.generators.PhaseDiagramCompositionEntryGenerator import \
     PhaseDiagramCompositionEntryGenerator
-from data.utilities.generators.PhaseDiagramCompositionEntryGenerator import \
-    PhaseDiagramCompositionEntryGenerator
-
+from utility.tools.OxidationStateGuesser import OxidationStateGuesser
 
 class IonicCompoundFinder:
     """
@@ -104,13 +103,3 @@ class IonicCompoundFinder:
         # Get only compositions.
         accepted = [i[1] for i in hits]
         return accepted
-
-if __name__ == "__main__":
-    y = LookUpData()
-    x = IonicCompoundFinder(y)
-    entry = {"Sc":0.25,"Ti":0.25,"P":0.125,"Si":0.125,"C":0.125,"N":0.125}
-    x.set_max_formula_unit_size(6)
-    x.set_maximum_distance(6)
-    x.set_nominal_composition(entry)
-    z = x.find_all_compounds()
-    # print z[250]

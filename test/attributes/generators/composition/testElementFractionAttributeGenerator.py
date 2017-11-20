@@ -1,10 +1,8 @@
 import unittest
-
-from test.attributes.generators.composition import \
-    ElementFractionAttributeGenerator
+from attributes.generators.composition.ElementFractionAttributeGenerator \
+    import ElementFractionAttributeGenerator
 from data.materials.CompositionEntry import CompositionEntry
 from data.materials.util.LookUpData import LookUpData
-
 
 class testElementFractionAttributeGenerator(unittest.TestCase):
     def test_attribute_generator(self):

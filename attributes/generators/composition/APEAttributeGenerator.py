@@ -523,14 +523,3 @@ class APEAttributeGenerator:
         if verbose:
             print features.head()
         return features
-
-if __name__ == "__main__":
-    # entries = [{'Fe': 0.4, 'Cn': 0.6}, {'H': 0.6666666666666666,
-    #             'O': 0.3333333333333333}, {'Na': 0.5,'Cl': 0.5},
-    #            {"Sc":0.25,"Ti":0.25,"P":0.125,"Si":0.125,"C":0.125,"N":0.125}]
-    entries = [{"Sc": 0.25, "Ti": 0.25, "P": 0.125, "Si": 0.125, "C": 0.125,
-                "N": 0.125}]
-    lp = LookUpData()
-    x = APEAttributeGenerator(lp)
-    x.generate_features(entries, verbose=True)
-    # cProfile.run('x.generate_features(entries, verbose=True)')

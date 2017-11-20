@@ -194,11 +194,3 @@ class ElementalPropertyAttributeGenerator:
         """
         for prop in properties:
             self.remove_elemental_property(prop)
-
-if __name__ == "__main__":
-    entries = [{'Fe': 0.4, 'Cn': 0.6}, {'H': 0.6666666666666666,
-                                       'O': 0.3333333333333333}, {'Na': 0.5,
-                                                                   'Cl': 0.5}]
-    x = ElementalPropertyAttributeGenerator(True)
-    # x.add_elemental_property("AtomicWeight")
-    x.generate_features(entries, verbose=True)

@@ -2,7 +2,6 @@ from numpy.linalg import norm
 import numpy as np
 from vassal.analysis.voronoi.VoronoiEdge import VoronoiEdge
 from vassal.analysis.voronoi.VoronoiVertex import VoronoiVertex
-from vassal.data.Cell import Cell
 from vassal.geometry.Plane import Plane
 
 class VoronoiFace:
@@ -294,37 +293,13 @@ class VoronoiFace:
                 continue
 
             # Store the data.
-            # edge.print_properties()
             available_edges.append(edge)
 
         # Error check.
         if len(available_edges) < 3:
             raise Exception("Not enough edges.")
 
-        # print "Before sorting"
-        # for i,e in enumerate(available_edges):
-        #     print i, e.intersecting_face.outside_atom, e.get_line(
-        #     ).distance_sq(self.face_center)
-            # l = e.get_line()
-            # print l.distance(p=self.face_center)
-        #     print l.zero
-        #     print l.direction
-
-        # print
-        # print "Face center: "+str(self.face_center)
-        # cur_edge = available_edges[0]
-        # for i, edge in enumerate(available_edges):
-        #     flag = cur_edge.is_ccw(edge2=edge)
-            # print i, edge.intersecting_face.outside_atom, flag
-
         available_edges.sort(cmp=self.edge_comp)
-        # print "After sorting"
-        #
-        # for i, edge in enumerate(available_edges):
-        #     print i, edge.intersecting_face.outside_atom
-        #
-        # print
-
         return self.assemble_face_from_edges(available_edges)
 
     def edge_comp(self, a, b):
@@ -334,57 +309,16 @@ class VoronoiFace:
         :param b: Edge 2.
         :return: -1 if a < b, +1 if a > b, else 0.
         """
-        # a_out = a.intersecting_face.outside_atom.__str__()
-        # b_out = b.intersecting_face.outside_atom.__str__()
         d1 = a.get_line().distance(p=self.face_center)
         d2 = b.get_line().distance(p=self.face_center)
+
+        # Have to check if they are really close. If they are, return 0.
         if (d1 - d2) ** 2 < 1e-30:
             return 0
         elif d1 < d2:
             return -1
         else:
             return +1
-
-        # l1 = a.get_line()
-        # print "A values: " + a.intersecting_face.outside_atom.__str__()
-        # print l1.zero
-        # print l1.direction
-        # print l1.tolerance
-        # print d1
-
-        # l2 = b.get_line()
-        # print "B values: " + b.intersecting_face.outside_atom.__str__()
-        # print l2.zero
-        # print l2.direction
-        # print l2.tolerance
-        # print d2
-        #
-        # print
-        # print
-        # if d1 < d2:
-        #     return -1
-        # elif d1 > d2:
-        #     return 1
-        # d1 = a.get_line().distance_sq(self.face_center)
-        # d2 = b.get_line().distance_sq(self.face_center)
-        # if (a_out == "2" and b_out == "2(-1c)") or (b_out == "2" and a_out ==
-        #     "2(-1c)"):
-        #     l1 = a.get_line()
-        #     print "A values: " + a_out
-        #     print map(BigFloat.exact, l1.zero)
-        #     print map(BigFloat.exact, l1.direction)
-        #     print BigFloat.exact(l1.tolerance)
-        #     print BigFloat.exact(d1)
-        #
-        #     l2 = b.get_line()
-        #     print "B values: " + b_out
-        #     print map(BigFloat.exact, l2.zero)
-        #     print map(BigFloat.exact, l2.direction)
-        #     print BigFloat.exact(l2.tolerance)
-        #     print BigFloat.exact(d2)
-        #
-        # print
-        # print
 
     def assemble_face_from_edges(self, available_edges):
         """
@@ -407,8 +341,6 @@ class VoronoiFace:
         # found.
         while True:
             next_edge = cur_edge.find_next_edge(available_edges)
-            # print cur_edge.intersecting_face.outside_atom.__str__(), \
-            #     next_edge.intersecting_face.outside_atom.__str__()
             if next_edge == face_edges[0]:
                 break
             elif next_edge is None:

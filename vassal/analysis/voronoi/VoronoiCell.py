@@ -4,7 +4,6 @@ import numpy as np
 from vassal.analysis.voronoi.VoronoiEdge import VoronoiEdge
 from vassal.analysis.voronoi.VoronoiFace import VoronoiFace
 from vassal.data.AtomImage import AtomImage
-from vassal.data.Cell import Cell
 
 class VoronoiCell:
     """
@@ -580,18 +579,14 @@ class VoronoiCell:
         """
         d1 = a.get_face_distance()
         d2 = b.get_face_distance()
+
+        # Have to check if they are really close. If they are, return 0.
         if (d1 - d2) ** 2 < 1e-30:
             return 0
         elif d1 < d2:
             return -1
         else:
             return +1
-        # if d1 < d2:
-        #     return -1
-        # elif d1 > d2:
-        #     return 1
-        # else:
-        #     return 0
 
     def compute_possible_indirect_neighbors(self, possible_faces):
         """

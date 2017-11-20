@@ -100,11 +100,3 @@ class StoichiometricAttributeGenerator:
         if (verbose):
             print features.head()
         return features
-
-if __name__ == "__main__":
-    x = StoichiometricAttributeGenerator()
-    x.add_p_norms([2,3,5,7,10])
-    entries = [{'Fe': 0.4, 'O': 0.6}, {'H': 0.6666666666666666,
-                                       'O': 0.3333333333333333}, {'Na': 0.5,
-                                                                  'Cl': 0.5}]
-    x.generate_features(entries, True)

@@ -1,5 +1,5 @@
 import numpy as np
-import cProfile
+
 class EqualSumCombinations:
     """
     Class to generate all combinations of non-negative integers that have
@@ -16,35 +16,8 @@ class EqualSumCombinations:
         if size < 2:
             raise ValueError("Size must be greater than 1.")
 
-        # self.total = sum_
-        # self.start = [0]*size
-        # self.size_ = size
-        # self.flag = False
-
         self.dp = np.zeros((sum_+1, size+1), dtype=object)
         self.combs = self.get_combinations(sum_, size)
-
-    # def __iter__(self):
-    #     self.start[0] = self.total
-    #     self.flag = True
-    #     return self
-    #
-    # def next(self):
-    #     if self.flag:
-    #         self.flag = False
-    #         return self.start
-    #     for pos in xrange(self.size_-2, -1, -1):
-    #         if self.start[pos] > 0:
-    #             self.start[pos] -= 1
-    #             self.start[pos + 1] += 1
-    #             break
-    #         else:
-    #             self.start[pos] = self.start[pos + 1]
-    #             self.start[pos + 1] = 0
-    #
-    #     if self.start[0] == self.total:
-    #         raise StopIteration
-    #     return self.start
 
     def get_combinations(self, sum, n):
         """
@@ -75,14 +48,3 @@ class EqualSumCombinations:
         # Store value into the numpy array before returning it.
         self.dp[sum][n] = tmp_list
         return tmp_list
-
-if __name__ == "__main__":
-    x = EqualSumCombinations(23, 7)
-    cProfile.run('x.get_combinations(23, 7)')
-    # l = x.get_combinations(23, 7)
-    #
-    # for i in xrange(7,24):
-    #     print len(x.dp[i][6])
-        # print len(x.get_combinations(i, 6))
-    # for i,j in enumerate(EqualSumCombinations(5, 7)):
-    #     print i,j

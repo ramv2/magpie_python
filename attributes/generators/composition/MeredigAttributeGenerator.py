@@ -112,9 +112,3 @@ class MeredigAttributeGenerator:
         if verbose:
             print features.head()
         return features
-
-if __name__ == "__main__":
-    entry = [{"Sc":0.25,"Ti":0.25,"P":0.125,"Si":0.125,"C":0.125,"N":0.125}]
-    y = LookUpData()
-    x = MeredigAttributeGenerator(y)
-    x.generate_features(entry, True)

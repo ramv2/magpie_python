@@ -1,2 +1,1 @@
-__all__ = ["attributes", "data", "test", "io", "use_cases", "utility",
-           "vassal"]
+__all__ = ["attributes", "data", "test", "use_cases", "utility", "vassal"]

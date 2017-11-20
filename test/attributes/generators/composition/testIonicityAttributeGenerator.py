@@ -1,8 +1,7 @@
 import unittest
-
-from test.attributes.generators.composition import IonicityAttributeGenerator
+from attributes.generators.composition.IonicityAttributeGenerator import \
+    IonicityAttributeGenerator
 from data.materials.CompositionEntry import CompositionEntry
-
 
 class testIonicityAttributeGenerator(unittest.TestCase):
     def test_attribute_generator(self):

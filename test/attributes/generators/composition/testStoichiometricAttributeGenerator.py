@@ -1,12 +1,9 @@
 import unittest
 from math import sqrt
-
 import numpy.testing as np_tst
-
-from test.attributes.generators.composition import \
-    StoichiometricAttributeGenerator
+from attributes.generators.composition.StoichiometricAttributeGenerator \
+    import StoichiometricAttributeGenerator
 from data.materials.CompositionEntry import CompositionEntry
-
 
 class testStoichiometricAttributeGenerator(unittest.TestCase):
     def test_attribute_generator(self):

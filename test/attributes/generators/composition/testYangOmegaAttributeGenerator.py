@@ -1,8 +1,7 @@
 import unittest
-
-from test.attributes.generators.composition import YangOmegaAttributeGenerator
+from attributes.generators.composition.YangOmegaAttributeGenerator import \
+    YangOmegaAttributeGenerator
 from data.materials.CompositionEntry import CompositionEntry
-
 
 class testYangOmegaAttributeGenerator(unittest.TestCase):
     def test_attribute_generator(self):

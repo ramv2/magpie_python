@@ -110,10 +110,3 @@ class CompositionDistanceFilter:
             label[i] = within_bounds
 
         return label
-if __name__ == "__main__":
-    y = LookUpData()
-    x = CompositionDistanceFilter(y)
-    e_1 = {"Sc":0.25, "Ti":0.25, "P":0.125, "Si":0.125, "C":0.125, "N":0.125}
-    e_2 = {'C': 0.25, 'P':0.0, 'Sc': 0.75}
-
-    print x.compute_distance(e_1, e_2, 2)
