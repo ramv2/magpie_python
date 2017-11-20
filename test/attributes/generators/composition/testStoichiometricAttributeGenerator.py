@@ -11,7 +11,7 @@ class testStoichiometricAttributeGenerator(unittest.TestCase):
         entries = [CompositionEntry(composition="NaCl")]
 
         # Make the generator and set options.
-        sg = StoichiometricAttributeGenerator()
+        sg = StoichiometricAttributeGenerator(use_default_norms=False)
         sg.add_p_norm(2)
         sg.add_p_norm(3)
 

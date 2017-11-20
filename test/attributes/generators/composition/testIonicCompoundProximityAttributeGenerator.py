@@ -1,4 +1,5 @@
 import unittest
+import os
 import numpy.testing as np_tst
 from attributes.generators.composition\
     .IonicCompoundProximityAttributeGenerator import \
@@ -8,16 +9,18 @@ from data.materials.CompositionEntry import CompositionEntry
 class testIonicCompoundProximityAttributeGenerator(unittest.TestCase):
     def test_attribute_generator(self):
         # Make a list of CompositionEntry's.
-        entries = [CompositionEntry(composition="Na0.9Cl1.1"), CompositionEntry(
-            composition="CuCl2"), CompositionEntry(composition="FeAl"),
-                   CompositionEntry(composition="Fe")]
+        entries = [CompositionEntry(composition="Na0.9Cl1.1"),
+                   CompositionEntry(composition="CuCl2"), CompositionEntry(
+                composition="FeAl"), CompositionEntry(composition="Fe")]
 
         # Make the generator and set options.
         ig = IonicCompoundProximityAttributeGenerator()
         ig.set_max_formula_unit(10)
 
         # Run the generator.
-        features = ig.generate_features(entries, lookup_path="../lookup-data/")
+        this_file_path = os.path.dirname(__file__)
+        rel_path = os.path.join(this_file_path, "../../../../lookup-data/")
+        features = ig.generate_features(entries, lookup_path=rel_path)
 
         # Test results.
         self.assertEquals(1, len(features.columns))
@@ -28,7 +31,7 @@ class testIonicCompoundProximityAttributeGenerator(unittest.TestCase):
         ig.set_max_formula_unit(2)
 
         # Run the generator.
-        features = ig.generate_features(entries, lookup_path="../lookup-data/")
+        features = ig.generate_features(entries, lookup_path=rel_path)
 
         # Test results.
         self.assertEquals(1, len(features.columns))

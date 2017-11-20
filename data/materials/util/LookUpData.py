@@ -1,5 +1,6 @@
 import numpy as np
 import sys
+import os
 
 class LookUpData:
     """
@@ -79,8 +80,11 @@ class LookUpData:
                      "Bh": 12, "Hs": 13, "Mt": 14, "Ds": 15, "Rg": 16,
                      "Cn": 17}
 
+    this_file_path = os.path.dirname(__file__)
+    rel_path = os.path.join(this_file_path, "../../../lookup-data/")
+
     @classmethod
-    def load_property(self, property, lookup_dir="../lookup-data/"):
+    def load_property(self, property, lookup_dir=rel_path):
         """
         Function to load a specific property from the directory containing
         all the lookup tables.
@@ -117,7 +121,8 @@ class LookUpData:
         return values
 
     @classmethod
-    def load_pair_property(self, property, data_dir="../lookup-data/pair/"):
+    def load_pair_property(self, property,
+                           data_dir="../../../lookup-data/pair/"):
         """
         Function to load property of a binary system.
         :param property: Property whose values need to be loaded.
@@ -158,7 +163,8 @@ class LookUpData:
         return values
 
     @classmethod
-    def load_pair_properties(self, properties, data_dir="../lookup-data/pair/"):
+    def load_pair_properties(self, properties,
+                             data_dir="../../../lookup-data/pair/"):
         """
         Function to load multiple pair property values from the directory
         containing all the lookup tables.
@@ -177,7 +183,7 @@ class LookUpData:
         return values
 
     @classmethod
-    def load_properties(self, properties, lookup_dir="../lookup-data/"):
+    def load_properties(self, properties, lookup_dir=rel_path):
         """
         Function to load multiple property values from the directory
         containing all the lookup tables.
@@ -195,7 +201,8 @@ class LookUpData:
         return values
 
     @classmethod
-    def load_special_property(self, property, lookup_dir="lookup-data/"):
+    def load_special_property(self, property,
+                              lookup_dir=rel_path):
         """
         Function to load the special property files related to
         IonizationEnergies and OxidationStates.
@@ -206,8 +213,8 @@ class LookUpData:
         """
 
         # Make sure property is either IonizationEnergies or OxidationStates.
-        if not (property == "IonizationEnergies" or property == \
-                "OxidationStates"):
+        if not (property == "IonizationEnergies" or property ==
+            "OxidationStates"):
             raise ValueError("Use load_property function. This function is "
                               "used exclusively for IonizationEnergies and "
                              "OxidationStates")

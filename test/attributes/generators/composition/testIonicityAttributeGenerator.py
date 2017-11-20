@@ -1,4 +1,5 @@
 import unittest
+import os
 from attributes.generators.composition.IonicityAttributeGenerator import \
     IonicityAttributeGenerator
 from data.materials.CompositionEntry import CompositionEntry
@@ -13,7 +14,9 @@ class testIonicityAttributeGenerator(unittest.TestCase):
         ig = IonicityAttributeGenerator()
 
         # Run the generator.
-        features = ig.generate_features(entries, lookup_path="../lookup-data/")
+        this_file_path = os.path.dirname(__file__)
+        rel_path = os.path.join(this_file_path, "../../../../lookup-data/")
+        features = ig.generate_features(entries, lookup_path=rel_path)
 
         # Test results.
         self.assertEquals(3, len(features.columns))

@@ -1,4 +1,5 @@
 import unittest
+import os
 from attributes.generators.composition.YangOmegaAttributeGenerator import \
     YangOmegaAttributeGenerator
 from data.materials.CompositionEntry import CompositionEntry
@@ -15,7 +16,9 @@ class testYangOmegaAttributeGenerator(unittest.TestCase):
         yg = YangOmegaAttributeGenerator()
 
         # Run the generator.
-        features = yg.generate_features(entries, lookup_path="../lookup-data/")
+        this_file_path = os.path.dirname(__file__)
+        rel_path = os.path.join(this_file_path, "../../../../lookup-data/")
+        features = yg.generate_features(entries, lookup_path=rel_path)
 
         # Test results.
         self.assertEquals(2, len(features.columns))

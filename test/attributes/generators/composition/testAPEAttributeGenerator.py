@@ -1,17 +1,21 @@
 import unittest
+import os
 from attributes.generators.composition.APEAttributeGenerator import \
     APEAttributeGenerator
 from data.materials.CompositionEntry import CompositionEntry
 from data.materials.util.LookUpData import LookUpData
 
 class testAPEAttributeGenerator(unittest.TestCase):
+    this_file_path = os.path.dirname(__file__)
+    rel_path = os.path.join(this_file_path, "../../../../lookup-data/")
 
     def test_APECalculator(self):
         # Test ideal icosahedron.
-        self.assertAlmostEquals(1.0, APEAttributeGenerator.compute_APE(n_neighbors=12,
-                center_radius=0.902113, neigh_eff_radius=1.0), delta=1e-6)
-        self.assertAlmostEquals(1.0, APEAttributeGenerator.compute_APE(radii=[0.902113,
-                1.0], center_type=0, shell_types=[0, 12]))
+        self.assertAlmostEquals(1.0, APEAttributeGenerator.compute_APE(
+            n_neighbors=12, center_radius=0.902113, neigh_eff_radius=1.0),
+                                delta=1e-6)
+        self.assertAlmostEquals(1.0, APEAttributeGenerator.compute_APE(
+            radii=[0.902113, 1.0], center_type=0, shell_types=[0, 12]))
 
         # Make sure overpacked in less than 1.
         # using the conventional from 10.1038/ncomms9123.
@@ -21,7 +25,8 @@ class testAPEAttributeGenerator(unittest.TestCase):
 
     def test_cluster_finder(self):
         # Test unary system.
-        clusters = APEAttributeGenerator.find_efficiently_packed_clusters([1.0], 0.05)
+        clusters = APEAttributeGenerator.find_efficiently_packed_clusters([
+            1.0], 0.05)
         self.assertEquals(1, len(clusters))
         self.assertEquals(2, len(clusters[0]))
         self.assertEquals(13, clusters[0][0][0])
@@ -29,26 +34,28 @@ class testAPEAttributeGenerator(unittest.TestCase):
 
         # Test binary system.
         radii = [1.0, 0.902113]
-        clusters = APEAttributeGenerator.find_efficiently_packed_clusters(radii, 0.01)
+        clusters = APEAttributeGenerator.find_efficiently_packed_clusters(
+            radii, 0.01)
         self.assertEquals(2, len(clusters))
 
         # Make sure all clusters actually have |APE - 1| below 0.05.
         for i in range(len(radii)):
             for c in clusters[i]:
-                ape = APEAttributeGenerator.compute_APE(radii=radii, center_type=i,
-                                           shell_types=c)
+                ape = APEAttributeGenerator.compute_APE(radii=radii,
+                                    center_type=i, shell_types=c)
                 self.assertTrue(abs(ape - 1) < 0.01)
 
         # Test quinary system.
         radii = [1.0, 0.902113, 1.1, 1.2, 0.7]
-        clusters = APEAttributeGenerator.find_efficiently_packed_clusters(radii, 0.01)
+        clusters = APEAttributeGenerator.find_efficiently_packed_clusters(
+            radii, 0.01)
         self.assertEquals(5, len(clusters))
 
         # Make sure all clusters actually have |APE - 1| below 0.05.
         for i in range(len(radii)):
             for c in clusters[i]:
-                ape = APEAttributeGenerator.compute_APE(radii=radii, center_type=i,
-                                           shell_types=c)
+                ape = APEAttributeGenerator.compute_APE(radii=radii,
+                                    center_type=i, shell_types=c)
                 self.assertTrue(abs(ape - 1) < 0.01)
 
     def test_composition(self):
@@ -75,7 +82,7 @@ class testAPEAttributeGenerator(unittest.TestCase):
     def test_optimal_solver(self):
         # Get the radii lookup table.
         radii = LookUpData.load_property("MiracleRadius",
-                                         lookup_dir="../lookup-data/")
+                                         lookup_dir=self.rel_path)
 
         # Find the best Cu cluster.
         entry = CompositionEntry(composition="Cu")
@@ -99,7 +106,7 @@ class testAPEAttributeGenerator(unittest.TestCase):
         aag.set_n_nearest_to_eval([1, 3])
 
         # Compute features.
-        features = aag.generate_features(entries, lookup_path="../lookup-data/")
+        features = aag.generate_features(entries, lookup_path=self.rel_path)
 
         # Test results.
         self.assertEquals(4, features.size)
@@ -158,7 +165,7 @@ class testAPEAttributeGenerator(unittest.TestCase):
 
         aag = APEAttributeGenerator()
 
-        features = aag.generate_features(entries, lookup_path="../lookup-data/")
+        features = aag.generate_features(entries, lookup_path=self.rel_path)
         feat_values = features.values
 
         # Make sure the features are not identical.

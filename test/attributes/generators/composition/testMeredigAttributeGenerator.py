@@ -1,4 +1,5 @@
 import unittest
+import os
 import numpy.testing as np_tst
 import pandas as pd
 from attributes.generators.composition.ElementFractionAttributeGenerator \
@@ -20,9 +21,11 @@ class testMeredigAttributeGenerator(unittest.TestCase):
         vg = ValenceShellAttributeGenerator()
 
         # Generate features.
+        this_file_path = os.path.dirname(__file__)
+        rel_path = os.path.join(this_file_path, "../../../../lookup-data/")
         f1 = eg.generate_features(entries)
-        f2 = mg.generate_features(entries, lookup_path="../lookup-data/")
-        f3 = vg.generate_features(entries, lookup_path="../lookup-data/")
+        f2 = mg.generate_features(entries, lookup_path=rel_path)
+        f3 = vg.generate_features(entries, lookup_path=rel_path)
 
         # Final results.
         features = pd.concat([f1, f2, f3], axis=1)

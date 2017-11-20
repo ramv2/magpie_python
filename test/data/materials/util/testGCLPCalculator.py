@@ -1,10 +1,7 @@
 import unittest
-
-from utility.GCLPCalculator import GCLPCalculator
-
 from data.materials.CompositionEntry import CompositionEntry
+from data.materials.util.GCLPCalculator import GCLPCalculator
 from data.materials.util.LookUpData import LookUpData
-
 
 class testGCLPCalculator(unittest.TestCase):
     def setUp(self):
@@ -35,9 +32,9 @@ class testGCLPCalculator(unittest.TestCase):
 
         # Add many phases.
         entries = CompositionEntry.import_composition_list(
-            "../small_set_comp.txt")
+            "../../test-files/small_set_comp.txt")
         energies = CompositionEntry.import_values_list(
-            "../small_set_delta_e.txt")
+            "../../test-files/small_set_delta_e.txt")
         self.calc.add_phases(entries, energies)
 
         self.assertEquals(725, self.calc.get_num_phases(),

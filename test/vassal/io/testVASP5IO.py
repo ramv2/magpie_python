@@ -1,4 +1,5 @@
 import unittest
+import os
 import numpy.testing as np_tst
 from vassal.data.Atom import Atom
 from vassal.data.Cell import Cell
@@ -34,8 +35,9 @@ class testVASP5IO(unittest.TestCase):
 
     def test_parse_from_file(self):
         vio = VASP5IO()
-
-        cell = vio.parse_file(file_name="../../test-files/393-Ta1.vasp")
+        this_file_path = os.path.dirname(__file__)
+        rel_path = os.path.join(this_file_path, "../../test-files/")
+        cell = vio.parse_file(file_name=rel_path+"393-Ta1.vasp")
         self.assertAlmostEquals(556.549, cell.volume(), delta=1e-2)
         self.assertAlmostEquals(10.218, cell.get_lattice_vectors()[0][0],
                                 delta=1e-2)

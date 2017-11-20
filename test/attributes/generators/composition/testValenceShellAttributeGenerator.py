@@ -1,5 +1,6 @@
 import unittest
 import numpy.testing as np_tst
+import os
 from attributes.generators.composition.ValenceShellAttributeGenerator import \
     ValenceShellAttributeGenerator
 from data.materials.CompositionEntry import CompositionEntry
@@ -14,7 +15,9 @@ class testValenceShellAttributeGenerator(unittest.TestCase):
         vg = ValenceShellAttributeGenerator()
 
         # Run the generator.
-        features = vg.generate_features(entries, lookup_path="../lookup-data/")
+        this_file_path = os.path.dirname(__file__)
+        rel_path = os.path.join(this_file_path, "../../../../lookup-data/")
+        features = vg.generate_features(entries, lookup_path=rel_path)
 
         # Test results.
         self.assertEquals(4, len(features.columns))

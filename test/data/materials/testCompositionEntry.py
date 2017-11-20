@@ -1,10 +1,7 @@
 import unittest
 from itertools import permutations
-
 import numpy.testing as np
-
 from data.materials.CompositionEntry import CompositionEntry
-
 
 class testCompositionEntry(unittest.TestCase):
     def test_parsing(self):
@@ -236,7 +233,7 @@ class testCompositionEntry(unittest.TestCase):
 
     def test_compare(self):
         entries = CompositionEntry.import_composition_list(
-            "../../small_set_comp.txt")
+            "../../test-files/small_set_comp.txt")
         for e1 in range(len(entries)):
             self.assertEquals(0, entries[e1].__cmp__(entries[e1]))
             for e2 in range(e1 + 1, len(entries)):
