@@ -1,7 +1,11 @@
+from os.path import join, isfile
+from os import listdir
 from data.materials.CompositionEntry import CompositionEntry
 import numpy as np
 from data.materials.util.LookUpData import LookUpData
 from vassal.analysis.VoronoiCellBasedAnalysis import VoronoiCellBasedAnalysis
+from vassal.io.VASP5IO import VASP5IO
+
 
 class AtomicStructureEntry(CompositionEntry):
     """
@@ -213,3 +217,22 @@ class AtomicStructureEntry(CompositionEntry):
         """
         comp = super(AtomicStructureEntry, self).__str__()
         return self.name+":"+comp
+
+    @classmethod
+    def import_structures_list(self, dir_path):
+        structures_list = []
+        radii = LookUpData.load_property("CovalentRadius")
+
+        # Thanks to https://stackoverflow.com/questions/3207219/how-do-i-list
+        # -all-files-of-a-directory
+        only_files = [f for f in listdir(dir_path) if isfile(join(dir_path,
+                                                                  f))]
+        io = VASP5IO()
+        for f in only_files:
+            if f.endswith(".vasp"):
+                structure = io.parse_file(f)
+                name = f.split(".vasp")[0]
+                entry = AtomicStructureEntry(structure, name=name, radii=radii)
+                structures_list.append(entry)
+
+        return structures_list
