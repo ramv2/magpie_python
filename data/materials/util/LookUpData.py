@@ -97,7 +97,7 @@ class LookUpData:
         # IonizationEnergies and OxidationStates are 2-D arrays. So treat
         # them differently.
         if property == "IonizationEnergies" or property == "OxidationStates":
-            raise ValueError("Use special functions readIonizationEnergies or"
+            raise Exception("Use special functions readIonizationEnergies or"
                              " readOxidationStates to read these properties")
 
         # Initialize the numpy array.

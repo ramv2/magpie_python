@@ -6,7 +6,6 @@ from data.materials.util.LookUpData import LookUpData
 from vassal.analysis.VoronoiCellBasedAnalysis import VoronoiCellBasedAnalysis
 from vassal.io.VASP5IO import VASP5IO
 
-
 class AtomicStructureEntry(CompositionEntry):
     """
     Class to represent a crystal structure.
