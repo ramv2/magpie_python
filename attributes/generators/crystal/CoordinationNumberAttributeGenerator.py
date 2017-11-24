@@ -3,31 +3,28 @@ import pandas as pd
 from data.materials.AtomicStructureEntry import AtomicStructureEntry
 from vassal.analysis.VoronoiCellBasedAnalysis import VoronoiCellBasedAnalysis
 
-"""
+class CoordinationNumberAttributeGenerator:
+    """
     Compute attributes based on the coordination number. Uses the Voronoi
     tessellation to define the coordination network.
 
-    <p>DEV NOTE (LW 15Jul15): Could benefit from adding a face size cutoff, where
+    DEV NOTE (LW 15Jul15): Could benefit from adding a face size cutoff, where
     atoms are only defined as coordinated if the face between them is larger than
     a certain fraction of the surface area of both cells. Otherwise faces on the
     cells that are only present to numerical issues will be counted as neighbors.
     Metallic glass community commonly removes any faces smaller than 1% of the
-    total surface area of a cell.
+    total surface area of a cell.    
+    """
 
-    <usage><p><b>Usage</b>: *No options*</usage>
-
-    @author Logan Ward
-"""
-
-
-class CoordinationNumberAttributeGenerator:
-    def addAttributes(self, entries):
+    def addAttributes(self, entries, verbose=False):
         """
-                Function to generate the charge dependent features as mentioned in
-                the class description.
-                :param entries: A list of AtomicStructureEntry's.
-                :return features: Pandas data frame containing the names and values
-                of the descriptors.
+        Function to generate the charge dependent features as mentioned in
+        the class description.
+        :param entries: A list of AtomicStructureEntry's.
+        :param verbose: Flag that is mainly used for debugging. Prints out a
+        lot of information to the screen.
+        :return features: Pandas data frame containing the names and values
+        of the descriptors.
         """
 
         # Initialize lists of feature values and headers for pandas data frame.
@@ -40,10 +37,10 @@ class CoordinationNumberAttributeGenerator:
 
         if (type(entries) is not types.ListType):
             raise ValueError("Argument should be of type list of "
-                             "CompositionEntry's")
+                             "AtomicStructureEntry's")
         elif (entries and not isinstance(entries[0], AtomicStructureEntry)):
             raise ValueError("Argument should be of type list of "
-                             "CompositionEntry's")
+                             "AtomicStructureEntry's")
 
         feat_headers.append("mean_Coordination")
         feat_headers.append("var_Coordination")
@@ -68,5 +65,6 @@ class CoordinationNumberAttributeGenerator:
             feat_values.append(temp_list)
 
         features = pd.DataFrame(feat_values, columns=feat_headers)
-
+        if verbose:
+            print features.head()
         return features
