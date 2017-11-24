@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import numpy as np
 import types
@@ -28,6 +29,8 @@ class LocalPropertyDifferenceAttributeGenerator:
     This parameter is computed for all elemental properties stored in
     Composition Entry ElementalProperties.
     """
+    this_file_path = os.path.dirname(__file__)
+    rel_path = os.path.join(this_file_path, "../../../lookup-data/")
     def __init__(self, shells=None):
         """
         Function to create instance and initialize fields.
@@ -114,7 +117,14 @@ class LocalPropertyDifferenceAttributeGenerator:
         for p in properties:
             self.remove_elemental_property(p)
 
-    def generate_features(self, entries, lookup_path, verbose=False):
+    def clear_elemental_properties(self):
+        """
+        Function to clear all the elemental properties.
+        :return:
+        """
+        self.elemental_properties = []
+
+    def generate_features(self, entries, lookup_path=rel_path, verbose=False):
         """
         Function to generate features as mentioned in the class description.
         :param entries: A list of AtomicStructureEntry's.

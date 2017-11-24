@@ -77,10 +77,10 @@ class StructuralHeterogeneityAttributeGenerator:
             # Bond length features.
             # Variation between cells.
             mean_bond_lengths = voro.mean_bond_lengths()
-            length_scale = np.mean(mean_bond_lengths)
-            mean_bond_lengths /= length_scale # Normalize bond lengths.
-            tmp_list.append(np.mean([abs(x - length_scale) for x in
-                                     mean_bond_lengths]))
+            mean_bond_lengths /= np.mean(mean_bond_lengths) # Normalize bond
+            # lengths.
+            m = np.mean(mean_bond_lengths)
+            tmp_list.append(np.mean([abs(x - m) for x in mean_bond_lengths]))
             tmp_list.append(np.min(mean_bond_lengths))
             tmp_list.append(np.max(mean_bond_lengths))
 
@@ -91,9 +91,9 @@ class StructuralHeterogeneityAttributeGenerator:
                 mean_bond_lengths)
             # Normalize bond length variation by mean bond length of each cell.
             bond_length_variation /= mean_bond_lengths
-            mean_blv = np.mean(bond_length_variation)
-            tmp_list.append(mean_blv)
-            tmp_list.append(np.mean([abs(x - mean_blv) for x in
+            m = np.mean(bond_length_variation)
+            tmp_list.append(m)
+            tmp_list.append(np.mean([abs(x - m) for x in
                                      bond_length_variation]))
             tmp_list.append(np.min(bond_length_variation))
             tmp_list.append(np.max(bond_length_variation))
