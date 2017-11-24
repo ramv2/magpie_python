@@ -5,7 +5,7 @@ from vassal.analysis.VoronoiCellBasedAnalysis import VoronoiCellBasedAnalysis
 
 class CoordinationNumberAttributeGenerator:
     """
-    Compute attributes based on the coordination number. Uses the Voronoi
+    Class to compute attributes based on the coordination number. Uses the Voronoi
     tessellation to define the coordination network.
 
     DEV NOTE (LW 15Jul15): Could benefit from adding a face size cutoff, where
@@ -16,7 +16,7 @@ class CoordinationNumberAttributeGenerator:
     total surface area of a cell.    
     """
 
-    def addAttributes(self, entries, verbose=False):
+    def generate_features(self, entries, verbose=False):
         """
         Function to generate the charge dependent features as mentioned in
         the class description.
