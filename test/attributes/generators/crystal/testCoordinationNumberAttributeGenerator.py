@@ -62,7 +62,9 @@ class testCoordinationNumberAttributeGenerator(unittest.TestCase):
         features = gen.generate_features(dataset)
 
         # Make sure the correct number were generated.
-        self.assertAlmostEquals(4, len(dataset))
+        self.assertEquals(self.expected_count(), features.shape[1])
+        for i in range(len(dataset)):
+            self.assertEquals(self.expected_count(), len(features.values[i]))
 
         # Make sure scaling doesn't effect it.
         for i in range(len(dataset)):
