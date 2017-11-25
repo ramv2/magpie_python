@@ -1,7 +1,11 @@
-from attributes.generators.crystal.LatticeSimilarityAttributeGenerator import LatticeSimilarityAttributeGenerator
-from test.attributes.generators.crystal.testCoordinationNumberAttributeGenerator import testCoordinationNumberAttributeGenerator
+from attributes.generators.crystal.LatticeSimilarityAttributeGenerator import\
+    LatticeSimilarityAttributeGenerator
+from test.attributes.generators.crystal\
+    .testCoordinationNumberAttributeGenerator import \
+    testCoordinationNumberAttributeGenerator
 
-class testLatticeSimilarityAttributeGenerator(testCoordinationNumberAttributeGenerator):
+class testLatticeSimilarityAttributeGenerator(
+    testCoordinationNumberAttributeGenerator):
 
         def get_generator(self):
             return LatticeSimilarityAttributeGenerator()
