@@ -1,7 +1,5 @@
 import unittest
-
 import math
-
 from vassal.analysis.APRDFAnalysis import APRDFAnalysis
 import numpy.testing as np_tst
 from vassal.data.Atom import Atom

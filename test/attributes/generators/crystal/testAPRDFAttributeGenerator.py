@@ -1,6 +1,5 @@
 import unittest
 import math
-import os
 import numpy.testing as np_tst
 from attributes.generators.crystal.APRDFAttributeGenerator import \
     APRDFAttributeGenerator
@@ -28,9 +27,7 @@ class testAPRDFAttributeGenerator(unittest.TestCase):
         gen.add_elemental_property("Number")
 
         # Generate features.
-        this_file_path = os.path.dirname(__file__)
-        rel_path = os.path.join(this_file_path, "../../../../lookup-data/")
-        features = gen.generate_features(entries,lookup_path=rel_path)
+        features = gen.generate_features(entries)
         self.assertEquals(2, len(features.columns))
 
         ap_rdf = features.values

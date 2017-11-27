@@ -71,11 +71,10 @@ class APRDFAttributeGenerator:
         """
         self.elemental_properties = []
 
-    def generate_features(self, entries, lookup_path, verbose=False):
+    def generate_features(self, entries, verbose=False):
         """
         Function to generate features as mentioned in the class description.
         :param entries: A list of AtomicStructureEntry's.
-        :param lookup_path: Path to the file containing the property values.
         :param verbose: Flag that is mainly used for debugging. Prints out a
         lot of information to the screen.
         :return features: Pandas data frame containing the names and values
@@ -116,11 +115,7 @@ class APRDFAttributeGenerator:
 
             # Loop through each property.
             for prop in self.elemental_properties:
-                try:
-                    prop_lookup = LookUpData.load_property(prop)
-                except Exception:
-                    prop_lookup = LookUpData.load_special_property(prop)
-
+                prop_lookup = LookUpData.load_property(prop)
                 atom_prop = [prop_lookup[LookUpData.element_names.index(
                     structure.get_type_name(t))] for t in range(
                     structure.n_types())]

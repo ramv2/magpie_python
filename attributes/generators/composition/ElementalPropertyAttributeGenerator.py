@@ -16,7 +16,6 @@ class ElementalPropertyAttributeGenerator:
     def __init__(self, use_default_properties=True):
         """
         Class constructor.
-        :param lp: Instance of the LookUpData class to be used by this class.
         :param use_default_properties: Flag to use default set of properties
         as defined below.
         """
@@ -38,23 +37,21 @@ class ElementalPropertyAttributeGenerator:
         # Initialize dictionary that will contain all the property values.
         self.lookup_data = {}
 
-    def load_lookup_data(self, lookup_path):
+    def load_lookup_data(self):
         """
         Function to load the property values into self.lookup_data for the
         computation of features.
-        :param lookup_path: Path to the file containing the property values.
         :return:
         """
         self.lookup_data = LookUpData.load_properties(
-            self.elemental_properties, lookup_dir=lookup_path)
+            self.elemental_properties)
 
-    def generate_features(self, entries, lookup_path, verbose=False):
+    def generate_features(self, entries, verbose=False):
         """
         Function to generate the elemental property based features. Computes
         6 statistics (mean, maximum, minimum, range, mode and mean absolute
         deviation) of all the elemental properties provided.
         :param entries: A list of CompositionEntry's.
-        :param lookup_path: Path to the file containing the property values.
         :param verbose: Flag that is mainly used for debugging. Prints out a
         lot of information to the screen.
         :return features: Pandas data frame containing the names and values
@@ -69,7 +66,7 @@ class ElementalPropertyAttributeGenerator:
         # If the dictionary containing the property values is empty,
         # load values into it.
         if not self.lookup_data:
-            self.load_lookup_data(lookup_path)
+            self.load_lookup_data()
 
         # Initialize lists of feature values and headers for pandas data frame.
         feat_values = []

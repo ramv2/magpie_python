@@ -1,13 +1,10 @@
 import unittest
 import numpy as np
-import numpy.testing as np_tst
 import sys
-
 from models.regression.crystal.CoulombSineMatrixRegression import \
     CoulombSineMatrixRegression
 from vassal.data.Atom import Atom
 from vassal.data.Cell import Cell
-
 
 class testCoulombSineMatrixRegression(unittest.TestCase):
     def setUp(self):

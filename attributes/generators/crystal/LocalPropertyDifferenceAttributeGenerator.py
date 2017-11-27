@@ -29,8 +29,6 @@ class LocalPropertyDifferenceAttributeGenerator:
     This parameter is computed for all elemental properties stored in
     Composition Entry ElementalProperties.
     """
-    this_file_path = os.path.dirname(__file__)
-    rel_path = os.path.join(this_file_path, "../../../lookup-data/")
     def __init__(self, shells=None):
         """
         Function to create instance and initialize fields.
@@ -124,11 +122,10 @@ class LocalPropertyDifferenceAttributeGenerator:
         """
         self.elemental_properties = []
 
-    def generate_features(self, entries, lookup_path=rel_path, verbose=False):
+    def generate_features(self, entries, verbose=False):
         """
         Function to generate features as mentioned in the class description.
         :param entries: A list of AtomicStructureEntry's.
-        :param lookup_path: Path to the file containing the property values.
         :param verbose: Flag that is mainly used for debugging. Prints out a
         lot of information to the screen.
         :return features: Pandas data frame containing the names and values
@@ -175,12 +172,7 @@ class LocalPropertyDifferenceAttributeGenerator:
                 # Loop through each elemental property.
                 for prop in self.elemental_properties:
                     # Get properties for elements in this structure.
-                    try:
-                        lookup_table = LookUpData.load_property(prop,
-                                                                lookup_path)
-                    except Exception or ValueError:
-                        lookup_table = LookUpData.load_special_property(prop,
-                                                                lookup_path)
+                    lookup_table = LookUpData.load_property(prop)
                     prop_values = np.array([lookup_table[elem_index[i]] for i
                                             in range(len(elem_index))])
 
