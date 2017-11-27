@@ -80,6 +80,26 @@ class LookUpData:
                      "Bh": 12, "Hs": 13, "Mt": 14, "Ds": 15, "Rg": 16,
                      "Cn": 17}
 
+    # List of all the properties (except Abbreviation, IonizationEnergies,
+    # OxidationStates) present in the directory: lookup-data/
+    all_properties = ["AtomicVolume", "AtomicWeight",
+                      "BoilingTemp", "BoilingT", "BulkModulus", "Column",
+                      "CovalentRadius", "Density", "DipolePolarizability",
+                      "ElectronAffinity", "Electronegativity",
+                      "FirstIonizationEnergy", "FusionEnthalpy", "GSbandgap",
+                      "GSenergy_pa", "GSestBCClatcnt", "GSestFCClatcnt",
+                      "GSmagmom", "GSvolume_pa", "HeatCapacityMass",
+                      "HeatCapacityMolar", "HeatFusion", "HHIp", "HHIr",
+                      "ICSDVolume", "IsAlkali", "IsDBlock", "IsFBlock",
+                      "IsMetalloid", "IsMetal", "IsNonmetal", "MeltingT",
+                      "MendeleevNumber", "MiracleRadius", "NdUnfilled",
+                      "NdValence", "NfUnfilled", "NfValence", "NpUnfilled",
+                      "NpValence", "NsUnfilled", "NsValence", "Number",
+                      "NUnfilled", "NValance", "n_ws^third", "phi",
+                      "Polarizability", "Row", "ShearModulus",
+                      "SpaceGroupNumber", "ZungerPP-r_d", "ZungerPP-r_pi",
+                      "ZungerPP-r_p", "ZungerPP-r_sigma", "ZungerPP-r_s"]
+
     this_file_path = os.path.dirname(__file__)
     abs_path = os.path.join(this_file_path, "../../../lookup-data/")
     pair_abs_path = abs_path+"pair/"
