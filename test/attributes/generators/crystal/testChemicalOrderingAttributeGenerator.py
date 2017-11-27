@@ -1,7 +1,7 @@
 import unittest
 from attributes.generators.crystal.ChemicalOrderingAttributeGenerator import \
     ChemicalOrderingAttributeGenerator
-from data.materials.AtomicStructureEntry import AtomicStructureEntry
+from data.materials.CrystalStructureEntry import CrystalStructureEntry
 from vassal.data.Atom import Atom
 from vassal.data.Cell import Cell
 
@@ -14,7 +14,7 @@ class testChemicalOrderingAttributeGenerator(unittest.TestCase):
         structure.set_type_name(0, "Al")
         structure.set_type_name(1, "Ni")
 
-        entry = AtomicStructureEntry(structure, name="B2", radii=None)
+        entry = CrystalStructureEntry(structure, name="B2", radii=None)
         entries = [entry]
 
         # Create feature generator.

@@ -2,7 +2,7 @@ import numpy as np
 import numpy.testing as np_tst
 from attributes.generators.crystal.LocalPropertyDifferenceAttributeGenerator import \
     LocalPropertyDifferenceAttributeGenerator
-from data.materials.AtomicStructureEntry import AtomicStructureEntry
+from data.materials.CrystalStructureEntry import CrystalStructureEntry
 from test.attributes.generators.crystal.testCoordinationNumberAttributeGenerator import \
     testCoordinationNumberAttributeGenerator
 from vassal.data.Atom import Atom
@@ -33,7 +33,7 @@ class testLocalPropertyDifferenceAttributeGenerator(
         structure.set_type_name(0, "H")
         structure.set_type_name(1, "He")
 
-        entries = [AtomicStructureEntry(structure, name="B1-HHe", radii=None)]
+        entries = [CrystalStructureEntry(structure, name="B1-HHe", radii=None)]
 
         # Get the feature generator.
         gen = self.get_generator()

@@ -1,7 +1,7 @@
 import numpy.testing as np_tst
 from attributes.generators.crystal.LocalPropertyVarianceAttributeGenerator \
     import LocalPropertyVarianceAttributeGenerator
-from data.materials.AtomicStructureEntry import AtomicStructureEntry
+from data.materials.CrystalStructureEntry import CrystalStructureEntry
 from test.attributes.generators.crystal\
     .testCoordinationNumberAttributeGenerator import \
     testCoordinationNumberAttributeGenerator
@@ -32,7 +32,7 @@ class testLocalPropertyVarianceAttributeGenerator(
         structure.set_type_name(1, "He")
 
         entries = [
-            AtomicStructureEntry(structure, name="L12-HHe", radii=None)]
+            CrystalStructureEntry(structure, name="L12-HHe", radii=None)]
 
         # Get the feature generator.
         gen = self.get_generator()

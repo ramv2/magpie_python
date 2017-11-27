@@ -108,7 +108,8 @@ class ElementalPropertyAttributeGenerator:
                     if np.isnan(tmp_prop_value):
                         if not prop in missing_data:
                             missing_data[prop] = []
-                        missing_data[prop].append(elem_id)
+                        if elem_id not in missing_data[prop]:
+                            missing_data[prop].append(elem_id)
                     tmp_prop.append(tmp_prop_value)
 
                 # If there is no missing data, compute statistics.

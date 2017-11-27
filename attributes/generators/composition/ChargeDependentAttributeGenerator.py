@@ -92,7 +92,8 @@ class ChargeDependentAttributeGenerator:
                 if len(ie[elem]) < tmp_charges[i]:
                     if elem not in missing_data:
                         missing_data[elem] = []
-                    missing_data[elem].append(possible_states[0][i])
+                    if possible_states[0][i] not in missing_data[elem]:
+                        missing_data[elem].append(possible_states[0][i])
                     any_missing = True
                     break
 
@@ -146,7 +147,7 @@ class ChargeDependentAttributeGenerator:
         if len(missing_data) > 0:
             sys.stderr.write("WARNING: Missing ionization energy data for\n")
             for elem in missing_data:
-                sys.stderr.write("\t" + str(elem) + ":")
+                sys.stderr.write("\t" + LookUpData.element_names[elem] + ":")
                 for state in missing_data[elem]:
                     sys.stderr.write(" +" + str(state))
                 sys.stderr.write("\n")

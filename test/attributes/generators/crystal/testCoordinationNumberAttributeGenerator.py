@@ -1,7 +1,7 @@
 import unittest
 from attributes.generators.crystal.CoordinationNumberAttributeGenerator \
     import CoordinationNumberAttributeGenerator
-from data.materials.AtomicStructureEntry import AtomicStructureEntry
+from data.materials.CrystalStructureEntry import CrystalStructureEntry
 from vassal.data.Atom import Atom
 from vassal.data.Cell import Cell
 
@@ -23,7 +23,7 @@ class testCoordinationNumberAttributeGenerator(unittest.TestCase):
         structure1.add_atom(Atom([0.5, 0.5, 0.5], 1))
         structure1.set_type_name(0, "Al")
         structure1.set_type_name(1, "Ni")
-        entry1 = AtomicStructureEntry(structure1, name="Primitive", radii=None)
+        entry1 = CrystalStructureEntry(structure1, name="Primitive", radii=None)
         dataset.append(entry1)
 
         # Create Scaled Cell.
@@ -33,7 +33,7 @@ class testCoordinationNumberAttributeGenerator(unittest.TestCase):
         structure2.add_atom(Atom([0.5, 0.5, 0.5], 1))
         structure2.set_type_name(0, "Al")
         structure2.set_type_name(1, "Ni")
-        entry2 = AtomicStructureEntry(structure2, name="Scaled", radii=None)
+        entry2 = CrystalStructureEntry(structure2, name="Scaled", radii=None)
         dataset.append(entry2)
 
         # Create a cell where A & B are swapped.
@@ -43,7 +43,7 @@ class testCoordinationNumberAttributeGenerator(unittest.TestCase):
         structure3.add_atom(Atom([0.5, 0.5, 0.5], 1))
         structure3.set_type_name(0, "Al")
         structure3.set_type_name(1, "Ni")
-        entry3 = AtomicStructureEntry(structure3, name="Scaled", radii=None)
+        entry3 = CrystalStructureEntry(structure3, name="Scaled", radii=None)
         dataset.append(entry3)
 
         # Create a 2x1x1 supercell.
@@ -55,7 +55,7 @@ class testCoordinationNumberAttributeGenerator(unittest.TestCase):
         structure4.add_atom(Atom([0.75, 0.5, 0.5], 1))
         structure4.set_type_name(0, "Ni")
         structure4.set_type_name(1, "Al")
-        entry4 = AtomicStructureEntry(structure4, name="Primitive", radii=None)
+        entry4 = CrystalStructureEntry(structure4, name="Primitive", radii=None)
         dataset.append(entry4)
 
         # Generate features.

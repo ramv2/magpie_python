@@ -3,7 +3,7 @@ import math
 import numpy.testing as np_tst
 from attributes.generators.crystal.APRDFAttributeGenerator import \
     APRDFAttributeGenerator
-from data.materials.AtomicStructureEntry import AtomicStructureEntry
+from data.materials.CrystalStructureEntry import CrystalStructureEntry
 from vassal.data.Atom import Atom
 from vassal.data.Cell import Cell
 
@@ -16,7 +16,7 @@ class testAPRDFAttributeGenerator(unittest.TestCase):
         structure.set_type_name(0, "Ni")
         structure.set_type_name(1, "Al")
 
-        entry = AtomicStructureEntry(structure, name="B2-NiAl", radii=None)
+        entry = CrystalStructureEntry(structure, name="B2-NiAl", radii=None)
         entries = [entry]
 
         # Create feature generator.

@@ -1,7 +1,7 @@
 import unittest
 from attributes.generators.crystal.PRDFAttributeGenerator import \
     PRDFAttributeGenerator
-from data.materials.AtomicStructureEntry import AtomicStructureEntry
+from data.materials.CrystalStructureEntry import CrystalStructureEntry
 from vassal.data.Atom import Atom
 from vassal.data.Cell import Cell
 
@@ -13,7 +13,7 @@ class testPRDFAttributeGenerator(unittest.TestCase):
         structure1.set_type_name(0, "Al")
 
         entries = []
-        entry1 = AtomicStructureEntry(structure1, name="Al", radii=None)
+        entry1 = CrystalStructureEntry(structure1, name="Al", radii=None)
         entries.append(entry1)
 
         structure2 = Cell()
@@ -22,7 +22,7 @@ class testPRDFAttributeGenerator(unittest.TestCase):
         structure2.add_atom(Atom([0, 0.5, 0], 1))
         structure2.set_type_name(1, "Al")
         structure2.add_atom(Atom([0, 0, 0.5], 1))
-        entry2 = AtomicStructureEntry(structure2, name="NiAl2", radii=None)
+        entry2 = CrystalStructureEntry(structure2, name="NiAl2", radii=None)
         entries.append(entry2)
 
         # Create feature generator.

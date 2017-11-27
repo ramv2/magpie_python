@@ -1,7 +1,7 @@
 import types
 import pandas as pd
 import numpy as np
-from data.materials.AtomicStructureEntry import AtomicStructureEntry
+from data.materials.CrystalStructureEntry import CrystalStructureEntry
 
 class EffectiveCoordinationNumberAttributeGenerator:
     """
@@ -45,7 +45,7 @@ class EffectiveCoordinationNumberAttributeGenerator:
     def generate_features(self, entries, verbose=False):
         """
         Function to generate features as mentioned in the class description.
-        :param entries: A list of AtomicStructureEntry's.
+        :param entries: A list of CrystalStructureEntry's.
         :param verbose: Flag that is mainly used for debugging. Prints out a
         lot of information to the screen.
         :return features: Pandas data frame containing the names and values
@@ -53,14 +53,14 @@ class EffectiveCoordinationNumberAttributeGenerator:
         """
 
         # Raise exception if input argument is not of type list of
-        # AtomicStructureEntry's.
+        # CrystalStructureEntry's.
 
         if (type(entries) is not types.ListType):
             raise ValueError("Argument should be of type list of "
-                             "AtomicStructureEntry's")
-        elif (entries and not isinstance(entries[0], AtomicStructureEntry)):
+                             "CrystalStructureEntry's")
+        elif (entries and not isinstance(entries[0], CrystalStructureEntry)):
             raise ValueError("Argument should be of type list of "
-                             "AtomicStructureEntry's")
+                             "CrystalStructureEntry's")
 
         # Initialize lists of feature values and headers for pandas data frame.
         feat_headers = []
