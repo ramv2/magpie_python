@@ -134,8 +134,12 @@ class LookUpData:
         else:
             for i in xrange(values.size):
                 line = prop_file.readline().strip()
-                if line[0].isdigit():
+                try:
                     values[i] = float(line)
+                except ValueError:
+                    # Line is a string, which implies that data is missing.
+                    # So we let the value of NaN stay.
+                    continue
             prop_file.close()
         return values
 

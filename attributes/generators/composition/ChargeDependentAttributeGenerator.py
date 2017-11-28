@@ -145,7 +145,7 @@ class ChargeDependentAttributeGenerator:
 
         # Issue warning to user about missing data here if it exists.
         if len(missing_data) > 0:
-            sys.stderr.write("WARNING: Missing ionization energy data for\n")
+            sys.stderr.write("WARNING: Missing ionization energy data for:\n")
             for elem in missing_data:
                 sys.stderr.write("\t" + LookUpData.element_names[elem] + ":")
                 for state in missing_data[elem]:
