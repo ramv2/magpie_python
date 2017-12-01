@@ -4,8 +4,29 @@ from data.materials.util.LookUpData import LookUpData
 
 class CompositionEntry(object):
     """
-    Class that defines a composition entry object. Mainly used to store ids,
-    names and fractions of elements belonging to a single compound.
+    Class that defines a CompositionEntry object.
+
+    Mainly used to store ids, names and fractions of elements belonging to a
+    single compound.
+
+    Attributes
+    ----------
+    lp_element_names : list
+                       Names of each element. A list of string values.
+    lp_sorting_order : list
+                       Rank of each element (used in display order). A list
+                       of int values.
+    element_ids      : list
+                       Element ids present in composition. A list of int
+                       values.
+    element_names    : list
+                       Element names present in composition. A list of string
+                       values.
+    fractions        : list
+                       Fraction of each element. A list of float values.
+    number_in_cell   : float
+                       Number of atoms in cell (used to convert when printing).
+
     """
 
     # Names of each element.
@@ -29,20 +50,33 @@ class CompositionEntry(object):
     def __init__(self, composition=None, element_ids=None,
                  element_names=None, fractions=None):
         """
-        Make a new instance by paring the composition of an object, provided
-        by a string or list of element ids/names and fractions.
+        Function to make a new instance by paring the composition of an object,
+        provided by a string or list of element ids/names and fractions.
 
+        Parameters
+        ----------
+        composition   : str
+                        The chemical formula of a material.
+        element_ids   : list
+                        List of integers denoting the element ids.
+        element_names : list
+                        List of strings denoting the element names.
+        fractions     : list
+                        List of floats denoting the element fractions.
+
+        Raises
+        ------
+        RuntimeError
+            If composition parsing was unsuccessful.
+
+        Notes
+        -----
         First splits using the regex [A-Z][^A-Z] to separate each component
         of the alloy. This assumes that capitalization is used properly. Then
         splits each component into the alphabetical part (assumed to be
         element name) and the numeric part (amount of element). If no numeric
         part is present, 1 is assumed. An element can appear more than once.
 
-        :param composition: String containing the chemical formula of a
-        material.
-        :param element_ids: List of integers denoting the element ids.
-        :param element_names: List of strings denoting the element names.
-        :param fractions: List of floats denoting the element fractions.
         """
 
         # Parse composition if passed.
@@ -65,13 +99,32 @@ class CompositionEntry(object):
 
     def parse_composition(self, composition):
         """
-        Function to parse a string containing the composition. Supports
-        parentheses and addition compounds (ex: Na_2CO_3-10H_2O). Note,
-        will not properly parse addition compounds inside parentheses (ex:
-        Na_2(CO_3 - 10H_2O)_1).
-        :param composition: String describing a composition.
-        :return: Dictionary containing element ids and fractions as keys and
-        values respectively.
+        Function to parse a string containing the composition.
+
+        Supports parentheses and addition compounds (ex: Na_2CO_3-10H_2O).
+        Note, will not properly parse addition compounds inside parentheses
+        (ex: Na_2(CO_3 - 10H_2O)_1).
+
+        Parameters
+        ----------
+        composition   : str
+                        The chemical formula of a material.
+
+        Returns
+        -------
+        total_comp : dict
+                     Dictionary containing element ids and fractions as keys
+                     and values respectively.
+        host_comp  : dict
+                     Dictionary containing element ids and fractions as keys
+                     and values respectively.
+
+        Raises
+        ------
+        ValueError
+            If closing parenthesis is missing.
+            If parenthesis is not recognized.
+
         """
 
         # Check for a guest structure (ex: Al2O3-2H20).
@@ -187,12 +240,25 @@ class CompositionEntry(object):
     def set_composition(self, amounts, element_ids=None, element_names=None,
                         to_sort=True):
         """
-        Function to set the composition of this entry. Checks to make sure
-        all elements have positive amounts.
-        :param amounts: List of amounts for each element.
-        :param element_ids: List of element ids.
-        :param element_names: List of element names.
-        :return:
+        Function to set the composition of this entry.
+
+        Checks to make sure all elements have positive amounts.
+
+        Parameters
+        ----------
+        amounts       : list
+                        List of amounts (float) for each element.
+        element_ids   : list
+                        List of element ids (integers).
+        element_names : list
+                        List of element names (strings).
+
+        Raises
+        ------
+        ValueError
+            If either element names or ids are missing.
+            If lists have different lengths.
+
         """
 
         if element_ids is None and element_names is None:

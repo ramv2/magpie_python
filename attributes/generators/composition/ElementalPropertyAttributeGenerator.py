@@ -8,16 +8,35 @@ from data.materials.util.LookUpData import LookUpData
 class ElementalPropertyAttributeGenerator:
     """
     Class to set up and generate descriptors based on elemental property
-    statistics. Computes the mean, maximum, minimum, range, mode and mean
+    statistics.
+
+    Computes the mean, maximum, minimum, range, mode and mean
     absolute deviation of all elemental properties provided.
+
+    Attributes
+    ----------
+    elemental_properties : list
+                           Elemental properties to be associated with this
+                           class for the generation of features.
+    lookup-data          : dict
+                           Dictionary containing the property name as the key
+                           and a list of floats as the value.
+
     """
+
+    # Initialize to an empty list.
     elemental_properties = []
 
     def __init__(self, use_default_properties=True):
         """
         Class constructor.
-        :param use_default_properties: Flag to use default set of properties
-        as defined below.
+
+        Parameters
+        ----------
+        use_default_properties : bool
+                                 Flag to use default set of properties as
+                                 defined below.
+
         """
 
         # Use default properties to reproduce Ward et al. descriptor values.
@@ -39,24 +58,42 @@ class ElementalPropertyAttributeGenerator:
 
     def load_lookup_data(self):
         """
-        Function to load the property values into self.lookup_data for the
+        Function to load the property values into `self.lookup_data` for the
         computation of features.
-        :return:
+
         """
+
         self.lookup_data = LookUpData.load_properties(
             self.elemental_properties)
 
-    def generate_features(self, entries, verbose=False):
+    def generate_features(self, entries):
         """
-        Function to generate the elemental property based features. Computes
-        6 statistics (mean, maximum, minimum, range, mode and mean absolute
-        deviation) of all the elemental properties provided.
-        :param entries: A list of CompositionEntry's.
-        :param verbose: Flag that is mainly used for debugging. Prints out a
-        lot of information to the screen.
-        :return features: Pandas data frame containing the names and values
-        of the descriptors.
+        Function to generate features as mentioned in the class description.
+
+        Parameters
+        ----------
+        entries : list
+                  Compositions for which features are to be generated. A list
+                  of CompositionEntry's.
+
+        Returns
+        ----------
+        features : DataFrame
+                   Features for the given entries. Pandas data frame
+                   containing the names and values of the descriptors.
+
+        Raises
+        ------
+        ValueError
+            If no elemental properties are set.
+            If input is not of type list.
+            If items in the list are not CompositionEntry instances.
+
         """
+
+        # Initialize lists of feature values and headers for pandas data frame.
+        feat_values = []
+        feat_headers = []
 
         # Make sure that there is at least one elemental property provided.
         if not self.elemental_properties:
@@ -67,10 +104,6 @@ class ElementalPropertyAttributeGenerator:
         # load values into it.
         if not self.lookup_data:
             self.load_lookup_data()
-
-        # Initialize lists of feature values and headers for pandas data frame.
-        feat_values = []
-        feat_headers = []
 
         # Raise exception if input argument is not of type list of
         # CompositionEntry's.
@@ -148,38 +181,51 @@ class ElementalPropertyAttributeGenerator:
                 sys.stderr.write("\n")
 
         features = pd.DataFrame(feat_values, columns=feat_headers)
-        if verbose:
-            print features.head()
         return features
 
     def add_elemental_property(self, property):
         """
-        Function to provide an elemental property to be used to compute
-        features.
-        :param property: Property to be included.
-        :return:
+        Function to add an elemental property to `self.elemental_properties`
+        in order to be used to compute features.
+
+        Parameters
+        ----------
+        property : str
+                   Property to be added.
+
         """
+
         if property not in self.elemental_properties:
             self.elemental_properties.append(property)
 
     def add_elemental_properties(self, properties):
         """
         Function to provide a list of elemental properties to be used to
-        compute
-        features.
-        :param properties: List of properties to be included.
-        :return:
+        compute features.
+
+        Parameters
+        ----------
+        properties : array-like
+                     Properties to be included. A list of strings containing
+                     property names.
+
         """
+
         for prop in properties:
             self.add_elemental_property(prop)
 
     def remove_elemental_property(self, property):
         """
-        Function to remove an elemental property from the list of elemental
-        properties.
-        :param property: Property to be removed.
-        :return:
+        Function to remove an elemental property from
+        `self.elemental_properties`.
+
+        Parameters
+        ----------
+        property : str
+                   Property to be removed.
+
         """
+
         if property in self.elemental_properties:
             self.elemental_properties.remove(property)
 
@@ -187,8 +233,14 @@ class ElementalPropertyAttributeGenerator:
         """
         Function to remove a list of elemental properties from the list of
         elemental properties.
-        :param properties: List of properties to be removed.
-        :return:
+
+        Parameters
+        ----------
+        properties : array-like
+                     Properties to be removed. A list of strings containing
+                     property names.
+
         """
+
         for prop in properties:
             self.remove_elemental_property(prop)

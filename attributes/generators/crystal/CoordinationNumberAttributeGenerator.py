@@ -15,15 +15,28 @@ class CoordinationNumberAttributeGenerator:
     smaller than 1% of the total surface area of a cell.
     """
 
-    def generate_features(self, entries, verbose=False):
+    def generate_features(self, entries):
         """
-        Function to generate the charge dependent features as mentioned in
-        the class description.
-        :param entries: A list of CrystalStructureEntry's.
-        :param verbose: Flag that is mainly used for debugging. Prints out a
-        lot of information to the screen.
-        :return features: Pandas data frame containing the names and values
-        of the descriptors.
+        Function to generate features as mentioned in the class description.
+
+        Parameters
+        ----------
+        entries : list
+                  Crystal structures for which features are to be generated. A
+                  list of CrystalStructureEntry's.
+
+        Returns
+        ----------
+        features : DataFrame
+                   Features for the given entries. Pandas data frame
+                   containing the names and values of the descriptors.
+
+        Raises
+        ------
+        ValueError
+            If input is not of type list.
+            If items in the list are not CrystalStructureEntry instances.
+
         """
 
         # Initialize lists of feature values and headers for pandas data frame.
@@ -64,6 +77,4 @@ class CoordinationNumberAttributeGenerator:
             feat_values.append(temp_list)
 
         features = pd.DataFrame(feat_values, columns=feat_headers)
-        if verbose:
-            print features.head()
         return features

@@ -1,3 +1,4 @@
+# coding=utf-8
 import numpy as np
 import pandas as pd
 import types
@@ -8,13 +9,32 @@ from models.regression.crystal.PRDFRegression import PRDFRegression
 class PRDFAttributeGenerator:
     """
     Class to compute attributes based on the Pair Radial Distribution
-    Function (PRDF). Based on work by Schutt et al.
-    http://link.aps.org/doi/10.1103/PhysRevB.89.205118.
+    Function (PRDF).
+
+    Based on work by Schutt et al. [1].
+
+    Attributes
+    ----------
+    cut_off_distance : float
+                       Cutoff distance for PRDF.
+    n_points         : int
+                       Number of distance points to evaluate.
+    element_list     : list
+                       Elements to use in PRDF. A list of int values.
+
+    References
+    ----------
+    .. [1] K. T. Schütt, H. Glawe, F. Brockherde, A. Sanna, K. R. Müller,
+    and E. K. U. Gross, "How to represent crystal structures for machine
+    learning: Towards fast prediction of electronic properties," Physical
+    Review B, vol. 89, no. 20, May 2014.
+
     """
 
     def __init__(self):
         """
         Function to create instance and initialize fields.
+
         """
 
         # Cutoff distance for PRDF.
@@ -30,33 +50,49 @@ class PRDFAttributeGenerator:
         """
         Function to set the maximum distance to consider when computing the
         PRDF.
-        :param d: Desired cutoff distance.
-        :return:
+
+        Parameters
+        ----------
+        d : float
+            Desired cutoff distance.
+
         """
+
         self.cut_off_distance = d
 
     def set_n_points(self, n_p):
         """
         Function to set the number of points on each PRDF to store.
-        :param n_p: Number of evaluation points.
-        :return:
+
+        Parameters
+        ----------
+        n_p : int
+              Number of evaluation points.
+
         """
+
         self.n_points = n_p
 
     def clear_element_list(self):
         """
         Function to clear out the elements in element list.
-        :return:
+
         """
+
         self.element_list = []
 
     def set_elements(self, entries):
         """
         Function to set the elements when computing PRDF.
-        :param data: A list of CompositionEntry's containing each element to
-        be added.
-        :return:
+
+        Parameters
+        ----------
+        data : array-like
+               A list of CompositionEntry's containing each element to be
+               added.
+
         """
+
         self.clear_element_list()
         for entry in entries:
             for elem in entry.get_element_ids():
@@ -66,10 +102,22 @@ class PRDFAttributeGenerator:
     def add_element(self, id=None, name=None):
         """
         Function to add element to list used when computing PRDF.
-        :param id: ID of element (Atomic number - 1).
-        :param name: Name of the element.
-        :return:
+
+        Parameters
+        ----------
+        id   : int
+               ID of element (Atomic number - 1).
+        name : str
+               Name of the element.
+
+        Raises
+        ------
+        ValueError
+            If both arguments are None.
+            If entered element name can not be found in database.
+
         """
+
         if id is not None:
             self.element_list.append(id)
         elif name is None:
@@ -80,14 +128,28 @@ class PRDFAttributeGenerator:
         else:
             self.element_list.append(LookUpData.element_names.index(name))
 
-    def generate_features(self, entries, verbose=False):
+    def generate_features(self, entries):
         """
         Function to generate features as mentioned in the class description.
-        :param entries: A list of CrystalStructureEntry's.
-        :param verbose: Flag that is mainly used for debugging. Prints out a
-        lot of information to the screen.
-        :return features: Pandas data frame containing the names and values
-        of the descriptors.
+
+        Parameters
+        ----------
+        entries : list
+                  Crystal structures for which features are to be generated. A
+                  list of CrystalStructureEntry's.
+
+        Returns
+        ----------
+        features : DataFrame
+                   Features for the given entries. Pandas data frame
+                   containing the names and values of the descriptors.
+
+        Raises
+        ------
+        ValueError
+            If input is not of type list.
+            If items in the list are not CrystalStructureEntry instances.
+
         """
 
         # Initialize list of feature values for pandas data frame.
@@ -139,6 +201,4 @@ class PRDFAttributeGenerator:
             feat_values.append(tmp_array)
 
         features = pd.DataFrame(feat_values, columns=feat_headers)
-        if verbose:
-            print features.head()
         return features
