@@ -307,7 +307,7 @@ class CrystalStructureEntry(CompositionEntry):
     @classmethod
     def import_structures_list(self, dir_path):
         """
-        Function to read a list of compositions from a file.
+        Function to read a list of crystal structures from a directory.
 
         Parameters
         ----------
