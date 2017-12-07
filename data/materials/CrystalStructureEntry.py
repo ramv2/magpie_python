@@ -137,7 +137,7 @@ class CrystalStructureEntry(CompositionEntry):
 
         """
 
-        x = type(self)(self.__class__)
+        x = type(self)(self.structure, self.name, self.radii)
         x.__dict__.update(self.__dict__)
         x.structure = self.structure.__copy__()
         return x
