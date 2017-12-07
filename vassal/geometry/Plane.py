@@ -1,6 +1,6 @@
 import numpy as np
 from numpy.linalg import norm
-from vassal.geometry.Line import Line
+from .Line import Line
 
 class Plane:
     """

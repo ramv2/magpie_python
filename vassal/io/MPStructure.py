@@ -1,5 +1,5 @@
-from vassal.data.Atom import Atom
-from vassal.data.Cell import Cell
+from ..data.Atom import Atom
+from ..data.Cell import Cell
 
 class MPStructure:
     """

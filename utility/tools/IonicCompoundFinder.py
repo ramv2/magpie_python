@@ -1,7 +1,7 @@
-from data.materials.util.LookUpData import LookUpData
-from data.utilities.generators.PhaseDiagramCompositionEntryGenerator import \
-    PhaseDiagramCompositionEntryGenerator
-from utility.tools.OxidationStateGuesser import OxidationStateGuesser
+from ...data.materials.util.LookUpData import LookUpData
+from ...data.utilities.generators.PhaseDiagramCompositionEntryGenerator \
+    import PhaseDiagramCompositionEntryGenerator
+from ...utility.tools.OxidationStateGuesser import OxidationStateGuesser
 
 class IonicCompoundFinder:
     """

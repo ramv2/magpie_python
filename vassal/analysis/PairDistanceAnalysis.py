@@ -1,8 +1,8 @@
 import numpy as np
 from numpy.linalg import norm
-from vassal.data.AtomImage import AtomImage
-from vassal.geometry.Plane import Plane
-from vassal.util.VectorCombinationComputer import VectorCombinationComputer
+from ..data.AtomImage import AtomImage
+from ..geometry.Plane import Plane
+from ..util.VectorCombinationComputer import VectorCombinationComputer
 
 class PairDistanceAnalysis:
     """

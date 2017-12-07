@@ -1,8 +1,8 @@
 from itertools import combinations as comb
 import numpy as np
-from utility.EqualSumCombinations import EqualSumCombinations
-from data.materials.CompositionEntry import CompositionEntry
-from data.materials.util.LookUpData import LookUpData
+from ....utility.EqualSumCombinations import EqualSumCombinations
+from ....data.materials.CompositionEntry import CompositionEntry
+from ....data.materials.util.LookUpData import LookUpData
 
 class PhaseDiagramCompositionEntryGenerator:
     """

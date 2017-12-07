@@ -1,5 +1,6 @@
-from attributes.generators.crystal.LocalPropertyDifferenceAttributeGenerator \
-    import LocalPropertyDifferenceAttributeGenerator
+from ....attributes.generators.crystal\
+    .LocalPropertyDifferenceAttributeGenerator import \
+    LocalPropertyDifferenceAttributeGenerator
 
 class LocalPropertyVarianceAttributeGenerator(
     LocalPropertyDifferenceAttributeGenerator):

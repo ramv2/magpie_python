@@ -1,6 +1,6 @@
 from numpy.linalg import norm
 import numpy as np
-from vassal.analysis.voronoi.VoronoiTessellationCalculator import \
+from .voronoi.VoronoiTessellationCalculator import \
     VoronoiTessellationCalculator
 
 class VoronoiCellBasedAnalysis:

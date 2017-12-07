@@ -1,10 +1,11 @@
 from os.path import join, isfile
 from os import listdir
-from data.materials.CompositionEntry import CompositionEntry
+from ...data.materials.CompositionEntry import CompositionEntry
 import numpy as np
-from data.materials.util.LookUpData import LookUpData
-from vassal.analysis.VoronoiCellBasedAnalysis import VoronoiCellBasedAnalysis
-from vassal.io.VASP5IO import VASP5IO
+from ...data.materials.util.LookUpData import LookUpData
+from ...vassal.analysis.VoronoiCellBasedAnalysis import \
+    VoronoiCellBasedAnalysis
+from ...vassal.io.VASP5IO import VASP5IO
 
 class CrystalStructureEntry(CompositionEntry):
     """

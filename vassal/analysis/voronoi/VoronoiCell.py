@@ -1,9 +1,9 @@
 from collections import OrderedDict
 from numpy.linalg import norm
 import numpy as np
-from vassal.analysis.voronoi.VoronoiEdge import VoronoiEdge
-from vassal.analysis.voronoi.VoronoiFace import VoronoiFace
-from vassal.data.AtomImage import AtomImage
+from ..voronoi.VoronoiEdge import VoronoiEdge
+from ..voronoi.VoronoiFace import VoronoiFace
+from ...data.AtomImage import AtomImage
 
 class VoronoiCell:
     """

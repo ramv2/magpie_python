@@ -1,7 +1,7 @@
 import types
 import pandas as pd
 import numpy as np
-from data.materials.CrystalStructureEntry import CrystalStructureEntry
+from ....data.materials.CrystalStructureEntry import CrystalStructureEntry
 
 class EffectiveCoordinationNumberAttributeGenerator:
     """

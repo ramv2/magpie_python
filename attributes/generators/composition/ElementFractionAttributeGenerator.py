@@ -1,7 +1,7 @@
 import types
 import pandas as pd
-from data.materials.CompositionEntry import CompositionEntry
-from data.materials.util.LookUpData import LookUpData
+from ....data.materials.CompositionEntry import CompositionEntry
+from ....data.materials.util.LookUpData import LookUpData
 
 class ElementFractionAttributeGenerator:
     """

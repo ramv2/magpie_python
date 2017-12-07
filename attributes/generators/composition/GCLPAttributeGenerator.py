@@ -2,8 +2,8 @@ import types
 from math import sqrt, log
 import numpy as np
 import pandas as pd
-from data.materials.CompositionEntry import CompositionEntry
-from data.materials.util.GCLPCalculator import GCLPCalculator
+from ....data.materials.CompositionEntry import CompositionEntry
+from ....data.materials.util.GCLPCalculator import GCLPCalculator
 
 class GCLPAttributeGenerator:
     """

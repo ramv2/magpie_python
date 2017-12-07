@@ -1,6 +1,6 @@
 import re
 from itertools import izip
-from data.materials.util.LookUpData import LookUpData
+from ...data.materials.util.LookUpData import LookUpData
 
 class CompositionEntry(object):
     """

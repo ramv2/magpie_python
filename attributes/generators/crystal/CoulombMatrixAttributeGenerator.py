@@ -1,8 +1,8 @@
 import types
 import numpy as np
 import pandas as pd
-from data.materials.CrystalStructureEntry import CrystalStructureEntry
-from models.regression.crystal.CoulombSineMatrixRegression import \
+from ....data.materials.CrystalStructureEntry import CrystalStructureEntry
+from ....models.regression.crystal.CoulombSineMatrixRegression import \
     CoulombSineMatrixRegression
 
 class CoulombMatrixAttributeGenerator:

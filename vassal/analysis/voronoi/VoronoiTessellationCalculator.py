@@ -1,5 +1,5 @@
-from vassal.analysis.PairDistanceAnalysis import PairDistanceAnalysis
-from vassal.analysis.voronoi.VoronoiCell import VoronoiCell
+from ..PairDistanceAnalysis import PairDistanceAnalysis
+from ..voronoi.VoronoiCell import VoronoiCell
 
 class VoronoiTessellationCalculator:
     """

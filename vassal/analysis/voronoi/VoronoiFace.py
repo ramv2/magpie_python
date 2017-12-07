@@ -1,8 +1,8 @@
 from numpy.linalg import norm
 import numpy as np
-from vassal.analysis.voronoi.VoronoiEdge import VoronoiEdge
-from vassal.analysis.voronoi.VoronoiVertex import VoronoiVertex
-from vassal.geometry.Plane import Plane
+from ..voronoi.VoronoiEdge import VoronoiEdge
+from ..voronoi.VoronoiVertex import VoronoiVertex
+from ...geometry.Plane import Plane
 
 class VoronoiFace:
     """

@@ -1,8 +1,8 @@
 import types
 import numpy as np
 import pandas as pd
-from data.materials.CompositionEntry import CompositionEntry
-from data.materials.util.LookUpData import LookUpData
+from ....data.materials.CompositionEntry import CompositionEntry
+from ....data.materials.util.LookUpData import LookUpData
 
 class MeredigAttributeGenerator:
     """

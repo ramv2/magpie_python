@@ -1,7 +1,7 @@
 import unittest
-from data.materials.CompositionEntry import CompositionEntry
-from data.materials.util.GCLPCalculator import GCLPCalculator
-from data.materials.util.LookUpData import LookUpData
+from .....data.materials.CompositionEntry import CompositionEntry
+from .....data.materials.util.GCLPCalculator import GCLPCalculator
+from .....data.materials.util.LookUpData import LookUpData
 
 class testGCLPCalculator(unittest.TestCase):
     def setUp(self):

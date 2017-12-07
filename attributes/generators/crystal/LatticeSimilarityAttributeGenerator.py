@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import types
-from data.materials.CrystalStructureEntry import CrystalStructureEntry
+from ....data.materials.CrystalStructureEntry import CrystalStructureEntry
 
 class LatticeSimilarityAttributeGenerator:
     """

@@ -1,6 +1,6 @@
 import numpy as np
 from numpy.linalg import norm
-from vassal.data.AtomImage import AtomImage
+from .AtomImage import AtomImage
 
 class Cell:
     """

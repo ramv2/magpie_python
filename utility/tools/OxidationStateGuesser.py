@@ -1,6 +1,6 @@
 import itertools
 import numpy as np
-from data.materials.CompositionEntry import CompositionEntry
+from ...data.materials.CompositionEntry import CompositionEntry
 
 class OxidationStateGuesser:
     """

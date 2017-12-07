@@ -1,6 +1,6 @@
 import types
 import pandas as pd
-from data.materials.CrystalStructureEntry import CrystalStructureEntry
+from ....data.materials.CrystalStructureEntry import CrystalStructureEntry
 
 class CoordinationNumberAttributeGenerator:
     """

@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import types
-from data.materials.CrystalStructureEntry import CrystalStructureEntry
+from ....data.materials.CrystalStructureEntry import CrystalStructureEntry
 
 class ChemicalOrderingAttributeGenerator:
     """

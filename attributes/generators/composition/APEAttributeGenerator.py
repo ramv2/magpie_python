@@ -2,11 +2,11 @@ import types
 from heapq import heappush, heappop
 import numpy as np
 import pandas as pd
-from data.materials.CompositionEntry import CompositionEntry
-from data.materials.util.LookUpData import LookUpData
-from data.utilities.filters.CompositionDistanceFilter import \
+from ....data.materials.CompositionEntry import CompositionEntry
+from ....data.materials.util.LookUpData import LookUpData
+from ....data.utilities.filters.CompositionDistanceFilter import \
     CompositionDistanceFilter
-from utility.EqualSumCombinations import EqualSumCombinations
+from ....utility.EqualSumCombinations import EqualSumCombinations
 
 class APEAttributeGenerator:
     """

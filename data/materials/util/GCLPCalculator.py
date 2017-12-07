@@ -2,8 +2,8 @@ from itertools import izip
 import numpy as np
 from scipy.linalg import lu
 from scipy.optimize import linprog
-from LookUpData import LookUpData
-from data.materials.CompositionEntry import CompositionEntry
+from .LookUpData import LookUpData
+from ..CompositionEntry import CompositionEntry
 
 class GCLPCalculator:
     lp_element_names = LookUpData.element_names

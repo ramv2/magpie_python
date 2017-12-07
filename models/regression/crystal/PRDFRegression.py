@@ -1,7 +1,7 @@
 import math
 import numpy as np
-from data.materials.util.LookUpData import LookUpData
-from vassal.analysis.PairDistanceAnalysis import PairDistanceAnalysis
+from ....data.materials.util.LookUpData import LookUpData
+from ....vassal.analysis.PairDistanceAnalysis import PairDistanceAnalysis
 
 class PRDFRegression:
     """

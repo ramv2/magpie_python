@@ -1,6 +1,6 @@
 import types
 import pandas as pd
-from data.materials.CompositionEntry import CompositionEntry
+from ....data.materials.CompositionEntry import CompositionEntry
 
 class StoichiometricAttributeGenerator:
     """

@@ -1,9 +1,9 @@
 import types
 import pandas as pd
-from data.materials.CompositionEntry import CompositionEntry
-from data.utilities.filters.CompositionDistanceFilter import \
+from ....data.materials.CompositionEntry import CompositionEntry
+from ....data.utilities.filters.CompositionDistanceFilter import \
     CompositionDistanceFilter
-from utility.tools.IonicCompoundFinder import IonicCompoundFinder
+from ....utility.tools.IonicCompoundFinder import IonicCompoundFinder
 
 class IonicCompoundProximityAttributeGenerator:
     """

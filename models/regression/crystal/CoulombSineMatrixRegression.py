@@ -1,6 +1,6 @@
 import numpy as np
 import math
-from data.materials.util.LookUpData import LookUpData
+from ....data.materials.util.LookUpData import LookUpData
 
 class CoulombSineMatrixRegression:
     """

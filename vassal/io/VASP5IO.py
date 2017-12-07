@@ -1,7 +1,7 @@
 from collections import OrderedDict
 import numpy as np
-from vassal.data.Atom import Atom
-from vassal.data.Cell import Cell
+from ..data.Atom import Atom
+from ..data.Cell import Cell
 
 class VASP5IO:
     """

@@ -1,5 +1,5 @@
 import math
-from vassal.analysis.PairDistanceAnalysis import PairDistanceAnalysis
+from .PairDistanceAnalysis import PairDistanceAnalysis
 import numpy as np
 
 class APRDFAnalysis:
