@@ -9,20 +9,20 @@ class MPStructure:
     """
 
     @classmethod
-    def import_structure(self, lines):
+    def import_structure(self, list_of_lines):
         """
         Function to import a structure from a Materials Project structure's
         string representation.
-        :param lines: String representation of a Materials Project structure
-        object.
+        :param list_of_lines: A list of lines containing the string
+        representation of a Materials Project structure object.
         :return: Structure as Cell.
         """
 
         # Initialize the cell.
         structure = Cell()
 
-        lengths = map(float, lines[2].strip().split()[2:])
-        angles = map(float, lines[3].strip().split()[1:])
+        lengths = map(float, list_of_lines[2].strip().split()[2:])
+        angles = map(float, list_of_lines[3].strip().split()[1:])
 
         # Check if the lengths of lists are 3.
         if len(lengths) != 3 or len(angles) != 3:
@@ -34,8 +34,8 @@ class MPStructure:
         # Parse atoms and add them to structure.
         t = 0
         prev_name = ""
-        for i in range(7, len(lines)):
-            words = lines[i].strip().split()
+        for i in range(7, len(list_of_lines)):
+            words = list_of_lines[i].strip().split()
             this_name = words[1]
             this_pos = map(float, words[2:5])
             if prev_name != "" and prev_name != this_name:
