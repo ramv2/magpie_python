@@ -2,26 +2,41 @@ from ..PairDistanceAnalysis import PairDistanceAnalysis
 from ..voronoi.VoronoiCell import VoronoiCell
 
 class VoronoiTessellationCalculator:
-    """
-    Class that computes the Voronoi tessellation of a cell. Can either use a
+    """Class that computes the Voronoi tessellation of a cell. Can either use a
     standard Voronoi tessellation or the radical plane method. The radical
     plane method takes the radii of atoms into account when partitioning the
     cell.
     Citation for Radical Voronoi method:
     http://www.sciencedirect.com/science/article/pii/002230938290093X
     Gellatly and Finney. JNCS (1970).
+
+    Parameters
+    ----------
+
+    Returns
+    -------
+
     """
     @classmethod
     def compute(self, cell, radical):
-        """
-        Function to run a a tessellation using the Python implementation of the
+        """Function to run a a tessellation using the Python implementation of the
         voronoi tessellation provided with Vassal.
         Citation for the computation method:
         http://linkinghub.elsevier.com/retrieve/pii/0021999178901109
         Brostow, Dessault, Fox. JCP (1978).
-        :param cell: Structure to analyze.
-        :param radical: Whether to perform a radical plane tessellation.
-        :return: Voronoi cell for each atom.
+
+        Parameters
+        ----------
+        cell :
+            Structure to analyze.
+        radical :
+            Whether to perform a radical plane tessellation.
+
+        Returns
+        -------
+        type
+            Voronoi cell for each atom.
+
         """
 
         # Initialize Voronoi cells.

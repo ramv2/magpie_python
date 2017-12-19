@@ -1,9 +1,15 @@
 import numpy as np
 
 class AtomImage:
-    """
-    Class to uniquely identify an atom image. Key is atom ID, value is the
+    """Class to uniquely identify an atom image. Key is atom ID, value is the
     periodic image.
+
+    Parameters
+    ----------
+
+    Returns
+    -------
+
     """
 
     def __init__(self, atom, image):
@@ -70,9 +76,15 @@ class AtomImage:
         return h
 
     def compute_position(self):
-        """
-        Function to compute (or re-compute) position of this image.
+        """Function to compute (or re-compute) position of this image.
         :return:
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
 
         self.position = self.atom.get_cell().get_periodic_image(
@@ -80,33 +92,57 @@ class AtomImage:
             self.supercell[1], self.supercell[2])
 
     def get_atom(self):
-        """
-        Function to get the atom at the center of this image.
+        """Function to get the atom at the center of this image.
         :return: Link to atom at the center.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
 
         return self.atom
 
     def get_atom_id(self):
-        """
-        Function to get the ID of the atom associated with this image.
+        """Function to get the ID of the atom associated with this image.
         :return: ID number.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
 
         return self.atom.get_id()
 
     def get_supercell(self):
-        """
-        Function to get which supercell this image is located in.
+        """Function to get which supercell this image is located in.
         :return: Supercell coordinates.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
 
         return self.supercell.copy()
 
     def get_position(self):
-        """
-        Function to get the position (in Cartesian coordinates) of this image.
+        """Function to get the position (in Cartesian coordinates) of this image.
         :return: Position of atom.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
 
         return self.position

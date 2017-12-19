@@ -3,11 +3,17 @@ from .PairDistanceAnalysis import PairDistanceAnalysis
 import numpy as np
 
 class APRDFAnalysis:
-    """
-    Class to compute the Atomic Property Weighted Radial Distribution
+    """Class to compute the Atomic Property Weighted Radial Distribution
     Function (AP-RDF). Follows the work by Fernandez et al.
     http://pubs.acs.org/doi/abs/10.1021/jp404287t.
     Here, we use a scaling factor equal to: 1 / #atoms.
+
+    Parameters
+    ----------
+
+    Returns
+    -------
+
     """
     def __init__(self):
         """
@@ -32,12 +38,18 @@ class APRDFAnalysis:
         self.accuracy_factor = 1e-3
 
     def precompute(self):
-        """
-        Function to perform any kind of computations that should be performed
+        """Function to perform any kind of computations that should be performed
         only once. Determine the maximum distance at which atoms contribute
         to the PRDF. This is the maximum distance (r) at which exp(-B * (r -
         R)^2) > AccuracyFactor.
         :return:
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         max_pair_distance = math.sqrt(-1 * math.log(self.accuracy_factor) /
                                       self.B) + self.cut_off_distance
@@ -47,38 +59,61 @@ class APRDFAnalysis:
         self.distance_computer.analyze_structure(self.structure)
 
     def analyze_structure(self, s):
-        """
-        Function to analyze a specific structure. Once this completes,
+        """Function to analyze a specific structure. Once this completes,
         it is possible to retrieve results out of this object.
 
-        :param s: Structure to be analyzed.
-        :return:
+        Parameters
+        ----------
+        s :
+            Structure to be analyzed.
+
+        Returns
+        -------
+
         """
         self.structure = s
         self.precompute()
 
     def recompute(self):
-        """
-        Function to recompute structural information.
+        """Function to recompute structural information.
         :return:
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         self.precompute()
 
     def set_smoothing_factor(self, b):
-        """
-        Function to set smoothing factor used when computing PRDF.
-        :param b: Smoothing factor.
-        :return:
+        """Function to set smoothing factor used when computing PRDF.
+
+        Parameters
+        ----------
+        b :
+            Smoothing factor.
+
+        Returns
+        -------
+
         """
         if b <= 0:
             raise ValueError("B must be positive!! Supplied: "+str(b))
         self.B = b
 
     def set_cut_off_distance(self, d):
-        """
-        Function to set cut off distance used when computing PRDF.
-        :param d: Cut off distance.
-        :return:
+        """Function to set cut off distance used when computing PRDF.
+
+        Parameters
+        ----------
+        d :
+            Cut off distance.
+
+        Returns
+        -------
+
         """
         if d <= 0:
             raise ValueError("Cut off distance must be positive!! Supplied: "
@@ -96,19 +131,33 @@ class APRDFAnalysis:
                                 "stacktrace.")
 
     def set_n_windows(self, n_w):
-        """
-        Function to set the number of points at which to evaluate AP-RDF.
-        :param n_w: Desired number of windows.
-        :return:
+        """Function to set the number of points at which to evaluate AP-RDF.
+
+        Parameters
+        ----------
+        n_w :
+            Desired number of windows.
+
+        Returns
+        -------
+
         """
         self.n_windows = n_w
 
     def compute_APRDF(self, properties):
-        """
-        Function to compute the AP-RDF of this structure.
-        :param properties: Properties of each atom type.
-        :return: AP-RDF at R at n_windows steps between cut off distance /
-        n_windows to cut off distance, inclusive.
+        """Function to compute the AP-RDF of this structure.
+
+        Parameters
+        ----------
+        properties :
+            Properties of each atom type.
+
+        Returns
+        -------
+        type
+            AP-RDF at R at n_windows steps between cut off distance /
+            n_windows to cut off distance, inclusive.
+
         """
 
         # Make sure the number of properties is correct.
@@ -150,9 +199,15 @@ class APRDFAnalysis:
         return ap_rdf
 
     def get_evaluation_distances(self):
-        """
-        Function to get the distances at which the PRDF should be analyzed.
+        """Function to get the distances at which the PRDF should be analyzed.
         :return: List of distances.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         step_size = float(self.cut_off_distance) / self.n_windows
         return [(i + 1) * step_size for i in range(self.n_windows)]

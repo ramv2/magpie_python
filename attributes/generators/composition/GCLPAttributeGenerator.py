@@ -6,16 +6,14 @@ from ....data.materials.CompositionEntry import CompositionEntry
 from ....data.materials.util.GCLPCalculator import GCLPCalculator
 
 class GCLPAttributeGenerator:
-    """
-    Class to compute features based on the T=0K ground state.
+    """Class to compute features based on the T=0K ground state.
 
     Attributes
     ----------
     GCLPCalculator : GCLPCalculator
-                     A GCLPCalculator instance.
-    count_phases   : bool
-                     Flag to include or exclude the number of phases at
-                     equilibrium.
+        A GCLPCalculator instance.
+    count_phases : bool
+        Flag to include or exclude the number of phases at equilibrium.
 
     Notes
     -----
@@ -40,15 +38,14 @@ class GCLPAttributeGenerator:
     count_phases = True
 
     def set_phases(self, phases, energies):
-        """
-        Function to define phases used when computing ground states.
+        """Function to define phases used when computing ground states.
 
         Parameters
         ----------
-        phases   : array-like
-                   Compositions to consider. A list of CompositionEntry's.
+        phases : array-like
+            Compositions to consider. A list of CompositionEntry's.
         energies : array-like
-                   Corresponding energies. A list of float values.
+            Corresponding energies. A list of float values.
 
         """
 
@@ -56,35 +53,33 @@ class GCLPAttributeGenerator:
         self.GCLPCalculator.add_phases(phases, energies)
 
     def set_count_phases(self, count_phases):
-        """
-        Function to set variable to count number of phases at equilibrium. In
-        some cases, you may want to exclude this as a feature because it is
+        """Function to set variable to count number of phases at equilibrium.
+        In some cases, you may want to exclude this as a feature because it is
         tied to the number of components in the compound.
 
         Parameters
         ----------
-        count_phases: bool
-                      Desired setting.
+        count_phases : bool
+            Desired setting.
 
         """
 
         self.count_phases = count_phases
 
     def generate_features(self, entries):
-        """
-        Function to generate features as mentioned in the class description.
+        """Function to generate features as mentioned in the class description.
 
         Parameters
         ----------
-        entries : list
-                  Compositions for which features are to be generated. A list
-                  of CompositionEntry's.
+        entries : array-like
+            Compositions for which features are to be generated. A list of
+            CompositionEntry's.
 
         Returns
         ----------
         features : DataFrame
-                   Features for the given entries. Pandas data frame
-                   containing the names and values of the descriptors.
+            Features for the given entries. Pandas data frame containing the
+            names and values of the descriptors.
 
         Raises
         ------

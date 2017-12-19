@@ -7,8 +7,7 @@ from ....data.materials.CompositionEntry import CompositionEntry
 from ....data.materials.util.LookUpData import LookUpData
 
 class YangOmegaAttributeGenerator:
-    """
-    Class to compute the attributes :math:`\Omega` and :math:`\delta`
+    """Class to compute the attributes :math:`\Omega` and :math:`\delta`
     developed by Yang and Zhang [1].
 
     These parameters are based on the liquid formation enthalpy and atomic
@@ -58,20 +57,19 @@ class YangOmegaAttributeGenerator:
     """
 
     def generate_features(self, entries):
-        """
-        Function to generate features as mentioned in the class description.
+        """Function to generate features as mentioned in the class description.
 
         Parameters
         ----------
-        entries : list
-                  Compositions for which features are to be generated. A list
-                  of CompositionEntry's.
+        entries : array-like
+            Compositions for which features are to be generated. A list of
+            CompositionEntry's.
 
         Returns
         ----------
         features : DataFrame
-                   Features for the given entries. Pandas data frame
-                   containing the names and values of the descriptors.
+            Features for the given entries. Pandas data frame containing the
+            names and values of the descriptors.
 
         Raises
         ------

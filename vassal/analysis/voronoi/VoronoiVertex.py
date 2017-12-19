@@ -2,9 +2,7 @@ from numpy.linalg import norm
 import numpy as np
 
 class VoronoiVertex:
-    """
-    Class for a vertex in a Voronoi tessellation.
-    """
+    """Class for a vertex in a Voronoi tessellation."""
     def __init__(self, inside_atom=None, position=None, edge1=None, edge2=None):
         """
         Function to initialize a Voronoi vertex. Can specify either inside
@@ -48,10 +46,18 @@ class VoronoiVertex:
 
     @classmethod
     def get_centroid(self, points):
-        """
-        Function to compute the centroid of a group of vertices.
-        :param points: Points to be considered.
-        :return: Centroid.
+        """Function to compute the centroid of a group of vertices.
+
+        Parameters
+        ----------
+        points :
+            Points to be considered.
+
+        Returns
+        -------
+        type
+            Centroid.
+
         """
         center = np.zeros(3)
         for p in points:
@@ -61,25 +67,45 @@ class VoronoiVertex:
         return center
 
     def distance_from(self, vertex):
-        """
-        Function to compute distance between vertices.
-        :param vertex: Other vertex.
-        :return: Distance between them.
+        """Function to compute distance between vertices.
+
+        Parameters
+        ----------
+        vertex :
+            Other vertex.
+
+        Returns
+        -------
+        type
+            Distance between them.
+
         """
         return norm(self.position - vertex.position)
 
 
     def get_distance_from_center(self):
-        """
-        Function to get the distance from the center of the cell.
+        """Function to get the distance from the center of the cell.
         :return: Distance.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         return self.distance
 
     def get_position(self):
-        """
-        Function to get the position of this vertex.
+        """Function to get the position of this vertex.
         :return: Position of this vertex.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         return self.position
 
@@ -120,23 +146,43 @@ class VoronoiVertex:
             return self.previous_edge.__cmp__(other.previous_edge)
 
     def get_next_edge(self):
-        """
-        Function to get the edge after this vertex.
+        """Function to get the edge after this vertex.
         :return: Edge after this vertex.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         return self.next_edge
 
     def get_previous_edge(self):
-        """
-        Function to get the edge before this vertex.
+        """Function to get the edge before this vertex.
         :return: Edge before this vertex.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         return self.previous_edge
 
     def is_on_edge(self, e):
-        """
-        Function to check if a vertex is on a certain edge.
-        :param e: Edge to check.
-        :return: True if instance is on edge, else False.
+        """Function to check if a vertex is on a certain edge.
+
+        Parameters
+        ----------
+        e :
+            Edge to check.
+
+        Returns
+        -------
+        type
+            True if instance is on edge, else False.
+
         """
         return self.previous_edge.__eq__(e) or self.next_edge.__eq(e)

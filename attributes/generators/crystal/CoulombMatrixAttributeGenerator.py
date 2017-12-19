@@ -6,15 +6,13 @@ from ....models.regression.crystal.CoulombSineMatrixRegression import \
     CoulombSineMatrixRegression
 
 class CoulombMatrixAttributeGenerator:
-    """
-    Class to compute attributes using the Coulomb Sine Matrix representation.
-    Based on work by Faber et al. [1].
+    """Class to compute attributes using the Coulomb Sine Matrix
+    representation. Based on work by Faber et al. [1].
 
     Attributes
     ----------
     n_eigenvalues : int
-                    Maximum number of atoms to consider. Defines number of
-                    attributes.
+        Maximum number of atoms to consider. Defines number of attributes.
 
     Notes
     -----
@@ -45,16 +43,14 @@ class CoulombMatrixAttributeGenerator:
     """
 
     def __init__(self):
-        """
-        Function to create instance and initialize fields.
+        """Function to create instance and initialize fields.
         """
 
         # Maximum number of atoms to consider. Defines number of attributes.
         self.n_eigenvalues = 30
 
     def set_n_eigenvalues(self, x):
-        """
-        Function to set the number of eigenvalues used in representation.
+        """Function to set the number of eigenvalues used in representation.
 
         Parameters
         ----------
@@ -66,20 +62,19 @@ class CoulombMatrixAttributeGenerator:
         self.n_eigenvalues = x
 
     def generate_features(self, entries):
-        """
-        Function to generate features as mentioned in the class description.
+        """Function to generate features as mentioned in the class description.
 
         Parameters
         ----------
-        entries : list
-                  Crystal structures for which features are to be generated. A
-                  list of CrystalStructureEntry's.
+        entries : array-like
+            Crystal structures for which features are to be generated. A list
+            of CrystalStructureEntry's.
 
         Returns
         ----------
         features : DataFrame
-                   Features for the given entries. Pandas data frame
-                   containing the names and values of the descriptors.
+            Features for the given entries. Pandas data frame containing the
+            names and values of the descriptors.
 
         Raises
         ------

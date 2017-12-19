@@ -3,10 +3,16 @@ from numpy.linalg import norm
 from .Line import Line
 
 class Plane:
-    """
-    Documentation obtained from: http://commons.apache.org/proper/commons-math
+    """Documentation obtained from: http://commons.apache.org/proper/commons-math
     /apidocs/org/apache/commons/math4/geometry/euclidean/threed/Plane.html
     Class to represent planes in a three dimensional space.
+
+    Parameters
+    ----------
+
+    Returns
+    -------
+
     """
 
     def __init__(self, normal=None, tolerance=None, p=None, plane=None,
@@ -70,8 +76,7 @@ class Plane:
             self.__init__(p=v1, normal=n_vec, tolerance=tolerance)
 
     def orthogonal(self, w):
-        """
-        Documentation obtained from:
+        """Documentation obtained from:
         http://commons.apache.org/proper/commons-math/javadocs/api-3.3/org
         /apache/commons/math3/geometry/euclidean/threed/Vector3D.html
         Function to compute a vector orthogonal to a given vector.
@@ -83,8 +88,17 @@ class Plane:
         Vector3D k = u.normalize();
         Vector3D i = k.orthogonal();
         Vector3D j = Vector3D.crossProduct(k, i);
-        :param w: Given vector.
-        :return: Normalized orthogonal vector.
+
+        Parameters
+        ----------
+        w :
+            Given vector.
+
+        Returns
+        -------
+        type
+            Normalized orthogonal vector.
+
         """
 
         threshold = 0.6 * norm(w)
@@ -103,45 +117,83 @@ class Plane:
         return np.array([inverse * y, -inverse * x, 0])
 
     def get_normal(self):
-        """
-        Function to get the direction normal to the plane.
+        """Function to get the direction normal to the plane.
         :return: Direction normal to the plane.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         return self.w
 
     def get_origin(self):
-        """
-        Function to get the origin of the plane frame.
+        """Function to get the origin of the plane frame.
         :return: Origin of the plane frame.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         return self.origin
 
     def project(self, p):
-        """
-        Function to transform a point into a projection.
-        :param p: Desired point to transform.
-        :return: Transformation.
+        """Function to transform a point into a projection.
+
+        Parameters
+        ----------
+        p :
+            Desired point to transform.
+
+        Returns
+        -------
+        type
+            Transformation.
+
         """
         p2 = np.array([np.dot(p, self.u), np.dot(p, self.v)])
         return self.u * p2[0] + self.v * p2[1] - self.origin_offset * self.w
 
     def get_point_at(self, in_plane, offset):
-        """
-        Function to get one point from 3D-space.
-        :param in_plane: Desired in-plane coordinates for the point in the
-        plane.
-        :param offset: Desired offset for the point.
-        :return: One point in the 3D-space, with given coordinates and offset.
+        """Function to get one point from 3D-space.
+
+        Parameters
+        ----------
+        in_plane :
+            Desired in-plane coordinates for the point in the
+            plane.
+        offset :
+            Desired offset for the point.
+
+        Returns
+        -------
+        type
+            One point in the 3D-space, with given coordinates and offset.
+
         """
         return self.u * in_plane[0] + self.v * in_plane[1] - \
                self.origin_offset * self.w
 
     def intersection(self, l=None, other=None):
-        """
-        Function to compute the intersection with another line or plane.
-        :param l: Line intersecting the instance.
-        :param other: Other plane.
-        :return: Point or line of intersection depending on input.
+        """Function to compute the intersection with another line or plane.
+
+        Parameters
+        ----------
+        l :
+            Line intersecting the instance. (Default value = None)
+        other :
+            Other plane. (Default value = None)
+
+        Returns
+        -------
+        type
+            Point or line of intersection depending on input.
+
         """
         if l is not None:
             dir = l.get_direction()
@@ -161,13 +213,23 @@ class Plane:
 
     @classmethod
     def intersection_3_planes(self, p1, p2, p3):
-        """
-        Function to the compute the intersection of three planes, None if
+        """Function to the compute the intersection of three planes, None if
         some planes are parallel.
-        :param p1: First plane.
-        :param p2: Second plane.
-        :param p3: Third plane.
-        :return: Point of intersection of three planes.
+
+        Parameters
+        ----------
+        p1 :
+            First plane.
+        p2 :
+            Second plane.
+        p3 :
+            Third plane.
+
+        Returns
+        -------
+        type
+            Point of intersection of three planes.
+
         """
 
         # Coefficients of the three planes linear equations.
@@ -205,24 +267,41 @@ class Plane:
         ])
 
     def contains(self, p):
-        """
-        Function to check if the instance contains a point.
-        :param p: Point to check.
-        :return: True if p belongs to plane, else False.
+        """Function to check if the instance contains a point.
+
+        Parameters
+        ----------
+        p :
+            Point to check.
+
+        Returns
+        -------
+        type
+            True if p belongs to plane, else False.
+
         """
         return abs(self.get_offset(point=p)) < self.tolerance
 
     def get_offset(self, point=None, plane=None):
-        """
-        Function to get the offset (oriented distance) of a parallel plane or a
+        """Function to get the offset (oriented distance) of a parallel plane or a
         point. This method should be called only for parallel planes
         otherwise the result is not meaningful. The offset is 0 if both
         planes are the same, it is positive if the plane is on the plus side
         of the instance and negative if it is on the minus side, according to
         its natural orientation.
-        :param point: Point to check.
-        :param plane: Plane to check.
-        :return: Offset of the plane or the point depending on input.
+
+        Parameters
+        ----------
+        point :
+            Point to check. (Default value = None)
+        plane :
+            Plane to check. (Default value = None)
+
+        Returns
+        -------
+        type
+            Offset of the plane or the point depending on input.
+
         """
         if plane is None:
             return np.dot(point, self.w) + self.origin_offset
@@ -231,11 +310,19 @@ class Plane:
                     self.same_orientation_as(plane) else plane.origin_offset)
 
     def same_orientation_as(self, other):
-        """
-        Function to check if the instance has the same orientation as another
+        """Function to check if the instance has the same orientation as another
         plane.
-        :param other: Other plane to check against the instance.
-        :return: True if the instance and the other plane have the same
-        orientation, else False.
+
+        Parameters
+        ----------
+        other :
+            Other plane to check against the instance.
+
+        Returns
+        -------
+        type
+            True if the instance and the other plane have the same
+            orientation, else False.
+
         """
         return np.dot(self.w, other.w) > 0.0

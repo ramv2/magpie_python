@@ -4,8 +4,7 @@ import types
 from ....data.materials.CrystalStructureEntry import CrystalStructureEntry
 
 class StructuralHeterogeneityAttributeGenerator:
-    """
-    Class to compute attributes based on heterogeneity in structure.
+    """Class to compute attributes based on heterogeneity in structure.
 
     Measures variance in bond lengths (both for a single atom and between
     different atoms) and atomic volumes. Also considers the number of unique
@@ -36,20 +35,19 @@ class StructuralHeterogeneityAttributeGenerator:
     """
 
     def generate_features(self, entries):
-        """
-        Function to generate features as mentioned in the class description.
+        """Function to generate features as mentioned in the class description.
 
         Parameters
         ----------
-        entries : list
-                  Crystal structures for which features are to be generated. A
-                  list of CrystalStructureEntry's.
+        entries : array-like
+            Crystal structures for which features are to be generated. A list
+            of CrystalStructureEntry's.
 
         Returns
         ----------
         features : DataFrame
-                   Features for the given entries. Pandas data frame
-                   containing the names and values of the descriptors.
+            Features for the given entries. Pandas data frame containing the
+            names and values of the descriptors.
 
         Raises
         ------

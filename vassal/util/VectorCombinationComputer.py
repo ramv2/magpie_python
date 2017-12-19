@@ -3,9 +3,15 @@ from numpy.linalg import norm
 from scipy.linalg import lu_factor, lu_solve
 
 class VectorCombinationComputer:
-    """
-    Class to find all combinations of 3 vectors that are shorter than a
+    """Class to find all combinations of 3 vectors that are shorter than a
     certain length.
+
+    Parameters
+    ----------
+
+    Returns
+    -------
+
     """
     def __init__(self, in_vectors, cutoff_distance, include_zero=True):
         """
@@ -38,14 +44,31 @@ class VectorCombinationComputer:
         self.get_all_vectors()
 
     def compute_vector(self, x):
+        """
+
+        Parameters
+        ----------
+        x :
+            
+
+        Returns
+        -------
+
+        """
         i_v = np.array(self.input_vectors, dtype=float)
         return np.array([x.dot(y) for y in i_v.T])
 
 
     def get_all_vectors(self):
-        """
-        Function to compute all vectors shorter than cutoff distance.
+        """Function to compute all vectors shorter than cutoff distance.
         :return:
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
 
         # Create a matrix of basis vectors.
@@ -98,15 +121,27 @@ class VectorCombinationComputer:
                         self.vectors.append(l)
 
     def get_vectors(self):
-        """
-        Function to get the list of all vectors shorter than cutoff.
+        """Function to get the list of all vectors shorter than cutoff.
         :return: List of vectors.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         return list(self.vectors)
 
     def get_supercell_coordinates(self):
-        """
-        Function to get the list of all image coordinates of vectors.
+        """Function to get the list of all image coordinates of vectors.
         :return: List of supercell coordinates.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         return list(self.super_cells)

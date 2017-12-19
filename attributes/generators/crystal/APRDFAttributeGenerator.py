@@ -6,9 +6,8 @@ from ....data.materials.util.LookUpData import LookUpData
 from ....vassal.analysis.APRDFAnalysis import APRDFAnalysis
 
 class APRDFAttributeGenerator:
-    """
-    Class to generate attributes based on the Atomic Property Weighted Radial
-    Distribution Function (AP-RDF) approach of Fernandez et al. [1].
+    """Class to generate attributes based on the Atomic Property Weighted
+    Radial Distribution Function (AP-RDF) approach of Fernandez et al. [1].
 
     User can specify the cutoff distance for the AP-RDF, the number of points
     to evaluate it, the smoothing factors for the RDF peaks, and the
@@ -18,15 +17,15 @@ class APRDFAttributeGenerator:
 
     Attributes
     ----------
-    cut_off_distance     : float
-                           Cutoff distance for RDF.
-    num_points           : int
-                           Number of points to evaluate.
-    smooth_parameter     : float
-                           Smoothing parameter for AP-RDF.
+    cut_off_distance : float
+        Cutoff distance for RDF.
+    num_points : int
+        Number of points to evaluate.
+    smooth_parameter : float
+        Smoothing parameter for AP-RDF.
     elemental_properties : list
-                           Elemental properties to be associated with this
-                           class for the generation of features.
+        Elemental properties to be associated with this class for the
+        generation of features.
 
     References
     ----------
@@ -38,8 +37,7 @@ class APRDFAttributeGenerator:
     """
 
     def __init__(self):
-        """
-        Function to create instance and initialize fields.
+        """Function to create instance and initialize fields.
 
         """
 
@@ -56,8 +54,7 @@ class APRDFAttributeGenerator:
         self.elemental_properties = []
 
     def set_smoothing_parameter(self, b):
-        """
-        Function to set smoothing factor used when computing PRDF.
+        """Function to set smoothing factor used when computing PRDF.
 
         Parameters
         ----------
@@ -69,8 +66,7 @@ class APRDFAttributeGenerator:
         self.smooth_parameter = b
 
     def set_cut_off_distance(self, d):
-        """
-        Function to set cut off distance used when computing PRDF.
+        """Function to set cut off distance used when computing PRDF.
 
         Parameters
         ----------
@@ -82,27 +78,25 @@ class APRDFAttributeGenerator:
         self.cut_off_distance = d
 
     def set_num_points(self, num_points):
-        """
-        Function to set the number of points at which to evaluate AP-RDF.
+        """Function to set the number of points at which to evaluate AP-RDF.
 
         Parameters
         ----------
         num_points : int
-                     Desired number of windows.
+            Desired number of windows.
 
         """
 
         self.num_points = num_points
 
     def add_elemental_property(self, property_name):
-        """
-        Function to add an elemental property to `self.elemental_properties`
+        """Function to add an elemental property to `self.elemental_properties`
         in order to be used to compute features.
 
         Parameters
         ----------
         property : str
-                   Property to be added.
+            Property to be added.
 
         """
 
@@ -110,28 +104,26 @@ class APRDFAttributeGenerator:
             self.elemental_properties.append(property_name)
 
     def clear_elemental_properties(self):
-        """
-        Function to clear the list of elemental properties.
+        """Function to clear the list of elemental properties.
 
         """
 
         self.elemental_properties = []
 
     def generate_features(self, entries):
-        """
-        Function to generate features as mentioned in the class description.
+        """Function to generate features as mentioned in the class description.
 
         Parameters
         ----------
-        entries : list
-                  Crystal structures for which features are to be generated. A
-                  list of CrystalStructureEntry's.
+        entries : array-like
+            Crystal structures for which features are to be generated. A list
+            of CrystalStructureEntry's.
 
         Returns
         ----------
         features : DataFrame
-                   Features for the given entries. Pandas data frame
-                   containing the names and values of the descriptors.
+            Features for the given entries. Pandas data frame containing the
+            names and values of the descriptors.
 
         Raises
         ------

@@ -4,8 +4,7 @@ from ....data.materials.CompositionEntry import CompositionEntry
 from ....data.materials.util.LookUpData import LookUpData
 
 class ElementFractionAttributeGenerator:
-    """
-    Class to set the element fractions as the features of materials.
+    """Class to set the element fractions as the features of materials.
     """
 
     def generate_features(self, entries):
@@ -14,15 +13,15 @@ class ElementFractionAttributeGenerator:
 
         Parameters
         ----------
-        entries : list
-                  Compositions for which features are to be generated. A list
-                  of CompositionEntry's.
+        entries : array-like
+            Compositions for which features are to be generated. A list of
+            CompositionEntry's.
 
         Returns
         ----------
         features : DataFrame
-                   Features for the given entries. Pandas data frame
-                   containing the names and values of the descriptors.
+            Features for the given entries. Pandas data frame containing the
+            names and values of the descriptors.
 
         Raises
         ------

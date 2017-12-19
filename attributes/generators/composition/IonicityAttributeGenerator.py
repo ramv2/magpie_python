@@ -6,8 +6,7 @@ from ....data.materials.util.LookUpData import LookUpData
 from ....utility.tools.OxidationStateGuesser import OxidationStateGuesser
 
 class IonicityAttributeGenerator:
-    """
-    Class to generate the attributes based on the ionicity of a compound.
+    """Class to generate the attributes based on the ionicity of a compound.
 
     Creates attributes based on whether it is possible to form a
     charge-neutral ionic compound, and two features based on a simple measure
@@ -31,20 +30,19 @@ class IonicityAttributeGenerator:
     """
 
     def generate_features(self, entries):
-        """
-        Function to generate features as mentioned in the class description.
+        """Function to generate features as mentioned in the class description.
 
         Parameters
         ----------
-        entries : list
-                  Compositions for which features are to be generated. A list
-                  of CompositionEntry's.
+        entries : array-like
+            Compositions for which features are to be generated. A list of
+            CompositionEntry's.
 
         Returns
         ----------
         features : DataFrame
-                   Features for the given entries. Pandas data frame
-                   containing the names and values of the descriptors.
+            Features for the given entries. Pandas data frame containing the
+            names and values of the descriptors.
 
         Raises
         ------

@@ -8,20 +8,18 @@ from ...vassal.analysis.VoronoiCellBasedAnalysis import \
 from ...vassal.io.VASP5IO import VASP5IO
 
 class CrystalStructureEntry(CompositionEntry):
-    """
-    Class to represent a crystal structure.
+    """Class to represent a crystal structure.
 
     Attributes
     ----------
     structure : Cell
-                Crystal structure represented in the form of a Cell.
-    name      : str
-                Name given to denote this structure. Mainly used for
-                book-keeping.
-    radii     : array-like
-                List of radii (floats) for various atoms in the periodic table.
-    voronoi   : VoronoiCellBasedAnalysis
-                Tool used to query properties of the tessellation.
+        Crystal structure represented in the form of a Cell.
+    name : str
+        Name given to denote this structure. Mainly used for book-keeping.
+    radii : array-like
+        List of radii (floats) for various atoms in the periodic table.
+    voronoi : VoronoiCellBasedAnalysis
+        Tool used to query properties of the tessellation.
 
     """
 
@@ -38,19 +36,17 @@ class CrystalStructureEntry(CompositionEntry):
     voronoi = None
 
     def __init__(self, structure, name, radii):
-        """
-        Function to create an entry given its crystal structure.
+        """Function to create an entry given its crystal structure.
 
         Parameters
         ----------
         structure : Cell
-                    Crystal structure represented in the form of a Cell.
-        name      : str
-                    Name given to denote this structure. Mainly used for
-                    book-keeping.
-        radii     : array-like
-                    List of radii (floats) for various atoms in the periodic
-                    table. Use None to leave radii unchanged.
+            Crystal structure represented in the form of a Cell.
+        name : str
+            Name given to denote this structure. Mainly used for book-keeping.
+        radii : array-like
+            List of radii (floats) for various atoms in the periodic table.
+            Use None to leave radii unchanged.
 
         """
         super(CrystalStructureEntry, self).__init__()
@@ -64,8 +60,7 @@ class CrystalStructureEntry(CompositionEntry):
         self.compute_composition()
 
     def compute_composition(self):
-        """
-        Function to compute the composition of this crystal.
+        """Function to compute the composition of this crystal.
 
         Raises
         ------
@@ -96,20 +91,19 @@ class CrystalStructureEntry(CompositionEntry):
         self.set_composition(count, element_ids=elems, to_sort=False)
 
     def replace_elements(self, replacements):
-        """
-        Function to create a new entry by replacing elements on this entry.
+        """Function to create a new entry by replacing elements on this entry.
 
         Parameters
         ----------
         replacements : dict
-                       Dictionary of elements to replace. Key: Old element,
-                       Value: New element.
+            Dictionary of elements to replace. Key: Old element, Value: New
+            element.
 
         Returns
         -------
         new_entry : CrystalStructureEntry
-                    New entry formed by replacing the current elements with
-                    the replacement map.
+            New entry formed by replacing the current elements with the
+            replacement map.
 
         """
 
@@ -127,8 +121,7 @@ class CrystalStructureEntry(CompositionEntry):
         return new_entry
 
     def __copy__(self):
-        """
-        Function to create a copy of this instance.
+        """Function to create a copy of this instance.
 
         Returns
         -------
@@ -143,18 +136,17 @@ class CrystalStructureEntry(CompositionEntry):
         return x
 
     def __eq__(self, other):
-        """
-        Function to check if this instance equals another instance.
+        """Function to check if this instance equals another instance.
 
         Parameters
         ----------
         other : CrystalStructureEntry
-                Other composition entry to compare.
+            Other composition entry to compare.
 
         Returns
         -------
-        value : bool
-                True if they are equal and False otherwise.
+        type : bool
+            True if they are equal and False otherwise.
 
         """
         if isinstance(other, CrystalStructureEntry):
@@ -163,18 +155,17 @@ class CrystalStructureEntry(CompositionEntry):
         return False
 
     def __cmp__(self, other):
-        """
-        Function to compare this instance with another instance.
+        """Function to compare this instance with another instance.
 
         Parameters
         ----------
         other : CrystalStructureEntry
-                Other composition entry to compare.
+            Other composition entry to compare.
 
         Returns
         -------
-        value : int
-                -1 if self < other , 1 if self > other or 0 if self = other.
+        type : int
+            -1 if self < other , 1 if self > other or 0 if self = other.
 
         """
 
@@ -228,49 +219,46 @@ class CrystalStructureEntry(CompositionEntry):
             return super(CrystalStructureEntry, self).__cmp__(other)
 
     def __hash__(self):
-        """
-        Function to compute the hashcode of this instance.
+        """Function to compute the hashcode of this instance.
 
         Returns
         -------
-        value : int
-                Hashcode of this instance.
+        type : int
+            Hashcode of this instance.
 
         """
         return super(CrystalStructureEntry, self).__hash__() ^ \
                self.structure.__hash__()
 
     def get_structure(self):
-        """
-        Function to get link to the structure.
+        """Function to get link to the structure.
 
         Returns
         -------
         structure : Cell
-                    Structure this entry represents.
+            Structure this entry represents.
         """
 
         return self.structure
 
     def get_name(self):
-        """
-        Function to get the name of this entry.
+        """Function to get the name of this entry.
 
         Returns
         -------
         name : str
+            Name given to denote this structure. Mainly used for book-keeping.
 
         """
         return self.name
 
     def compute_voronoi_tessellation(self):
-        """
-        Function to compute the voronoi tessellation of this structure.
+        """Function to compute the voronoi tessellation of this structure.
 
         Returns
         -------
         voronoi : VoronoiCellBasedAnalysis
-                  Tool used to query properties of the tessellation.
+            Tool used to query properties of the tessellation.
 
         """
 
@@ -282,8 +270,7 @@ class CrystalStructureEntry(CompositionEntry):
         return self.voronoi
 
     def clear_representations(self):
-        """
-        Function to clear out the representations used when computing
+        """Function to clear out the representations used when computing
         attributes.
 
 
@@ -292,13 +279,12 @@ class CrystalStructureEntry(CompositionEntry):
         self.voronoi = None
 
     def __str__(self):
-        """
-        Function the generate the string representation of this instance.
+        """Function the generate the string representation of this instance.
 
         Returns
         -------
-        output : str
-                 Correctly formatted output.
+        type : str
+            Correctly formatted output.
 
         """
 
@@ -307,19 +293,18 @@ class CrystalStructureEntry(CompositionEntry):
 
     @classmethod
     def import_structures_list(self, dir_path):
-        """
-        Function to read a list of crystal structures from a directory.
+        """Function to read a list of crystal structures from a directory.
 
         Parameters
         ----------
         dir_path : str
-                    Path to the directory containing the list of vasp files.
+            Path to the directory containing the list of vasp files.
 
         Returns
         -------
         structures_list : array-like
-                          A list of CrystalStructureEntry's corresponding to
-                          the file contents.
+            A list of CrystalStructureEntry's corresponding to the file
+            contents.
 
         """
 

@@ -8,8 +8,7 @@ from ....data.materials.util.LookUpData import LookUpData
 from ....utility.tools.OxidationStateGuesser import OxidationStateGuesser
 
 class ChargeDependentAttributeGenerator:
-    """
-    Class to generate attributes derived from the oxidation states of
+    """Class to generate attributes derived from the oxidation states of
     elements in a material.
 
     Based on work by Deml et al.[1].
@@ -40,15 +39,15 @@ class ChargeDependentAttributeGenerator:
 
         Parameters
         ----------
-        entries : list
-                  Compositions for which features are to be generated. A list
-                  of CompositionEntry's.
+        entries : array-like
+            Compositions for which features are to be generated. A list of
+            CompositionEntry's.
 
         Returns
         ----------
         features : DataFrame
-                   Features for the given entries. Pandas data frame
-                   containing the names and values of the descriptors.
+            Features for the given entries. Pandas data frame containing the
+            names and values of the descriptors.
 
         Raises
         ------

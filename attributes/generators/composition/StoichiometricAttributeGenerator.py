@@ -3,8 +3,7 @@ import pandas as pd
 from ....data.materials.CompositionEntry import CompositionEntry
 
 class StoichiometricAttributeGenerator:
-    """
-    Class to set up and generate descriptors based on the stoichiometry of a
+    """Class to set up and generate descriptors based on the stoichiometry of a
     given material.
 
     Includes features that are only based on fractions of elements, but not
@@ -13,19 +12,18 @@ class StoichiometricAttributeGenerator:
     Attributes
     ----------
     p_norms : list
-              Exponents to be used in computing various norms.
+        Exponents to be used in computing various norms.
 
     """
 
     # List of p norms to compute.
     def __init__(self, use_default_norms=True):
-        """
-        Function to create instance and initialize fields.
+        """Function to create instance and initialize fields.
 
         Parameters
         ----------
         use_default_norms : bool
-                            Whether to use the default norms or not.
+            Whether to use the default norms or not.
 
         """
 
@@ -34,21 +32,19 @@ class StoichiometricAttributeGenerator:
             self.add_p_norms([2, 3, 5, 7, 10])
 
     def clear_p_norms(self):
-        """
-        Function to clear out the list of p norms to be computed.
+        """Function to clear out the list of p norms to be computed.
 
         """
 
         del self.p_norms[:]
 
     def add_p_norm(self, norm):
-        """
-        Function to add a p norm to be computed.
+        """Function to add a p norm to be computed.
 
         Parameters
         ----------
         norm : int
-               Desired norm.
+            Desired norm.
 
         Raises
         ------
@@ -64,13 +60,12 @@ class StoichiometricAttributeGenerator:
         self.p_norms.append(norm)
 
     def add_p_norms(self, norms):
-        """
-        Function to add a list of p norms to be computed.
+        """Function to add a list of p norms to be computed.
 
         Parameters
         ----------
         norm : array-like
-               Desired norms. A list of int values.
+            Desired norms. A list of int values.
 
         """
 
@@ -78,22 +73,21 @@ class StoichiometricAttributeGenerator:
             self.add_p_norm(norm)
 
     def generate_features(self, entries):
-        """
-        Function to generate the stoichiometric features.
+        """Function to generate the stoichiometric features.
 
         Computes the norms based on elemental fractions.
 
         Parameters
         ----------
-        entries : list
-                  Compositions for which features are to be generated. A list
-                  of CompositionEntry's.
+        entries : array-like
+            Compositions for which features are to be generated. A list of
+            CompositionEntry's.
 
         Returns
         ----------
         features : DataFrame
-                   Features for the given entries. Pandas data frame
-                   containing the names and values of the descriptors.
+            Features for the given entries. Pandas data frame containing the
+            names and values of the descriptors.
 
         Raises
         ------

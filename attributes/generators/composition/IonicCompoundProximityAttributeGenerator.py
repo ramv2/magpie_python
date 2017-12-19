@@ -6,14 +6,13 @@ from ....data.utilities.filters.CompositionDistanceFilter import \
 from ....utility.tools.IonicCompoundFinder import IonicCompoundFinder
 
 class IonicCompoundProximityAttributeGenerator:
-    """
-    Class to generate attributes based on the distance of a composition from
+    """Class to generate attributes based on the distance of a composition from
     a compositions that can form charge-neutral ionic compounds.
 
     Attributes
     ----------
     max_formula_unit : int
-                       Maximum number of atoms per formula unit.
+        Maximum number of atoms per formula unit.
 
     Notes
     -----
@@ -35,33 +34,31 @@ class IonicCompoundProximityAttributeGenerator:
     max_formula_unit = 14
 
     def set_max_formula_unit(self, size):
-        """
-        Function to define the maximum number of atoms per formula unit.
+        """Function to define the maximum number of atoms per formula unit.
 
         Parameters
         ----------
         size : int
-               Desired size.
+            Desired size.
 
         """
 
         self.max_formula_unit = size
 
     def generate_features(self, entries):
-        """
-        Function to generate features as mentioned in the class description.
+        """Function to generate features as mentioned in the class description.
 
         Parameters
         ----------
-        entries : list
-                  Compositions for which features are to be generated. A list
-                  of CompositionEntry's.
+        entries : array-like
+            Compositions for which features are to be generated. A list of
+            CompositionEntry's.
 
         Returns
         ----------
         features : DataFrame
-                   Features for the given entries. Pandas data frame
-                   containing the names and values of the descriptors.
+            Features for the given entries. Pandas data frame containing the
+            names and values of the descriptors.
 
         Raises
         ------

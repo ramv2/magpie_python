@@ -5,8 +5,7 @@ from ....data.materials.CompositionEntry import CompositionEntry
 from ....data.materials.util.LookUpData import LookUpData
 
 class ElementPairPropertyAttributeGenerator:
-    """
-    Class to generate attributes based on the properties of constituent
+    """Class to generate attributes based on the properties of constituent
     binary systems.
 
     Computes the minimum, maximum and range of all pairs in
@@ -18,11 +17,11 @@ class ElementPairPropertyAttributeGenerator:
     Attributes
     ----------
     elemental_pair_properties : list
-                                Elemental properties to be associated with
-                                this class for the generation of features.
-    pair_lookup-data          : dict
-                                Dictionary containing the property name as
-                                the key and a list of floats as the value.
+        Elemental properties to be associated with this class for the generation of
+        features.
+    pair_lookup-data : dict
+        Dictionary containing the property name as the key and a list of floats as
+        the value.
 
     """
 
@@ -30,8 +29,7 @@ class ElementPairPropertyAttributeGenerator:
     pair_lookup_data = {}
 
     def load_pair_lookup_data(self):
-        """
-        Function to load the property values into `self.lookup_data` for the
+        """Function to load the property values into `self.lookup_data` for the
         computation of features.
 
         """
@@ -40,14 +38,13 @@ class ElementPairPropertyAttributeGenerator:
             self.elemental_pair_properties)
 
     def add_elemental_pair_property(self, property):
-        """
-        Function to add an elemental pair property to be used to compute
+        """Function to add an elemental pair property to be used to compute
         features.
 
         Parameters
         ----------
         property : str
-                   Property to be added.
+            Property to be added.
 
         """
 
@@ -55,15 +52,14 @@ class ElementPairPropertyAttributeGenerator:
             self.elemental_pair_properties.append(property)
 
     def add_elemental_pair_properties(self, properties):
-        """
-        Function to provide a list of elemental pair properties to be used to
+        """Function to provide a list of elemental pair properties to be used to
         compute features.
 
         Parameters
         ----------
         properties : array-like
-                     Properties to be included. A list of strings containing
-                     property names.
+            Properties to be included. A list of strings containing property
+            names.
 
         """
 
@@ -71,14 +67,13 @@ class ElementPairPropertyAttributeGenerator:
             self.add_elemental_pair_property(prop)
 
     def remove_elemental_pair_property(self, property):
-        """
-        Function to remove an elemental pair property from the list of
+        """Function to remove an elemental pair property from the list of
         elemental properties.
 
         Parameters
         ----------
         property : str
-                   Property to be removed.
+            Property to be removed.
 
         """
 
@@ -86,14 +81,14 @@ class ElementPairPropertyAttributeGenerator:
             self.elemental_pair_properties.remove(property)
 
     def remove_elemental_pair_properties(self, properties):
-        """
-        Function to remove a list of elemental pair properties from the list of
-        elemental properties.
+        """Function to remove a list of elemental pair properties from the
+        list of elemental properties.
 
+        Parameters
         ----------
         properties : array-like
-                     Properties to be removed. A list of strings containing
-                     property names.
+            Properties to be removed. A list of strings containing property
+            names.
 
         """
 
@@ -101,20 +96,19 @@ class ElementPairPropertyAttributeGenerator:
             self.remove_elemental_pair_property(prop)
 
     def generate_features(self, entries):
-        """
-        Function to generate features as mentioned in the class description.
+        """Function to generate features as mentioned in the class description.
 
         Parameters
         ----------
-        entries : list
-                  Compositions for which features are to be generated. A list
-                  of CompositionEntry's.
+        entries : array-like
+            Compositions for which features are to be generated. A list of
+            CompositionEntry's.
 
         Returns
         ----------
         features : DataFrame
-                   Features for the given entries. Pandas data frame
-                   containing the names and values of the descriptors.
+            Features for the given entries. Pandas data frame containing the
+            names and values of the descriptors.
 
         Raises
         ------

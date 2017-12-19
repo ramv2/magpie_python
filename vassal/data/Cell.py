@@ -3,9 +3,15 @@ from numpy.linalg import norm
 from .AtomImage import AtomImage
 
 class Cell:
-    """
-    Represents the volume enclosing a set of atoms. Could represent a crystal
+    """Represents the volume enclosing a set of atoms. Could represent a crystal
     unit cell or the simulation cell from a molecular dynamics calculation.
+
+    Parameters
+    ----------
+
+    Returns
+    -------
+
     """
 
     def __init__(self):
@@ -97,15 +103,23 @@ class Cell:
         return False
 
     def set_basis(self, basis=None, lengths=None, angles=None):
-        """
-        Function to define the basis. Format:
+        """Function to define the basis. Format:
         a_x b_x c_x
         a_y b_y c_y
         a_z b_z c_z
-        :param basis: 2-D numpy array containing the new basis.
-        :param lengths: List of lengths that define the basis.
-        :param angles: List of angles that define the basis.
-        :return:
+
+        Parameters
+        ----------
+        basis :
+            2-D numpy array containing the new basis. (Default value = None)
+        lengths :
+            List of lengths that define the basis. (Default value = None)
+        angles :
+            List of angles that define the basis. (Default value = None)
+
+        Returns
+        -------
+
         """
 
         c_basis = basis
@@ -156,16 +170,25 @@ class Cell:
             self.recip_lattice_vectors[i, :] = self.inverse_cell[:, i]
 
     def compute_basis(self, lengths, angles_radians):
-        """
-        Function to compute the basis given lengths and angles (in radians).
+        """Function to compute the basis given lengths and angles (in radians).
         The a lattice vectors will be aligned in x direction, and the be will
         be in the xy plane.
-        :param lengths: Lengths of the lattice vectors.
-        :param angles_radians: Lattice angles in radians.
-        :return: One possible set of basis vectors. Format:
-        a_x b_x c_x
-        a_y b_y c_y
-        a_z b_z c_z
+
+        Parameters
+        ----------
+        lengths :
+            Lengths of the lattice vectors.
+        angles_radians :
+            Lattice angles in radians.
+
+        Returns
+        -------
+        type
+            One possible set of basis vectors. Format:
+            a_x b_x c_x
+            a_y b_y c_y
+            a_z b_z c_z
+
         """
 
         # Convert lengths to basis.
@@ -187,10 +210,16 @@ class Cell:
         return basis
 
     def add_atom(self, a):
-        """
-        Function to add atom to cell.
-        :param a: Atom to be added.
-        :return:
+        """Function to add atom to cell.
+
+        Parameters
+        ----------
+        a :
+            Atom to be added.
+
+        Returns
+        -------
+
         """
         self.atoms.append(a)
         a.set_id(len(self.atoms) - 1)
@@ -199,19 +228,33 @@ class Cell:
             self.type_name.append(None)
 
     def direction_is_periodic(self, index):
-        """
-        Function to return whether a certain direction has boundary
+        """Function to return whether a certain direction has boundary
         conditions.
-        :param index: Desired direction (0: x, 1: y, 2: z)
-        :return: True if that direction has periodic boundary conditions,
-        else False.
+
+        Parameters
+        ----------
+        index :
+            Desired direction (0: x, 1: y, 2: z)
+
+        Returns
+        -------
+        type
+            True if that direction has periodic boundary conditions,
+            else False.
+
         """
         return self.face_is_periodic[index]
 
     def volume(self):
-        """
-        Function to compute the volume of the simulation cell.
+        """Function to compute the volume of the simulation cell.
         :return: Volume of the cell.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         return self.simulation_cell[0][0] * (self.simulation_cell[1][1] *
                 self.simulation_cell[2][2] - self.simulation_cell[2][1] *
@@ -223,38 +266,68 @@ class Cell:
                 self.simulation_cell[2][0])
 
     def get_basis(self):
-        """
-        Function to get the basis of this structure.
+        """Function to get the basis of this structure.
         :return: A copy of the 2-D numpy array that defines the basis.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         return self.simulation_cell.copy()
 
     def get_basis_matrix(self):
-        """
-        Function to get the basis of this structure.
+        """Function to get the basis of this structure.
         :return: A numpy matrix representing the basis.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         return np.matrix(self.simulation_cell)
 
     def get_inverse_basis(self):
-        """
-        Function to get the inverse basis.
+        """Function to get the inverse basis.
         :return: A copy of the 2-D numpy array that defines the inverse basis.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         return self.inverse_cell.copy()
 
     def get_lattice_vectors(self):
-        """
-        Function to get the lattice vectors for this cell.
+        """Function to get the lattice vectors for this cell.
         :return: A 2-D numpy array where each row contains a lattice vector
         (0: a, 1: b, 2: c).
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         return self.lattice_vectors
 
     def get_lattice_parameters(self):
-        """
-        Function to get the lattice parameters.
+        """Function to get the lattice parameters.
         :return: A numpy array containing the lattice parameters.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
 
         output = np.array(map(norm, [x for x in self.simulation_cell.T]),
@@ -262,9 +335,17 @@ class Cell:
         return output
 
     def get_lattice_angles_radians(self, radians=True):
-        """
-        Function to get the angles between the lattice vectors.
+        """Function to get the angles between the lattice vectors.
         :return: Lattice angles in radians.
+
+        Parameters
+        ----------
+        radians :
+             (Default value = True)
+
+        Returns
+        -------
+
         """
 
         output_radians = []
@@ -285,13 +366,19 @@ class Cell:
         return output_degrees
 
     def get_aligned_basis(self):
-        """
-        Function to get the basis vectors aligned such that a vector is
+        """Function to get the basis vectors aligned such that a vector is
         parallel to the x-axis, and the b vector is in the x-y plane. Format:
         a_x b_x c_x
         a_y b_y c_y
         a_z b_z c_z
         :return: Aligned basis vectors as 2-D numpy array.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
 
         angles = self.get_lattice_angles_radians()
@@ -299,48 +386,88 @@ class Cell:
         return self.compute_basis(lengths, angles)
 
     def get_reciprocal_vectors(self):
-        """
-        Function to get the reciprocal lattice vectors for this cell. These
+        """Function to get the reciprocal lattice vectors for this cell. These
         are simply the matrix inverse of the lattice vectors.
         :return: A 2-D numpy array where each row contains a reciprocal
         vector (0: a, 1: b, 2: c).
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         return self.recip_lattice_vectors
 
     def get_atoms(self):
-        """
-        Function to get all atoms in the structure.
+        """Function to get all atoms in the structure.
         :return: A list of all atoms.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         return self.atoms
 
     def get_atom(self, index):
-        """
-        Function to get a single atom.
-        :param index: Index of atom.
-        :return: Atom at the desired index.
+        """Function to get a single atom.
+
+        Parameters
+        ----------
+        index :
+            Index of atom.
+
+        Returns
+        -------
+        type
+            Atom at the desired index.
+
         """
         return self.atoms[index]
 
     def n_atoms(self):
-        """
-        Function to get the number of atoms in simulation cell.
+        """Function to get the number of atoms in simulation cell.
         :return: Number of atoms.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         return len(self.atoms)
 
     def n_types(self):
-        """
-        Function to get the number of atom types.
+        """Function to get the number of atom types.
         :return: Number of atom types.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         return len(self.type_name)
 
     def number_of_type(self, type):
-        """
-        Function to get the number of atoms of a certain type.
-        :param type: Type index.
-        :return: Number of atoms.
+        """Function to get the number of atoms of a certain type.
+
+        Parameters
+        ----------
+        type :
+            Type index.
+
+        Returns
+        -------
+        type
+            Number of atoms.
+
         """
         count = 0
         for atom in self.atoms:
@@ -350,20 +477,33 @@ class Cell:
         return count
 
     def add_type(self, name=None):
-        """
-        Function to add a new atom type to this cell.
-        :param name: Name of type (can be None)
-        :return:
+        """Function to add a new atom type to this cell.
+
+        Parameters
+        ----------
+        name :
+            Name of type (can be None) (Default value = None)
+
+        Returns
+        -------
+
         """
         self.type_name.append(name)
 
     def set_type_name(self, index, name):
-        """
-        Function to define the name for an atom type. Note that indexing
+        """Function to define the name for an atom type. Note that indexing
         starts at 0.
-        :param index: Index of atom type.
-        :param name: Desired name.
-        :return:
+
+        Parameters
+        ----------
+        index :
+            Index of atom type.
+        name :
+            Desired name.
+
+        Returns
+        -------
+
         """
 
         if index < 0 or index > len(self.type_name):
@@ -371,11 +511,17 @@ class Cell:
         self.type_name[index] = name
 
     def replace_type_names(self, changes):
-        """
-        Function to change the names of several types at once.
-        :param changes: Dictionary containing the changes to be made. Key:
-        Current Name, Value: New Name
-        :return:
+        """Function to change the names of several types at once.
+
+        Parameters
+        ----------
+        changes :
+            Dictionary containing the changes to be made. Key:
+            Current Name, Value: New Name
+
+        Returns
+        -------
+
         """
 
         # Get the type ids corresponding to each name.
@@ -397,9 +543,15 @@ class Cell:
                 self.type_name[id] = new_name
 
     def merge_like_types(self):
-        """
-        Function to combine types that have the same name.
+        """Function to combine types that have the same name.
         :return:
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
 
         cur_type = 0
@@ -437,20 +589,35 @@ class Cell:
                     atom.set_type(type - 1)
 
     def set_type_radius(self, index, radius):
-        """
-        Function to set the radius of all atoms of a certain type.
-        :param index: Index of the desired type.
-        :param radius: Desired radius value.
-        :return:
+        """Function to set the radius of all atoms of a certain type.
+
+        Parameters
+        ----------
+        index :
+            Index of the desired type.
+        radius :
+            Desired radius value.
+
+        Returns
+        -------
+
         """
 
         self.atoms[index].set_radius(radius)
 
     def get_type_name(self, index):
-        """
-        Function to get name of atom type.
-        :param index: Index of atom type.
-        :return: Name of atom type if it exists, else index.
+        """Function to get name of atom type.
+
+        Parameters
+        ----------
+        index :
+            Index of atom type.
+
+        Returns
+        -------
+        type
+            Name of atom type if it exists, else index.
+
         """
         if index >= self.n_types():
             return str(index)
@@ -458,32 +625,59 @@ class Cell:
         return str(index) if name is None else name
 
     def convert_fractional_to_cartesian(self, x):
-        """
-        Function to convert fractional coordinates to Cartesian.
-        :param x: Fractional coordinates.
-        :return: Cartesian coordinates.
+        """Function to convert fractional coordinates to Cartesian.
+
+        Parameters
+        ----------
+        x :
+            Fractional coordinates.
+
+        Returns
+        -------
+        type
+            Cartesian coordinates.
+
         """
 
         return np.array([np.dot(x, y) for y in self.simulation_cell])
 
     def convert_cartesian_to_fractional(self, x):
-        """
-        Function to convert Cartesian coordinates to fractional.
-        :param x: Cartesian coordinates.
-        :return: Fractional coordinates.
+        """Function to convert Cartesian coordinates to fractional.
+
+        Parameters
+        ----------
+        x :
+            Cartesian coordinates.
+
+        Returns
+        -------
+        type
+            Fractional coordinates.
+
         """
 
         return np.array([y.dot(x) for y in self.inverse_cell])
 
     def get_periodic_image(self, position, x, y, z):
-        """
-        Function to compute the position periodic image given its position in
+        """Function to compute the position periodic image given its position in
         Cartesian coordinates.
-        :param position: A list containing the Cartesian coordinates.
-        :param x: Number of steps in the X direction.
-        :param y: Number of steps in the Y direction.
-        :param z: Number of steps in the Z direction.
-        :return: New position.
+
+        Parameters
+        ----------
+        position :
+            A list containing the Cartesian coordinates.
+        x :
+            Number of steps in the X direction.
+        y :
+            Number of steps in the Y direction.
+        z :
+            Number of steps in the Z direction.
+
+        Returns
+        -------
+        type
+            New position.
+
         """
 
         l = np.array([x, y, z])
@@ -494,11 +688,10 @@ class Cell:
     def get_minimum_distance(self, point1=None, point2=None, center=None,
                              neighbor=None):
 
-        """
-        Function to compute the minimum distance between any images of two
+        """Function to compute the minimum distance between any images of two
         points or to get the closest image of a neighboring atom to a given
         atom.
-
+        
         Minimum distance algorithm:
         Compute the displacement between the points in Cartesian units.
         For each lattice vector:
@@ -512,17 +705,28 @@ class Cell:
             If this vector is shorter than the current displacement vector,
             replace this vector with the new one.
         Compute the distance of this displacement vector.
-
+        
         To get the closest image, we follow the exact same steps as computing
         the minimum distance. Except in the end, where we return the closest
         image.
 
-        :param point1: Fractional coordinates of point1.
-        :param point2: Fractional coordinates of point2.
-        :param center: ID of central atom.
-        :param neighbor: Neighboring atom.
-        :return: Depending on the choice, either the minimum distance or the
-        closest image.
+        Parameters
+        ----------
+        point1 :
+            Fractional coordinates of point1. (Default value = None)
+        point2 :
+            Fractional coordinates of point2. (Default value = None)
+        center :
+            ID of central atom. (Default value = None)
+        neighbor :
+            Neighboring atom. (Default value = None)
+
+        Returns
+        -------
+        type
+            Depending on the choice, either the minimum distance or the
+            closest image.
+
         """
 
         disp = None

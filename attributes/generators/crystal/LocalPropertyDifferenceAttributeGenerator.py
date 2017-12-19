@@ -5,19 +5,18 @@ from ....data.materials.CrystalStructureEntry import CrystalStructureEntry
 from ....data.materials.util.LookUpData import LookUpData
 
 class LocalPropertyDifferenceAttributeGenerator:
-    """
-    Class to compute attributes based on the difference in elemental
+    """Class to compute attributes based on the difference in elemental
     properties between neighboring atoms.
 
     Attributes
     ----------
     elemental_properties : list
-                           Elemental properties to be associated with this
-                           class for the generation of features.
-    shells               : array-like
-                           Shells to consider. A list of int values.
-    attr_name            : str
-                           Property Name.
+        Elemental properties to be associated with this class for the
+        generation of features.
+    shells : array-like
+        Shells to consider. A list of int values.
+    attr_name : str
+        Property Name.
 
     Notes
     -----
@@ -45,13 +44,12 @@ class LocalPropertyDifferenceAttributeGenerator:
     """
 
     def __init__(self, shells=None):
-        """
-        Function to create instance and initialize fields.
+        """Function to create instance and initialize fields.
 
         Parameters
         ----------
         shells : array-like
-                 Shells to be considered. A list of int values.
+            Shells to be considered. A list of int values.
 
         """
 
@@ -69,21 +67,19 @@ class LocalPropertyDifferenceAttributeGenerator:
         # properties between an atom and neighbors"
 
     def clear_shells(self):
-        """
-        Function to clear the list of shells.
+        """Function to clear the list of shells.
 
         """
 
         self.shells = []
 
     def add_shell(self, shell):
-        """
-        Function to add shell to the list used when computing attributes.
+        """Function to add shell to the list used when computing attributes.
 
         Parameters
         ----------
         shells : int
-                 Index of nearest-neighbor shell.
+            Index of nearest-neighbor shell.
 
         Raises
         ------
@@ -98,13 +94,12 @@ class LocalPropertyDifferenceAttributeGenerator:
             self.shells.append(shell)
 
     def add_shells(self, shells):
-        """
-        Function to add a list of shells to be used when computing attributes.
+        """Function to add a list of shells to be used when computing attributes.
 
         Parameters
         ----------
         shells : array-like
-                 Shells to be considered. A list of int values.
+            Shells to be considered. A list of int values.
 
         """
 
@@ -112,14 +107,13 @@ class LocalPropertyDifferenceAttributeGenerator:
             self.add_shell(s)
 
     def add_elemental_property(self, prop):
-        """
-        Function to add an elemental property to `self.elemental_properties`
+        """Function to add an elemental property to `self.elemental_properties`
         in order to be used to compute features.
 
         Parameters
         ----------
         property : str
-                   Property to be added.
+            Property to be added.
 
         """
 
@@ -127,15 +121,14 @@ class LocalPropertyDifferenceAttributeGenerator:
             self.elemental_properties.append(prop)
 
     def add_elemental_properties(self, properties):
-        """
-        Function to provide a list of elemental properties to be used to
+        """Function to provide a list of elemental properties to be used to
         compute features.
 
         Parameters
         ----------
         properties : array-like
-                     Properties to be included. A list of strings containing
-                     property names.
+            Properties to be included. A list of strings containing property
+            names.
 
         """
 
@@ -143,14 +136,13 @@ class LocalPropertyDifferenceAttributeGenerator:
             self.add_elemental_property(p)
 
     def remove_elemental_property(self, property):
-        """
-        Function to remove an elemental property from
+        """Function to remove an elemental property from
         `self.elemental_properties`.
 
         Parameters
         ----------
         property : str
-                   Property to be removed.
+            Property to be removed.
 
         """
 
@@ -158,15 +150,14 @@ class LocalPropertyDifferenceAttributeGenerator:
             self.elemental_properties.remove(property)
 
     def remove_elemental_properties(self, properties):
-        """
-        Function to remove a list of elemental properties from the list of
+        """Function to remove a list of elemental properties from the list of
         elemental properties.
 
         Parameters
         ----------
         properties : array-like
-                     Properties to be removed. A list of strings containing
-                     property names.
+            Properties to be removed. A list of strings containing property
+            names.
 
         """
 
@@ -174,28 +165,26 @@ class LocalPropertyDifferenceAttributeGenerator:
             self.remove_elemental_property(prop)
 
     def clear_elemental_properties(self):
-        """
-        Function to clear all the elemental properties.
+        """Function to clear all the elemental properties.
 
         """
 
         self.elemental_properties = []
 
     def generate_features(self, entries):
-        """
-        Function to generate features as mentioned in the class description.
+        """Function to generate features as mentioned in the class description.
 
         Parameters
         ----------
-        entries : list
-                  Crystal structures for which features are to be generated. A
-                  list of CrystalStructureEntry's.
+        entries : array-like
+            Crystal structures for which features are to be generated. A list
+            of CrystalStructureEntry's.
 
         Returns
         ----------
         features : DataFrame
-                   Features for the given entries. Pandas data frame
-                   containing the names and values of the descriptors.
+            Features for the given entries. Pandas data frame containing the
+            names and values of the descriptors.
 
         Raises
         ------
@@ -268,26 +257,23 @@ class LocalPropertyDifferenceAttributeGenerator:
         return features
 
     def get_atom_properties(self, voro, shell, prop_values):
-        """
-        Function to compute the properties of a certain neighbor cell for
+        """Function to compute the properties of a certain neighbor cell for
         each atom, given the Voronoi tessellation and properties of each atom
         type.
 
         Parameters
         ----------
-        voro        : VoronoiCellBasedAnalysis
-                      Analysis tool.
-        shell       : int
-                      Index of shell.
+        voro : VoronoiCellBasedAnalysis
+            Analysis tool.
+        shell : int
+            Index of shell.
         prop_values : array-like
-                      Properties of each atom type. A list or NumPy array of
-                      float values.
+            Properties of each atom type. A list or NumPy array of float values.
 
         Returns
         -------
         output : array-like
-                 Properties of each atom. A list or NumPy array of float
-                 values.
+            Properties of each atom. A list or NumPy array of float values.
 
         """
 

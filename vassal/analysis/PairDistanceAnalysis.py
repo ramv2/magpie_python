@@ -5,10 +5,16 @@ from ..geometry.Plane import Plane
 from ..util.VectorCombinationComputer import VectorCombinationComputer
 
 class PairDistanceAnalysis:
-    """
-    Class to compute the distances between each pairs of atom. Determines the
+    """Class to compute the distances between each pairs of atom. Determines the
     distance between each of atoms (and any periodic image within a certain
     distance).
+
+    Parameters
+    ----------
+
+    Returns
+    -------
+
     """
 
     def __init__(self):
@@ -29,10 +35,16 @@ class PairDistanceAnalysis:
         self.structure = None
 
     def precompute(self):
-        """
-        Function to perform any kind of computations that should be performed
+        """Function to perform any kind of computations that should be performed
         only once.
         :return:
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
 
         lat_vectors = self.structure.get_lattice_vectors()
@@ -79,31 +91,52 @@ class PairDistanceAnalysis:
         self.lattice_vectors = computer.get_vectors()
 
     def get_cutoff_distance(self):
-        """
-        Function to get the cutoff distance.
+        """Function to get the cutoff distance.
         :return: Cutoff distance.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         return self.cutoff_distance
 
     def set_cutoff_distance(self, d):
-        """
-        Function to set the cutoff distance.
-        :param d: Desired cutoff distance.
-        :return:
+        """Function to set the cutoff distance.
+
+        Parameters
+        ----------
+        d :
+            Desired cutoff distance.
+
+        Returns
+        -------
+
         """
         self.cutoff_distance = d
         if self.structure is not None:
             self.precompute()
 
     def find_all_images(self, center_atom, neighbor_atom):
-        """
-        Function to find all images of one atom that are within the cutoff
+        """Function to find all images of one atom that are within the cutoff
         distance of another atom.
-        :param center_atom: Atom at the center.
-        :param neighbor_atom: Neighboring atom.
-        :return: All images of neighbor_atom that within a cutoff distance of
-        center_atom, and their respective distances. List of tuples (
-        neighboring atom, distance).
+
+        Parameters
+        ----------
+        center_atom :
+            Atom at the center.
+        neighbor_atom :
+            Neighboring atom.
+
+        Returns
+        -------
+        type
+            All images of neighbor_atom that within a cutoff distance of
+            center_atom, and their respective distances. List of tuples (
+            neighboring atom, distance).
+
         """
 
         # Get the two atoms.
@@ -136,10 +169,18 @@ class PairDistanceAnalysis:
         return output
 
     def get_all_neighbors_of_atom(self, index):
-        """
-        Function to compute all neighbors of a certain atom.
-        :param index: Index of atom being considered.
-        :return: List of tuples (neighboring atom, distance).
+        """Function to compute all neighbors of a certain atom.
+
+        Parameters
+        ----------
+        index :
+            Index of atom being considered.
+
+        Returns
+        -------
+        type
+            List of tuples (neighboring atom, distance).
+
         """
         output = []
         for atom in self.structure.get_atoms():
@@ -147,12 +188,20 @@ class PairDistanceAnalysis:
         return output
 
     def compute_PRDF(self, n_bin):
-        """
-        Function to compute the pair radial distribution function.
-        :param n_bin: Number of bins in which to discretize PRDF (must be > 0)
-        :return: Pair radial distribution function between each type. Bin i,
-        j,k is the density of bonds between types i and j that are between k
-        * cutoff / nBin and (k + 1) * cutoff / nBin.
+        """Function to compute the pair radial distribution function.
+
+        Parameters
+        ----------
+        n_bin :
+            Number of bins in which to discretize PRDF (must be > 0)
+
+        Returns
+        -------
+        type
+            Pair radial distribution function between each type. Bin i,
+            j,k is the density of bonds between types i and j that are between k
+            * cutoff / nBin and (k + 1) * cutoff / nBin.
+
         """
         if n_bin <= 0:
             raise ValueError("Number of bins must be 0.")
@@ -195,18 +244,30 @@ class PairDistanceAnalysis:
         return output
 
     def analyze_structure(self, s):
-        """
-        Function to analyze a specific structure. Once this completes,
+        """Function to analyze a specific structure. Once this completes,
         it is possible to retrieve results out of this object.
-        :param s: Structure to be analyzed.
-        :return:
+
+        Parameters
+        ----------
+        s :
+            Structure to be analyzed.
+
+        Returns
+        -------
+
         """
         self.structure = s
         self.precompute()
 
     def recompute(self):
-        """
-        Function to recompute structural information.
+        """Function to recompute structural information.
         :return:
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         self.precompute()

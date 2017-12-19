@@ -4,18 +4,17 @@ import types
 from ....data.materials.CrystalStructureEntry import CrystalStructureEntry
 
 class ChemicalOrderingAttributeGenerator:
-    """
-    Class to compute attributes based on chemical ordering of structure.
+    """Class to compute attributes based on chemical ordering of structure.
 
     Determines average Warren-Cowley ordering parameter for the bond network
     defined by the Voronoi tessellation of a structure.
 
     Attributes
     ----------
-    shells   : list
-               Index of shells to compute features for.
+    shells : list
+        Index of shells to compute features for.
     weighted : bool
-               Whether to compute features using weighting or not.
+        Whether to compute features using weighting or not.
 
     See Also
     --------
@@ -44,8 +43,7 @@ class ChemicalOrderingAttributeGenerator:
     """
 
     def __init__(self):
-        """
-        Function to create instance and initialize fields.
+        """Function to create instance and initialize fields.
 
         Will create the WC parameters for the first, second and third
         nearest-neighbor shells by default.
@@ -59,48 +57,45 @@ class ChemicalOrderingAttributeGenerator:
         self.weighted = True
 
     def set_shells(self, shells):
-        """
-        Function to set which nearest-neighbor shells to consider when
+        """Function to set which nearest-neighbor shells to consider when
         generating features.
 
         Parameters
         ----------
         shells: list
-                Desired shell indices.
+            Desired shell indices.
 
         """
 
         self.shells = list(shells)
 
     def set_weighted(self, weighted):
-        """
-        Function to set whether to consider face sizes when computing
+        """Function to set whether to consider face sizes when computing
         ordering parameters.
 
         Parameters
         ----------
         weighted: bool
-                  Whether to weigh using face sizes.
+            Whether to weigh using face sizes.
 
         """
 
         self.weighted = weighted
 
     def generate_features(self, entries):
-        """
-        Function to generate features as mentioned in the class description.
+        """Function to generate features as mentioned in the class description.
 
         Parameters
         ----------
-        entries : list
-                  Crystal structures for which features are to be generated. A
-                  list of CrystalStructureEntry's.
+        entries : array-like
+            Crystal structures for which features are to be generated. A list
+            of CrystalStructureEntry's.
 
         Returns
         ----------
         features : DataFrame
-                   Features for the given entries. Pandas data frame
-                   containing the names and values of the descriptors.
+            Features for the given entries. Pandas data frame containing the
+            names and values of the descriptors.
 
         Raises
         ------

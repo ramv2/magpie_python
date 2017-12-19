@@ -6,8 +6,7 @@ from ....data.materials.CompositionEntry import CompositionEntry
 from ....data.materials.util.LookUpData import LookUpData
 
 class ElementalPropertyAttributeGenerator:
-    """
-    Class to set up and generate descriptors based on elemental property
+    """Class to set up and generate descriptors based on elemental property
     statistics.
 
     Computes the mean, maximum, minimum, range, mode and mean
@@ -15,12 +14,12 @@ class ElementalPropertyAttributeGenerator:
 
     Attributes
     ----------
-    elemental_properties : list
-                           Elemental properties to be associated with this
-                           class for the generation of features.
-    lookup-data          : dict
-                           Dictionary containing the property name as the key
-                           and a list of floats as the value.
+    elemental_properties : array-like
+        Elemental properties to be associated with this class for the
+        generation of features.
+    lookup-data : dict
+        Dictionary containing the property name as the key and a list of
+        floats as the value.
 
     """
 
@@ -28,14 +27,12 @@ class ElementalPropertyAttributeGenerator:
     elemental_properties = []
 
     def __init__(self, use_default_properties=True):
-        """
-        Class constructor.
+        """Class constructor.
 
         Parameters
         ----------
         use_default_properties : bool
-                                 Flag to use default set of properties as
-                                 defined below.
+            Flag to use default set of properties as defined below.
 
         """
 
@@ -57,8 +54,7 @@ class ElementalPropertyAttributeGenerator:
         self.lookup_data = {}
 
     def load_lookup_data(self):
-        """
-        Function to load the property values into `self.lookup_data` for the
+        """Function to load the property values into `self.lookup_data` for the
         computation of features.
 
         """
@@ -67,20 +63,19 @@ class ElementalPropertyAttributeGenerator:
             self.elemental_properties)
 
     def generate_features(self, entries):
-        """
-        Function to generate features as mentioned in the class description.
+        """Function to generate features as mentioned in the class description.
 
         Parameters
         ----------
-        entries : list
-                  Compositions for which features are to be generated. A list
-                  of CompositionEntry's.
+        entries : array-like
+            Compositions for which features are to be generated. A list of
+            CompositionEntry's.
 
         Returns
         ----------
         features : DataFrame
-                   Features for the given entries. Pandas data frame
-                   containing the names and values of the descriptors.
+            Features for the given entries. Pandas data frame containing the
+            names and values of the descriptors.
 
         Raises
         ------
@@ -184,14 +179,13 @@ class ElementalPropertyAttributeGenerator:
         return features
 
     def add_elemental_property(self, property):
-        """
-        Function to add an elemental property to `self.elemental_properties`
+        """Function to add an elemental property to `self.elemental_properties`
         in order to be used to compute features.
 
         Parameters
         ----------
         property : str
-                   Property to be added.
+            Property to be added.
 
         """
 
@@ -199,15 +193,14 @@ class ElementalPropertyAttributeGenerator:
             self.elemental_properties.append(property)
 
     def add_elemental_properties(self, properties):
-        """
-        Function to provide a list of elemental properties to be used to
+        """Function to provide a list of elemental properties to be used to
         compute features.
 
         Parameters
         ----------
         properties : array-like
-                     Properties to be included. A list of strings containing
-                     property names.
+            Properties to be included. A list of strings containing property
+            names.
 
         """
 
@@ -222,7 +215,7 @@ class ElementalPropertyAttributeGenerator:
         Parameters
         ----------
         property : str
-                   Property to be removed.
+            Property to be removed.
 
         """
 
@@ -230,15 +223,14 @@ class ElementalPropertyAttributeGenerator:
             self.elemental_properties.remove(property)
 
     def remove_elemental_properties(self, properties):
-        """
-        Function to remove a list of elemental properties from the list of
+        """Function to remove a list of elemental properties from the list of
         elemental properties.
 
         Parameters
         ----------
         properties : array-like
-                     Properties to be removed. A list of strings containing
-                     property names.
+            Properties to be removed. A list of strings containing property
+            names.
 
         """
 

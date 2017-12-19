@@ -7,8 +7,7 @@ from ....data.materials.util.LookUpData import LookUpData
 from ....models.regression.crystal.PRDFRegression import PRDFRegression
 
 class PRDFAttributeGenerator:
-    """
-    Class to compute attributes based on the Pair Radial Distribution
+    """Class to compute attributes based on the Pair Radial Distribution
     Function (PRDF).
 
     Based on work by Schutt et al. [1].
@@ -16,11 +15,11 @@ class PRDFAttributeGenerator:
     Attributes
     ----------
     cut_off_distance : float
-                       Cutoff distance for PRDF.
-    n_points         : int
-                       Number of distance points to evaluate.
-    element_list     : list
-                       Elements to use in PRDF. A list of int values.
+        Cutoff distance for PRDF.
+    n_points : int
+        Number of distance points to evaluate.
+    element_list : array-like
+        Elements to use in PRDF. A list of int values.
 
     References
     ----------
@@ -32,8 +31,7 @@ class PRDFAttributeGenerator:
     """
 
     def __init__(self):
-        """
-        Function to create instance and initialize fields.
+        """Function to create instance and initialize fields.
 
         """
 
@@ -47,8 +45,7 @@ class PRDFAttributeGenerator:
         self.element_list = []
 
     def set_cut_off_distance(self, d):
-        """
-        Function to set the maximum distance to consider when computing the
+        """Function to set the maximum distance to consider when computing the
         PRDF.
 
         Parameters
@@ -61,35 +58,31 @@ class PRDFAttributeGenerator:
         self.cut_off_distance = d
 
     def set_n_points(self, n_p):
-        """
-        Function to set the number of points on each PRDF to store.
+        """Function to set the number of points on each PRDF to store.
 
         Parameters
         ----------
         n_p : int
-              Number of evaluation points.
+            Number of evaluation points.
 
         """
 
         self.n_points = n_p
 
     def clear_element_list(self):
-        """
-        Function to clear out the elements in element list.
+        """Function to clear out the elements in element list.
 
         """
 
         self.element_list = []
 
     def set_elements(self, entries):
-        """
-        Function to set the elements when computing PRDF.
+        """Function to set the elements when computing PRDF.
 
         Parameters
         ----------
         data : array-like
-               A list of CompositionEntry's containing each element to be
-               added.
+            A list of CompositionEntry's containing each element to be added.
 
         """
 
@@ -100,15 +93,14 @@ class PRDFAttributeGenerator:
                     self.add_element(id=elem)
 
     def add_element(self, id=None, name=None):
-        """
-        Function to add element to list used when computing PRDF.
+        """Function to add element to list used when computing PRDF.
 
         Parameters
         ----------
         id   : int
-               ID of element (Atomic number - 1).
+            ID of element (Atomic number - 1).
         name : str
-               Name of the element.
+            Name of the element.
 
         Raises
         ------
@@ -129,20 +121,19 @@ class PRDFAttributeGenerator:
             self.element_list.append(LookUpData.element_names.index(name))
 
     def generate_features(self, entries):
-        """
-        Function to generate features as mentioned in the class description.
+        """Function to generate features as mentioned in the class description.
 
         Parameters
         ----------
-        entries : list
-                  Crystal structures for which features are to be generated. A
-                  list of CrystalStructureEntry's.
+        entries : array-like
+            Crystal structures for which features are to be generated. A list
+            of CrystalStructureEntry's.
 
         Returns
         ----------
         features : DataFrame
-                   Features for the given entries. Pandas data frame
-                   containing the names and values of the descriptors.
+            Features for the given entries. Pandas data frame containing the
+            names and values of the descriptors.
 
         Raises
         ------

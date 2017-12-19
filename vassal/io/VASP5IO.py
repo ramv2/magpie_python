@@ -4,18 +4,33 @@ from ..data.Atom import Atom
 from ..data.Cell import Cell
 
 class VASP5IO:
-    """
-    Class to read/write from VASP 5 format. Note that this version expects
+    """Class to read/write from VASP 5 format. Note that this version expects
     that the sixth line to contain the names of elements.
+
+    Parameters
+    ----------
+
+    Returns
+    -------
+
     """
 
     @classmethod
     def parse_file(self, file_name=None, list_of_lines=None):
-        """
-        Function to read a structure from a file or list of lines.
-        :param file_name: Path to file.
-        :param list_of_lines: Lines describing structure.
-        :return: Structure as Cell.
+        """Function to read a structure from a file or list of lines.
+
+        Parameters
+        ----------
+        file_name :
+            Path to file. (Default value = None)
+        list_of_lines :
+            Lines describing structure. (Default value = None)
+
+        Returns
+        -------
+        type
+            Structure as Cell.
+
         """
 
         # Open file.
@@ -89,10 +104,18 @@ class VASP5IO:
         return structure
 
     def convert_structure_to_string(self, structure):
-        """
-        Function to convert structure to string representation - list of lines.
-        :param structure: Desired structure to be converted.
-        :return: String representation - list of lines.
+        """Function to convert structure to string representation - list of lines.
+
+        Parameters
+        ----------
+        structure :
+            Desired structure to be converted.
+
+        Returns
+        -------
+        type
+            String representation - list of lines.
+
         """
         output = []
 
@@ -138,11 +161,18 @@ class VASP5IO:
         return output
 
     def write_structure_to_file(self, structure, filename):
-        """
-        Function to write a structure to a file.
-        :param structure: Desired structure as Cell.
-        :param filename: Desired file name.
-        :return:
+        """Function to write a structure to a file.
+
+        Parameters
+        ----------
+        structure :
+            Desired structure as Cell.
+        filename :
+            Desired file name.
+
+        Returns
+        -------
+
         """
 
         # Generate description.
@@ -153,10 +183,18 @@ class VASP5IO:
             f.writelines(to_write)
 
     def print_structure(self, structure):
-        """
-        Function to print the structure to standard out.
-        :param structure: Desired structure as Cell.
-        :return: String representation - list of lines.
+        """Function to print the structure to standard out.
+
+        Parameters
+        ----------
+        structure :
+            Desired structure as Cell.
+
+        Returns
+        -------
+        type
+            String representation - list of lines.
+
         """
 
         # Get the structure as a list of strings.

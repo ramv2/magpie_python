@@ -4,8 +4,7 @@ from ....attributes.generators.crystal\
 
 class LocalPropertyVarianceAttributeGenerator(
     LocalPropertyDifferenceAttributeGenerator):
-    """
-    Class to compute attributes based on the local variance in elemental
+    """Class to compute attributes based on the local variance in elemental
     properties around each atom.
 
     See Also
@@ -15,13 +14,12 @@ class LocalPropertyVarianceAttributeGenerator(
     """
 
     def __init__(self, shells=None):
-        """
-        Function to create instance and initialize fields.
+        """Function to create instance and initialize fields.
 
         Parameters
         ----------
         shells : array-like
-                 Shells to be considered. A list of int values.
+            Shells to be considered. A list of int values.
 
         """
 
@@ -29,26 +27,23 @@ class LocalPropertyVarianceAttributeGenerator(
         self.attr_name = "NeighVar"
 
     def get_atom_properties(self, voro, shell, prop_values):
-        """
-                Function to compute the properties of a certain neighbor cell for
+        """Function to compute the properties of a certain neighbor cell for
         each atom, given the Voronoi tessellation and properties of each atom
         type.
 
         Parameters
         ----------
-        voro        : VoronoiCellBasedAnalysis
-                      Analysis tool.
-        shell       : int
-                      Index of shell.
+        voro : VoronoiCellBasedAnalysis
+            Analysis tool.
+        shell : int
+            Index of shell.
         prop_values : array-like
-                      Properties of each atom type. A list or NumPy array of
-                      float values.
+            Properties of each atom type. A list or NumPy array of float values.
 
         Returns
         -------
         output : array-like
-                 Properties of each atom. A list or NumPy array of float
-                 values.
+            Properties of each atom. A list or NumPy array of float values.
 
         """
 

@@ -9,23 +9,20 @@ from ....data.utilities.filters.CompositionDistanceFilter import \
 from ....utility.EqualSumCombinations import EqualSumCombinations
 
 class APEAttributeGenerator:
-    """
-    Class to compute features using Atomic Packing Efficiency (APE) of nearby
-    clusters.
+    """Class to compute features using Atomic Packing Efficiency (APE) of
+    nearby clusters.
 
     Attributes
     ----------
     packing_threshold : float
-                        Threshold at which to define a cluster as efficiently
-                        packed.
+        Threshold at which to define a cluster as efficiently packed.
     n_nearest_to_eval : array_like
-                        Number of nearest clusters to assess. An array or
-                        list of int values. Default : [1, 3, 5]
-    max_n_types       : int
-                        Maximum number of types over which to search for
-                        clusters.
-    radius_property   : str
-                        Name of elemental property to use as atomic radius.
+        Number of nearest clusters to assess. An array or list of int values.
+        Default : [1, 3, 5]
+    max_n_types : int
+        Maximum number of types over which to search for clusters.
+    radius_property : str
+        Name of elemental property to use as atomic radius.
 
     Notes
     -----
@@ -109,14 +106,13 @@ class APEAttributeGenerator:
     radius_property = "MiracleRadius"
 
     def set_packing_threshold(self, threshold):
-        """
-        Function to define the threshold at which a cluster is considered
+        """Function to define the threshold at which a cluster is considered
         efficiently packed.
 
         Parameters
         ----------
         threshold : float
-                    Desired threshold. Default: 0.01
+            Desired threshold. Default: 0.01
 
         Raises
         ------
@@ -130,23 +126,21 @@ class APEAttributeGenerator:
         self.packing_threshold = threshold
 
     def set_n_nearest_to_eval(self, values):
-        """
-        Function to define the number of nearest neighbor clusters to
+        """Function to define the number of nearest neighbor clusters to
         evaluate when computing features.
 
         Parameters
         ----------
         values : array-like
-                 Number of nearest clusters to assess. An array or list of
-                 int values.
+            Number of nearest clusters to assess. An array or list of int
+            values.
 
         """
 
         self.n_nearest_to_eval = values
 
     def set_radius_property(self, prop):
-        """
-        Function to set the name of the elemental property used to define
+        """Function to set the name of the elemental property used to define
         radii.
 
         By default uses the "MiracleRadius" property which is from an
@@ -155,7 +149,7 @@ class APEAttributeGenerator:
         Parameters
         ----------
         prop : str
-               Name of property used to define radii.
+            Name of property used to define radii.
 
         """
 
@@ -165,9 +159,8 @@ class APEAttributeGenerator:
     def compute_APE(self, n_neighbors=None, center_radius=None,
                     neigh_eff_radius=None, radii=None, center_type=None,
                     shell_types=None):
-        """
-        Function to compute the APE of a cluster, given the identities of the
-        central and 1st neighbor atoms or just the number of neighbors and
+        """Function to compute the APE of a cluster, given the identities of
+        the central and 1st neighbor atoms or just the number of neighbors and
         the radii.
 
         Here, we follow the formulation given by Laws et al. [1].
@@ -177,26 +170,25 @@ class APEAttributeGenerator:
 
         Parameters
         ----------
-        n_neighbors      : int
-                           Number of 1st nearest neighbors in the cluster.
-        center_radius    : float
-                           Radius of the central atom.
+        n_neighbors : int
+            Number of 1st nearest neighbors in the cluster.
+        center_radius : float
+            Radius of the central atom.
         neigh_eff_radius : float
-                           Effective radius of the 1st shell. Usually
-                           computed as the average radius of all atoms in the
-                           shell.
-        radii            : array-like
-                           Radius of each atom type. A list of float values.
-        center_type      : int
-                           Type of atom in the center.
-        shell_types      : array-like
-                           Number of atoms of each type in the outer shell.
-                           Must be same length as radii.
+            Effective radius of the 1st shell. Usually computed as the
+            average radius of all atoms in the shell.
+        radii : array-like
+            Radius of each atom type. A list of float values.
+        center_type : int
+            Type of atom in the center.
+        shell_types : array-like
+            Number of atoms of each type in the outer shell. Must be same
+            length as radii.
 
         Returns
         -------
         output : float
-                 APE, as defined in the function description.
+            APE, as defined in the function description.
 
         """
         n_n = n_neighbors
@@ -278,8 +270,7 @@ class APEAttributeGenerator:
 
     @classmethod
     def get_cluster_range(self, radii, packing_threshold):
-        """
-        Function compute the maximum and minimum possible cluster sizes,
+        """Function compute the maximum and minimum possible cluster sizes,
         given a list of radii.
 
         The smallest possible cluster has the smallest
@@ -288,27 +279,24 @@ class APEAttributeGenerator:
 
         Parameters
         ----------
-        radii             : array-like
-                            Radii of elements in the system. A list of float
-                            values.
+        radii : array-like
+            Radii of elements in the system. A list of float values.
         packing_threshold : float
-                            APE defining maximum packing threshold.
+            APE defining maximum packing threshold.
 
         Returns
         ----------
         min_cluster_size : int
-                           Minimum cluster size as defined by number of atoms
-                           in the shell.
+            Minimum cluster size as defined by number of atoms in the shell.
         max_cluster_size : int
-                           Maximum cluster size as defined by number of atoms
-                           in the shell.
+            Maximum cluster size as defined by number of atoms in the shell.
         """
 
         l_r = len(radii)
 
         # Get the indices of the maximum and minimum radius.
-        biggest_radius = np.argmax(radii)
-        smallest_radius = np.nanargmin(radii)
+        biggest_radius = int(np.argmax(radii))
+        smallest_radius = int(np.nanargmin(radii))
 
         # Compute the smallest possible cluster.
         cluster = np.zeros(l_r)
@@ -342,28 +330,28 @@ class APEAttributeGenerator:
 
     def get_closest_compositions(self, target_composition,
                                  other_compositions, n_closest, p_norm):
-        """
-        Function to get closest compositions from a given target composition.
+        """Function to get closest compositions from a given target
+        composition.
 
         Parameters
         ----------
         target_composition : CompositionEntry
-                             Composition from which to measure distance.
+            Composition from which to measure distance.
         other_compositions : array-like
-                             Compositions whose distance from the target will
-                             be ranked. A list of CompositionEntry's.
-        n_closest          : int
-                             Number of closest compounds to return.
-        p_norm             : int
-                             P-norm to use when computing distance.
+            Compositions whose distance from the target will be ranked. A
+            list of CompositionEntry's.
+        n_closest : int
+            Number of closest compounds to return.
+        p_norm : int
+            P-norm to use when computing distance.
 
         Returns
         ----------
-        dist  : array-like
-                Distances of the compositions from the target composition. A
-                list of float values.
+        dist : array-like
+            Distances of the compositions from the target composition. A list
+            of float values.
         comps : array-like
-                A list of CompositionEntry's.
+            A list of CompositionEntry's.
 
         """
 
@@ -385,28 +373,25 @@ class APEAttributeGenerator:
 
     @classmethod
     def find_efficiently_packed_clusters(self, radii, packing_threshold):
-        """
-        Function to find all clusters with better APE than a certain
+        """Function to find all clusters with better APE than a certain
         threshold, given a list of atomic radii.
 
-        The packing efficiency is
-        defined as abs(1 - APE).
+        The packing efficiency is defined as abs(1 - APE).
 
         Parameters
         ----------
-        radii             : array-like
-                            Radii of elements. A list of float values.
+        radii : array-like
+            Radii of elements. A list of float values.
         packing_threshold : float
-                            Desired packing limit threshold. A "default"
-                            choice would be 0.05.
+            Desired packing limit threshold. A "default" choice would be 0.05.
 
         Returns
         ----------
         output : array-like
-                 A list of efficiently packed structures for each atom type
-                 as the central atom. Ex: x[0][1] is the 2nd efficiently
-                 packed cluster with atom type 0 as the central atom. A list
-                 containing a list of int values.
+            A list of efficiently packed structures for each atom type as the
+            central atom. Ex: x[0][1] is the 2nd efficiently packed cluster
+            with atom type 0 as the central atom. A list containing a list of
+            int values.
 
         """
 
@@ -461,29 +446,26 @@ class APEAttributeGenerator:
 
     @classmethod
     def compute_cluster_compositions(self, e_ids, clusters):
-        """
-        Function to compute the compositions of a list of atomic clusters.
+        """Function to compute the compositions of a list of atomic clusters.
 
         The composition includes both atoms in the first nearest neighbor
         shell and the atom in the center of the cluster.
 
         Parameters
         ----------
-        e_ids    : array-like
-                   Ids of the elements from which clusters are composed. A
-                   list of int values.
+        e_ids: array-like
+            Ids of the elements from which clusters are composed. A list of
+            int values.
         clusters : array-like
-                   Clusters to convert. List of identity shell compositions
-                   for each type of central atom. Ex: clusters[1][2] is an
-                   array defining the number of atoms of each type for
-                   clusters with an atom of type 1 in the center. A list
-                   containing a list of int values.
+            Clusters to convert. List of identity shell compositions for each
+            type of central atom. Ex: clusters[1][2] is an array defining the
+            number of atoms of each type for clusters with an atom of type 1
+            in the center. A list containing a list of int values.
 
         Returns
         ----------
         output : array-like
-                 Compositions found in this cluster. A list of
-                 CompositionEntry's.
+            Compositions found in this cluster. A list of CompositionEntry's.
 
         """
 
@@ -504,32 +486,30 @@ class APEAttributeGenerator:
     @classmethod
     def determine_optimal_APE(self, central_atom_type, shell_composition,
                               radii):
-        """
-        Function to compute the optimal APE for a cluster with a certain atom
-        type in the center and composition in the cell.
+        """Function to compute the optimal APE for a cluster with a certain
+        atom type in the center and composition in the cell.
 
 
         Parameters
         ----------
         central_atom_type : int
-                            Element id (Z - 1) of th central atom.
+            Element id (Z - 1) of th central atom.
         shell_composition : CompositionEntry
-                            Composition of the nearest-neighbor shell.
-        radii             : array-like
-                            Lookup table of elemental radii. A list of float
-                            values.
+            Composition of the nearest-neighbor shell.
+        radii : array-like
+            Lookup table of elemental radii. A list of float values.
 
         Returns
         ----------
-        output : float
-                 The optimal APE.
+        type : float
+            The optimal APE.
 
         Notes
         -----
-        This algorithm finds
-        the number of atoms in the shell such that the APE of the cluster is
-        closest to 1. Note: This calculation assumes that sites in the first
-        nearest-neighbor shell can be partially-occupied.
+        This algorithm finds the number of atoms in the shell such that the
+        APE of the cluster is closest to 1. Note: This calculation assumes
+        that sites in the first nearest-neighbor shell can be
+        partially-occupied.
 
         """
 
@@ -555,20 +535,19 @@ class APEAttributeGenerator:
         return output
 
     def generate_features(self, entries):
-        """
-        Function to generate features as mentioned in the class description.
+        """Function to generate features as mentioned in the class description.
 
         Parameters
         ----------
-        entries : list
-                  Compositions for which features are to be generated. A list
-                  of CompositionEntry's.
+        entries : array-like
+            Compositions for which features are to be generated. A list of
+            CompositionEntry's.
 
         Returns
         ----------
         features : DataFrame
-                   Features for the given entries. Pandas data frame
-                   containing the names and values of the descriptors.
+            Features for the given entries. Pandas data frame containing the
+            names and values of the descriptors.
 
         Raises
         ------

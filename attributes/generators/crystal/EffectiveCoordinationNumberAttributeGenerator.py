@@ -4,8 +4,7 @@ import numpy as np
 from ....data.materials.CrystalStructureEntry import CrystalStructureEntry
 
 class EffectiveCoordinationNumberAttributeGenerator:
-    """
-    Compute attributes based on the effective coordination number.
+    """Compute attributes based on the effective coordination number.
 
     Notes
     -----
@@ -41,19 +40,18 @@ class EffectiveCoordinationNumberAttributeGenerator:
     """
 
     def mean_abs_dev(self, data):
-        """
-        Function to compute the mean absolute deviation of an array-like
+        """Function to compute the mean absolute deviation of an array-like
         collection of numbers.
 
         Parameters
         ----------
         data : array-like
-               A NumPy array of float values.
+            A NumPy array of float values.
 
         Returns
         -------
         output : float
-                 The mean absolute deviation.
+            The mean absolute deviation.
 
         """
 
@@ -64,20 +62,19 @@ class EffectiveCoordinationNumberAttributeGenerator:
         return output
 
     def generate_features(self, entries):
-        """
-        Function to generate features as mentioned in the class description.
+        """Function to generate features as mentioned in the class description.
 
         Parameters
         ----------
-        entries : list
-                  Crystal structures for which features are to be generated. A
-                  list of CrystalStructureEntry's.
+        entries : array-like
+            Crystal structures for which features are to be generated. A list
+            of CrystalStructureEntry's.
 
         Returns
         ----------
         features : DataFrame
-                   Features for the given entries. Pandas data frame
-                   containing the names and values of the descriptors.
+            Features for the given entries. Pandas data frame containing the
+            names and values of the descriptors.
 
         Raises
         ------

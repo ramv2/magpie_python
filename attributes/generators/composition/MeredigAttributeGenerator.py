@@ -5,8 +5,7 @@ from ....data.materials.CompositionEntry import CompositionEntry
 from ....data.materials.util.LookUpData import LookUpData
 
 class MeredigAttributeGenerator:
-    """
-    Class to generate attributes as described by Meredig et al. [1].
+    """Class to generate attributes as described by Meredig et al. [1].
 
     Notes
     -----
@@ -25,20 +24,19 @@ class MeredigAttributeGenerator:
     """
 
     def generate_features(self, entries):
-        """
-        Function to generate features as mentioned in the class description.
+        """Function to generate features as mentioned in the class description.
 
         Parameters
         ----------
-        entries : list
-                  Compositions for which features are to be generated. A list
-                  of CompositionEntry's.
+        entries : array-like
+            Compositions for which features are to be generated. A list of
+            CompositionEntry's.
 
         Returns
         ----------
         features : DataFrame
-                   Features for the given entries. Pandas data frame
-                   containing the names and values of the descriptors.
+            Features for the given entries. Pandas data frame containing the
+            names and values of the descriptors.
 
         Raises
         ------
