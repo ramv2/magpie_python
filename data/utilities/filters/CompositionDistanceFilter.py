@@ -14,11 +14,6 @@ class CompositionDistanceFilter:
     threshold : float
         Threshold to be used.
 
-    Parameters
-    ----------
-
-    Returns
-    -------
 
     """
     def __init__(self):
@@ -39,9 +34,6 @@ class CompositionDistanceFilter:
         entry : CompositionEntry
             Desired target composition.
 
-        Returns
-        -------
-
         """
         self.target_composition = entry
 
@@ -54,8 +46,6 @@ class CompositionDistanceFilter:
         distance : float
             Target threshold in %
 
-        Returns
-        -------
 
         """
         self.threshold = distance / 100.0
@@ -76,7 +66,7 @@ class CompositionDistanceFilter:
 
         Returns
         -------
-        type : float
+        output : float
             Distance between two entries.
 
         """

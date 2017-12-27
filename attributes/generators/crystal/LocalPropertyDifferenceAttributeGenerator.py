@@ -94,7 +94,8 @@ class LocalPropertyDifferenceAttributeGenerator:
             self.shells.append(shell)
 
     def add_shells(self, shells):
-        """Function to add a list of shells to be used when computing attributes.
+        """Function to add a list of shells to be used when computing
+        attributes.
 
         Parameters
         ----------

@@ -22,12 +22,6 @@ class IonicCompoundFinder:
     max_formula_unit : int
         Maximum number of atoms in formula unit.
 
-    Parameters
-    ----------
-
-    Returns
-    -------
-
     """
 
     # Nominal composition.
@@ -68,9 +62,6 @@ class IonicCompoundFinder:
         dist : float
             Maximum allowed distance.
 
-        Returns
-        -------
-
         """
         self.maximum_distance = dist
 
@@ -83,19 +74,12 @@ class IonicCompoundFinder:
         size : int
             Maximum allowed size.
 
-        Returns
-        -------
-
         """
         self.max_formula_unit_size = size
 
     def find_all_compounds(self):
         """Function to find all the compounds in the vicinity of the target
         composition.
-
-
-        Parameters
-        ----------
 
         Returns
         -------

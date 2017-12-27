@@ -13,12 +13,6 @@ class OxidationStateGuesser:
     oxidation_states : array-like
         A 2-D numpy array containing the property values for all the elements.
 
-    Parameters
-    ----------
-
-    Returns
-    -------
-
     """
     electronegativity = np.zeros(0)
     oxidationstates = np.zeros(0, dtype=object)
@@ -79,7 +73,7 @@ class OxidationStateGuesser:
 
         Raises
         ------
-        ValueErro
+        ValueError
             If input is empty.
             If input is not a CompositionEntry object.
             If electronegativity or oxidationstates haven't been set.

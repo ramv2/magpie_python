@@ -145,7 +145,7 @@ class CrystalStructureEntry(CompositionEntry):
 
         Returns
         -------
-        type : bool
+        output : bool
             True if they are equal and False otherwise.
 
         """
@@ -164,9 +164,13 @@ class CrystalStructureEntry(CompositionEntry):
 
         Returns
         -------
-        type : int
+        output : int
             -1 if self < other , 1 if self > other or 0 if self = other.
 
+        Raises
+        ------
+        Exception
+            If the entries are equal.
         """
 
         if isinstance(other, CrystalStructureEntry):
@@ -223,7 +227,7 @@ class CrystalStructureEntry(CompositionEntry):
 
         Returns
         -------
-        type : int
+        output : int
             Hashcode of this instance.
 
         """
@@ -283,7 +287,7 @@ class CrystalStructureEntry(CompositionEntry):
 
         Returns
         -------
-        type : str
+        output : str
             Correctly formatted output.
 
         """

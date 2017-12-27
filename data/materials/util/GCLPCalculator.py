@@ -57,9 +57,6 @@ class GCLPCalculator:
         mu : float
             Desired chemical potential.
 
-        Returns
-        -------
-
         """
         entry = CompositionEntry(composition=elem)
         if len(entry.get_element_ids()) != 1:
@@ -77,9 +74,6 @@ class GCLPCalculator:
         energies : array-like
             A list of energy values as floats.
 
-        Returns
-        -------
-
         """
         for entry,energy in izip(entries, energies):
             # if has measurement
@@ -96,8 +90,6 @@ class GCLPCalculator:
         energy : float
             Energy of phase.
 
-        Returns
-        -------
 
         """
         if entry not in self.phases:
@@ -111,17 +103,17 @@ class GCLPCalculator:
     def get_num_phases(self):
         """
         Function to get the number of phases being considered for GCLP.
-        
+
         Returns
         -------
-        type : int
+        output : int
             The number of phases being considered.
 
         """
         return len(self.phases)
 
     def run_GCLP(self, composition):
-        """Function to compute the ground state phase equilibria for a 
+        """Function to compute the ground state phase equilibria for a
         certain composition.
 
         Parameters
@@ -134,8 +126,13 @@ class GCLPCalculator:
         ground_state_energy : float
             Ground state energy.
         equilibrium : dict
-            Dictionary containing the phase composition (CompositionEntry) as 
-            key and the fractions (float) as values. 
+            Dictionary containing the phase composition (CompositionEntry) as
+            key and the fractions (float) as values.
+
+        Raises
+        ------
+        TypeError
+            If composition is not CompositionEntry.
 
         """
         if not isinstance(composition, CompositionEntry):

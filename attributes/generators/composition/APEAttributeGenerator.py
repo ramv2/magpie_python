@@ -501,7 +501,7 @@ class APEAttributeGenerator:
 
         Returns
         ----------
-        type : float
+        output : float
             The optimal APE.
 
         Notes

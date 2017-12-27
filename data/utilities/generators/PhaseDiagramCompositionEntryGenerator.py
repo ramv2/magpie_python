@@ -30,12 +30,6 @@ class PhaseDiagramCompositionEntryGenerator:
     size : int
         Either number of stops in each direction or max denominator.
 
-    Parameters
-    ----------
-
-    Returns
-    -------
-
     """
 
     # List of elements to use (id is Z-1).
@@ -62,9 +56,6 @@ class PhaseDiagramCompositionEntryGenerator:
         indices : array-like
             List of elements by index (Z-1).
 
-        Returns
-        -------
-
         Raises
         ------
         ValueError
@@ -86,9 +77,6 @@ class PhaseDiagramCompositionEntryGenerator:
         ----------
         names : array-like
             List of element names.
-
-        Returns
-        -------
 
         Raises
         ------
@@ -114,9 +102,6 @@ class PhaseDiagramCompositionEntryGenerator:
         max_ : int
             Maximum number of constituents.
 
-        Returns
-        -------
-
         Raises
         ------
         ValueError
@@ -137,9 +122,6 @@ class PhaseDiagramCompositionEntryGenerator:
         es : bool
             Boolean indicating the same.
 
-        Returns
-        -------
-
         """
         self.even_spacing = es
 
@@ -151,9 +133,6 @@ class PhaseDiagramCompositionEntryGenerator:
         ----------
         size : int
             Desired size parameter.
-
-        Returns
-        -------
 
         Raises
         ------
@@ -174,10 +153,6 @@ class PhaseDiagramCompositionEntryGenerator:
         1 -> ([1.0])
         2 -> ([0.25, 0.75], [0.5, 0.5], [0.75, 0.25])
         3 -> ([0.5, 0.25, 0.25], [0.25, 0.5, 0.25], [0.25, 0.25, 0.5])
-
-
-        Parameters
-        ----------
 
         Returns
         -------
@@ -221,10 +196,6 @@ class PhaseDiagramCompositionEntryGenerator:
         1 -> ([1])
         2 -> ([1/3, 2/3], [1/2, 1/2], [2/3, 1/3])
         3 -> ([1/3, 1/3, 1/3])
-
-
-        Parameters
-        ----------
 
         Returns
         -------
@@ -277,9 +248,6 @@ class PhaseDiagramCompositionEntryGenerator:
         """Function to generate the list of entries corresponding to the list of
         compositions, element names specified by the user and the mapping of
         number of elements to compositions.
-
-        Parameters
-        ----------
 
         Returns
         -------

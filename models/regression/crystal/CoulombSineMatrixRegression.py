@@ -14,12 +14,6 @@ class CoulombSineMatrixRegression:
     sigma : float
         Normalization term in kernel function.
 
-    Parameters
-    ----------
-
-    Returns
-    -------
-
     References
     ----------
     .. [1] F. Faber, A. Lindmaa, O. A. von Lilienfeld, and R. Armiento,
@@ -30,8 +24,7 @@ class CoulombSineMatrixRegression:
     """
 
     def __init__(self):
-        """
-        Function to create instance and initialize fields.
+        """Function to create instance and initialize fields.
         """
 
         # Normalization term in kernel function.
@@ -44,10 +37,6 @@ class CoulombSineMatrixRegression:
         ----------
         s : float
             Desired normalization parameter.
-
-        Returns
-        -------
-
         """
         self.sigma = s
 
@@ -63,7 +52,7 @@ class CoulombSineMatrixRegression:
 
         Returns
         -------
-        type : float
+        output : float
             Similarity between the two structures.
 
         """
@@ -97,7 +86,7 @@ class CoulombSineMatrixRegression:
 
         Returns
         -------
-        type : array-like
+        output : array-like
             Representation of the structure.
 
         """
@@ -123,6 +112,10 @@ class CoulombSineMatrixRegression:
         output : array-like
             Coulomb sine matrix.
 
+        Raises
+        ------
+        Exception
+            If element is not found.
         """
 
         # Get basis vectors.

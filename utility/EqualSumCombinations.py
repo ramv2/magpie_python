@@ -4,12 +4,6 @@ class EqualSumCombinations:
     """Class to generate all combinations of non-negative integers that have
     equal sum.
 
-    Parameters
-    ----------
-
-    Returns
-    -------
-
     """
     def __init__(self, sum_, size):
         """Constructor to initialize the variables.

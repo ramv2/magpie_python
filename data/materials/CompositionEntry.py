@@ -106,7 +106,7 @@ class CompositionEntry(object):
 
         Returns
         -------
-        type : dict
+        output : dict
             Dictionary containing element ids and fractions as keys and
             values respectively.
 
@@ -424,7 +424,7 @@ class CompositionEntry(object):
 
         Returns
         -------
-        type : int
+        output : int
             -1 if self < other , 1 if self > other or 0 if self = other.
 
         """
@@ -453,7 +453,7 @@ class CompositionEntry(object):
 
         Returns
         -------
-        type : int
+        output : int
             Hashcode of this instance.
 
         """
@@ -476,7 +476,7 @@ class CompositionEntry(object):
 
         Returns
         -------
-        type : bool
+        output : bool
             True if they are equal and False otherwise.
 
         """

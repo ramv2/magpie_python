@@ -22,9 +22,6 @@ class PRDFRegression:
     cut_off_distance : float
         Cutoff distance for PRDF.
 
-    Parameters
-    ----------
-
     References
     ----------
     .. [1] K. T. Schütt, H. Glawe, F. Brockherde, A. Sanna, K. R. Müller,
@@ -35,8 +32,7 @@ class PRDFRegression:
     """
 
     def __init__(self):
-        """
-        Function to create instance and initialize fields.
+        """Function to create instance and initialize fields.
         """
 
         # Normalization term in kernel function.
@@ -56,9 +52,6 @@ class PRDFRegression:
         s : float
             Desired normalization parameter.
 
-        Returns
-        -------
-
         """
         self.sigma = s
 
@@ -69,9 +62,6 @@ class PRDFRegression:
         ----------
         n_b : int
             Number of bins (>1)
-
-        Returns
-        -------
 
         Raises
         ------
@@ -90,9 +80,6 @@ class PRDFRegression:
         ----------
         d : float
             Cutoff distance (>0 Angstrom)
-
-        Returns
-        -------
 
         Raises
         ------
@@ -117,7 +104,7 @@ class PRDFRegression:
 
         Returns
         -------
-        type : float
+        output : float
             Similarity between the two structures.
 
         """
@@ -155,7 +142,7 @@ class PRDFRegression:
 
         Returns
         -------
-        type : dict
+        output : dict
             Representation of the structure. Dictionary containing a tuple of
             integers as the key and a list of floats as the values.
 
