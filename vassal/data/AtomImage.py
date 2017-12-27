@@ -4,19 +4,25 @@ class AtomImage:
     """Class to uniquely identify an atom image. Key is atom ID, value is the
     periodic image.
 
-    Parameters
+    Attributes
     ----------
-
-    Returns
-    -------
-
+    position : array-like
+        Pre-computed Cartesian coordinates of this image.
+    atom : Atom
+        Atom which this image is associated with.
+    supercell : array-like
+        Supercell in which this image is located.
     """
 
     def __init__(self, atom, image):
-        """
-        Constructor to create a new instance of the object.
-        :param atom: Link to atom which is associated with this image.
-        :param image: Supercell position (i.e., which image it is in)
+        """Constructor to create a new instance of the object.
+
+        Parameters
+        ----------
+        atom : Atom
+            Link to atom which is associated with this image.
+        image : array-like
+            Supercell position (i.e., which image it is in)
         """
 
         # Pre-computed Cartesian coordinates of this image.
@@ -34,10 +40,17 @@ class AtomImage:
         self.compute_position()
 
     def __cmp__(self, other):
-        """
-        Function that acts as the comparator for AtomImage objects.
-        :param other: Other AtomImage.
-        :return: -1 is this < other, 0 if they are equal and +1 if this > other.
+        """Function that acts as the comparator for AtomImage objects.
+
+        Parameters
+        ----------
+        other : AtomImage
+            Other object.
+
+        Returns
+        -------
+        output : int
+            -1 is this < other, 0 if they are equal and +1 if this > other.
         """
 
         if self.atom.__eq__(other.atom):
@@ -51,11 +64,19 @@ class AtomImage:
             return self.atom.get_id() - other.atom.get_id()
 
     def __eq__(self, other):
-        """
-        Function to override the check for equality with another object of
+        """Function to override the check for equality with another object of
         the same class.
-        :param other: Other object.
-        :return: True if equal, else False.
+
+        Parameters
+        ----------
+        other : AtomImage
+            Other object.
+
+        Returns
+        -------
+        output : bool
+            True if equal, else False.
+
         """
 
         if isinstance(other, AtomImage):
@@ -64,9 +85,12 @@ class AtomImage:
         return False
 
     def __hash__(self):
-        """
-        Function to generate the hashcode for an object of this class.
-        :return: Hashcode.
+        """Function to generate the hashcode for an object of this class.
+
+        Returns
+        -------
+        output : int
+            Hashcode value.
         """
 
         h = 7
@@ -77,13 +101,6 @@ class AtomImage:
 
     def compute_position(self):
         """Function to compute (or re-compute) position of this image.
-        :return:
-
-        Parameters
-        ----------
-
-        Returns
-        -------
 
         """
 
@@ -93,13 +110,11 @@ class AtomImage:
 
     def get_atom(self):
         """Function to get the atom at the center of this image.
-        :return: Link to atom at the center.
-
-        Parameters
-        ----------
 
         Returns
         -------
+        output : atom
+            Link to atom at the center.
 
         """
 
@@ -107,50 +122,44 @@ class AtomImage:
 
     def get_atom_id(self):
         """Function to get the ID of the atom associated with this image.
-        :return: ID number.
-
-        Parameters
-        ----------
 
         Returns
         -------
-
+        output : int
+            ID number.
         """
 
         return self.atom.get_id()
 
     def get_supercell(self):
         """Function to get which supercell this image is located in.
-        :return: Supercell coordinates.
-
-        Parameters
-        ----------
 
         Returns
         -------
-
+        output : array-like
+            Supercell coordinates.
         """
 
         return self.supercell.copy()
 
     def get_position(self):
         """Function to get the position (in Cartesian coordinates) of this image.
-        :return: Position of atom.
-
-        Parameters
-        ----------
 
         Returns
         -------
-
+        output : array-like
+            Position of atom.
         """
 
         return self.position
 
     def __str__(self):
-        """
-        Function to override the output format for the builtin print command.
-        :return: Output string to be printed.
+        """Function to override the output format for the builtin print command.
+
+        Returns
+        -------
+        output : str
+            Output string to be printed.
         """
 
         output = str(self.atom.get_id())

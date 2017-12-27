@@ -1,3 +1,4 @@
+# coding=utf-8
 from numpy.linalg import norm
 import numpy as np
 from .voronoi.VoronoiTessellationCalculator import \
@@ -7,25 +8,40 @@ class VoronoiCellBasedAnalysis:
     """Class to perform structure analysis based on the Voronoi tessellation
     method.
 
-    Parameters
+    Attributes
     ----------
-
-    Returns
-    -------
+    structure : Cell
+        Link to structure being evaluated.
+    cells : array-like
+        Voronoi cells for each atom in structure.
+    radical : bool
+        Whether to use a radical Voronoi tessellation.
 
     """
 
     def __init__(self, radical=None, old_tessellation=None,
                  new_structure=None):
-        """
-        Function to initialize a Voronoi cell analyzer. Create a new instance
-        of the analysis toolkit based on a structure that has an identical
-        tessellation. This occurs when the two structures have identical
-        lattice parameters and atomic positions, but different identities of
-        elements on those sites.
-        :param radical: Whether to use radical-plane Voronoi method.
-        :param old_tessellation: Tessellation of original structure.
-        :param new_structure: New structure.
+        """Function to initialize a Voronoi cell analyzer.
+
+        Create a new instance of the analysis toolkit based on a structure
+        that has an identical tessellation. This occurs when the two
+        structures have identical lattice parameters and atomic positions,
+        but different identities of elements on those sites.
+
+        Parameters
+        new_structure : Cell
+            New structure.
+        radical : bool
+            Whether to use a radical Voronoi tessellation.
+        old_tessellation : VoronoiCellBasedAnalysis
+            Tessellation of original structure.
+
+        Raises
+        ------
+        Exception
+            If structures have different number of atoms.
+            If basis vectors of structures are different.
+            If any atom position is different
         """
 
         # Link to structure being evaluated.
@@ -60,16 +76,13 @@ class VoronoiCellBasedAnalysis:
             self.radical = old_tessellation.radical
 
     def precompute(self):
-        """Function to perform any kind of computations that should be performed
-        only once.
-        :return:
+        """Function to perform any kind of computations that should be
+        performed only once.
 
-        Parameters
-        ----------
-
-        Returns
-        -------
-
+        Raises
+        ------
+        Exception
+            If geometry is invalid.
         """
         self.cells = VoronoiTessellationCalculator.compute(self.structure,
                                                            self.radical)
@@ -84,11 +97,9 @@ class VoronoiCellBasedAnalysis:
 
         Parameters
         ----------
-        s :
+        s : Cell
             Structure to be analyzed.
 
-        Returns
-        -------
 
         """
         self.structure = s
@@ -96,13 +107,6 @@ class VoronoiCellBasedAnalysis:
 
     def recompute(self):
         """Function to recompute structural information.
-        :return:
-
-        Parameters
-        ----------
-
-        Returns
-        -------
 
         """
         self.precompute()
@@ -110,30 +114,25 @@ class VoronoiCellBasedAnalysis:
     def tessellation_is_converged(self):
         """Function to check whether the tessellation of this structure was
         successful.
-        :return:
-
-        Parameters
-        ----------
-
-        Returns
-        -------
 
         """
         return self.cells is not None
 
     def get_effective_coordination_numbers(self):
-        """Function to get the effective coordination number. Defined as
-        N_eff = 1 / sum[(f_i / SA_i)^2]
-        where f_i is the area of face i.
-        :return: Effective coordination number for each atom.
+        """Function to get the effective coordination number.
+
+        Defined as N_eff = 1 / sum[(f_i / SA_i)^2] where f_i is the area of
+        face i.
 
         Parameters
         ----------
 
         Returns
         -------
-
+        output : list
+            Effective coordination number for each atom.
         """
+
         # Compute the coordination number.
         output = [1.0 / sum([(f_i.get_area() / cell.get_surface_area()) ** 2
                     for f_i in cell.get_faces()]) for cell in self.cells]
@@ -141,67 +140,56 @@ class VoronoiCellBasedAnalysis:
 
     def face_count_average(self):
         """Function to get the average number of faces on all cells.
-        :return: Average number.
-
-        Parameters
-        ----------
 
         Returns
         -------
+        output : float
+            Average number.
 
         """
         return np.average([cell.n_faces() for cell in self.cells])
 
     def face_count_variance(self):
         """Function to get the variance in face count.
-        :return: Mean absolute deviation in coordination number.
-
-        Parameters
-        ----------
 
         Returns
         -------
-
+        output : float
+            Mean absolute deviation in coordination number.
         """
         avg = self.face_count_average()
         return np.mean([abs(cell.n_faces() - avg) for cell in self.cells])
 
     def face_count_minimum(self):
         """Function to get the minimum face count of all cells.
-        :return: Minimum.
-
-        Parameters
-        ----------
 
         Returns
         -------
-
+        output : float
+            Minimum.
         """
         return min([cell.n_faces() for cell in self.cells])
 
     def face_count_maximum(self):
         """Function to get the maximum face count of all cells.
-        :return: Maximum.
 
         Parameters
         ----------
 
         Returns
         -------
-
+        output : float
+            Maximum.
         """
         return max([cell.n_faces() for cell in self.cells])
 
     def get_unique_polyhedron_shapes(self):
         """Function to get a list of all unique polyhedron shapes.
-        :return: Set of polyhedron shapes.
-
-        Parameters
-        ----------
 
         Returns
         -------
-
+        output : list
+            Set of polyhedron shapes.
         """
         output = []
         for cell in self.cells:
@@ -213,14 +201,11 @@ class VoronoiCellBasedAnalysis:
     def volume_variance(self):
         """Function to compute the mean absolute deviation in the volume of each
         cell.
-        :return: Variance of cell volume fraction of all cells.
-
-        Parameters
-        ----------
 
         Returns
         -------
-
+        output : float
+            Variance of cell volume fraction of all cells.
         """
         avg_volume = self.structure.volume() / self.structure.n_atoms()
         return np.mean([abs(self.cells[i].get_volume() - avg_volume) for i
@@ -229,14 +214,11 @@ class VoronoiCellBasedAnalysis:
     def volume_fraction_minimum(self):
         """Function to compute the fraction of cell volume occupied by the
         smallest Voronoi cell.
-        :return: Volume fraction of the smallest cell.
-
-        Parameters
-        ----------
 
         Returns
         -------
-
+        output : float
+            Volume fraction of the smallest cell.
         """
         return min([cell.get_volume() for cell in self.cells]) / \
                self.structure.volume()
@@ -244,13 +226,11 @@ class VoronoiCellBasedAnalysis:
     def volume_fraction_maximum(self):
         """Function to compute the fraction of cell volume occupied by the
         largest Voronoi cell.
-        :return: Volume fraction of the largest cell.
-
-        Parameters
-        ----------
 
         Returns
         -------
+        output : float
+            Volume fraction of the largest cell.
 
         """
         return max([cell.get_volume() for cell in self.cells]) / \
@@ -259,19 +239,18 @@ class VoronoiCellBasedAnalysis:
     def max_packing_efficiency(self):
         """Function to compute the maximum packing efficiency assuming atoms are
         hard spheres.
+
         Algorithm:
         1. For each cell in the Voronoi tessellation of this cell, determine the
         minimum distance from the cell center to a face. This marks the maximum
         atomic radius.
         2. Compute the total volume represented by those maximally-sized atoms.
         3. Packing efficiency is atom volume divided by cell volume.
-        :return: Maximum packing efficiency.
-
-        Parameters
-        ----------
 
         Returns
         -------
+        output : float
+            Maximum packing efficiency.
 
         """
         atom_vol = sum([min_dist ** 3 for min_dist in [min([
@@ -283,30 +262,31 @@ class VoronoiCellBasedAnalysis:
     def get_neighbor_ordering_parameters(self, shell, weighted):
         """Function to compute the Warren-Cowley short range ordering parameters
         for each atom.
+
         alpha_{s, i} = 1 - n_{A, s} / (x_A * n_s)
         where n_{A, s} is the number of atoms of type A in shell s, x_A is
         the composition of atom A and n_s is the number of atoms in shell s.
-        
-        Citation:
-        http://journals.aps.org/pr/abstract/10.1103/PhysRev.77.669
-        Cowley, J. <i>Physical Review Letters</i>. 77 (1950), 669
-        
+
         Optionally, one can weight the contributions of each neighbor based on
         the path weights. See VoronoiCell.get_neighbors_by_walks for further
         discussion.
 
         Parameters
         ----------
-        shell :
+        shell : int
             Index of nearest neighbor shell.
-        weighted :
+        weighted : bool
             Whether to compute the weighted ordering parameters.
 
         Returns
         -------
-        type
+        output : array-like
             Ordering parameters for each atom in cell.
 
+        References
+        ----------
+        .. [1] J. M. Cowley, "An Approximate Theory of Order in Alloys,
+        " Physical Review, vol. 77, no. 5, pp. 669--675, Mar. 1950.
         """
         n_atoms = self.structure.n_atoms()
         n_types = self.structure.n_types()
@@ -352,24 +332,25 @@ class VoronoiCellBasedAnalysis:
         return output
 
     def warren_cowley_ordering_magnitude(self, shell, weighted):
-        """Function to compute the mean deviation in the Warren-Cowley parameter
-        for each type for site from 0. Consider this as a measure of how
-        "ordered" a structure is.
-        Computed as the average of the average the absolute values of the WC
+        """Function to compute the mean deviation in the Warren-Cowley
+        parameter for each type for site from 0.
+
+        Consider this as a measure of how "ordered" a structure is. Computed
+        as the average of the average the absolute values of the WC
         parameters for each type for each site:
         Sum_{i,j} 1 / [Number of atoms in structure] / [Number of types] * |
         [ WC parameter for type i about atom j] |
 
         Parameters
         ----------
-        shell :
+        shell : int
             Index of neighbor shell (e.g. 1st shell = 1).
-        weighted :
+        weighted : bool
             Whether to weigh ordering parameters by face area.
 
         Returns
         -------
-        type
+        output : float
             Computed value.
 
         """
@@ -381,11 +362,13 @@ class VoronoiCellBasedAnalysis:
 
     def compute_shape_dissimilarity(self, this_shape, reference_shape):
         """Function to compute the similarity of the shape of a cell to a
-        reference. Computed as the difference between the number of faces
-        with a certain number of edges for between a shape and the reference
-        for each type of face (defined by the number of edges) divided by the
-        total number of faces in the reference shape.
-        
+        reference.
+
+        Computed as the difference between the number of faces with a certain
+        number of edges for between a shape and the reference for each type
+        of face (defined by the number of edges) divided by the total number
+        of faces in the reference shape.
+
         Example: Reference shape has 12 square faces, this shape has 11
         square faces and two triangular faces. There are three different faces
         (i.e. one missing square face and two extraneous triangular faces).
@@ -393,14 +376,14 @@ class VoronoiCellBasedAnalysis:
 
         Parameters
         ----------
-        this_shape :
+        this_shape : dict
             Shape to be compared.
-        reference_shape :
+        reference_shape : dict
             Shape to compare against.
 
         Returns
         -------
-        type
+        output : float
             Dissimilarity figure (0 means identical, can be > 1).
 
         """
@@ -426,14 +409,11 @@ class VoronoiCellBasedAnalysis:
     def mean_sc_dissimilarity(self):
         """Function to get how dissimilar, on average, coordination polyhedra
         are from super cell.
-        :return: Average shape dissimilarity from sc.
-
-        Parameters
-        ----------
 
         Returns
         -------
-
+        output : float
+            Average shape dissimilarity from sc.
         """
 
         # Make reference.
@@ -447,14 +427,11 @@ class VoronoiCellBasedAnalysis:
     def mean_bcc_dissimilarity(self):
         """Function to get how dissimilar, on average, coordination polyhedra
         are from bcc.
-        :return: Average shape dissimilarity from bcc.
-
-        Parameters
-        ----------
 
         Returns
         -------
-
+        output : float
+            Average shape dissimilarity from bcc.
         """
 
         # Make reference.
@@ -468,13 +445,11 @@ class VoronoiCellBasedAnalysis:
     def mean_fcc_dissimilarity(self):
         """Function to get how dissimilar, on average, coordination polyhedra
         are from fcc.
-        :return: Average shape dissimilarity from fcc.
-
-        Parameters
-        ----------
 
         Returns
         -------
+        output : float
+            Average shape dissimilarity from fcc.
 
         """
 
@@ -488,10 +463,12 @@ class VoronoiCellBasedAnalysis:
 
     def neighbor_property_differences(self, property, shell):
         """Function to compute the face-size-weighted difference between
-        properties of an atom and its neighbors. Computed as:
+        properties of an atom and its neighbors.
+
+        Computed as:
         sum_i [ Size of face between atom and neighbor i ] * |
         [property of atom] - [property neighbor] | / [ surface area ]
-        
+
         For neighbors in the 2nd or greater shell,
         VoronoiCell.get_extended_faces is used to find the unique faces
         between the atoms in the N - 1 shell and the Nth shell. So, each Nth
@@ -500,14 +477,14 @@ class VoronoiCellBasedAnalysis:
 
         Parameters
         ----------
-        property :
+        property : array-like
             List of property for each atom type.
-        shell :
+        shell : int
             Shell to be considered (1 == 1st nearest neighbor shell).
 
         Returns
         -------
-        type
+        output : array-like
             Property difference value for each neighbor.
 
         """
@@ -531,19 +508,20 @@ class VoronoiCellBasedAnalysis:
 
     def get_neighbor_shell_weights(self, shell):
         """Function to get the types and weights on neighbors in each shell.
+
         Uses the path weight argument described in
         VoronoiCell.get_neighbors_by_walks.
 
         Parameters
         ----------
-        shell :
+        shell : int
             Shell being considered. 1 corresponds to the 1st NN,
             2 corresponds to the polyhedron formed by an atom and its 1st shell
             neighbors, etc.
 
         Returns
         -------
-        type
+        output : array-like
             Pair of neighbor types and weights.
 
         """
@@ -568,20 +546,22 @@ class VoronoiCellBasedAnalysis:
 
         Parameters
         ----------
-        property :
+        property : array-like
             List of property for each type.
-        weights :
-            Weights for each neighbor.
-        types :
-            Types of each neighbor.
-        shell :
-            
+        shell : int
+            Shell being considered. 1 corresponds to the 1st NN,
+            2 corresponds to the polyhedron formed by an atom and its 1st shell
+            neighbors, etc.
 
         Returns
         -------
-        type
+        output : array-like
             Variance in property of each atom for each neighbor.
 
+        Raises
+        ------
+        Exception
+            If wrong number of property values provided.
         """
 
         if len(property) != self.structure.n_types():
@@ -614,14 +594,11 @@ class VoronoiCellBasedAnalysis:
 
     def bond_lengths(self):
         """Function to get the bond lengths for each atom.
-        :return: Bond lengths for each atom in Cartesian units.
-
-        Parameters
-        ----------
 
         Returns
         -------
-
+        output : array-like
+            Bond lengths for each atom in Cartesian units.
         """
         n_atoms = self.structure.n_atoms()
         output = np.array([self.cells[a].get_neighbor_distances() for a in
@@ -629,15 +606,14 @@ class VoronoiCellBasedAnalysis:
         return output
 
     def mean_bond_lengths(self):
-        """Function to compute mean bond length for each cell. Bond length for
-        each neighbor is weighted by face size
-        :return: Mean bond lengths.
+        """Function to compute mean bond length for each cell.
 
-        Parameters
-        ----------
+        Bond length for each neighbor is weighted by face size.
 
         Returns
         -------
+        output : float
+            Mean bond lengths.
 
         """
         n_atoms = self.structure.n_atoms()
@@ -647,18 +623,19 @@ class VoronoiCellBasedAnalysis:
         return output
 
     def bond_length_variance(self, mean_lengths):
-        """Function to compute variance in bond length for each face. Computed
-        as the mean absolute deviation of each neighbor distance from the
-        mean neighbor distance, weighted by face area.
+        """Function to compute variance in bond length for each face.
+
+        Computed as the mean absolute deviation of each neighbor distance
+        from the mean neighbor distance, weighted by face area.
 
         Parameters
         ----------
-        mean_lengths :
+        mean_lengths : float
             Mean bond length for each cell.
 
         Returns
         -------
-        type
+        output : array-like
             Bond length variance for each cell.
 
         """

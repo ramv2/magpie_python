@@ -9,17 +9,32 @@ class PairDistanceAnalysis:
     distance between each of atoms (and any periodic image within a certain
     distance).
 
-    Parameters
+    Attributes
     ----------
-
-    Returns
-    -------
+    structure : Cell
+        Link to structure being evaluated.
+    cut_off_distance : float
+        Cutoff distance. No pairs farther than this value are considered.
+    supercells : list
+        Periodic images to consider when searching for neighbors.
+    lattice_vectors : list
+        Lattice vectors corresponding to each image.
 
     """
 
     def __init__(self):
-        """
-        Function to instantiate the class.
+        """Function to instantiate the class.
+
+        Parameters
+        ----------
+        structure : Cell
+            Link to structure being evaluated.
+        cut_off_distance : float
+            Cutoff distance. No pairs farther than this value are considered.
+        supercells : list
+            Periodic images to consider when searching for neighbors.
+        lattice_vectors : list
+            Lattice vectors corresponding to each image.
         """
 
         # Cutoff distance. No pairs farther than this value are considered.
@@ -35,15 +50,8 @@ class PairDistanceAnalysis:
         self.structure = None
 
     def precompute(self):
-        """Function to perform any kind of computations that should be performed
-        only once.
-        :return:
-
-        Parameters
-        ----------
-
-        Returns
-        -------
+        """Function to perform any kind of computations that should be
+        performed only once.
 
         """
 
@@ -92,13 +100,11 @@ class PairDistanceAnalysis:
 
     def get_cutoff_distance(self):
         """Function to get the cutoff distance.
-        :return: Cutoff distance.
-
-        Parameters
-        ----------
 
         Returns
         -------
+        cutoff_distance : float
+            Cutoff distance.
 
         """
         return self.cutoff_distance
@@ -108,11 +114,8 @@ class PairDistanceAnalysis:
 
         Parameters
         ----------
-        d :
+        d : float
             Desired cutoff distance.
-
-        Returns
-        -------
 
         """
         self.cutoff_distance = d
@@ -125,14 +128,14 @@ class PairDistanceAnalysis:
 
         Parameters
         ----------
-        center_atom :
-            Atom at the center.
-        neighbor_atom :
-            Neighboring atom.
+        center_atom : int
+            Index of atom at the center.
+        neighbor_atom : int
+            Neighboring atom index.
 
         Returns
         -------
-        type
+        output : list
             All images of neighbor_atom that within a cutoff distance of
             center_atom, and their respective distances. List of tuples (
             neighboring atom, distance).
@@ -173,12 +176,12 @@ class PairDistanceAnalysis:
 
         Parameters
         ----------
-        index :
+        index : int
             Index of atom being considered.
 
         Returns
         -------
-        type
+        output : list
             List of tuples (neighboring atom, distance).
 
         """
@@ -192,16 +195,20 @@ class PairDistanceAnalysis:
 
         Parameters
         ----------
-        n_bin :
+        n_bin : int
             Number of bins in which to discretize PRDF (must be > 0)
 
         Returns
         -------
-        type
+        output : array-like
             Pair radial distribution function between each type. Bin i,
             j,k is the density of bonds between types i and j that are between k
             * cutoff / nBin and (k + 1) * cutoff / nBin.
 
+        Raises
+        ------
+        ValueError
+            If n_bin is less than or equal to 0.
         """
         if n_bin <= 0:
             raise ValueError("Number of bins must be 0.")
@@ -249,11 +256,8 @@ class PairDistanceAnalysis:
 
         Parameters
         ----------
-        s :
+        s : Cell
             Structure to be analyzed.
-
-        Returns
-        -------
 
         """
         self.structure = s
@@ -261,13 +265,6 @@ class PairDistanceAnalysis:
 
     def recompute(self):
         """Function to recompute structural information.
-        :return:
-
-        Parameters
-        ----------
-
-        Returns
-        -------
 
         """
         self.precompute()

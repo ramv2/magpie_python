@@ -7,12 +7,6 @@ class VASP5IO:
     """Class to read/write from VASP 5 format. Note that this version expects
     that the sixth line to contain the names of elements.
 
-    Parameters
-    ----------
-
-    Returns
-    -------
-
     """
 
     @classmethod
@@ -21,16 +15,24 @@ class VASP5IO:
 
         Parameters
         ----------
-        file_name :
+        file_name : str
             Path to file. (Default value = None)
-        list_of_lines :
+        list_of_lines : array-like
             Lines describing structure. (Default value = None)
 
         Returns
         -------
-        type
+        output : Cell
             Structure as Cell.
 
+        Raises
+        ------
+        Exception
+            If something is wrong with input.
+            If there is an error parsing the basis.
+            If there is an error parsing atom types.
+            If there is an error determining whether atoms are in cartesian
+            units.
         """
 
         # Open file.
@@ -104,16 +106,17 @@ class VASP5IO:
         return structure
 
     def convert_structure_to_string(self, structure):
-        """Function to convert structure to string representation - list of lines.
+        """Function to convert structure to string representation - list of
+        lines.
 
         Parameters
         ----------
-        structure :
+        structure : Cell
             Desired structure to be converted.
 
         Returns
         -------
-        type
+        output : array-like
             String representation - list of lines.
 
         """
@@ -165,13 +168,10 @@ class VASP5IO:
 
         Parameters
         ----------
-        structure :
+        structure : Cell
             Desired structure as Cell.
-        filename :
+        filename : str
             Desired file name.
-
-        Returns
-        -------
 
         """
 
@@ -187,12 +187,12 @@ class VASP5IO:
 
         Parameters
         ----------
-        structure :
+        structure : Cell
             Desired structure as Cell.
 
         Returns
         -------
-        type
+        output : array-like
             String representation - list of lines.
 
         """

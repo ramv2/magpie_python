@@ -1,23 +1,55 @@
+# coding=utf-8
 import math
 from .PairDistanceAnalysis import PairDistanceAnalysis
 import numpy as np
 
 class APRDFAnalysis:
     """Class to compute the Atomic Property Weighted Radial Distribution
-    Function (AP-RDF). Follows the work by Fernandez et al.
-    http://pubs.acs.org/doi/abs/10.1021/jp404287t.
-    Here, we use a scaling factor equal to: 1 / #atoms.
+    Function (AP-RDF).
 
-    Parameters
+    Follows the work by Fernandez et al.[1]. Here, we use a scaling factor
+    equal to: 1 / #atoms.
+
+    Attributes
     ----------
+    structure : Cell
+        Link to structure being evaluated.
+    cut_off_distance : float
+        Cutoff distance used when computing radial distribution function.
+    n_windows : int
+        Number of points of the RDF to sample.
+    B : float
+        Smoothing factor in PRDF expression.
+    accuracy_factor : float
+        Accuracy factor. Determines the number of atoms farther than the
+        cutoff radius that are included in the computation of the PRDF. This
+        is necessary due to the Gaussian cutoff term in the RDF.
 
-    Returns
-    -------
+    References
+    ----------
+    .. [1] M. Fernandez, N. R. Trefiak, and T. K. Woo, "Atomic Property
+    Weighted Radial Distribution Functions Descriptors of Metal--Organic
+    Frameworks for the Prediction of Gas Uptake Capacity," The Journal of
+    Physical Chemistry C, vol. 117, no. 27, pp. 14095--14105, Jul. 2013.
 
     """
     def __init__(self):
-        """
-        Function to create instance and initialize fields.
+        """Function to create instance and initialize fields.
+
+        Parameters
+        ----------
+        structure : Cell
+            Link to structure being evaluated.
+        cut_off_distance : float
+            Cutoff distance used when computing radial distribution function.
+        n_windows : int
+            Number of points of the RDF to sample.
+        B : float
+            Smoothing factor in PRDF expression.
+        accuracy_factor : float
+            Accuracy factor. Determines the number of atoms farther than the
+            cutoff radius that are included in the computation of the PRDF. This
+            is necessary due to the Gaussian cutoff term in the RDF.
         """
 
         # Link to structure being evaluated.
@@ -38,17 +70,12 @@ class APRDFAnalysis:
         self.accuracy_factor = 1e-3
 
     def precompute(self):
-        """Function to perform any kind of computations that should be performed
-        only once. Determine the maximum distance at which atoms contribute
+        """Function to perform any kind of computations that should be
+        performed only once.
+
+        Determine the maximum distance at which atoms contribute
         to the PRDF. This is the maximum distance (r) at which exp(-B * (r -
         R)^2) > AccuracyFactor.
-        :return:
-
-        Parameters
-        ----------
-
-        Returns
-        -------
 
         """
         max_pair_distance = math.sqrt(-1 * math.log(self.accuracy_factor) /
@@ -59,16 +86,15 @@ class APRDFAnalysis:
         self.distance_computer.analyze_structure(self.structure)
 
     def analyze_structure(self, s):
-        """Function to analyze a specific structure. Once this completes,
-        it is possible to retrieve results out of this object.
+        """Function to analyze a specific structure.
+
+        Once this completes, it is possible to retrieve results out of this
+        object.
 
         Parameters
         ----------
-        s :
+        s : Cell
             Structure to be analyzed.
-
-        Returns
-        -------
 
         """
         self.structure = s
@@ -76,14 +102,6 @@ class APRDFAnalysis:
 
     def recompute(self):
         """Function to recompute structural information.
-        :return:
-
-        Parameters
-        ----------
-
-        Returns
-        -------
-
         """
         self.precompute()
 
@@ -92,11 +110,13 @@ class APRDFAnalysis:
 
         Parameters
         ----------
-        b :
+        b : float
             Smoothing factor.
 
-        Returns
-        -------
+        Raises
+        ------
+        ValueError
+            If B is negative.
 
         """
         if b <= 0:
@@ -108,11 +128,16 @@ class APRDFAnalysis:
 
         Parameters
         ----------
-        d :
+        d : float
             Cut off distance.
 
-        Returns
-        -------
+        Raises
+        ------
+        ValueError
+            If d is negative.
+
+        Exception
+            If something goes wrong in computing cell.
 
         """
         if d <= 0:
@@ -135,11 +160,8 @@ class APRDFAnalysis:
 
         Parameters
         ----------
-        n_w :
+        n_w : int
             Desired number of windows.
-
-        Returns
-        -------
 
         """
         self.n_windows = n_w
@@ -149,12 +171,12 @@ class APRDFAnalysis:
 
         Parameters
         ----------
-        properties :
+        properties : array-like
             Properties of each atom type.
 
         Returns
         -------
-        type
+        output : array-like
             AP-RDF at R at n_windows steps between cut off distance /
             n_windows to cut off distance, inclusive.
 
@@ -200,13 +222,11 @@ class APRDFAnalysis:
 
     def get_evaluation_distances(self):
         """Function to get the distances at which the PRDF should be analyzed.
-        :return: List of distances.
-
-        Parameters
-        ----------
 
         Returns
         -------
+        output : list
+            List of distances.
 
         """
         step_size = float(self.cut_off_distance) / self.n_windows

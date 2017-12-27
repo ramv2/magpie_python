@@ -506,10 +506,6 @@ class VoronoiCell:
         http://rspa.royalsocietypublishing.org/cgi/doi/10.1098/rspa.1970.0190
         Finney (1970).
 
-
-        Parameters
-        ----------
-
         References
         ----------
         .. [1] J. L. Finney, “Random Packings and the Structure of Simple
@@ -536,9 +532,6 @@ class VoronoiCell:
     def get_volume(self):
         """Function to get volume of this cell
 
-        Parameters
-        ----------
-
         Returns
         -------
         type : float
@@ -561,9 +554,6 @@ class VoronoiCell:
     def get_surface_area(self):
         """Function to get surface area of cell.
 
-        Parameters
-        ----------
-
         Returns
         -------
         type : float
@@ -574,10 +564,6 @@ class VoronoiCell:
     def get_min_max_vertex_distance(self):
         """Function to get the minimum and maximum distance between any two
         vertices.
-
-
-        Parameters
-        ----------
 
         Returns
         -------
@@ -602,9 +588,6 @@ class VoronoiCell:
     def geometry_is_valid(self):
         """Function to determine whether the geometry of this structure is
         sound.
-
-        Parameters
-        ----------
 
         Returns
         -------
@@ -668,10 +651,8 @@ class VoronoiCell:
             List of images to consider, where key is the atomID
             and value is the distance.
 
-        Returns
-        -------
-
         """
+
         # Clear cached volume.
         self.volume = np.nan
 
@@ -929,9 +910,6 @@ class VoronoiCell:
         ----------
         to_remove : VoronoiFace
             Face to remove.
-
-        Returns
-        -------
 
         Raises
         ------

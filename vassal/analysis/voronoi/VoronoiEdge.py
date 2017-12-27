@@ -26,8 +26,7 @@ class VoronoiEdge:
     """
 
     def __init__(self, edge_face=None, intersecting_face=None):
-        """
-        Function to initialize an edge instance.
+        """Function to initialize an edge instance.
 
         Parameters
         ----------
@@ -36,6 +35,10 @@ class VoronoiEdge:
         intersecting_face : Plane
             Plane defining the other face defining this edge.
 
+        Raises
+        ------
+        Exception
+            Planes are parallel.
         """
 
         # EdgeFace on which this edge exists.
@@ -140,8 +143,13 @@ class VoronoiEdge:
 
         Returns
         -------
-        Whether two edges intersect or nothing depending on the input.
+        output : bool or None
+            Whether two edges intersect or nothing depending on the input.
 
+        Raises
+        ------
+        Exception
+            Edges do not intersect.
         """
 
         # Determine the point at which the edges intersect.
@@ -206,8 +214,7 @@ class VoronoiEdge:
         return False
 
     def __hash__(self):
-        """
-        Function to compute the hash value of instance.
+        """Function to compute the hash value of instance.
 
         Returns
         -------
@@ -239,9 +246,6 @@ class VoronoiEdge:
     def get_line(self):
         """Function to get the line defining this edge.
 
-        Parameters
-        ----------
-
         Returns
         -------
         line : Line
@@ -253,9 +257,6 @@ class VoronoiEdge:
     def get_edge_face(self):
         """Function to get the face containing this edge.
 
-        Parameters
-        ----------
-
         Returns
         -------
         edge_face : Plane
@@ -266,9 +267,6 @@ class VoronoiEdge:
     def get_intersecting_face(self):
         """Function to get the other face associated with this edge.
 
-        Parameters
-        ----------
-
         Returns
         -------
         intersecting_face : Plane
@@ -278,9 +276,6 @@ class VoronoiEdge:
 
     def get_next_edge(self):
         """Function to get the next edge on this face.
-
-        Parameters
-        ----------
 
         Returns
         -------
@@ -293,9 +288,6 @@ class VoronoiEdge:
     def get_previous_edge(self):
         """Function to get the previous edge on this face.
 
-        Parameters
-        ----------
-
         Returns
         -------
         previous_edge : VoronoiEdge
@@ -306,9 +298,6 @@ class VoronoiEdge:
 
     def get_length(self):
         """Function to get the length of this edge.
-
-        Parameters
-        ----------
 
         Returns
         -------
@@ -412,9 +401,6 @@ class VoronoiEdge:
     def get_start_vertex(self):
         """Function to get the vertex at the beginning of this vector.
 
-        Parameters
-        ----------
-
         Returns
         -------
         type : VoronoiVertex
@@ -425,9 +411,6 @@ class VoronoiEdge:
 
     def get_end_vertex(self):
         """Function to get the vertex at the end of this vector.
-
-        Parameters
-        ----------
 
         Returns
         -------
@@ -440,11 +423,6 @@ class VoronoiEdge:
     def generate_pair(self):
         """Function to generate the edge that corresponds to this edge on the
         intersecting face.
-
-
-
-        Parameters
-        ----------
 
         Returns
         -------
@@ -464,12 +442,14 @@ class VoronoiEdge:
             raise Exception("Shouldn't be possible.")
 
     def angle_between(self, v1, v2):
-        """Documentation obtained from:
+        """Function to compute the angular separation between two vectors.
+
+        Documentation obtained from:
         http://commons.apache.org/proper/commons-math/javadocs/api-3.3/org
         /apache/commons/math3/geometry/euclidean/threed/Vector3D.html
-        Function to compute the angular separation between two vectors. This
-        method computes the angular separation between two vectors using the
-        dot product for well separated vectors and the cross product for
+
+        This method computes the angular separation between two vectors using
+        the dot product for well separated vectors and the cross product for
         almost aligned vectors. This allows to have a good accuracy in all
         cases, even for vectors very close to each other.
 
@@ -507,13 +487,6 @@ class VoronoiEdge:
         """Function to print different properties of the Voronoi Edge instance.
 
         Mainly used for debugging purposes.
-
-        Parameters
-        ----------
-
-        Returns
-        -------
-
         """
         print "Edge face:", self.edge_face.outside_atom.__str__(), \
             "Intersecting face:", self.intersecting_face.outside_atom.__str__()

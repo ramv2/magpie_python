@@ -3,33 +3,42 @@ from numpy.linalg import norm
 import sys
 
 class Line:
-    """Documentation obtained from http://commons.apache.org/proper/commons-math
+    """Class to represent lines in a three dimensional space.
+
+    Documentation obtained from http://commons.apache.org/proper/commons-math
     /javadocs/api-3.3/org/apache/commons/math3/geometry/euclidean/threed/Line
     .html
-    Class to represent lines in a three dimensional space. Each oriented line
-    is intrinsically associated with an abscissa which is a coordinate on the
-    line. The point at abscissa 0 is the orthogonal projection of the origin
-    on the line, another equivalent way to express this is to say that it is
-    the point of the line which is closest to the origin. Abscissa increases
-    in the line direction.
+    Each oriented line is intrinsically associated with an abscissa which is
+    a coordinate on the line. The point at abscissa 0 is the orthogonal
+    projection of the origin on the line, another equivalent way to express
+    this is to say that it is the point of the line which is closest to the
+    origin. Abscissa increases in the line direction.
 
-    Parameters
+    Attributes
     ----------
-
-    Returns
-    -------
+    direction : array-like
+        Line direction.
+    zero : array-like
+        Line point closest to the origin.
+    tolerance : float
+        Tolerance below which points are considered identical.
 
     """
 
     def __init__(self, p1=None, p2=None, tolerance=None, l=None):
-        """
-        Constructor to create instance of the Line object.
-        :param p1: First point belonging to the Line (this can be any point).
-        :param p2: Second point belonging to the Line (this can be any point,
-        different from p1).
-        :param tolerance: Tolerance below which points are considered
-        identical.
-        :param l: Line to copy.
+        """Constructor to create instance of the Line object.
+
+        Parameters
+        ----------
+        p1 : array-like
+            First point belonging to the Line (this can be any point).
+        p2 : array-like
+            Second point belonging to the Line (this can be any point,
+            different from p1).
+        tolerance : float
+            Tolerance below which points are considered identical.
+        l : Line
+            Line to copy.
         """
 
         if l is None:
@@ -65,38 +74,30 @@ class Line:
 
         Parameters
         ----------
-        tol :
+        tol : float
             Desired tolerance.
-
-        Returns
-        -------
 
         """
         self.tolerance = tol
 
     def get_tolerance(self):
         """Function to get the tolerance.
-        :return: Tolerance.
-
-        Parameters
-        ----------
 
         Returns
         -------
+        output : float
+            Tolerance.
 
         """
         return self.tolerance
 
     def revert(self):
         """Function to revert the direction of the current line.
-        :return: A new Line instance with the direction reversed.
-
-        Parameters
-        ----------
 
         Returns
         -------
-
+        output : Line
+            A new Line instance with the direction reversed.
         """
         reverted = Line(l=self)
         reverted.direction *= -1.0
@@ -104,43 +105,38 @@ class Line:
 
     def get_direction(self):
         """Function to get the direction of the line.
-        :return: Direction as a numpy array.
-
-        Parameters
-        ----------
 
         Returns
         -------
-
+        output : array-like
+            Direction as a numpy array.
         """
         return self.direction
 
     def get_origin(self):
         """Get the line point closest to the origin.
-        :return: Point as a numpy array.
-
-        Parameters
-        ----------
 
         Returns
         -------
-
+        output : array-like
+            Point as a numpy array.
         """
         return self.zero
 
     def get_abscissa(self, p):
-        """Function to get the abscissa of a point with respect to a line. The
-        abscissa is 0 if the projection of the point and the projection of
+        """Function to get the abscissa of a point with respect to a line.
+
+        The abscissa is 0 if the projection of the point and the projection of
         the frame origin on the line are the same point.
 
         Parameters
         ----------
-        p :
+        p : array-like
             Desired point.
 
         Returns
         -------
-        type
+        output : float
             Abscissa of the point.
 
         """
@@ -151,12 +147,12 @@ class Line:
 
         Parameters
         ----------
-        abscissa :
+        abscissa : float
             Desired abscissa for the point/
 
         Returns
         -------
-        type
+        output : array-like
             One point belonging to the line, at specified abscissa.
 
         """
@@ -167,12 +163,12 @@ class Line:
 
         Parameters
         ----------
-        p :
+        p : array-like
             Point to check.
 
         Returns
         -------
-        type
+        output : bool
             True if p belongs to the line, else False.
 
         """
@@ -184,14 +180,14 @@ class Line:
 
         Parameters
         ----------
-        p :
+        p : array-like
             Point to compute distance between. (Default value = None)
-        l :
+        l : Line
             Line to compute distance between. (Default value = None)
 
         Returns
         -------
-        type
+        output : float
             Distance.
 
         """
@@ -218,12 +214,12 @@ class Line:
 
         Parameters
         ----------
-        p :
+        p : array-like
             Point to compute distance between.
 
         Returns
         -------
-        type
+        output : float
             Distance.
 
         """
@@ -237,12 +233,12 @@ class Line:
 
         Parameters
         ----------
-        l :
+        l : Line
             Line to check against the instance.
 
         Returns
         -------
-        type
+        output : array-like
             Point of the instance closest to another line.
 
         """
@@ -263,12 +259,12 @@ class Line:
 
         Parameters
         ----------
-        l :
+        l : Line
             Other line.
 
         Returns
         -------
-        type
+        output : array-like
             Intersection point of the instance and the other line,
             else None.
 

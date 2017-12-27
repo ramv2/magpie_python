@@ -1,14 +1,35 @@
 import numpy as np
 
 class Atom:
-    """Class that represents a single atom."""
+    """Class that represents a single atom.
+
+    Attributes
+    ----------
+    position : array-like
+        Position in fractional coordinates.
+    position_cartesian : array-like
+        Position in cartesian coordinates.
+    type : int
+        Type of atom.
+    cell : Cell
+        Cell associated with this atom.
+    id : int
+        ID number of this atom.
+    radius : float
+        Radius of atom.
+    """
 
     def __init__(self, position, type):
+        """Constructor to create a new instance of the object.
+
+        Attributes
+        ----------
+        position : array-like
+            Position in fractional coordinates.
+        type : int
+            Type of atom.
         """
-        Constructor to create a new instance of the object.
-        :param position: Position in fractional coordinates.
-        :param type: Atom type.
-        """
+
         # Position in fractional coordinates.
         self.position = None
 
@@ -33,7 +54,11 @@ class Atom:
     def __copy__(self):
         """
         Function to override the copy() method.
-        :return: A new instance with the appropriate properties set.
+
+        Returns
+        -------
+        output : Atom
+            A new instance with the appropriate properties set.
         """
         x = type(self)(self.__class__)
         x.__dict__.update(self.__dict__)
@@ -42,11 +67,18 @@ class Atom:
         return x
 
     def __eq__(self, other):
-        """
-        Function to override the check for equality with another object of
+        """Function to override the check for equality with another object of
         the same class.
-        :param other: Other object.
-        :return: True if equal, else False.
+
+        Parameters
+        ----------
+        other : Atom
+            Other object.
+
+        Returns
+        -------
+        output : bool
+            True if equal, else False.
         """
 
         if isinstance(other, Atom):
@@ -81,11 +113,8 @@ class Atom:
 
         Parameters
         ----------
-        id :
+        id : int
             Desired id.
-
-        Returns
-        -------
 
         """
 
@@ -96,11 +125,8 @@ class Atom:
 
         Parameters
         ----------
-        type :
+        type : int
             Index of type.
-
-        Returns
-        -------
 
         """
 
@@ -114,11 +140,8 @@ class Atom:
 
         Parameters
         ----------
-        cell :
+        cell : Cell
             Cell.
-
-        Returns
-        -------
 
         """
 
@@ -127,13 +150,6 @@ class Atom:
 
     def update_cartesian_coordinates(self):
         """Function to recompute the cartesian coordinates of this atom.
-        :return:
-
-        Parameters
-        ----------
-
-        Returns
-        -------
 
         """
 
@@ -142,13 +158,11 @@ class Atom:
 
     def get_cell(self):
         """Function to get the cell that contains this atom.
-        :return: Link to the cell.
-
-        Parameters
-        ----------
 
         Returns
         -------
+        output : Cell
+            Link to the cell.
 
         """
 
@@ -156,28 +170,22 @@ class Atom:
 
     def get_position(self):
         """Function to get the fractional coordinates of this atom.
-        :return: Fractional coordinates.
-
-        Parameters
-        ----------
 
         Returns
         -------
-
+        output : array-like
+            Fractional coordinates.
         """
 
         return self.position
 
     def get_position_cartesian(self):
-        """Function to get the fractional coordinates of this atom.
-        :return: Fractional coordinates.
-
-        Parameters
-        ----------
+        """Function to get the cartesian coordinates of this atom.
 
         Returns
         -------
-
+        output : array-like
+            Cartesian coordinates.
         """
 
         return self.position_cartesian
@@ -187,11 +195,8 @@ class Atom:
 
         Parameters
         ----------
-        radius :
+        radius : float
             Desired radius.
-
-        Returns
-        -------
 
         """
 
@@ -199,56 +204,44 @@ class Atom:
 
     def get_radius(self):
         """Function to get the radius of this atom.
-        :return: Radius.
-
-        Parameters
-        ----------
 
         Returns
         -------
-
+        output : float
+            Radius.
         """
 
         return self.radius
 
     def get_id(self):
         """Function to get the ID number of this atom.
-        :return: ID number.
-
-        Parameters
-        ----------
 
         Returns
         -------
-
+        output : int
+            ID number.
         """
 
         return self.id
 
     def get_type(self):
         """Function to get the type of this atom.
-        :return: Type of atom.
-
-        Parameters
-        ----------
 
         Returns
         -------
-
+        output : int
+            Type of atom.
         """
 
         return self.type
 
     def get_type_name(self):
         """Function to get the name of this atom type.
-        :return: Name of this atom type.
-
-        Parameters
-        ----------
 
         Returns
         -------
-
+        output : str
+            Name of the type of atom.
         """
 
         return self.cell.get_type_name(self.type)
